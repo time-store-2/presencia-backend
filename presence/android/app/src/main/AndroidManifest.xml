@@ -1,4 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Requis en release : sans ça l'app n'a aucun accès réseau. -->
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:label="Presencia"
         android:name="${applicationName}"
