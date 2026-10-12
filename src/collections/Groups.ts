@@ -1,6 +1,18 @@
 import type { CollectionConfig } from 'payload'
 import { filterGroups, isAdmin } from '../access/roles'
 
+/** "6ème A" → "6eme-a". Généré depuis le nom si le slug est vide. */
+export function slugify(name: string): string {
+  const slug = name
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 60)
+  return slug || 'groupe'
+}
+
 export const Groups: CollectionConfig = {
   slug: 'groups',
   admin: {
@@ -12,6 +24,16 @@ export const Groups: CollectionConfig = {
       type: 'text',
       required: true,
       label: 'Nom du groupe',
+    },
+    {
+      name: 'slug',
+      type: 'text',
+      unique: true,
+      label: 'Slug (lien inscription)',
+      admin: {
+        description:
+          'Généré automatiquement depuis le nom. Utilisé dans le lien : /inscription?groupe=<slug>',
+      },
     },
     {
       name: 'description',
@@ -34,12 +56,6 @@ export const Groups: CollectionConfig = {
       type: 'text',
       label: 'Heure de réunion',
     },
-    {
-      name: 'leader',
-      type: 'relationship',
-      relationTo: 'users',
-      label: 'Responsable',
-    },
   ],
   access: {
     read: filterGroups,
@@ -48,6 +64,33 @@ export const Groups: CollectionConfig = {
     delete: isAdmin,
   },
   hooks: {
+    // Génère le slug depuis le nom s'il est vide (modifiable ensuite),
+    // en garantissant l'unicité (suffixe -2, -3...).
+    beforeValidate: [
+      async ({ req, data, originalDoc }) => {
+        if (!data) return data
+        const name = (data.name as string | undefined) ?? (originalDoc?.name as string | undefined)
+        let slug = ((data.slug as string | undefined) ?? '').trim()
+        if (!slug && name) slug = slugify(name)
+        if (!slug) return data
+        let candidate = slug
+        let n = 2
+        for (;;) {
+          const existing = await req.payload.find({
+            collection: 'groups',
+            where: { slug: { equals: candidate } },
+            limit: 2,
+            depth: 0,
+            overrideAccess: true,
+          })
+          const clash = existing.docs.some((d) => d.id !== originalDoc?.id)
+          if (!clash) break
+          candidate = `${slug}-${n}`
+          n += 1
+        }
+        return { ...data, slug: candidate }
+      },
+    ],
     // Supprimer un groupe supprime ses séances (et leurs présences
     // via le hook des séances) et détache membres + assistants.
     beforeDelete: [

@@ -12,6 +12,7 @@ import { AttendanceRecords } from './collections/AttendanceRecords'
 import { Settings } from './globals/Settings'
 import { notifyAbsence } from './endpoints/notifyAbsence'
 import { memberStats, orgStats, periodStats } from './endpoints/stats'
+import { publicGroups, register } from './endpoints/public'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -35,7 +36,7 @@ export default buildConfig({
       url: process.env.DATABASE_URL || 'file:./presencia.db',
     },
   }),
-  endpoints: [notifyAbsence, orgStats, memberStats, periodStats],
+  endpoints: [notifyAbsence, orgStats, memberStats, periodStats, publicGroups, register],
   localization: {
     locales: ['en'],
     fallback: true,
