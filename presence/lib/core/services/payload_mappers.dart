@@ -82,7 +82,6 @@ Map<String, dynamic>? _parentToApi(Parent p) {
 
 Map<String, dynamic> adolescentToMember(
   Adolescent a, {
-  dynamic organizationId,
   Set<int>? groupIds,
   List<Parent>? parents,
 }) {
@@ -100,7 +99,6 @@ Map<String, dynamic> adolescentToMember(
     'phone': a.phone,
     'address': a.address,
     'status': a.isActive ? 'active' : 'inactive',
-    if (organizationId != null) 'organization': organizationId,
     if (groupIds != null) 'groups': groupIds.toList(),
     if (parent1 != null) 'parent1': parent1,
     if (parent2 != null) 'parent2': parent2,
@@ -157,15 +155,11 @@ Group groupFromPayload(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> groupToPayload(
-  Group group, {
-  dynamic organizationId,
-}) {
+Map<String, dynamic> groupToPayload(Group group) {
   return {
     'name': group.name,
     if (group.description != null) 'description': group.description,
     'color': colorToHex(group.color),
-    if (organizationId != null) 'organization': organizationId,
   };
 }
 
@@ -187,14 +181,12 @@ AttendanceSession sessionFromPayload(Map<String, dynamic> json) {
 
 Map<String, dynamic> sessionToPayload(
   AttendanceSession session, {
-  dynamic organizationId,
   dynamic leaderId,
 }) {
   return {
     'date': session.date.toIso8601String(),
     'group': session.groupId,
     'notes': session.title,
-    if (organizationId != null) 'organization': organizationId,
     if (leaderId != null) 'leader': leaderId,
   };
 }

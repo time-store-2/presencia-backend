@@ -57,9 +57,8 @@ class GroupProvider with ChangeNotifier {
       (g) => g.name.toLowerCase() == group.name.toLowerCase(),
     );
     if (exists) throw AlreadyExistsException(group.name);
-    final orgId = _api.currentUser?.organizationId;
-    if (orgId == null) throw Exception('Non connecté.');
-    await _api.create('groups', groupToPayload(group, organizationId: orgId));
+    if (_api.currentUser == null) throw Exception('Non connecté.');
+    await _api.create('groups', groupToPayload(group));
     await loadGroups();
   }
 

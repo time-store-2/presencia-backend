@@ -67,13 +67,11 @@ export interface Config {
   };
   blocks: {};
   collections: {
-    organizations: Organization;
     users: User;
     groups: Group;
     members: Member;
     'attendance-sessions': AttendanceSession;
     'attendance-records': AttendanceRecord;
-    media: Media;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -81,13 +79,11 @@ export interface Config {
   };
   collectionsJoins: {};
   collectionsSelect: {
-    organizations: OrganizationsSelect<false> | OrganizationsSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     groups: GroupsSelect<false> | GroupsSelect<true>;
     members: MembersSelect<false> | MembersSelect<true>;
     'attendance-sessions': AttendanceSessionsSelect<false> | AttendanceSessionsSelect<true>;
     'attendance-records': AttendanceRecordsSelect<false> | AttendanceRecordsSelect<true>;
-    media: MediaSelect<false> | MediaSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -97,8 +93,12 @@ export interface Config {
     defaultIDType: number;
   };
   fallbackLocale: ('false' | 'none' | 'null') | false | null | 'en' | 'en'[];
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    settings: Setting;
+  };
+  globalsSelect: {
+    settings: SettingsSelect<false> | SettingsSelect<true>;
+  };
   locale: 'en';
   widgets: {
     collections: CollectionsWidget;
@@ -129,41 +129,17 @@ export interface UserAuthOperations {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "organizations".
- */
-export interface Organization {
-  id: number;
-  name: string;
-  type: 'eglise' | 'ecole' | 'entreprise' | 'association' | 'autre';
-  /**
-   * Ex : ORG-ABIDJAN-001. Utilisé dans le lien : /inscription?org=ORG-ABIDJAN-001
-   */
-  code: string;
-  address?: string | null;
-  phone?: string | null;
-  email?: string | null;
-  /**
-   * Variables : {prenom}, {nom}, {groupe}, {responsable}, {date}
-   */
-  absenceMessage?: string | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
   id: number;
-  firstName: string;
-  lastName: string;
+  displayName: string;
   phone?: string | null;
-  role: 'super_admin' | 'org_admin' | 'group_leader';
-  organization: number | Organization;
+  role: 'admin' | 'assistant';
   /**
-   * Obligatoire si le rôle est Responsable de groupe.
+   * Utilisé uniquement si le rôle est Assistant.
    */
-  group?: (number | null) | Group;
+  assignedGroups?: (number | Group)[] | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -195,7 +171,6 @@ export interface Group {
   color?: string | null;
   meetingDay?: string | null;
   meetingTime?: string | null;
-  organization: number | Organization;
   leader?: (number | null) | User;
   updatedAt: string;
   createdAt: string;
@@ -228,7 +203,6 @@ export interface Member {
   registrationNumber?: string | null;
   position?: string | null;
   groups?: (number | Group)[] | null;
-  organization: number | Organization;
   registrationDate?: string | null;
   status?: ('active' | 'inactive') | null;
   updatedAt: string;
@@ -243,7 +217,6 @@ export interface AttendanceSession {
   date: string;
   group: number | Group;
   leader: number | User;
-  organization: number | Organization;
   notes?: string | null;
   isClosed?: boolean | null;
   updatedAt: string;
@@ -261,25 +234,6 @@ export interface AttendanceRecord {
   note?: string | null;
   updatedAt: string;
   createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
- */
-export interface Media {
-  id: number;
-  alt: string;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -306,10 +260,6 @@ export interface PayloadLockedDocument {
   id: number;
   document?:
     | ({
-        relationTo: 'organizations';
-        value: number | Organization;
-      } | null)
-    | ({
         relationTo: 'users';
         value: number | User;
       } | null)
@@ -328,10 +278,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'attendance-records';
         value: number | AttendanceRecord;
-      } | null)
-    | ({
-        relationTo: 'media';
-        value: number | Media;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -377,30 +323,13 @@ export interface PayloadMigration {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "organizations_select".
- */
-export interface OrganizationsSelect<T extends boolean = true> {
-  name?: T;
-  type?: T;
-  code?: T;
-  address?: T;
-  phone?: T;
-  email?: T;
-  absenceMessage?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
-  firstName?: T;
-  lastName?: T;
+  displayName?: T;
   phone?: T;
   role?: T;
-  organization?: T;
-  group?: T;
+  assignedGroups?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -429,7 +358,6 @@ export interface GroupsSelect<T extends boolean = true> {
   color?: T;
   meetingDay?: T;
   meetingTime?: T;
-  organization?: T;
   leader?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -465,7 +393,6 @@ export interface MembersSelect<T extends boolean = true> {
   registrationNumber?: T;
   position?: T;
   groups?: T;
-  organization?: T;
   registrationDate?: T;
   status?: T;
   updatedAt?: T;
@@ -479,7 +406,6 @@ export interface AttendanceSessionsSelect<T extends boolean = true> {
   date?: T;
   group?: T;
   leader?: T;
-  organization?: T;
   notes?: T;
   isClosed?: T;
   updatedAt?: T;
@@ -496,24 +422,6 @@ export interface AttendanceRecordsSelect<T extends boolean = true> {
   note?: T;
   updatedAt?: T;
   createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media_select".
- */
-export interface MediaSelect<T extends boolean = true> {
-  alt?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  url?: T;
-  thumbnailURL?: T;
-  filename?: T;
-  mimeType?: T;
-  filesize?: T;
-  width?: T;
-  height?: T;
-  focalX?: T;
-  focalY?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -554,6 +462,29 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "settings".
+ */
+export interface Setting {
+  id: number;
+  /**
+   * Variables : {prenom}, {nom}, {groupe}, {date}
+   */
+  absenceMessage?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "settings_select".
+ */
+export interface SettingsSelect<T extends boolean = true> {
+  absenceMessage?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

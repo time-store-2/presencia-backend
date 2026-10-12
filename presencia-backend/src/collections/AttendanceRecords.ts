@@ -43,10 +43,7 @@ export const AttendanceRecords: CollectionConfig = {
     // Seul un utilisateur connecté peut enregistrer des présences
     create: ({ req }) => Boolean(req?.user),
     update: ({ req }) => Boolean(req?.user),
-    delete: ({ req }) => {
-      const role = (req?.user as any)?.role
-      return role === 'super_admin' || role === 'org_admin'
-    },
+    delete: ({ req }) => (req?.user as any)?.role === 'admin',
   },
   versions: false,
 }

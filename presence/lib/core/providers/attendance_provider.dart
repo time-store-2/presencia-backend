@@ -66,12 +66,11 @@ class AttendanceProvider with ChangeNotifier {
     );
     if (exists) throw AlreadyExistsException(session.title);
     final user = _api.currentUser;
-    if (user?.organizationId == null) throw Exception('Non connecté.');
+    if (user == null) throw Exception('Non connecté.');
     final created = await _api.create(
       'attendance-sessions',
       sessionToPayload(
         session,
-        organizationId: user!.organizationId,
         leaderId: user.id,
       ),
     );

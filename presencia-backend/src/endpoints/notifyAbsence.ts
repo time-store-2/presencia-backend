@@ -8,8 +8,8 @@ type Body = {
 /**
  * POST /api/notify-absence { sessionId }
  * Réservé aux utilisateurs connectés (le filtrage par rôle se fait
- * via les collections : un responsable ne peut notifier que sa séance).
- * Envoie le message d'absence personnalisé de l'organisation
+ * via les collections : un assistant ne peut notifier que ses séances).
+ * Envoie le message d'absence (Réglages → absenceMessage)
  * à chaque membre marqué absent de la séance.
  */
 export const notifyAbsence: Endpoint = {
@@ -48,14 +48,13 @@ export const notifyAbsence: Endpoint = {
       depth: 1,
     })
 
-    const organization = session.organization as unknown as {
-      absenceMessage?: string | null
-    }
+    const settings = (await req.payload
+      .findGlobal({ slug: 'settings', overrideAccess: true })
+      .catch(() => null)) as unknown as { absenceMessage?: string | null } | null
     const template =
-      organization?.absenceMessage ||
-      'Bonjour {prenom}, comment vas-tu ? Pourquoi tu étais absent à la séance de {groupe} ?'
+      settings?.absenceMessage ||
+      'Bonjour {prenom}, tu as manqué la séance de {groupe} du {date}.'
     const group = session.group as unknown as { name?: string }
-    const leader = session.leader as unknown as { firstName?: string; lastName?: string }
     const date = new Date(session.date as string).toLocaleDateString('fr-FR')
 
     const results: Array<{ member: unknown; sent: boolean; mode: string }> = []
@@ -70,7 +69,6 @@ export const notifyAbsence: Endpoint = {
         prenom: member.firstName ?? '',
         nom: member.lastName ?? '',
         groupe: group?.name ?? '',
-        responsable: `${leader?.firstName ?? ''} ${leader?.lastName ?? ''}`.trim(),
         date,
       })
       const outcome = await sendWhatsApp(member.phone, message)

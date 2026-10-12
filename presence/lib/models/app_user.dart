@@ -1,55 +1,51 @@
 /// Utilisateur connecté via l'API Payload CMS.
-/// Les ids peuvent être des nombres (SQLite) ou des strings (MongoDB).
+/// Les ids peuvent être des nombres (SQLite) ou des strings (Postgres).
 class AppUser {
   final dynamic id;
   final String email;
-  final String firstName;
-  final String lastName;
-  final String role; // super_admin | org_admin | group_leader
-  final dynamic organizationId;
-  final dynamic groupId;
+  final String displayName;
+  final String? phone;
+  final String role; // admin | assistant
+  final List<dynamic> groupIds; // groupes assignés (assistant)
 
   AppUser({
     required this.id,
     required this.email,
-    required this.firstName,
-    required this.lastName,
+    required this.displayName,
+    this.phone,
     required this.role,
-    this.organizationId,
-    this.groupId,
+    this.groupIds = const [],
   });
 
-  static dynamic _extractId(dynamic value) {
-    if (value == null) return null;
-    if (value is Map) return value['id'];
-    return value;
+  static List<dynamic> _extractIds(dynamic value) {
+    if (value == null) return [];
+    if (value is! List) return [];
+    return value.map((v) => v is Map ? v['id'] : v).toList();
   }
 
   factory AppUser.fromJson(Map<String, dynamic> json) {
     return AppUser(
       id: json['id'],
       email: json['email'] ?? '',
-      firstName: json['firstName'] ?? '',
-      lastName: json['lastName'] ?? '',
-      role: json['role'] ?? 'group_leader',
-      organizationId: _extractId(json['organization']),
-      groupId: _extractId(json['group']),
+      displayName: json['displayName'] ??
+          '${json['firstName'] ?? ''} ${json['lastName'] ?? ''}'.trim(),
+      phone: json['phone']?.toString(),
+      role: json['role'] ?? 'assistant',
+      groupIds: _extractIds(json['assignedGroups']),
     );
   }
 
-  String get fullName => '$firstName $lastName'.trim();
+  String get fullName => displayName;
 
-  bool get isSuperAdmin => role == 'super_admin';
-  bool get isOrgAdmin => role == 'org_admin' || role == 'super_admin';
-  bool get isGroupLeader => role == 'group_leader';
+  bool get isAdmin => role == 'admin';
+  bool get isAssistant => role == 'assistant';
 
   Map<String, dynamic> toJson() => {
         'id': id,
         'email': email,
-        'firstName': firstName,
-        'lastName': lastName,
+        'displayName': displayName,
+        'phone': phone,
         'role': role,
-        'organization': organizationId,
-        'group': groupId,
+        'assignedGroups': groupIds,
       };
 }

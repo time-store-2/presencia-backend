@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { filterGroups, isOrgAdmin } from '../access/roles'
+import { filterGroups, isAdmin } from '../access/roles'
 
 export const Groups: CollectionConfig = {
   slug: 'groups',
@@ -35,13 +35,6 @@ export const Groups: CollectionConfig = {
       label: 'Heure de réunion',
     },
     {
-      name: 'organization',
-      type: 'relationship',
-      relationTo: 'organizations',
-      required: true,
-      label: 'Organisation',
-    },
-    {
       name: 'leader',
       type: 'relationship',
       relationTo: 'users',
@@ -50,13 +43,13 @@ export const Groups: CollectionConfig = {
   ],
   access: {
     read: filterGroups,
-    create: isOrgAdmin,
-    update: isOrgAdmin,
-    delete: isOrgAdmin,
+    create: isAdmin,
+    update: isAdmin,
+    delete: isAdmin,
   },
   hooks: {
     // Supprimer un groupe supprime ses séances (et leurs présences
-    // via le hook des séances) et détache membres + responsables.
+    // via le hook des séances) et détache membres + assistants.
     beforeDelete: [
       async ({ req, id }) => {
         const sessions = await req.payload.find({
@@ -95,19 +88,25 @@ export const Groups: CollectionConfig = {
             overrideAccess: true,
           })
         }
-        // Responsables : détacher ceux assignés à ce groupe.
+        // Assistants : retirer le groupe supprimé de leurs groupes assignés.
         const linkedUsers = await req.payload.find({
           collection: 'users',
-          where: { group: { equals: id } },
+          where: { assignedGroups: { in: [id] } },
           limit: 2000,
           depth: 0,
           overrideAccess: true,
         })
         for (const doc of linkedUsers.docs) {
+          const user = doc as unknown as { assignedGroups?: Array<number | { id: number }> }
+          const remaining: number[] = []
+          for (const g of user.assignedGroups ?? []) {
+            const gid = typeof g === 'object' && g !== null ? g.id : g
+            if (gid !== id) remaining.push(gid)
+          }
           await req.payload.update({
             collection: 'users',
             id: doc.id,
-            data: { group: null },
+            data: { assignedGroups: remaining },
             overrideAccess: true,
           })
         }

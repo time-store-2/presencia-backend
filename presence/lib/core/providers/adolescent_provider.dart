@@ -69,13 +69,11 @@ class AdolescentProvider with ChangeNotifier {
     if (_existsByFullName(adolescent.firstName, adolescent.lastName)) {
       throw AlreadyExistsException(adolescent.fullName);
     }
-    final orgId = _api.currentUser?.organizationId;
-    if (orgId == null) throw Exception('Non connecté.');
+    if (_api.currentUser == null) throw Exception('Non connecté.');
     final created = await _api.create(
       'members',
       adolescentToMember(
         adolescent,
-        organizationId: orgId,
         parents: parents,
       ),
     );
@@ -97,7 +95,6 @@ class AdolescentProvider with ChangeNotifier {
       adolescent,
       parents: parents,
     );
-    data.remove('organization');
     data.remove('groups');
     await _api.update('members', adolescent.id, data);
     await loadAdolescents();

@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { filterSessions, isOrgAdmin } from '../access/roles'
+import { filterSessions, isAdmin } from '../access/roles'
 
 export const AttendanceSessions: CollectionConfig = {
   slug: 'attendance-sessions',
@@ -28,13 +28,6 @@ export const AttendanceSessions: CollectionConfig = {
       label: 'Responsable (appel effectué par)',
     },
     {
-      name: 'organization',
-      type: 'relationship',
-      relationTo: 'organizations',
-      required: true,
-      label: 'Organisation',
-    },
-    {
       name: 'notes',
       type: 'textarea',
       label: 'Notes',
@@ -48,10 +41,11 @@ export const AttendanceSessions: CollectionConfig = {
   ],
   access: {
     read: filterSessions,
-    // Seul un utilisateur connecté (org_admin ou group_leader) peut créer
+    // Tout utilisateur connecté (admin ou assistant) peut créer une séance
+    // pour faire l'appel de ses groupes.
     create: ({ req }) => Boolean(req?.user),
-    update: isOrgAdmin,
-    delete: isOrgAdmin,
+    update: isAdmin,
+    delete: isAdmin,
   },
   hooks: {
     // Supprimer une séance supprime aussi ses présences (sinon FK NOT NULL).

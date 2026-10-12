@@ -1,4 +1,5 @@
 import type { Endpoint } from 'payload'
+import { getAssignedGroupIds } from '../access/roles'
 
 type Id = string | number
 
@@ -10,27 +11,29 @@ const toId = (value: unknown): Id | undefined => {
 
 const emptyCounts = () => ({ present: 0, absent: 0, late: 0, excused: 0 })
 
-type Scope = { organizationId: Id; groupId?: Id; role?: string }
+/**
+ * Portée de l'utilisateur connecté :
+ * - admin → tout (groupIds undefined)
+ * - assistant → uniquement ses groupes assignés
+ */
+type Scope = { groupIds?: Id[]; role?: string }
 
 async function getScope(req: any): Promise<Scope | null> {
   if (!req.user) return null
-  const organizationId = toId(req.user.organization)
-  if (organizationId === undefined) return null
-  return {
-    organizationId,
-    groupId: toId(req.user.group),
-    role: req.user.role as string,
-  }
+  if (req.user.role === 'admin') return { role: 'admin' }
+  return { groupIds: getAssignedGroupIds(req) as Id[], role: req.user.role as string }
+}
+
+function groupAllowed(scope: Scope, groupId: Id): boolean {
+  if (scope.groupIds === undefined) return true
+  return scope.groupIds.some((id) => String(id) === String(groupId))
 }
 
 async function getScopedSessions(req: any, scope: Scope, extraWhere: object = {}) {
-  const where: Record<string, unknown> = {
-    organization: { equals: scope.organizationId },
-    ...extraWhere,
-  }
-  // Un responsable ne voit que les séances de son groupe.
-  if (scope.role === 'group_leader' && scope.groupId !== undefined) {
-    where.group = { equals: scope.groupId }
+  const where: Record<string, unknown> = { ...extraWhere }
+  // Un assistant ne voit que les séances de ses groupes.
+  if (scope.groupIds !== undefined) {
+    where.group = { in: scope.groupIds }
   }
   const res = await req.payload.find({
     collection: 'attendance-sessions',
@@ -54,11 +57,9 @@ async function getRecordsForSessions(req: any, sessionIds: Id[]) {
 }
 
 async function getScopedMembers(req: any, scope: Scope) {
-  const where: Record<string, unknown> = {
-    organization: { equals: scope.organizationId },
-  }
-  if (scope.role === 'group_leader' && scope.groupId !== undefined) {
-    where.groups = { in: [scope.groupId] }
+  const where: Record<string, unknown> = {}
+  if (scope.groupIds !== undefined) {
+    where.groups = { in: scope.groupIds }
   }
   const res = await req.payload.find({
     collection: 'members',
@@ -71,9 +72,9 @@ async function getScopedMembers(req: any, scope: Scope) {
 
 /**
  * GET /api/org-stats
- * Statistiques globales de l'organisation (ou du groupe pour un responsable).
- * Formes identiques à l'ancien SQLite : todayCounts, globalCounts,
- * totalSessions, topPresent, topAbsent, inactivityAlerts.
+ * Statistiques globales (ou du périmètre de l'assistant).
+ * Formes : todayCounts, globalCounts, totalSessions,
+ * topPresent, topAbsent, inactivityAlerts.
  */
 export const orgStats: Endpoint = {
   path: '/org-stats',
@@ -172,6 +173,26 @@ export const memberStats: Endpoint = {
       return Response.json({ errors: [{ message: 'memberId requis.' }] }, { status: 400 })
     }
 
+    // Un assistant ne peut consulter que les membres de ses groupes.
+    if (scope.groupIds !== undefined) {
+      try {
+        const member = await req.payload.findByID({
+          collection: 'members',
+          id: isNaN(Number(memberId)) ? memberId : Number(memberId),
+          depth: 0,
+        })
+        const memberGroups = ((member as any)?.groups as unknown[] | undefined) ?? []
+        const allowed = memberGroups.some((g) =>
+          scope.groupIds!.some((id) => String(id) === String(toId(g))),
+        )
+        if (!allowed) {
+          return Response.json({ errors: [{ message: 'Accès refusé.' }] }, { status: 403 })
+        }
+      } catch {
+        return Response.json({ errors: [{ message: 'Membre introuvable.' }] }, { status: 404 })
+      }
+    }
+
     const sessions = await getScopedSessions(req, scope)
     const sessionById = new Map(sessions.map((s) => [String(s.id), s]))
     const res = await req.payload.find({
@@ -221,11 +242,11 @@ export const periodStats: Endpoint = {
       )
     }
     const groupId: Id = isNaN(Number(groupIdParam)) ? groupIdParam : Number(groupIdParam)
-    if (scope.role === 'group_leader' && scope.groupId !== undefined && scope.groupId !== groupId) {
+    if (!groupAllowed(scope, groupId)) {
       return Response.json({ errors: [{ message: 'Accès refusé.' }] }, { status: 403 })
     }
 
-    // Fin inclusive : on ajoute 1 jour (même sémantique que l'ancien SQLite).
+    // Fin inclusive : on ajoute 1 jour.
     const endExclusive = new Date(`${end}T00:00:00Z`)
     endExclusive.setUTCDate(endExclusive.getUTCDate() + 1)
     const sessions = await getScopedSessions(req, scope, {
