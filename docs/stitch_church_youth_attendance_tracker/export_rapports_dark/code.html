@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ecclesia Flow V2-6 - Export de Rapports</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#4edea3",
+                        "surface-dim": "#d3daea",
+                        "primary-fixed": "#e2dfff",
+                        "inverse-surface": "#2a313d",
+                        "on-surface": "#151c27",
+                        "tertiary-fixed-dim": "#d0bcff",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface-container-high": "#e2e8f8",
+                        "tertiary": "#571ac0",
+                        "surface": "#f9f9ff",
+                        "on-tertiary-fixed-variant": "#5516be",
+                        "surface-tint": "#4d44e3",
+                        "secondary": "#006c49",
+                        "inverse-primary": "#c3c0ff",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#e3d5ff",
+                        "surface-container-highest": "#dce2f3",
+                        "on-tertiary-fixed": "#23005c",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#ebf1ff",
+                        "outline": "#777587",
+                        "tertiary-container": "#6f3dd9",
+                        "background": "#f9f9ff",
+                        "on-secondary-container": "#00714d",
+                        "on-background": "#151c27",
+                        "on-surface-variant": "#464555",
+                        "error": "#ba1a1a",
+                        "primary": "#3525cd",
+                        "on-primary-fixed": "#0f0069",
+                        "tertiary-fixed": "#e9ddff",
+                        "primary-container": "#4f46e5",
+                        "surface-container-low": "#f0f3ff",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "surface-variant": "#dce2f3",
+                        "on-primary-container": "#dad7ff",
+                        "surface-bright": "#f9f9ff",
+                        "on-secondary-fixed": "#002113",
+                        "surface-container": "#e7eefe",
+                        "secondary-container": "#6cf8bb",
+                        "outline-variant": "#c7c4d8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "xs": "4px",
+                        "base": "4px",
+                        "md": "16px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "margin-tablet": "32px",
+                        "lg": "24px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "display": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px;
+        }
+        .glass-card {
+            background: rgba(21, 28, 39, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-on-surface text-surface">
+<!-- Top Navigation Bar -->
+<header class="bg-on-surface dark:bg-on-surface shadow-sm docked full-width top-0 z-50 flex justify-between items-center px-margin-mobile h-16 w-full">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-fixed" data-icon="church">church</span>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed">ChurchPresence</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant dark:text-outline-variant transition-all duration-200 active:scale-95 hover:bg-inverse-surface p-2 rounded-full" data-icon="search">search</button>
+<button class="material-symbols-outlined text-on-surface-variant dark:text-outline-variant transition-all duration-200 active:scale-95 hover:bg-inverse-surface p-2 rounded-full" data-icon="account_circle">account_circle</button>
+</div>
+</header>
+<main class="min-h-screen pt-20 pb-24 px-margin-mobile max-w-5xl mx-auto">
+<!-- Header Section -->
+<section class="mb-lg">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div>
+<h2 class="font-display text-display text-surface-bright">Centre de Rapports</h2>
+<p class="font-body-md text-body-md text-outline-variant">Générez et exportez vos statistiques d'activités.</p>
+</div>
+<div class="flex gap-sm">
+<button class="flex items-center gap-2 bg-primary-container text-on-primary-container px-md py-sm rounded-xl font-body-md transition-all duration-200 active:scale-95 hover:brightness-110">
+<span class="material-symbols-outlined" data-icon="picture_as_pdf">picture_as_pdf</span>
+                        Exporter PDF
+                    </button>
+<button class="flex items-center gap-2 bg-secondary-container text-on-secondary-container px-md py-sm rounded-xl font-body-md transition-all duration-200 active:scale-95 hover:brightness-110">
+<span class="material-symbols-outlined" data-icon="table_view">table_view</span>
+                        Exporter Excel
+                    </button>
+</div>
+</div>
+</section>
+<!-- Configuration Bento Grid -->
+<div class="bento-grid">
+<!-- Step 1: Sélection des Groupes -->
+<div class="col-span-12 md:col-span-7 glass-card p-md rounded-xl shadow-lg">
+<div class="flex items-center gap-3 mb-md">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed" data-icon="groups">groups</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-surface-bright">1. Sélection des Groupes</h3>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-sm">
+<!-- Group Item -->
+<label class="flex items-center gap-3 p-3 rounded-lg border border-outline/20 bg-surface-container-lowest/5 hover:bg-surface-container-lowest/10 cursor-pointer transition-colors group">
+<input checked="" class="w-6 h-6 rounded-lg border-outline bg-transparent text-primary-container focus:ring-primary-container" type="checkbox"/>
+<div>
+<p class="font-body-md text-surface-bright">Jeunesse (Ado)</p>
+<p class="font-label-sm text-label-sm text-outline-variant">42 membres</p>
+</div>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-lg border border-outline/20 bg-surface-container-lowest/5 hover:bg-surface-container-lowest/10 cursor-pointer transition-colors group">
+<input checked="" class="w-6 h-6 rounded-lg border-outline bg-transparent text-primary-container focus:ring-primary-container" type="checkbox"/>
+<div>
+<p class="font-body-md text-surface-bright">Chorale</p>
+<p class="font-label-sm text-label-sm text-outline-variant">18 membres</p>
+</div>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-lg border border-outline/20 bg-surface-container-lowest/5 hover:bg-surface-container-lowest/10 cursor-pointer transition-colors group">
+<input class="w-6 h-6 rounded-lg border-outline bg-transparent text-primary-container focus:ring-primary-container" type="checkbox"/>
+<div>
+<p class="font-body-md text-surface-bright">Études Bibliques</p>
+<p class="font-label-sm text-label-sm text-outline-variant">25 membres</p>
+</div>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-lg border border-outline/20 bg-surface-container-lowest/5 hover:bg-surface-container-lowest/10 cursor-pointer transition-colors group">
+<input class="w-6 h-6 rounded-lg border-outline bg-transparent text-primary-container focus:ring-primary-container" type="checkbox"/>
+<div>
+<p class="font-body-md text-surface-bright">Conseil</p>
+<p class="font-label-sm text-label-sm text-outline-variant">12 membres</p>
+</div>
+</label>
+</div>
+</div>
+<!-- Step 2: Période -->
+<div class="col-span-12 md:col-span-5 glass-card p-md rounded-xl shadow-lg">
+<div class="flex items-center gap-3 mb-md">
+<div class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary-fixed" data-icon="calendar_month">calendar_month</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-surface-bright">2. Période</h3>
+</div>
+<div class="space-y-md">
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-outline-variant">Date de début</label>
+<input class="w-full bg-inverse-surface border border-outline/20 rounded-xl px-md py-2 text-surface-bright focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none" type="date" value="2023-01-01"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-outline-variant">Date de fin</label>
+<input class="w-full bg-inverse-surface border border-outline/20 rounded-xl px-md py-2 text-surface-bright focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none" type="date" value="2023-12-31"/>
+</div>
+</div>
+</div>
+<!-- Step 3: Contenu du Rapport -->
+<div class="col-span-12 md:col-span-4 glass-card p-md rounded-xl shadow-lg">
+<div class="flex items-center gap-3 mb-md">
+<div class="w-10 h-10 rounded-full bg-tertiary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary-fixed-dim" data-icon="checklist">checklist</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-surface-bright">3. Contenu</h3>
+</div>
+<ul class="space-y-sm">
+<li class="flex items-center justify-between">
+<span class="font-body-md text-outline-variant">Présences détaillées</span>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-inverse-surface peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</div>
+</li>
+<li class="flex items-center justify-between">
+<span class="font-body-md text-outline-variant">Graphiques d'évolution</span>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-inverse-surface peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</div>
+</li>
+<li class="flex items-center justify-between">
+<span class="font-body-md text-outline-variant">Commentaires admin</span>
+<div class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-inverse-surface peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</div>
+</li>
+</ul>
+</div>
+<!-- Preview/Visual Anchor -->
+<div class="col-span-12 md:col-span-8 relative rounded-xl overflow-hidden min-h-[300px] border border-outline/10 group">
+<img alt="Report preview visualization" class="absolute inset-0 w-full h-full object-cover brightness-50 group-hover:scale-105 transition-transform duration-700" data-alt="A professional dashboard showing high-fidelity data visualizations with colorful line charts and bar graphs on a dark, sleek user interface. The screen is displayed on a modern tablet lying on a minimalist wooden desk. The atmospheric lighting is cool-toned with soft purple and blue ambient glows, reflecting a sophisticated and data-driven administrative environment. The style is modern corporate, clean and premium." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGKGkYCPnOcZM-CLIaWPn2R5hI2pZHRfmkbQbPQbtGtbQyLnhE_QyxFBhFfSIGB6Zod3rQ7qKP4-H7JQyQUOwK47EfcYkmGUIkPxBa05XZeGO7wwoi9-dotUFlpMJGzVPUf0YAPoZ3Dphmv2cHllvi86-_A3PecvJXMPaVTAAcGESTX0eKVzqIGVKdaGzsB5ewKz-1tTGjces1ijo8h_5HF1zvokBhC4cff78aHYOn66akT0UuyB_85vxCNRAqZlibz5IBg707uXA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface to-transparent flex flex-col justify-end p-xl">
+<h4 class="font-headline-lg text-headline-lg text-surface-bright mb-sm">Aperçu du Format</h4>
+<p class="font-body-md text-surface-dim opacity-80 max-w-md">Le rapport PDF inclura une page de garde personnalisée, un résumé exécutif et des tableaux croisés dynamiques pour chaque groupe sélectionné.</p>
+</div>
+</div>
+</div>
+<!-- Recent Exports Section -->
+<section class="mt-xl">
+<h3 class="font-headline-md text-headline-md text-surface-bright mb-md">Exports récents</h3>
+<div class="glass-card rounded-xl divide-y divide-outline/10 overflow-hidden">
+<div class="flex items-center justify-between p-md hover:bg-surface-container-lowest/5 transition-colors">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-error" data-icon="picture_as_pdf">picture_as_pdf</span>
+<div>
+<p class="font-body-md text-surface-bright">Rapport_Annuel_2023_Jeunesse.pdf</p>
+<p class="font-label-sm text-label-sm text-outline-variant">Généré le 12 Octobre • 2.4 MB</p>
+</div>
+</div>
+<button class="material-symbols-outlined text-outline-variant hover:text-primary-fixed" data-icon="download">download</button>
+</div>
+<div class="flex items-center justify-between p-md hover:bg-surface-container-lowest/5 transition-colors">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary-fixed" data-icon="table_view">table_view</span>
+<div>
+<p class="font-body-md text-surface-bright">Liste_Membres_Chorale_Export.xlsx</p>
+<p class="font-label-sm text-label-sm text-outline-variant">Généré le 08 Octobre • 156 KB</p>
+</div>
+</div>
+<button class="material-symbols-outlined text-outline-variant hover:text-primary-fixed" data-icon="download">download</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Active on Mobile/Tablet) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface dark:bg-inverse-surface shadow-lg rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 transition-transform duration-200 active:scale-90 hover:text-primary dark:hover:text-primary-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Accueil</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 transition-transform duration-200 active:scale-90 hover:text-primary dark:hover:text-primary-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 transition-transform duration-200 active:scale-90 hover:text-primary dark:hover:text-primary-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="how_to_reg">how_to_reg</span>
+<span class="font-label-md text-label-md">Appel</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 transition-transform duration-200 active:scale-90 hover:text-primary dark:hover:text-primary-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="diversity_3">diversity_3</span>
+<span class="font-label-md text-label-md">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-xl px-3 py-1 transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Paramètres</span>
+</a>
+</nav>
+<script>
+        // Simple Micro-interactions
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const icon = this.querySelector('.material-symbols-outlined');
+                if (icon) {
+                    icon.style.transform = 'scale(1.2)';
+                    setTimeout(() => icon.style.transform = 'scale(1)', 200);
+                }
+            });
+        });
+    </script>
+</body></html>

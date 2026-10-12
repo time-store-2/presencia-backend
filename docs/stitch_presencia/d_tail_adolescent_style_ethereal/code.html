@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profil de David Koffi - Presencia</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-base {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .glass-overlay {
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(60px);
+            -webkit-backdrop-filter: blur(60px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+        body {
+            background-color: #111413;
+            color: #e1e3e1;
+            overflow-x: hidden;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed-dim": "#b1cdc1",
+                      "surface-bright": "#373a39",
+                      "primary-fixed": "#cde9dd",
+                      "on-error": "#690005",
+                      "inverse-on-surface": "#2e3130",
+                      "on-background": "#e1e3e1",
+                      "on-tertiary-container": "#484d4c",
+                      "secondary-container": "#1e4e4c",
+                      "surface-container-lowest": "#0c0f0e",
+                      "on-primary-fixed-variant": "#334c43",
+                      "on-secondary-fixed": "#00201f",
+                      "surface-container": "#1d201f",
+                      "tertiary": "#d6dad8",
+                      "background": "#111413",
+                      "on-primary-fixed": "#072019",
+                      "primary": "#c3dfd3",
+                      "on-tertiary-fixed": "#181c1c",
+                      "surface-dim": "#111413",
+                      "tertiary-container": "#babebc",
+                      "surface-container-highest": "#323534",
+                      "error-container": "#93000a",
+                      "inverse-surface": "#e1e3e1",
+                      "surface-container-high": "#282b29",
+                      "on-primary": "#1d352d",
+                      "secondary-fixed-dim": "#a0cfcc",
+                      "inverse-primary": "#4b645a",
+                      "on-secondary": "#003735",
+                      "secondary-fixed": "#bbece8",
+                      "on-surface": "#e1e3e1",
+                      "on-primary-container": "#395148",
+                      "surface-variant": "#323534",
+                      "on-surface-variant": "#c2c8c4",
+                      "error": "#ffb4ab",
+                      "surface-tint": "#b1cdc1",
+                      "tertiary-fixed": "#dfe3e1",
+                      "surface-container-low": "#191c1b",
+                      "on-secondary-fixed-variant": "#1e4e4c",
+                      "tertiary-fixed-dim": "#c3c7c6",
+                      "primary-container": "#a8c3b8",
+                      "on-error-container": "#ffdad6",
+                      "outline-variant": "#424845",
+                      "outline": "#8c928e",
+                      "secondary": "#a0cfcc",
+                      "on-tertiary": "#2d3130",
+                      "surface": "#111413",
+                      "on-secondary-container": "#8fbeba",
+                      "on-tertiary-fixed-variant": "#434847"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "base": "8px",
+                      "xl": "64px",
+                      "md": "24px",
+                      "lg": "40px",
+                      "container-padding-mobile": "20px",
+                      "gutter": "16px",
+                      "xs": "4px",
+                      "container-padding-desktop": "120px",
+                      "sm": "12px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Plus Jakarta Sans"],
+                      "label-md": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"],
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Plus Jakarta Sans"],
+                      "display-lg": ["Plus Jakarta Sans"],
+                      "headline-md": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "1.4", "letterSpacing": "0.03em", "fontWeight": "500"}],
+                      "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "0em", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen relative selection:bg-primary/30 selection:text-primary-fixed">
+<!-- Ambient Background Light -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+<div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/10 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/10 rounded-full blur-[100px]"></div>
+</div>
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky z-50 bg-white/10 dark:bg-black/10 backdrop-blur-[40px] border-b border-white/15 shadow-[0_20px_40px_rgba(0,0,0,0.1)] flex justify-between items-center px-container-padding-mobile py-4 md:px-container-padding-desktop">
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/5 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-semibold text-primary dark:text-primary-fixed-dim">Profil Jeune</h1>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">edit</span>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-white/10">
+<img alt="Admin" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK9jzgsITZo945cRJdz-SesiHmE1jWiSWRqMw3W7lI9u_F72KHyhln5TEX7aiYdcYbCllpMXCpuIxio2jdLpAw7eqGOvyEIo7smZvtTInUbi8GCqEtsd9hl2xA9p3c-ua-skfL9q8qaUc7CCQrSgjSDz9j0StCWJuCTe1CN8qpz_7ZhqbB9a1wtN4HdINvPY0-19R_Vc5IUGdw3KH7ZqnN0mRlKAGFQ6Cy4JQBYQU9cErWtWHNLtqs9hCUITphijxG7i3cl6KE9g"/>
+</div>
+</div>
+</header>
+<main class="relative z-10 max-w-[1440px] mx-auto px-container-padding-mobile md:px-container-padding-desktop py-lg space-y-lg">
+<!-- Hero Profile Section -->
+<section class="flex flex-col md:flex-row gap-lg items-center md:items-end">
+<div class="relative w-48 h-48 md:w-64 md:h-64 rounded-[40px] overflow-hidden glass-overlay shadow-2xl p-1">
+<img class="w-full h-full object-cover rounded-[38px]" data-alt="A professional and warm close-up portrait of a young African man named David Koffi, with a gentle smile and kind eyes. He is wearing a clean, modern earth-toned sweater. The background is a softly blurred architectural space with natural, ethereal morning light filtering through high windows, creating a serene and supportive atmosphere consistent with a peaceful community sanctuary." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAnS0BCSin0ZCbZtbMM9h5QeAPwXxOOBBUFe7rDSAndRKLVshUgPtznLUfsCXKj45pf7wsqmQr7lISsAvm-2UIwdFbumGh4sj7jKoR89oVox-SUzEVigbe4hSr6f8v0CQI2IvKQ7gA3P2gfV67RwHl7VwuAgnoMRDzb33bWhdH0IxjFFn0FBpkOYMhNo_Dz1VbXW4MYKiETJ46TUOnf2XfncNKbmc_hsoo44Rs29qDb1ahjio04eTWhfWJMtT0UFrvrd_vLlihrA"/>
+</div>
+<div class="text-center md:text-left space-y-2 mb-4">
+<span class="bg-primary-container/20 text-on-primary-container px-4 py-1 rounded-full font-label-md text-label-md border border-primary/20">Groupe: Leaders Espoir</span>
+<h2 class="font-display-lg text-display-lg md:text-[56px] text-on-surface font-bold tracking-tight">David Koffi</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant flex items-center justify-center md:justify-start gap-2">
+<span class="material-symbols-outlined text-primary scale-90">location_on</span> Abidjan, Côte d'Ivoire
+                </p>
+</div>
+</section>
+<!-- Bento Grid Stats -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Stats: Engagement -->
+<div class="md:col-span-4 glass-base rounded-[32px] p-md space-y-4 hover:bg-white/15 transition-all duration-300">
+<div class="flex justify-between items-start">
+<div class="p-3 bg-primary/10 rounded-2xl">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">volunteer_activism</span>
+</div>
+<span class="text-primary font-label-md text-label-md">+12% ce mois</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Engagement</h3>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="text-4xl font-bold text-on-surface">Excellent</span>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-label-sm font-label-sm text-on-surface-variant">
+<span>Progression annuelle</span>
+<span>94%</span>
+</div>
+<div class="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-1000" style="width: 94%"></div>
+</div>
+</div>
+</div>
+<!-- Stats: Assiduité -->
+<div class="md:col-span-4 glass-base rounded-[32px] p-md space-y-4 hover:bg-white/15 transition-all duration-300">
+<div class="flex justify-between items-start">
+<div class="p-3 bg-secondary/10 rounded-2xl">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">event_available</span>
+</div>
+<span class="text-secondary font-label-md text-label-md">Top 5%</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Assiduité</h3>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="text-4xl font-bold text-on-surface">98%</span>
+</div>
+</div>
+<div class="flex gap-2">
+<div class="h-10 w-10 rounded-full border-2 border-secondary/40 flex items-center justify-center font-label-sm text-label-sm text-secondary">L</div>
+<div class="h-10 w-10 rounded-full border-2 border-secondary/40 flex items-center justify-center font-label-sm text-label-sm text-secondary">M</div>
+<div class="h-10 w-10 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-label-sm text-label-sm">M</div>
+<div class="h-10 w-10 rounded-full border-2 border-secondary/40 flex items-center justify-center font-label-sm text-label-sm text-secondary">J</div>
+<div class="h-10 w-10 rounded-full border-2 border-secondary/40 flex items-center justify-center font-label-sm text-label-sm text-secondary">V</div>
+</div>
+</div>
+<!-- Small Actions -->
+<div class="md:col-span-4 grid grid-cols-2 gap-gutter">
+<button class="glass-base rounded-[32px] p-4 flex flex-col items-center justify-center gap-3 hover:bg-primary/10 transition-all group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-3xl">mail</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Message</span>
+</button>
+<button class="glass-base rounded-[32px] p-4 flex flex-col items-center justify-center gap-3 hover:bg-primary/10 transition-all group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-3xl">add_chart</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Rapport</span>
+</button>
+</div>
+</section>
+<!-- Main Content Area: Timeline & Notes -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Timeline of Recent Presence -->
+<div class="lg:col-span-7 space-y-md">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md text-on-surface">Historique des Présences</h3>
+<button class="text-primary font-label-md text-label-md hover:underline">Voir tout</button>
+</div>
+<div class="glass-base rounded-[32px] overflow-hidden">
+<div class="divide-y divide-white/5">
+<!-- Timeline Item 1 -->
+<div class="p-md flex items-center gap-md hover:bg-white/5 transition-colors">
+<div class="flex flex-col items-center">
+<span class="font-label-md text-label-md text-primary font-bold">12</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">OCT</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-body-md text-body-md font-semibold text-on-surface">Réunion de Jeunesse</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Arrivée: 18:45 • Ponctuel</p>
+</div>
+<div class="px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">Présent</div>
+</div>
+<!-- Timeline Item 2 -->
+<div class="p-md flex items-center gap-md hover:bg-white/5 transition-colors">
+<div class="flex flex-col items-center">
+<span class="font-label-md text-label-md text-on-surface-variant font-bold">05</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">OCT</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-body-md text-body-md font-semibold text-on-surface">Atelier de Musique</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Arrivée: 14:15 • Retard 15min</p>
+</div>
+<div class="px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">Présent</div>
+</div>
+<!-- Timeline Item 3 -->
+<div class="p-md flex items-center gap-md hover:bg-white/5 transition-colors">
+<div class="flex flex-col items-center">
+<span class="font-label-md text-label-md text-on-surface-variant font-bold">28</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">SEP</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-body-md text-body-md font-semibold text-on-surface">Étude Biblique</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Justifié par les parents</p>
+</div>
+<div class="px-3 py-1 rounded-full bg-white/10 text-on-surface-variant text-[10px] font-bold uppercase tracking-wider">Absence</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pastoral Notes -->
+<div class="lg:col-span-5 space-y-md">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md text-on-surface">Notes Pastorales</h3>
+<button class="w-8 h-8 rounded-full glass-base flex items-center justify-center hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined text-primary scale-75">add</span>
+</button>
+</div>
+<div class="space-y-gutter max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
+<!-- Note 1 -->
+<div class="glass-overlay rounded-[24px] p-md space-y-3">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full overflow-hidden border border-white/10">
+<img alt="Pasteur" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-Rq8DEczi2vNsktEfTlj1JBknQnGrZtHgghXaARenXgP_OfYB4oitFCEjvje97BTo28zWO8oIdLD1qEoif75SeE61oj5B_6SByAfN7Z0Iy5b8lDHOzf7Dj5tHt61L1GdYUe7Z1vN1_Ax8gO8jKwqGXL6RSHEjFv85rUiyk6oUs4rgoPzy3Ph3rQXFfURVTP5IuoPOCTrj4Nt-qu4fvcDKiC0B1CLU4lbcMS9p89KxJS4uRjxbZOXZhIDlnI80wmrzmbeW41glng"/>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Pasteur Emmanuel</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant/60">Il y a 2 jours</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+                            "David montre un désir croissant de servir dans l'équipe de louange. Il a fait preuve de beaucoup de sérieux lors des dernières répétitions. À encourager dans son don pour la guitare."
+                        </p>
+<div class="flex gap-2">
+<span class="text-[10px] px-2 py-0.5 rounded bg-white/5 text-on-surface-variant">#Louange</span>
+<span class="text-[10px] px-2 py-0.5 rounded bg-white/5 text-on-surface-variant">#Musique</span>
+</div>
+</div>
+<!-- Note 2 -->
+<div class="glass-base rounded-[24px] p-md space-y-3 opacity-80">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full overflow-hidden border border-white/10">
+<img alt="Mentor" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3dcLoqyfjkjOVXY35MmUvqlDnkUsjT4HU6oCHPvrVxf-n_g0V6yH3TWhkgsS0xFVXbhjH9X4BTy6mNoaD12zHd2Zcue_mJ3Jbb_jfTNEzfFZcX_NiRzBEYn8gc25XRac4qGLLlJ2iilj63SrhG_Md9fXa_qJZmT_3Qw3Fb8f-8J5MFa2aMlzYOhcrDFWDDYQLRRozU3quujUrw2y0XTn_DMTV1wPW31hts5rO6hyM1Lc6_1U5IrkIRUZPKzDW3Ms8FF4D2zyZig"/>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Mentor Sarah</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant/60">15 Sept</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+                            "Entretien individuel très positif. David traverse une période d'examens mais reste focalisé sur ses priorités spirituelles."
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Spacer for Bottom Nav -->
+<div class="h-32"></div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-gutter pb-8 pt-2 bg-white/12 dark:bg-surface-container/30 backdrop-blur-[40px] border border-white/15">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant/70 px-4 py-2 hover:bg-white/10 transition-all active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary/20 text-primary dark:text-primary-fixed rounded-full px-4 py-2 hover:bg-white/10 transition-all active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person_celebrate</span>
+<span class="font-label-sm text-label-sm mt-1">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant/70 px-4 py-2 hover:bg-white/10 transition-all active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined">fact_check</span>
+<span class="font-label-sm text-label-sm mt-1">Appel</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant/70 px-4 py-2 hover:bg-white/10 transition-all active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-sm text-label-sm mt-1">Groups</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant/70 px-4 py-2 hover:bg-white/10 transition-all active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm mt-1">Settings</span>
+</a>
+</nav>
+<script>
+        // Subtle micro-interaction for cards
+        document.querySelectorAll('.glass-base, .glass-overlay').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+                
+                // Add a very subtle tilt effect
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            });
+        });
+
+        // Entrance animations for timeline items
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.divide-y > div').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = `all 0.5s ease ${index * 0.1}s`;
+            observer.observe(item);
+        });
+    </script>
+</body></html>

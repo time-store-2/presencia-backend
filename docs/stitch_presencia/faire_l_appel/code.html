@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Presencia - Faire l'Appel</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#6949ab",
+                    "error": "#ba1a1a",
+                    "secondary": "#805600",
+                    "on-surface": "#221a16",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#ffb59d",
+                    "on-secondary-container": "#704b00",
+                    "surface-container-highest": "#f0dfd8",
+                    "on-background": "#221a16",
+                    "outline": "#8b716a",
+                    "on-primary-fixed": "#390b00",
+                    "on-surface-variant": "#57423b",
+                    "on-secondary-fixed-variant": "#614000",
+                    "tertiary-container": "#8262c6",
+                    "secondary-fixed-dim": "#fdba49",
+                    "on-error-container": "#93000a",
+                    "outline-variant": "#dec0b7",
+                    "primary-fixed": "#ffdbd0",
+                    "primary-container": "#c2522b",
+                    "on-tertiary-fixed": "#25005a",
+                    "on-tertiary-container": "#fffcff",
+                    "surface-container": "#fceae3",
+                    "surface-dim": "#e7d7d0",
+                    "on-error": "#ffffff",
+                    "secondary-container": "#fdba49",
+                    "surface-container-low": "#fff1eb",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#842600",
+                    "on-primary-container": "#fffcff",
+                    "on-secondary-fixed": "#281800",
+                    "surface-bright": "#fff8f6",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-high": "#f6e5de",
+                    "tertiary-fixed-dim": "#d2bcff",
+                    "on-secondary": "#ffffff",
+                    "primary": "#a13a15",
+                    "surface": "#fff8f6",
+                    "inverse-on-surface": "#ffede6",
+                    "inverse-surface": "#382e2a",
+                    "primary-fixed-dim": "#ffb59d",
+                    "surface-variant": "#f0dfd8",
+                    "secondary-fixed": "#ffddaf",
+                    "on-tertiary-fixed-variant": "#533294",
+                    "surface-tint": "#a43c17",
+                    "tertiary-fixed": "#eaddff",
+                    "background": "#fff8f6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "xl": "32px",
+                    "gutter": "12px",
+                    "unit": "4px",
+                    "sm": "8px",
+                    "container-margin": "20px",
+                    "lg": "24px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #FAF7F5; /* Brand warm off-white canvas */
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .status-pill {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .status-pill:active {
+            transform: scale(0.92);
+        }
+        .shadow-warm {
+            box-shadow: 0 4px 12px rgba(122, 99, 88, 0.08);
+        }
+        .glass-nav {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-surface sticky top-0 z-40 w-full flex justify-between items-center px-container-margin py-md">
+<div class="flex items-center gap-sm">
+<button class="text-on-surface-variant hover:bg-surface-container-low transition-colors p-sm rounded-full">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+<div class="flex flex-col">
+<h1 class="text-headline-md font-headline-md text-on-surface">Faire l'appel</h1>
+<p class="text-label-md font-label-md text-on-surface-variant">Réunion du 15 juin</p>
+</div>
+</div>
+<button class="bg-primary text-on-primary font-label-md text-label-md px-md py-sm rounded-xl hover:opacity-90 active:scale-95 transition-all">
+            Enregistrer
+        </button>
+</header>
+<main class="flex-grow px-container-margin mt-md">
+<!-- Real-time summary banner -->
+<section class="bg-surface-container-low rounded-xl p-md mb-lg grid grid-cols-3 gap-sm items-center shadow-warm">
+<div class="flex flex-col items-center">
+<span class="text-headline-md font-headline-md text-[#2D7A56]">32</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Présents</span>
+</div>
+<div class="flex flex-col items-center border-x border-outline-variant">
+<span class="text-headline-md font-headline-md text-[#C0392B]">10</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Absents</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="text-headline-md font-headline-md text-[#D97706]">5</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Retards</span>
+</div>
+</section>
+<!-- Search Bar -->
+<div class="relative mb-md">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full pl-xl pr-md py-sm bg-surface border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-primary text-body-md font-body-md outline-none" placeholder="Rechercher un jeune..." type="text"/>
+</div>
+<!-- Attendance List -->
+<div class="space-y-sm">
+<!-- Student Row 1 -->
+<div class="bg-surface rounded-xl p-sm flex items-center justify-between shadow-warm border border-transparent hover:border-outline-variant transition-colors">
+<div class="flex items-center gap-sm">
+<img alt="David" class="w-10 h-10 rounded-full object-cover border border-surface-container-highest" data-alt="Close-up portrait of a cheerful young teenager with curly hair and a kind expression, shot in natural golden hour light against a soft green park background. The visual style is warm, communal, and professional, reflecting the 'Radical Hospitality' brand identity with earthy tones and soft focused lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkP9e4plc815Znz136MdlH15rKidsycMh2_kix4TEhimL6-JI3MuMSeQGnCL-CrCriJYNkxVhbrQcHraBU-xBsNC7oT30c4W1KojgmOTISCnmdoGC2_qZJ5jwJq8uhtOgWBeNWiwPQnyz4vKKxYnyaI0Fxwu8dLF42Rb7b5IndEUqxlFVl3p816-o66pBltR1CbScdBAJV0V05pvO66ZuY9NLKoHguq7ixwWB-bZNULYtReo-3pt9CC07Avq2-4M0q0Pg1z2Co5w"/>
+<span class="text-body-lg font-headline-md text-on-surface">David</span>
+</div>
+<div class="flex items-center gap-xs">
+<button class="status-pill w-9 h-9 rounded-full flex items-center justify-center border-2 border-[#2D7A56] bg-[#EAF5EF] text-[#2D7A56] font-bold" title="Présent">P</button>
+<button class="status-pill w-9 h-9 rounded-full flex items-center justify-center border border-outline-variant text-on-surface-variant" title="Absent">A</button>
+<button class="status-pill w-9 h-9 rounded-full flex items-center justify-center border border-outline-variant text-on-surface-variant" title="Retard">R</button>
+<button class="status-pill w-9 h-9 rounded-full flex items-center justify-center border border-outline-variant text-on-surface-variant" title="Excusé">E</button>
+</div>
+</div>
+<!-- Student Row 2 -->
+<div class="bg-surface rounded-xl p-sm flex items-center justify-between shadow-warm border border-transparent">
+<div class="flex items-center gap-sm">
+<img alt="Sarah" class="w-10 h-10 rounded-full object-cover border border-surface-container-highest" data-alt="A portrait of a smiling teenage girl with a warm and inviting look, set in a brightly lit modern youth center. The lighting is high-key and soft, enhancing the organic earthy tones of the surroundings. The image style is polished yet tactile, embodying the church's mission of belonging and participation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2nfL90pCEHVQvONnYmPMQh7wTa-BKuY4CSUtMAlnnoUAtzdRZIXGR-9hno3aVmc5qvzY1E8fXFLeH5Qnoq7mi2QjVD9C8a5pJi6No6Hrm7_tU7zrpLn2eA1mYNBT3-9Sud2rRXGrnKL8_7zg4G2eeM-GVbHtQWXknRo8QmXwx_kXZ7Xi-ZiTHhYjo7edpOJmbptdt16EmGapMNswnXZjPo9iPzr4vGMj0tuwJrGAGiLdR6Qi6qVxJM2WhdArKa11dX_tBntOdSg"/>
+<span class="text-body-lg font-headline-md text-on-surface">Sarah</span>
+</div>
+<div class="flex items-center gap-xs">
+<button class="status-pill w-9 h-9 rounded-full flex items-center justify-center border border-outline-variant text-on-surface-variant" title="Présent">P</button>
+<button class="status-pill w-9 h-9 rounded-full flex items-center justify-center border-2 border-[#C0392B] bg-[#FDECEA] text-[#C0392B] font-bold" title="Absent">A</button>
+<button class="status-pill w-9 h-9 rounded-full flex items-center justify-center border border-outline-variant text-on-surface-variant" title="Retard">R</button>
+<button class="status-pill w-9 h-9 rounded-full flex items-center justify-center border border-outline-variant text-on-surface-variant" title="Excusé">E</button>
+</div>
+</div>
+<!-- Student Row 3 -->
+<div class="bg-surface rounded-xl p-sm flex items-center justify-between shadow-warm border border-transparent">
+<div class="flex items-center gap-sm">
+<img alt="Emmanuel" class="w-10 h-10 rounded-full object-cover border border-surface-container-highest" data-alt="Portrait of a focused young man standing in an airy, communal church space. Soft afternoon sunlight streams through large windows, creating a peaceful and welcoming atmosphere. The color palette features warm beiges and deep terracotta accents, perfectly matching the professional and supportive brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNTJdUZUwqOUGp0i3MxKcjEg2T8dRlOiN8BHOvjlxyFprRq4eGobes1H6XgK3VaJNlAkdWeRplmCND31ZiFevifYRQdpcIoN3wazAvV62gnM-31c5K3H6si-6r_YJAh7itZnNq6wNyXCS68mO-x45GjG-umtXaqqFxBPogK7xcamKj_c8ahac2nKASUdd9IyqQ_-YYM9qzwJrAT1QCSpQeMczOwYuOxPGOGWgPxNQ91_iriRYDbAn7Jk3U4iLGpHhUuijWQTKHQg"/>
+<span class="text-body-lg font-headline-md text-on-surface">Emmanuel</span>
+</div>
+<div class="flex items-center gap-xs">
+<button class="status-pill w-9 h-9 rounded-full flex items-center justify-center border border-outline-variant text-on-surface-variant" title="Présent">P</button>
+<button class="status-pill w-9 h-9 rounded-full flex items-center justify-center border border-outline-variant text-on-surface-variant" title="Absent">A</button>
+<button class="status-pill w-9 h-9 rounded-full flex items-center justify-center border-2 border-[#D97706] bg-[#FEF3C7] text-[#D97706] font-bold" title="Retard">R</button>
+<button class="status-pill w-9 h-9 rounded-full flex items-center justify-center border border-outline-variant text-on-surface-variant" title="Excusé">E</button>
+</div>
+</div>
+<!-- Student Row 4 (Excusé example) -->
+<div class="bg-surface rounded-xl p-sm flex items-center justify-between shadow-warm border border-transparent">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary font-bold">LC</div>
+<span class="text-body-lg font-headline-md text-on-surface">Lea</span>
+</div>
+<div class="flex items-center gap-xs">
+<button class="status-pill w-9 h-9 rounded-full flex items-center justify-center border border-outline-variant text-on-surface-variant" title="Présent">P</button>
+<button class="status-pill w-9 h-9 rounded-full flex items-center justify-center border border-outline-variant text-on-surface-variant" title="Absent">A</button>
+<button class="status-pill w-9 h-9 rounded-full flex items-center justify-center border border-outline-variant text-on-surface-variant" title="Retard">R</button>
+<button class="status-pill w-9 h-9 rounded-full flex items-center justify-center border-2 border-[#6B4CAE] bg-[#F0EBF8] text-[#6B4CAE] font-bold" title="Excusé">E</button>
+</div>
+</div>
+<!-- Repeat for padding -->
+<div class="bg-surface rounded-xl p-sm flex items-center justify-between shadow-warm border border-transparent">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary font-bold">JD</div>
+<span class="text-body-lg font-headline-md text-on-surface">Jean</span>
+</div>
+<div class="flex items-center gap-xs">
+<button class="status-pill w-9 h-9 rounded-full flex items-center justify-center border border-outline-variant text-on-surface-variant">P</button>
+<button class="status-pill w-9 h-9 rounded-full flex items-center justify-center border border-outline-variant text-on-surface-variant">A</button>
+<button class="status-pill w-9 h-9 rounded-full flex items-center justify-center border border-outline-variant text-on-surface-variant">R</button>
+<button class="status-pill w-9 h-9 rounded-full flex items-center justify-center border border-outline-variant text-on-surface-variant">E</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Primary Action (Floating) -->
+<div class="fixed bottom-[88px] left-0 w-full px-container-margin z-30 md:hidden">
+<button class="w-full bg-primary text-on-primary py-md rounded-xl font-headline-md text-headline-md shadow-lg flex items-center justify-center gap-sm hover:opacity-95 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="how_to_reg">how_to_reg</span>
+            Enregistrer l'appel
+        </button>
+</div>
+<!-- BottomNavBar (Shared Component) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-sm pb-safe pt-sm bg-surface/80 dark:bg-on-background/80 backdrop-blur-md shadow-[0_-4px_12px_rgba(122,99,88,0.08)]">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-sm py-xs cursor-pointer">
+<span class="material-symbols-outlined text-headline-md" data-icon="home">home</span>
+<span class="text-label-sm font-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-sm py-xs cursor-pointer">
+<span class="material-symbols-outlined text-headline-md" data-icon="group">group</span>
+<span class="text-label-sm font-label-sm">Jeunes</span>
+</div>
+<!-- Active Tab: Appel -->
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-sm py-xs scale-90 duration-150 ease-in-out cursor-pointer">
+<span class="material-symbols-outlined text-headline-md" data-icon="how_to_reg">how_to_reg</span>
+<span class="text-label-sm font-label-sm">Appel</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-sm py-xs cursor-pointer">
+<span class="material-symbols-outlined text-headline-md" data-icon="hub">hub</span>
+<span class="text-label-sm font-label-sm">Groupes</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-sm py-xs cursor-pointer">
+<span class="material-symbols-outlined text-headline-md" data-icon="settings">settings</span>
+<span class="text-label-sm font-label-sm">Paramètres</span>
+</div>
+</nav>
+<script>
+        // Micro-interaction for status pills
+        document.querySelectorAll('.status-pill').forEach(pill => {
+            pill.addEventListener('click', function() {
+                const parent = this.parentElement;
+                const siblings = parent.querySelectorAll('.status-pill');
+                
+                // Clear all active states in this row
+                siblings.forEach(s => {
+                    s.classList.remove('font-bold', 'bg-[#EAF5EF]', 'text-[#2D7A56]', 'border-[#2D7A56]', 'bg-[#FDECEA]', 'text-[#C0392B]', 'border-[#C0392B]', 'bg-[#FEF3C7]', 'text-[#D97706]', 'border-[#D97706]', 'bg-[#F0EBF8]', 'text-[#6B4CAE]', 'border-[#6B4CAE]', 'border-2');
+                    s.classList.add('border-outline-variant', 'text-on-surface-variant', 'border');
+                });
+
+                // Apply active state based on title
+                const type = this.getAttribute('title');
+                this.classList.remove('border-outline-variant', 'text-on-surface-variant', 'border');
+                this.classList.add('font-bold', 'border-2');
+
+                if (type === 'Présent') {
+                    this.classList.add('bg-[#EAF5EF]', 'text-[#2D7A56]', 'border-[#2D7A56]');
+                } else if (type === 'Absent') {
+                    this.classList.add('bg-[#FDECEA]', 'text-[#C0392B]', 'border-[#C0392B]');
+                } else if (type === 'Retard') {
+                    this.classList.add('bg-[#FEF3C7]', 'text-[#D97706]', 'border-[#D97706]');
+                } else if (type === 'Excusé') {
+                    this.classList.add('bg-[#F0EBF8]', 'text-[#6B4CAE]', 'border-[#6B4CAE]');
+                }
+            });
+        });
+
+        // Search highlight interaction
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('scale-[1.01]');
+            searchInput.parentElement.style.transition = 'all 0.3s ease';
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('scale-[1.01]');
+        });
+    </script>
+</body></html>

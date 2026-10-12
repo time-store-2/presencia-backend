@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ecclesia Flow - Réinitialisation du mot de passe</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "outline": "#777587",
+                        "on-surface-variant": "#464555",
+                        "inverse-primary": "#c3c0ff",
+                        "on-tertiary-fixed-variant": "#5516be",
+                        "on-background": "#151c27",
+                        "on-secondary-container": "#00714d",
+                        "surface-container": "#e7eefe",
+                        "surface": "#f9f9ff",
+                        "surface-bright": "#f9f9ff",
+                        "inverse-surface": "#2a313d",
+                        "surface-container-high": "#e2e8f8",
+                        "on-primary-container": "#dad7ff",
+                        "on-primary-fixed": "#0f0069",
+                        "inverse-on-surface": "#ebf1ff",
+                        "on-tertiary-fixed": "#23005c",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#002113",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#e2dfff",
+                        "secondary-fixed-dim": "#4edea3",
+                        "secondary-container": "#6cf8bb",
+                        "secondary": "#006c49",
+                        "on-surface": "#151c27",
+                        "outline-variant": "#c7c4d8",
+                        "tertiary": "#571ac0",
+                        "error-container": "#ffdad6",
+                        "background": "#f9f9ff",
+                        "tertiary-fixed": "#e9ddff",
+                        "surface-tint": "#4d44e3",
+                        "primary": "#3525cd",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#6ffbbe",
+                        "primary-container": "#4f46e5",
+                        "surface-variant": "#dce2f3",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "on-secondary-fixed-variant": "#005236",
+                        "tertiary-container": "#6f3dd9",
+                        "on-tertiary-container": "#e3d5ff",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "surface-container-low": "#f0f3ff",
+                        "tertiary-fixed-dim": "#d0bcff",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "sm": "8px",
+                        "base": "4px",
+                        "margin-tablet": "32px",
+                        "xs": "4px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "display": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-transition {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Header Navigation (Transactional: Suppresses Main Nav Shell) -->
+<header class="sticky top-0 z-50 bg-surface/80 backdrop-blur-md px-margin-mobile h-16 flex items-center justify-between">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-low transition-colors active:scale-90" onclick="window.history.back()">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<span class="font-headline-md text-headline-md text-primary">Ecclesia Flow</span>
+<div class="w-10"></div> <!-- Spacer for symmetry -->
+</header>
+<main class="max-w-md mx-auto px-margin-mobile pt-lg pb-xl flex flex-col items-center justify-center min-h-[calc(100vh-64px)]">
+<!-- Step 1: Request Form -->
+<div class="step-transition w-full flex flex-col items-center opacity-100 transform translate-x-0" id="request-step">
+<!-- Central Illustration -->
+<div class="mb-xl flex items-center justify-center w-24 h-24 rounded-full bg-[#EEF2FF] shadow-sm">
+<span class="material-symbols-outlined text-[48px] text-[#4F46E5]" style="font-variation-settings: 'wght' 500;">lock_open</span>
+</div>
+<!-- Typography Header -->
+<div class="text-center mb-xl">
+<h1 class="font-display text-display text-on-surface mb-sm">Réinitialisez votre mot de passe</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-[280px] mx-auto">
+                    Saisissez votre adresse email pour recevoir un lien de réinitialisation sécurisé.
+                </p>
+</div>
+<!-- Input Form Card -->
+<div class="w-full bg-surface-container-lowest p-md rounded-xl shadow-sm border border-outline-variant/30 mb-lg">
+<div class="space-y-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant px-1" for="email">Adresse Email</label>
+<div class="relative group">
+<input autocomplete="email" class="w-full h-12 px-md pt-base rounded-xl border border-outline-variant bg-surface focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none text-body-lg" id="email" placeholder="nom@eglise.fr" type="email"/>
+<span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">mail</span>
+</div>
+</div>
+<button class="w-full h-14 bg-[#4F46E5] text-white rounded-xl font-headline-md flex items-center justify-center gap-sm hover:opacity-90 active:scale-[0.98] transition-all shadow-md group" onclick="showSuccessState()">
+<span>Envoyer le lien</span>
+<span class="material-symbols-outlined text-white group-hover:translate-x-1 transition-transform">send</span>
+</button>
+</div>
+</div>
+<a class="font-label-md text-label-md text-primary hover:underline flex items-center gap-xs" href="/login">
+<span class="material-symbols-outlined text-[18px]">arrow_left</span>
+                Retour à la connexion
+            </a>
+</div>
+<!-- Step 2: Confirmation State (Hidden by default) -->
+<div class="hidden step-transition w-full flex flex-col items-center opacity-0 transform translate-x-8" id="success-step">
+<!-- Success Illustration -->
+<div class="mb-xl flex items-center justify-center w-24 h-24 rounded-full bg-secondary-container shadow-sm">
+<span class="material-symbols-outlined text-[48px] text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">mail_lock</span>
+</div>
+<!-- Typography Header -->
+<div class="text-center mb-xl">
+<h1 class="font-display text-display text-on-surface mb-sm">Vérifiez vos emails</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-[320px] mx-auto">
+                    Nous avons envoyé des instructions à <span class="font-semibold text-on-surface" id="display-email">votre email</span>.
+                </p>
+</div>
+<!-- Information Card (Ambre) -->
+<div class="w-full bg-[#FFFBEB] p-md rounded-xl border border-amber-200/50 flex gap-md mb-xl shadow-sm">
+<div class="flex-shrink-0">
+<span class="material-symbols-outlined text-amber-700">info</span>
+</div>
+<div class="flex flex-col gap-1">
+<p class="font-label-md text-label-md text-amber-900 uppercase tracking-wider">Note Importante</p>
+<p class="font-body-md text-body-md text-amber-800">
+                        Si vous ne voyez pas l'email dans quelques minutes, vérifiez votre dossier de courriers indésirables (spam).
+                    </p>
+</div>
+</div>
+<div class="space-y-md w-full">
+<button class="w-full h-14 border-2 border-outline-variant text-on-surface rounded-xl font-headline-md flex items-center justify-center gap-sm hover:bg-surface-container-low transition-all" onclick="location.reload()">
+                    Renvoyer l'email
+                </button>
+<a class="w-full h-14 bg-surface-container-highest text-on-surface rounded-xl font-headline-md flex items-center justify-center gap-sm hover:opacity-80 transition-all text-center" href="/login">
+                    Retour à la connexion
+                </a>
+</div>
+</div>
+<!-- Decor Background Elements -->
+<div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+<div class="absolute -top-[10%] -left-[5%] w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="absolute top-[60%] -right-[10%] w-96 h-96 bg-tertiary/5 rounded-full blur-3xl"></div>
+</div>
+</main>
+<footer class="mt-auto py-xl px-margin-mobile text-center">
+<p class="font-label-sm text-label-sm text-outline">
+            © 2024 Ecclesia Flow. Tous droits réservés.
+        </p>
+</footer>
+<script>
+        function showSuccessState() {
+            const emailValue = document.getElementById('email').value || 'votre email';
+            document.getElementById('display-email').innerText = emailValue;
+
+            const requestStep = document.getElementById('request-step');
+            const successStep = document.getElementById('success-step');
+
+            // Animate out Step 1
+            requestStep.classList.remove('opacity-100', 'translate-x-0');
+            requestStep.classList.add('opacity-0', '-translate-x-8');
+            
+            setTimeout(() => {
+                requestStep.classList.add('hidden');
+                
+                // Prepare Step 2
+                successStep.classList.remove('hidden');
+                
+                // Small delay to trigger animation
+                setTimeout(() => {
+                    successStep.classList.remove('opacity-0', 'translate-x-8');
+                    successStep.classList.add('opacity-100', 'translate-x-0');
+                }, 50);
+            }, 400);
+        }
+
+        // Basic validation styling interaction
+        document.getElementById('email').addEventListener('input', function(e) {
+            const btn = document.querySelector('button[onclick="showSuccessState()"]');
+            if(e.target.value.includes('@')) {
+                btn.classList.add('scale-100');
+                btn.classList.remove('opacity-60');
+            } else {
+                btn.classList.add('opacity-60');
+            }
+        });
+    </script>
+<!-- Visual Identity Background Pattern -->
+<div class="fixed inset-0 -z-20 h-screen w-screen opacity-[0.03] pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/cubes.png');"></div>
+</body></html>

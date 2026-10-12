@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#ffdad2",
+                    "on-surface": "#191d0e",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#ffb4a2",
+                    "inverse-primary": "#95d4b3",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#ffdcc2",
+                    "surface-container-low": "#f2f6dd",
+                    "on-secondary-fixed-variant": "#83260e",
+                    "tertiary-fixed-dim": "#f4bb8e",
+                    "primary-container": "#2d6a4f",
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#a8e7c5",
+                    "surface-variant": "#e0e5cc",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#404943",
+                    "surface-tint": "#2c694e",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#bfc9c1",
+                    "outline": "#707973",
+                    "secondary": "#a33d23",
+                    "on-tertiary-fixed-variant": "#653e1b",
+                    "surface": "#f7fce3",
+                    "on-secondary-container": "#731a04",
+                    "inverse-on-surface": "#eff3da",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#95d4b3",
+                    "surface-bright": "#f7fce3",
+                    "primary-fixed": "#b1f0ce",
+                    "secondary-container": "#ff8162",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#191d0e",
+                    "on-tertiary-container": "#ffd0ad",
+                    "tertiary": "#653e1b",
+                    "background": "#f7fce3",
+                    "on-primary-fixed-variant": "#0e5138",
+                    "on-secondary-fixed": "#3c0700",
+                    "surface-container": "#ecf0d8",
+                    "on-tertiary-fixed": "#2e1500",
+                    "surface-dim": "#d8dcc4",
+                    "surface-container-highest": "#e0e5cc",
+                    "tertiary-container": "#805530",
+                    "surface-container-high": "#e6ebd2",
+                    "inverse-surface": "#2e3222",
+                    "error-container": "#ffdad6",
+                    "primary": "#0f5238",
+                    "on-primary-fixed": "#002114"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "12px",
+                    "2xl": "20px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "48px",
+                    "gutter": "24px",
+                    "xs": "4px",
+                    "margin-desktop": "40px",
+                    "sm": "12px",
+                    "base": "8px",
+                    "xl": "80px",
+                    "margin-mobile": "16px",
+                    "md": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-sm": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "display-lg-mobile": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-sm": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "60px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FAFAF8; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .sanctuary-shadow { shadow-[0px_4px_20px_rgba(45,106,79,0.05)]; }
+        .divider-less:not(:last-child) { border-bottom: 0; }
+        .safe-bottom { padding-bottom: calc(env(safe-area-inset-bottom) + 80px); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface">
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky z-40 bg-background/80 backdrop-blur-md">
+<div class="flex items-center justify-between px-margin-mobile py-4 w-full max-w-7xl mx-auto">
+<div class="flex flex-col">
+<h1 class="font-headline-md text-headline-md text-primary">Événements</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">3 à venir</p>
+</div>
+<button class="bg-primary text-on-primary font-label-md text-label-md px-4 py-2 rounded-full hover:opacity-90 active:scale-95 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                Créer
+            </button>
+</div>
+</header>
+<main class="px-margin-mobile safe-bottom">
+<!-- Tabs -->
+<div class="flex gap-4 mt-2 mb-6 border-b border-outline-variant/20">
+<button class="font-label-md text-label-md pb-3 text-primary border-b-2 border-primary">À venir</button>
+<button class="font-label-md text-label-md pb-3 text-on-surface-variant">Passés</button>
+</div>
+<!-- Hero Card: Next Event -->
+<section class="mb-8">
+<div class="bg-primary-container text-on-primary-container rounded-2xl p-6 shadow-[0px_8px_30px_rgba(15,82,56,0.15)] relative overflow-hidden">
+<div class="absolute -right-8 -top-8 w-32 h-32 bg-white/5 rounded-full blur-3xl"></div>
+<div class="relative z-10">
+<span class="bg-primary px-3 py-1 rounded-full font-label-sm text-label-sm text-on-primary mb-4 inline-block">Prochainement</span>
+<h2 class="font-headline-md text-headline-md mb-2">Camp de Jeunesse 2025</h2>
+<div class="flex flex-col gap-2 mb-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] opacity-80">calendar_today</span>
+<span class="font-body-sm text-body-sm">15 - 20 Juillet 2025</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] opacity-80">location_on</span>
+<span class="font-body-sm text-body-sm">Chalets du Lac, Auvergne</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] opacity-80">group</span>
+<span class="font-body-sm text-body-sm">48 participants inscrits</span>
+</div>
+</div>
+<button class="w-full bg-surface-container-lowest text-primary font-label-md text-label-md py-4 rounded-xl hover:bg-surface-bright active:scale-[0.98] transition-all">
+                        Voir et gérer
+                    </button>
+</div>
+</div>
+</section>
+<!-- Upcoming Events List -->
+<section>
+<h3 class="font-headline-sm text-headline-sm mb-4">À venir cette semaine</h3>
+<div class="flex flex-col gap-4">
+<!-- Event Card 1: Culte (Green) -->
+<div class="bg-white rounded-2xl p-4 flex items-center gap-4 shadow-[0px_4px_20px_rgba(45,106,79,0.05)] border border-outline-variant/10 active:scale-[0.99] transition-transform">
+<div class="flex flex-col items-center justify-center bg-primary-container/10 text-primary w-16 h-16 rounded-xl shrink-0">
+<span class="font-label-sm text-label-sm leading-none">DIM</span>
+<span class="font-headline-md text-headline-md leading-none mt-1">12</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Culte de Louange</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Culte • 10:30</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+<div class="mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">120 attendus</span>
+</div>
+</div>
+</div>
+<!-- Event Card 2: Sortie (Orange) -->
+<div class="bg-white rounded-2xl p-4 flex items-center gap-4 shadow-[0px_4px_20px_rgba(45,106,79,0.05)] border border-outline-variant/10 active:scale-[0.99] transition-transform">
+<div class="flex flex-col items-center justify-center bg-secondary-container/20 text-secondary w-16 h-16 rounded-xl shrink-0">
+<span class="font-label-sm text-label-sm leading-none">MER</span>
+<span class="font-headline-md text-headline-md leading-none mt-1">15</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Sortie Séniors</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Sortie • 14:00</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+<div class="mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">15 participants</span>
+</div>
+</div>
+</div>
+<!-- Event Card 3: Camp (Blue-ish tone using tertiary tokens) -->
+<div class="bg-white rounded-2xl p-4 flex items-center gap-4 shadow-[0px_4px_20px_rgba(45,106,79,0.05)] border border-outline-variant/10 active:scale-[0.99] transition-transform">
+<div class="flex flex-col items-center justify-center bg-tertiary-container/20 text-tertiary w-16 h-16 rounded-xl shrink-0">
+<span class="font-label-sm text-label-sm leading-none">VEN</span>
+<span class="font-headline-md text-headline-md leading-none mt-1">24</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Retraite Spirituelle</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Camp • 18:00</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+<div class="mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-tertiary" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">32 participants</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- FAB -->
+<button class="fixed bottom-24 right-margin-mobile w-14 h-14 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-xl active:scale-90 transition-transform z-50">
+<span class="material-symbols-outlined text-[28px]">add</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 pb-safe px-2 z-50 bg-surface shadow-[0px_-4px_20px_rgba(45,106,79,0.05)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">child_care</span>
+<span class="font-label-sm text-label-sm">Youth</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+<span class="font-label-sm text-label-sm">Appel/QR</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-sm text-label-sm">Groups</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for active state feedback
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('click', () => {
+                // Future implementation: handle page navigation or UI state shifts
+            });
+        });
+    </script>
+</body></html>

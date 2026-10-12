@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Inscription - Presencia</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#fdba49",
+                        "on-tertiary-fixed-variant": "#533294",
+                        "surface-variant": "#f0dfd8",
+                        "surface-container-low": "#fff1eb",
+                        "on-tertiary-container": "#fffcff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#d2bcff",
+                        "primary-fixed-dim": "#ffb59d",
+                        "surface-container-high": "#f6e5de",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#eaddff",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#fffcff",
+                        "surface-tint": "#a43c17",
+                        "surface": "#fff8f6",
+                        "outline-variant": "#dec0b7",
+                        "background": "#fff8f6",
+                        "on-primary-fixed": "#390b00",
+                        "inverse-primary": "#ffb59d",
+                        "secondary-fixed": "#ffddaf",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#221a16",
+                        "on-primary": "#ffffff",
+                        "primary": "#a13a15",
+                        "surface-dim": "#e7d7d0",
+                        "on-background": "#221a16",
+                        "on-tertiary-fixed": "#25005a",
+                        "inverse-surface": "#382e2a",
+                        "tertiary": "#6949ab",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#57423b",
+                        "primary-fixed": "#ffdbd0",
+                        "on-secondary-fixed-variant": "#614000",
+                        "on-primary-fixed-variant": "#842600",
+                        "tertiary-container": "#8262c6",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#281800",
+                        "secondary": "#805600",
+                        "inverse-on-surface": "#ffede6",
+                        "surface-container-highest": "#f0dfd8",
+                        "outline": "#8b716a",
+                        "secondary-fixed-dim": "#fdba49",
+                        "primary-container": "#c2522b",
+                        "on-secondary-container": "#704b00",
+                        "surface-container": "#fceae3",
+                        "surface-bright": "#fff8f6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "unit": "4px",
+                        "sm": "8px",
+                        "gutter": "12px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "container-margin": "20px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-blur-warm {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 248, 246, 0.8);
+        }
+        .form-input-focus:focus {
+            border-color: #a13a15;
+            box-shadow: 0 0 0 1px #a13a15;
+        }
+        /* Custom scrollbar for a tactile feel */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #fff8f6; }
+        ::-webkit-scrollbar-thumb { background: #dec0b7; border-radius: 10px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-margin h-16 bg-surface shadow-[0_4px_12px_rgba(122,99,88,0.08)]">
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-variant transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<h1 class="text-headline-lg font-headline-lg font-bold text-primary">Inscription</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">notifications</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border-2 border-primary-fixed">
+<img alt="Avatar" data-alt="A close-up portrait of a friendly young teenager with a warm smile, wearing a casual denim shirt. The lighting is soft and natural, emphasizing a welcoming and communal atmosphere. The background is slightly blurred with warm, earthy tones that align with a modern church community aesthetic. High-quality professional photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCK4F2gRSqCTnIrj84Wv2TM7LPF3G7ceVyywpZOMpx9xIxETy9zvEvzuZiIfWUCt0NF98ilA2iMxwVyAJHLuM7IAZbHaQRndYxqLx3jzId5qo2lsN2KVUD4gzKvNg-42NOuxcJRVSFzZy05_Qua4mJ_V1-529xsLDoX8TGTSx280hAzCbVL1QoNt3XiyQvaTCHVjgaZ5BLCzzDZjcX12kJ6VSedhssLDDKxH35ThtLUXZ8hH1h5N6zkIMqdPQY07abr5WhsJl_gPQ"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-12 px-container-margin max-w-2xl mx-auto space-y-8">
+<!-- Welcome Section -->
+<section class="space-y-2">
+<h2 class="text-display-lg font-display-lg text-on-surface">Prêt pour l'aventure ?</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant">Remplissez les détails ci-dessous pour finaliser l'inscription de l'adolescent.</p>
+</section>
+<!-- Form Container -->
+<form class="space-y-8" id="registrationForm">
+<!-- Section: Event Selection -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-[0_4px_12px_rgba(122,99,88,0.08)] border border-surface-variant/30">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary">event_available</span>
+<h3 class="text-headline-md font-headline-md text-on-surface">Choix de l'événement</h3>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<label class="relative flex p-4 cursor-pointer rounded-lg border-2 border-surface-variant hover:bg-surface-container-low transition-all has-[:checked]:border-primary has-[:checked]:bg-primary-fixed/20">
+<input checked="" class="sr-only" name="event" type="radio" value="camp_ete"/>
+<div class="flex justify-between items-center w-full">
+<div>
+<p class="text-body-lg font-bold text-on-surface">Camp d'Été "Impact" 2024</p>
+<p class="text-label-md font-label-md text-on-surface-variant">15 - 22 Juillet | Annecy, France</p>
+</div>
+<span class="text-headline-md font-headline-md text-primary">180€</span>
+</div>
+</label>
+<label class="relative flex p-4 cursor-pointer rounded-lg border-2 border-surface-variant hover:bg-surface-container-low transition-all has-[:checked]:border-primary has-[:checked]:bg-primary-fixed/20">
+<input class="sr-only" name="event" type="radio" value="weekend_ski"/>
+<div class="flex justify-between items-center w-full">
+<div>
+<p class="text-body-lg font-bold text-on-surface">Weekend Ski Jeunesse</p>
+<p class="text-label-md font-label-md text-on-surface-variant">2-4 Février | Les Deux Alpes</p>
+</div>
+<span class="text-headline-md font-headline-md text-primary">95€</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Section: Adolescent Details -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-[0_4px_12px_rgba(122,99,88,0.08)] border border-surface-variant/30 space-y-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">person</span>
+<h3 class="text-headline-md font-headline-md text-on-surface">Informations Participant</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface-variant">Prénom</label>
+<input class="w-full h-12 px-4 rounded-xl border border-outline-variant bg-surface-bright focus:outline-none form-input-focus transition-all" placeholder="Ex: Lucas" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface-variant">Nom</label>
+<input class="w-full h-12 px-4 rounded-xl border border-outline-variant bg-surface-bright focus:outline-none form-input-focus transition-all" placeholder="Ex: Martin" type="text"/>
+</div>
+</div>
+<div class="space-y-4">
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface-variant">Options de transport</label>
+<select class="w-full h-12 px-4 rounded-xl border border-outline-variant bg-surface-bright focus:outline-none form-input-focus appearance-none transition-all">
+<option>Navette collective (Départ de l'église)</option>
+<option>Transport personnel (Arrivée sur place)</option>
+<option>Train (Rdv à la gare locale)</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface-variant">Allergies ou restrictions alimentaires</label>
+<textarea class="w-full p-4 rounded-xl border border-outline-variant bg-surface-bright focus:outline-none form-input-focus transition-all h-24 resize-none" placeholder="Veuillez préciser toute allergie (ex: arachides, gluten) ou régime particulier..."></textarea>
+</div>
+</div>
+</div>
+<!-- Section: Payment Information -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-[0_4px_12px_rgba(122,99,88,0.08)] border border-surface-variant/30 space-y-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">shield_lock</span>
+<h3 class="text-headline-md font-headline-md text-on-surface">Paiement sécurisé</h3>
+</div>
+<div class="flex gap-2">
+<img alt="PayPal" class="h-4 opacity-60" data-alt="The official logo of PayPal, representing secure online payment systems. The image is clean and minimalist, set against a subtle off-white background that matches the warm corporate modern aesthetic of the overall user interface. Focus is on clarity and trust." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnrooQb4aHp8fXmGcjln6cr7bquX_qV6cecf36pK_TqueeJipHo1iLTbwe3ZSNeF8BEw6l30O2Sa8Bay91Fvi97iA1Oc6BDKG7jS0AhmLZZTcF1bdR9omWo1iNc3uYozCZgQdjyLtgt3R3IeR8xyhczOY9Gkrchz2euUj8toHnUKm6N_plFPKD_USSNyZ6tkSIt4GES-tTI7lI0hSmZq5iV6raf3UkwNkIN7tSOnJlNy4YVHoY-jQIrtCHU52r9s4nO2kvS0_N4Q"/>
+<img alt="Visa" class="h-4 opacity-60" data-alt="The official Visa logo, rendered in its classic blue and gold colors. The logo is displayed with high resolution and clarity, placed on a warm neutral background that emphasizes security and global acceptance within a professional financial context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT3YIspSGTfYWfMxJefJ8jPzOgukb1RIMf2ErPQ1opcXG23oQckzNQMB7Ld32dhjuaxnmkwMs8nBSLzej5qBTPDgflzGpRdgCIQvwo1XECzuZbt7FWRSYcUN6FuRGBKGmuB1oZvhnIP6nRxJgM0Alkb-LBVqy6zM2QeLSPZCrz1Yjhb5tDVU68BbznS2Hup4Csbqeiwrc_rqSIoaWCfnqN7AWzm4LDkC6NU5gnSmA1sSP2W2xgLODPG_B6hac1fiZvylkflzO-PA"/>
+</div>
+</div>
+<!-- Fast Pay Options -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 h-14 bg-on-surface text-surface rounded-xl hover:opacity-90 active:scale-95 transition-all" type="button">
+<span class="font-bold text-body-lg">Apple Pay</span>
+</button>
+<button class="flex items-center justify-center gap-2 h-14 bg-on-surface text-surface rounded-xl hover:opacity-90 active:scale-95 transition-all" type="button">
+<span class="font-bold text-body-lg">Google Pay</span>
+</button>
+</div>
+<div class="relative py-2 flex items-center">
+<div class="flex-grow border-t border-outline-variant"></div>
+<span class="flex-shrink mx-4 text-label-sm font-label-sm text-outline">OU CARTE BANCAIRE</span>
+<div class="flex-grow border-t border-outline-variant"></div>
+</div>
+<div class="space-y-4">
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface-variant">Titulaire de la carte</label>
+<input class="w-full h-12 px-4 rounded-xl border border-outline-variant bg-surface-bright focus:outline-none form-input-focus transition-all" placeholder="Nom sur la carte" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface-variant">Numéro de carte</label>
+<div class="relative">
+<input class="w-full h-12 px-4 pr-12 rounded-xl border border-outline-variant bg-surface-bright focus:outline-none form-input-focus transition-all" placeholder="0000 0000 0000 0000" type="text"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline">credit_card</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface-variant">Date d'expiration</label>
+<input class="w-full h-12 px-4 rounded-xl border border-outline-variant bg-surface-bright focus:outline-none form-input-focus transition-all" placeholder="MM/AA" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface-variant">CVC</label>
+<input class="w-full h-12 px-4 rounded-xl border border-outline-variant bg-surface-bright focus:outline-none form-input-focus transition-all" placeholder="123" type="text"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Summary Card -->
+<div class="bg-surface-container p-md rounded-xl space-y-4 border border-primary-fixed">
+<div class="flex justify-between items-center">
+<span class="text-body-md text-on-surface-variant">Sous-total</span>
+<span class="text-body-md font-bold text-on-surface">180,00€</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-body-md text-on-surface-variant">Transport (Navette)</span>
+<span class="text-body-md font-bold text-on-surface text-tertiary">Inclus</span>
+</div>
+<div class="border-t border-outline-variant pt-4 flex justify-between items-center">
+<span class="text-headline-md font-headline-md text-on-surface">Total à payer</span>
+<span class="text-headline-lg font-headline-lg text-primary">180,00€</span>
+</div>
+</div>
+<!-- Final Action -->
+<button class="w-full h-16 bg-primary text-on-primary rounded-xl text-headline-md font-headline-md shadow-lg shadow-primary/20 hover:bg-primary-container active:scale-95 transition-all flex items-center justify-center gap-3" type="submit">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                Confirmer l'inscription
+            </button>
+</form>
+<footer class="text-center space-y-2">
+<p class="text-label-sm font-label-sm text-outline">En confirmant, vous acceptez nos conditions générales de vente et notre politique de protection des données.</p>
+<div class="flex justify-center gap-4 text-label-sm font-label-sm text-primary">
+<a class="underline" href="#">Conditions d'annulation</a>
+<a class="underline" href="#">Assurance voyage</a>
+</div>
+</footer>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-20 bg-surface/80 backdrop-blur-md border-t border-surface-variant shadow-[0_-4px_12px_rgba(122,99,88,0.08)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-label-sm font-label-sm">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+<span class="text-label-sm font-label-sm">Événements</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">family_restroom</span>
+<span class="text-label-sm font-label-sm">Parents</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-sm font-label-sm">Profil</span>
+</a>
+</nav>
+<script>
+        // Form Interaction Logic
+        const form = document.getElementById('registrationForm');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Trigger a tactile pulse or visual confirmation
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Traitement...';
+            
+            setTimeout(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Succès !';
+                btn.classList.replace('bg-primary', 'bg-tertiary');
+                alert('Inscription enregistrée avec succès. Un e-mail de confirmation a été envoyé.');
+            }, 1500);
+        });
+
+        // Floating label effect or card sinking micro-interaction
+        document.querySelectorAll('input, select, textarea').forEach(input => {
+            input.addEventListener('focus', () => {
+                const parent = input.closest('div');
+                if (parent) parent.classList.add('scale-[1.01]');
+            });
+            input.addEventListener('blur', () => {
+                const parent = input.closest('div');
+                if (parent) parent.classList.remove('scale-[1.01]');
+            });
+        });
+    </script>
+</body></html>

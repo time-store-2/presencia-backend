@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Presencia - Youth Directory</title>
+<!-- Tailwind CSS with essential plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Configuration Verbatim -->
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-surface": "#1b1b1b",
+                      "primary": "#000000",
+                      "surface-dim": "#dadada",
+                      "on-tertiary-fixed-variant": "#41474e",
+                      "tertiary-fixed-dim": "#c1c7cf",
+                      "on-secondary-fixed": "#191c1d",
+                      "on-error-container": "#93000a",
+                      "surface-bright": "#f9f9f9",
+                      "secondary": "#5c5f60",
+                      "inverse-on-surface": "#f1f1f1",
+                      "on-primary-container": "#848484",
+                      "error-container": "#ffdad6",
+                      "surface-tint": "#5e5e5e",
+                      "primary-fixed": "#e2e2e2",
+                      "surface-variant": "#e2e2e2",
+                      "secondary-container": "#e1e3e4",
+                      "on-primary-fixed-variant": "#474747",
+                      "on-primary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed": "#1b1b1b",
+                      "tertiary": "#000000",
+                      "secondary-fixed-dim": "#c5c7c8",
+                      "surface-container-high": "#e8e8e8",
+                      "outline": "#7e7576",
+                      "on-error": "#ffffff",
+                      "on-secondary-container": "#626566",
+                      "error": "#ba1a1a",
+                      "inverse-surface": "#303030",
+                      "background": "#f9f9f9",
+                      "on-background": "#1b1b1b",
+                      "surface-container-highest": "#e2e2e2",
+                      "on-tertiary-container": "#7e848c",
+                      "on-tertiary-fixed": "#161c22",
+                      "inverse-primary": "#c6c6c6",
+                      "tertiary-container": "#161c22",
+                      "outline-variant": "#cfc4c5",
+                      "secondary-fixed": "#e1e3e4",
+                      "surface": "#f9f9f9",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed": "#dde3eb",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-fixed-variant": "#454748",
+                      "on-surface-variant": "#4c4546",
+                      "primary-container": "#1b1b1b",
+                      "surface-container-low": "#f3f3f3",
+                      "primary-fixed-dim": "#c6c6c6",
+                      "surface-container": "#eeeeee"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "margin-desktop": "64px",
+                      "margin-mobile": "20px",
+                      "unit": "8px",
+                      "gutter": "24px",
+                      "section-gap": "80px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Manrope"],
+                      "body-sm": ["Manrope"],
+                      "title-md": ["Manrope"],
+                      "headline-lg-mobile": ["Playfair Display"],
+                      "label-caps": ["Manrope"],
+                      "headline-lg": ["Playfair Display"],
+                      "display-lg": ["Playfair Display"]
+              },
+              "fontSize": {
+                      "body-lg": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "title-md": ["18px", {"lineHeight": "24px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0px 12px 32px rgba(0, 0, 0, 0.04);
+        }
+        .search-container {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+        }
+        .youth-list-item:active {
+            transform: scale(0.98);
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-lg min-h-screen pb-32 overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 z-[60] w-full bg-surface/80 dark:bg-surface/80 backdrop-blur-xl shadow-sm px-margin-mobile py-4 flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-white/20">
+<img alt="youth leader profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRPxi8tnlx2REcZ5QCrJgtJL6CzJE3p1iehEReoUpy7tsYc1wXVHghFbvy3-_QXaoq0kIzaQByE7zysGEh8PZF2KPYwUtP0jBImNGtRkjaWAT3ei2bL7Wty8hoNIWd5-ACxssvF5Q0w7gMO90pvevVqTbau6YWyw7lu9Fe_-HfGhoRYTdkAqAZDEOkXObeRLgBhuKuD7F_jAf-_sbULYnJyiJ8bcpnHzl9M2gidyvITBK4qz74nDAU8BmblV7FB5K_21IzQBa0WA"/>
+</div>
+<h1 class="font-display-lg text-headline-lg-mobile tracking-tight text-primary">Presencia</h1>
+</div>
+<button class="material-symbols-outlined text-primary text-2xl hover:opacity-80 transition-opacity">notifications</button>
+</header>
+<main class="mt-24 px-margin-mobile max-w-md mx-auto">
+<!-- AI-Inspired Search Bar -->
+<section class="mb-gutter">
+<div class="search-container rounded-full px-6 py-4 flex items-center gap-3 shadow-sm border border-white/30">
+<span class="material-symbols-outlined text-secondary/60">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full font-body-sm placeholder:text-secondary/40 text-primary" placeholder="Search youth members..." type="text"/>
+<button class="material-symbols-outlined text-primary">mic</button>
+</div>
+</section>
+<!-- Categories / Chips -->
+<section class="flex gap-3 overflow-x-auto pb-4 no-scrollbar mb-6">
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-primary text-on-primary font-label-caps text-label-caps">ALL MEMBERS</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full glass-card text-secondary font-label-caps text-label-caps">ALPHA TEAM</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full glass-card text-secondary font-label-caps text-label-caps">BETA GROUP</button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full glass-card text-secondary font-label-caps text-label-caps">VOLUNTEERS</button>
+</section>
+<!-- Title & Count -->
+<div class="flex justify-between items-end mb-6 px-2">
+<div>
+<p class="font-label-caps text-label-caps text-secondary/60 mb-1">DIRECTORY</p>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile">Youth <span class="italic text-primary/40">Members</span></h2>
+</div>
+<span class="font-body-sm text-secondary/60 mb-1">128 Total</span>
+</div>
+<!-- Youth List (Bento-ish Stack) -->
+<div class="space-y-4">
+<!-- Item 1 -->
+<div class="youth-list-item glass-card rounded-xl p-4 flex items-center justify-between group">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="w-14 h-14 rounded-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all" data-alt="A portrait of a stylish young man with a focused expression, set against a softly blurred urban backdrop with warm, golden-hour sunlight. The image has a clean, editorial aesthetic with high contrast and a focus on premium textile textures, matching a luxury minimalist visual language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGEawprvmb3cwdoWCRcuqUhmcdvbY9ieCzV-KF_oEZqnpzt7XHpvvR45Ohg1YfVMOqGr1OIGxEPI39zlAcTvcJq5b6khzUi39STGPzBoevCcSpBCIK_9mNyXUmE-voUAjcZnSDVWU9yNMllA_e42Nnqmm7V3Y38_m5AuWa_KD_vcpCJaKyb8d3DN68wl8l3-GqaicraUl8lDl8AiEXNVivvNxVZ8sVXV0JyexZCeCuptMZmkQunMqw3v4V3_CJV_oy9vGWhNzjPw"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-primary">Julian Vance</h3>
+<p class="font-body-sm text-body-sm text-secondary/70">Alpha Team • Leader</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="font-label-caps text-[10px] tracking-widest text-secondary/40">STATUS</span>
+<span class="px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[10px] font-bold uppercase tracking-tighter">Present</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="youth-list-item glass-card rounded-xl p-4 flex items-center justify-between group">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="w-14 h-14 rounded-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all" data-alt="A sophisticated portrait of a young woman with a calm, intelligent gaze. She is wearing a high-end, minimalist silk top in off-white, and the lighting is diffused and professional, creating soft shadows. The background is a clean, neutral studio setting that emphasizes a sense of calm luxury and modern intelligence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4yOKDA9Z6ii0IFHahEjN_os5gq98RmgmDc-Wh7vEwM2NPH7LUd1ejlzvXqF1qB7Uvkk46KRy4YDn6RCe96xRjlBuzbxuQRAlAhAxeDK3IX9kY52nV8t1P-iJxm7QYngiYTpvu_EBjAaoFk--5z2yJLozN_C8zo77MoOxbU3zvexrJI9HV1NA-cUfX6HdDBNFgiB8ut7LcRGxvqD087KXr9qhVJyvu2DSOdcjkxcFUZQ8sxXbhJGYJ6CgZU9cHcXzGwM06uPaIHA"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 bg-secondary-container border-2 border-white rounded-full"></span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-primary">Sienna Brooks</h3>
+<p class="font-body-sm text-body-sm text-secondary/70">Beta Group • Member</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="font-label-caps text-[10px] tracking-widest text-secondary/40">STATUS</span>
+<span class="px-3 py-1 rounded-full bg-surface-container text-secondary/40 text-[10px] font-bold uppercase tracking-tighter">Away</span>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="youth-list-item glass-card rounded-xl p-4 flex items-center justify-between group">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="w-14 h-14 rounded-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all" data-alt="Close-up portrait of a young man with a serene expression, illuminated by cinematic, cool-toned side lighting that highlights facial features with precision. The aesthetic is extremely clean and high-end, featuring a palette of deep greys and soft whites. The mood is contemplative and sophisticated, suitable for a premier lifestyle interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaHhZrncCNz9j0AyRPMdd2BGkuVBbBD4TUTrUVy6l8fdnFe99YxgSchEPrbxQVTcBT1_BrzYdeiZfUyoMkVkAmYghEr36pJa46cXfbXON2RSoWOr8EEuzjWfkB17yoY5lrP14lg3D3rWCV_3bK6JiTYoei6ti5CSwgdPratsLR5fvWUXetiE4xmCCM4WCZn5lRgSLra6PxiN1ZNny0qdUSV56U1QRvRmKMQz7eA2CqGDOMYV6AjpLn6-VoAU6D6L3N0KMi4lKXNw"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-primary">Marcus Thorne</h3>
+<p class="font-body-sm text-body-sm text-secondary/70">Alpha Team • Member</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="font-label-caps text-[10px] tracking-widest text-secondary/40">STATUS</span>
+<span class="px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[10px] font-bold uppercase tracking-tighter">Present</span>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="youth-list-item glass-card rounded-xl p-4 flex items-center justify-between group">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="w-14 h-14 rounded-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all" data-alt="High-fashion style portrait of a young woman looking directly into the camera with a confident expression. The environment is minimalist and bright, characterized by expansive white space and high-end soft-box lighting. The overall visual style is sleek, intelligent, and fits a luxury digital concierge aesthetic perfectly." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6Oi3ErrpVReV0N6TJ4-FfatuTjf9rl3UP4EC74p-vyWKJ05Z6nt0jiY-bzavtksc5BAfDekVG8-xINyZbOGx8C7OQj3zKTYktDyWxOPj7MpuVjSwLTOYcfo9I4xi4K5ANrweN4BN2BvazhCr36aIpd9zabjoDF8x9w2Rf1Kig8r_PJ3P79mAIvqL8lxoaRGwC56GaIvOm36Ad2CWJo36gTWg9vB-rJfWuzLEs7-U-aPR6Z1SWsoCulwCVmzVGhxHoAOfMte1VcA"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 bg-red-400 border-2 border-white rounded-full"></span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-primary">Elena Rossi</h3>
+<p class="font-body-sm text-body-sm text-secondary/70">Gamma Group • Support</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="font-label-caps text-[10px] tracking-widest text-secondary/40">STATUS</span>
+<span class="px-3 py-1 rounded-full bg-error-container text-on-error-container text-[10px] font-bold uppercase tracking-tighter">Excused</span>
+</div>
+</div>
+</div>
+<!-- Pagination/Load More (Subtle) -->
+<div class="mt-gutter flex justify-center">
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-label-caps text-label-caps hover:opacity-90 transition-all">LOAD MORE MEMBERS</button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-md rounded-full px-6 py-3 bg-surface-container-lowest/90 backdrop-blur-2xl border border-white/20 shadow-[0px_12px_32px_rgba(0,0,0,0.04)] flex justify-around items-center z-[70]">
+<a class="flex flex-col items-center justify-center text-secondary/60 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-[10px] mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-caps text-[10px] mt-1">Youth</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary/60 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="font-label-caps text-[10px] mt-1">Attendance</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary/60 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">hub</span>
+<span class="font-label-caps text-[10px] mt-1">Groups</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary/60 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-[10px] mt-1">Settings</span>
+</a>
+</nav>
+<!-- Contextual FAB (Only for main action) -->
+<button class="fixed bottom-24 right-8 w-14 h-14 rounded-full bg-primary text-on-primary shadow-lg flex items-center justify-center active:scale-90 transition-transform z-50">
+<span class="material-symbols-outlined text-2xl">person_add</span>
+</button>
+<script>
+        // Micro-interaction for list items
+        document.querySelectorAll('.youth-list-item').forEach(item => {
+            item.addEventListener('touchstart', () => {
+                item.style.backgroundColor = 'rgba(0,0,0,0.02)';
+            });
+            item.addEventListener('touchend', () => {
+                item.style.backgroundColor = '';
+            });
+        });
+    </script>
+</body></html>

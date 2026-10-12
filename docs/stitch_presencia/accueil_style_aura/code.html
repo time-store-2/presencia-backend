@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Presencia | Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#1b1b1b",
+                        "primary": "#000000",
+                        "surface-dim": "#dadada",
+                        "on-tertiary-fixed-variant": "#41474e",
+                        "tertiary-fixed-dim": "#c1c7cf",
+                        "on-secondary-fixed": "#191c1d",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f9f9f9",
+                        "secondary": "#5c5f60",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-primary-container": "#848484",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#5e5e5e",
+                        "primary-fixed": "#e2e2e2",
+                        "surface-variant": "#e2e2e2",
+                        "secondary-container": "#e1e3e4",
+                        "on-primary-fixed-variant": "#474747",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#1b1b1b",
+                        "tertiary": "#000000",
+                        "secondary-fixed-dim": "#c5c7c8",
+                        "surface-container-high": "#e8e8e8",
+                        "outline": "#7e7576",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#626566",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#303030",
+                        "background": "#f9f9f9",
+                        "on-background": "#1b1b1b",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-tertiary-container": "#7e848c",
+                        "on-tertiary-fixed": "#161c22",
+                        "inverse-primary": "#c6c6c6",
+                        "tertiary-container": "#161c22",
+                        "outline-variant": "#cfc4c5",
+                        "secondary-fixed": "#e1e3e4",
+                        "surface": "#f9f9f9",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#dde3eb",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#454748",
+                        "on-surface-variant": "#4c4546",
+                        "primary-container": "#1b1b1b",
+                        "surface-container-low": "#f3f3f3",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "surface-container": "#eeeeee"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px",
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "section-gap": "80px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Manrope"],
+                        "body-sm": ["Manrope"],
+                        "title-md": ["Manrope"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "label-caps": ["Manrope"],
+                        "headline-lg": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "title-md": ["18px", { "lineHeight": "24px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #f9f9f9;
+            color: #1b1b1b;
+            font-family: 'Manrope', sans-serif;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .glass-dark {
+            background: rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .card-inner-shadow {
+            box-shadow: inset 0 0 40px rgba(0,0,0,0.05);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-screen">
+<!-- Top Navigation Anchor (Shared Component Mapping) -->
+<header class="bg-surface/80 dark:bg-surface/80 backdrop-blur-xl text-primary dark:text-on-surface docked full-width top-0 shadow-sm z-50 sticky">
+<div class="flex justify-between items-center w-full px-margin-mobile py-4 max-w-screen-xl mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden border border-white/20">
+<img alt="Youth Leader" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBF7k-i6wl63lyWbJxF2HYXwrbffp9Omqk3LHEk3_k180TQCwB0ywfTZp8OxdJjcBmiSmkDQWVpyq29EJJc1ErJVOm0VYKujtgMlk4BJv52Amfz8fvLzSP3GB35vvvfkRRtLzKL0JaKUGjbrwT2dDKRtyOlL3r9AzYDjXd-D7Z5elXlrLcG-mqCNtPrcwcFQtw_3YmqUsjNWqizsCYkcplVM-R2Q4I2--JZxTQeMo8jucfDRO14hyYrB8_vaQW9LJ1CrkEUnoSsyg"/>
+</div>
+<h1 class="font-display-lg text-headline-lg-mobile tracking-tight text-primary dark:text-on-surface">Presencia</h1>
+</div>
+<button class="material-symbols-outlined text-secondary hover:opacity-80 transition-opacity p-2 rounded-full glass" data-icon="notifications">notifications</button>
+</div>
+</header>
+<main class="flex-grow px-margin-mobile pt-6 pb-32 max-w-screen-md mx-auto w-full">
+<!-- Personalized Greeting -->
+<section class="mb-10 text-center">
+<p class="font-label-caps text-label-caps text-secondary mb-2 tracking-widest">BIENVENUE, THOMAS</p>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Qu'allez-vous <span class="italic font-light">accomplir</span> aujourd'hui ?</h2>
+</section>
+<!-- Quick Action Grid -->
+<section class="flex gap-4 mb-10 overflow-x-auto no-scrollbar pb-2">
+<button class="glass rounded-full px-8 py-4 flex items-center gap-3 whitespace-nowrap active:scale-95 transition-all shadow-sm">
+<span class="material-symbols-outlined text-primary" data-icon="how_to_reg">how_to_reg</span>
+<span class="font-label-caps text-label-caps text-primary uppercase">Faire l'appel</span>
+</button>
+<button class="glass rounded-full px-8 py-4 flex items-center gap-3 whitespace-nowrap active:scale-95 transition-all shadow-sm">
+<span class="material-symbols-outlined text-primary" data-icon="person_add">person_add</span>
+<span class="font-label-caps text-label-caps text-primary uppercase">Ajouter un jeune</span>
+</button>
+<button class="glass rounded-full px-8 py-4 flex items-center gap-3 whitespace-nowrap active:scale-95 transition-all shadow-sm">
+<span class="material-symbols-outlined text-primary" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-caps text-label-caps text-primary uppercase">Planning</span>
+</button>
+</section>
+<!-- Today's Session Hero Card -->
+<section class="mb-10">
+<div class="relative w-full aspect-[4/5] md:aspect-video rounded-xl overflow-hidden shadow-[0px_12px_32px_rgba(0,0,0,0.04)] group cursor-pointer">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A group of diverse teenagers engaged in a collaborative artistic project within a bright, modern community center. The atmosphere is filled with creative energy and soft afternoon sunlight streaming through large windows. Minimalist design elements and a high-end luxury aesthetic are reflected in the clean architectural lines of the space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpakgdGF7bQPBW_vUJXbo2-CKBurlzrmw2T5LRVENA1821icLsdbBt1pVCh8UqGBfgMROWxxS5W0Cu1eiRdyDcdvSHGaT76kMi0cSmBd6dkT_SfNnnm3LISQp2JOzt9CsyFc9Sm_DIJtWRYVjaXIpVC7UrO66ubsfwICpRLReF3AOLcH6bvFExR9jvBiyind5_ycj8F6jSJ3USKkcCFKLS6hpaYmhcNqLwjNqQ-Wpgtv4cCXQG5TLKhQq-7u2QPyDqL4xWdPW7Fg"/>
+<div class="absolute top-6 left-6 z-20">
+<span class="glass px-4 py-1.5 rounded-full font-label-caps text-[10px] text-on-surface uppercase tracking-widest backdrop-blur-md">SESSION DU JOUR</span>
+</div>
+<div class="absolute bottom-6 left-6 right-6 z-20">
+<div class="glass-dark p-6 rounded-lg border border-white/20 backdrop-blur-xl">
+<h3 class="font-display-lg text-headline-lg-mobile text-white mb-1">Atelier Créatif</h3>
+<p class="font-body-sm text-body-sm text-white/80 mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span> 14:00 - 16:30 • Salle Alpha
+                        </p>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-3">
+<div class="w-8 h-8 rounded-full border-2 border-white/30 bg-surface-container overflow-hidden">
+<img alt="Member" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCofsNA2X8w2yIHDSK6qb5JiFjWneXwdYXaReZR8gKOn03L8PwZMTHKJNi87DB0bKDiu1Uef6isy3w9SmVJMrGNxuiOOjgl4-Q2k8lRqbyjCsx7ZaFo2ilT_o_-WSOjpNlrsFHLf09Bf2U2xW75gKX98zxm-xBjFnZHUN1K1Q4iqR6EUJsdCV4QjSBISp9TWJKjLvTUxdcNGPUtGHs01Bzu0UOZ7TcvIDZaxUDSosVdnD5COZTTz3M0NSb2yjoQUJJ47JmNFoGp8g"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-white/30 bg-surface-container overflow-hidden">
+<img alt="Member" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTy6THgPDVfsvTQzq0lyKoDkGpKjhU9NtePpAIlZEcgCPlk55hxHOQifmMUO_Qjo1Xgm8jwWvmUv0-nrLfgYWGRq4Z1D2kZvG5l_rzY7doZOOKzjmXYhAHSltTmI4GQTabhY2ui8e7vDpBFyfP4Dahe584ZhSKfq1sG-dfzn53NFWtav5ZLK4NoPZWES2w_LA_OnME7uiqCbHxYPttcJQ6Q6sTJptvfUoeZF6dHjH54KLo_jjaI_xzYJ9ZhZb01y7u7rmjnbRHAA"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-white/30 bg-surface-container overflow-hidden">
+<img alt="Member" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD8BXcFGQwjvw1plJt_kYTx4qlXqYF6BqLZE0mk-mkmZ6ZHWdF8UKjKw_Nt9xi7W1Qt256WkVnepr0OFQXh0HbgLOwaIBLatT5RNBawFKz9xopa05wxED3zscHKHkRXo-WKhwvZLeDKhghL0LqMBNFoFpfW1j8eoQAH_74g-zcFqTEsXk4cgd0ChxfdxD4cQ470KYE6SrMWGtOuW5kak3HN-lXfWfnfVGeExBjmejMAnktHISwTq1FL93cOF8dT-KO_2QgK60wvg"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-white/30 bg-surface-container flex items-center justify-center font-label-caps text-[8px] text-primary bg-white">
+                                    +12
+                                </div>
+</div>
+<button class="bg-white text-black font-label-caps text-[10px] px-6 py-2.5 rounded-full hover:bg-opacity-90 transition-all uppercase tracking-widest">Gérer</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="grid grid-cols-2 gap-4 mb-20">
+<div class="glass p-6 rounded-xl flex flex-col justify-between h-40 shadow-[0px_4px_16px_rgba(0,0,0,0.02)] border-white/40">
+<div>
+<span class="material-symbols-outlined text-secondary opacity-60 mb-4" data-icon="groups">groups</span>
+<p class="font-label-caps text-label-caps text-secondary uppercase tracking-wider">Total Jeunes</p>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="font-display-lg text-headline-lg text-primary">142</span>
+<span class="font-body-sm text-body-sm text-green-600">+4%</span>
+</div>
+</div>
+<div class="glass p-6 rounded-xl flex flex-col justify-between h-40 shadow-[0px_4px_16px_rgba(0,0,0,0.02)] border-white/40">
+<div>
+<span class="material-symbols-outlined text-secondary opacity-60 mb-4" data-icon="analytics">analytics</span>
+<p class="font-label-caps text-label-caps text-secondary uppercase tracking-wider">Taux Présence</p>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="font-display-lg text-headline-lg text-primary">88%</span>
+<span class="font-body-sm text-body-sm text-secondary">moy.</span>
+</div>
+</div>
+</section>
+<!-- Bento Secondary List/Grid Placeholder for aesthetic balance -->
+<section>
+<div class="flex justify-between items-center mb-6">
+<h4 class="font-title-md text-title-md text-on-surface">Activités Récentes</h4>
+<a class="font-label-caps text-label-caps text-secondary underline underline-offset-4" href="#">Voir Tout</a>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-white rounded-lg border border-surface-container shadow-sm group hover:border-primary transition-colors cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="sports_basketball">sports_basketball</span>
+</div>
+<div>
+<p class="font-title-md text-body-lg font-bold">Séance de Sport</p>
+<p class="font-body-sm text-body-sm text-secondary">Hier à 16:00 • 24 présents</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-white rounded-lg border border-surface-container shadow-sm group hover:border-primary transition-colors cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="palette">palette</span>
+</div>
+<div>
+<p class="font-title-md text-body-lg font-bold">Peinture Murale</p>
+<p class="font-body-sm text-body-sm text-secondary">12 Oct • 15 présents</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Shell (Shared Component Mapping) -->
+<nav class="fixed bottom-6 left-0 right-0 z-50 flex justify-around items-center">
+<div class="bg-surface-container-lowest/90 dark:bg-surface-container-high/90 backdrop-blur-2xl fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-md rounded-full px-6 py-3 border border-white/20 dark:border-white/10 shadow-[0px_12px_32px_rgba(0,0,0,0.04)] flex justify-between items-center">
+<a class="flex flex-col items-center justify-center text-primary dark:text-on-surface scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-caps text-[8px] mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary/60 dark:text-secondary-fixed-dim/60 hover:text-primary dark:hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-caps text-[8px] mt-1">Youth</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary/60 dark:text-secondary-fixed-dim/60 hover:text-primary dark:hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="how_to_reg">how_to_reg</span>
+<span class="font-label-caps text-[8px] mt-1">Attendance</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary/60 dark:text-secondary-fixed-dim/60 hover:text-primary dark:hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span class="font-label-caps text-[8px] mt-1">Groups</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary/60 dark:text-secondary-fixed-dim/60 hover:text-primary dark:hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-caps text-[8px] mt-1">Settings</span>
+</a>
+</div>
+</nav>
+<script>
+        // Micro-interaction for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => {
+                btn.style.transform = 'scale(0.95)';
+            });
+            btn.addEventListener('mouseup', () => {
+                btn.style.transform = 'scale(1)';
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'scale(1)';
+            });
+        });
+
+        // Simple scroll reveal effect for cards
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+            observer.observe(section);
+        });
+    </script>
+</body></html>

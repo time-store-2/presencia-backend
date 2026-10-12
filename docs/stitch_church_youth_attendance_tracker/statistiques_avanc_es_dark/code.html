@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ecclesia Flow - Statistiques</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#1a1c1e",
+                    "on-error": "#ffffff",
+                    "outline": "#8e9199",
+                    "on-surface-variant": "#c2c7cf",
+                    "inverse-primary": "#3525cd",
+                    "on-tertiary-fixed-variant": "#d0bcff",
+                    "on-background": "#e2e2e6",
+                    "on-secondary-container": "#6ffbbe",
+                    "surface-container": "#1e2022",
+                    "surface": "#111315",
+                    "surface-bright": "#37393b",
+                    "inverse-surface": "#e2e2e6",
+                    "surface-container-high": "#282a2d",
+                    "on-primary-container": "#e2dfff",
+                    "on-primary-fixed": "#0f0069",
+                    "inverse-on-surface": "#2f3033",
+                    "on-tertiary-fixed": "#23005c",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#002113",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#ffdad6",
+                    "primary-fixed": "#e2dfff",
+                    "secondary-fixed-dim": "#4edea3",
+                    "secondary-container": "#005236",
+                    "secondary": "#4edea3",
+                    "on-surface": "#e2e2e6",
+                    "outline-variant": "#43474e",
+                    "tertiary": "#d0bcff",
+                    "error-container": "#93000a",
+                    "background": "#111315",
+                    "tertiary-fixed": "#e9ddff",
+                    "surface-tint": "#c3c0ff",
+                    "primary": "#c3c0ff",
+                    "on-primary": "#140067",
+                    "secondary-fixed": "#6ffbbe",
+                    "primary-container": "#3525cd",
+                    "surface-variant": "#43474e",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "surface-container-highest": "#333538",
+                    "surface-dim": "#111315",
+                    "on-secondary-fixed-variant": "#005236",
+                    "tertiary-container": "#5516be",
+                    "on-tertiary-container": "#e9ddff",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "surface-container-low": "#191c1e",
+                    "tertiary-fixed-dim": "#d0bcff",
+                    "error": "#ffb4ab"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "sm": "8px",
+                    "base": "4px",
+                    "margin-tablet": "32px",
+                    "xs": "4px",
+                    "margin-mobile": "16px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "display": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- Top App Bar -->
+<header class="bg-surface/90 backdrop-blur-md shadow-sm docked full-width top-0 z-50 flex justify-between items-center px-margin-mobile h-16 w-full fixed border-b border-outline-variant/30">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary font-headline-lg" style="font-variation-settings: 'FILL' 1;">church</span>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary">Statistiques</h1>
+</div>
+<button class="flex items-center gap-2 bg-surface-container-high px-3 py-1.5 rounded-lg border border-outline-variant transition-all duration-200 active:scale-95">
+<span class="font-label-md text-label-md text-on-surface-variant">Ce mois</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">expand_more</span>
+</button>
+</header>
+<main class="pt-20 px-margin-mobile space-y-lg">
+<!-- Période Selector -->
+<div class="flex gap-sm overflow-x-auto hide-scrollbar py-2 -mx-margin-mobile px-margin-mobile">
+<button class="flex-shrink-0 bg-primary text-on-primary px-4 py-2 rounded-full font-label-md text-label-md transition-all duration-200 shadow-lg shadow-primary/20">7 derniers jours</button>
+<button class="flex-shrink-0 bg-surface-container-highest text-on-surface-variant px-4 py-2 rounded-full font-label-md text-label-md hover:bg-surface-variant transition-all duration-200">30 derniers jours</button>
+<button class="flex-shrink-0 bg-surface-container-highest text-on-surface-variant px-4 py-2 rounded-full font-label-md text-label-md hover:bg-surface-variant transition-all duration-200">Trimestre</button>
+<button class="flex-shrink-0 bg-surface-container-highest text-on-surface-variant px-4 py-2 rounded-full font-label-md text-label-md hover:bg-surface-variant transition-all duration-200">Année</button>
+</div>
+<!-- Bento Grid Section -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- Global Attendance Card (Span 2 col) -->
+<div class="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-primary-container to-primary p-lg rounded-xl text-on-primary shadow-xl flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start">
+<div>
+<p class="font-label-md text-label-md opacity-80 uppercase tracking-wider">Taux Global de Présence</p>
+<h2 class="font-display text-[48px] leading-none mt-2">72%</h2>
+</div>
+<div class="bg-white/20 backdrop-blur-sm px-2 py-1 rounded-lg flex items-center gap-1 border border-white/10">
+<span class="material-symbols-outlined text-[16px] text-white">trending_up</span>
+<span class="font-label-md text-label-md text-white">+4%</span>
+</div>
+</div>
+<div class="mt-lg">
+<div class="w-full bg-white/20 h-3 rounded-full overflow-hidden">
+<div class="bg-white h-full rounded-full transition-all duration-1000" style="width: 72%;"></div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-md mt-xl pt-lg border-t border-white/10">
+<div class="text-center">
+<p class="font-display text-headline-md">142</p>
+<p class="font-label-sm text-label-sm opacity-70">Présents</p>
+</div>
+<div class="text-center">
+<p class="font-display text-headline-md">34</p>
+<p class="font-label-sm text-label-sm opacity-70">Absents</p>
+</div>
+<div class="text-center">
+<p class="font-display text-headline-md">18</p>
+<p class="font-label-sm text-label-sm opacity-70">En retard</p>
+</div>
+</div>
+</div>
+<!-- Top 5 Assidus -->
+<div class="bg-surface-container border border-outline-variant p-md rounded-xl shadow-sm">
+<h3 class="font-headline-md text-headline-md text-primary mb-md">Top Assiduité</h3>
+<div class="space-y-sm">
+<!-- Item 1 -->
+<div class="flex items-center gap-md p-sm hover:bg-surface-container-high rounded-lg transition-colors">
+<div class="relative">
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant/30" data-alt="A portrait of a young man with a friendly smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_01XlCkExhgqpt0q15cQKFB9TqgxWSoFTO_B43uifYBqZVaJI8MifPvUG-3IcU_0WtCMEevQ3Tjl7KnokM0NUkPtjcKeiheei-rprpPy4KVSG4iuGxYr-WyTesVUaXmhbO0qSY_E8R2b2fM2B2LWuo35UM283fBs4s6CmcsfZY7WORd_YwlFaJ9AynCJ0_4L3TiAohSYx0qjwpKDYn0hUhYdIvCu_TiNxMKuBQdHG3qLNziYrUJ1rnQZlkC3-Iz8wtmwZ5H-OjNA"/>
+<div class="absolute -bottom-1 -right-1 bg-yellow-500 text-on-surface rounded-full w-5 h-5 flex items-center justify-center text-[10px] font-bold border-2 border-surface-container">1</div>
+</div>
+<div class="flex-grow">
+<p class="font-body-md text-body-md font-semibold text-on-surface">Lucas Dupont</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Groupe Louanges</p>
+</div>
+<span class="font-label-md text-label-md text-secondary font-bold">100%</span>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center gap-md p-sm hover:bg-surface-container-high rounded-lg transition-colors">
+<div class="relative">
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant/30" data-alt="A professional portrait of a young woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhB3crnx49Db_TzArIiBmain9AJ7cqpclTokF4O0Be7ABlL9mYPmmVMkoU1vArQ-p73P_HKDttSXxjRo-Wrfzd_idrf2Nb3d7DaADrbXIZN3-3Vs-fBbWM-ngOlhw7q0tJpG1EVTEhEMBIeB1Nf56PLw7LKOBZrHPzz_QUErn5aszJR_AJ4SHBL8AGEUb3OQehL7dtbK6KQgZtfrwLrEX2WwoyEpTCAH6k8VfuTiUrTt9Dknx1EhdwPpxmSfTC4OTpzqunPzxQiX8"/>
+<div class="absolute -bottom-1 -right-1 bg-slate-400 text-on-surface rounded-full w-5 h-5 flex items-center justify-center text-[10px] font-bold border-2 border-surface-container">2</div>
+</div>
+<div class="flex-grow">
+<p class="font-body-md text-body-md font-semibold text-on-surface">Sarah Bernard</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Jeunes Adultes</p>
+</div>
+<span class="font-label-md text-label-md text-secondary font-bold">98%</span>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center gap-md p-sm hover:bg-surface-container-high rounded-lg transition-colors">
+<div class="relative">
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant/30" data-alt="A candid-style portrait of a smiling young person" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcRIy88U40WJ9cojS21Q0N5XxkU4qiqw1UnXAqkouorzCy2uJt3eLl87iwL9AQzWCYIg7CW2puwso-16Ud1r872UtT7-x_tEMc5Ln9CDcV9MfI7QYKvRPctscu61k6AoqmA7Lws99xlX6yXDSzUhYcMcx1Ti-1bXXzVaAyBsiz075s_1Qx0inuc_nw4B15XWZc1VAeiWdL70v-aCNEaXQuo2A_vkYpWr9Fsn6GIiFB_RxXsSMp3aObKk5csSeDxanRO-CHzr1LJG0"/>
+<div class="absolute -bottom-1 -right-1 bg-orange-700 text-white rounded-full w-5 h-5 flex items-center justify-center text-[10px] font-bold border-2 border-surface-container">3</div>
+</div>
+<div class="flex-grow">
+<p class="font-body-md text-body-md font-semibold text-on-surface">Thomas Morel</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Groupe Étude</p>
+</div>
+<span class="font-label-md text-label-md text-secondary font-bold">95%</span>
+</div>
+</div>
+</div>
+<!-- Évolution des présences Chart -->
+<div class="bg-surface-container border border-outline-variant p-md rounded-xl shadow-sm lg:col-span-2">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="font-headline-md text-headline-md text-primary">Évolution des présences</h3>
+<div class="flex gap-md">
+<div class="flex items-center gap-sm">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Présents</span>
+</div>
+<div class="flex items-center gap-sm">
+<div class="w-3 h-3 rounded-full bg-error/40"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Absents</span>
+</div>
+</div>
+</div>
+<!-- Visual Chart representation with bars -->
+<div class="flex items-end justify-between h-48 px-md mt-lg border-b border-outline-variant/30 pb-base">
+<!-- Week 1 -->
+<div class="flex flex-col items-center gap-sm w-full">
+<div class="flex flex-col-reverse w-12 gap-xs h-40">
+<div class="bg-error/40 w-full rounded-t-sm" style="height: 15%"></div>
+<div class="bg-primary w-full rounded-t-sm" style="height: 85%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">S1</span>
+</div>
+<!-- Week 2 -->
+<div class="flex flex-col items-center gap-sm w-full">
+<div class="flex flex-col-reverse w-12 gap-xs h-40">
+<div class="bg-error/40 w-full rounded-t-sm" style="height: 25%"></div>
+<div class="bg-primary w-full rounded-t-sm" style="height: 75%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">S2</span>
+</div>
+<!-- Week 3 -->
+<div class="flex flex-col items-center gap-sm w-full">
+<div class="flex flex-col-reverse w-12 gap-xs h-40">
+<div class="bg-error/40 w-full rounded-t-sm" style="height: 10%"></div>
+<div class="bg-primary w-full rounded-t-sm" style="height: 90%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">S3</span>
+</div>
+<!-- Week 4 -->
+<div class="flex flex-col items-center gap-sm w-full">
+<div class="flex flex-col-reverse w-12 gap-xs h-40">
+<div class="bg-error/40 w-full rounded-t-sm" style="height: 40%"></div>
+<div class="bg-primary w-full rounded-t-sm" style="height: 60%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">S4</span>
+</div>
+</div>
+</div>
+<!-- Présence par groupe -->
+<div class="bg-surface-container border border-outline-variant p-md rounded-xl shadow-sm">
+<h3 class="font-headline-md text-headline-md text-primary mb-md">Par groupe</h3>
+<div class="space-y-md">
+<!-- Group 1 -->
+<div>
+<div class="flex justify-between items-center mb-xs">
+<span class="font-body-md text-body-md font-medium text-on-surface">Jeunes Adultes</span>
+<span class="font-label-md text-label-md text-on-surface-variant">88%</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 88%"></div>
+</div>
+</div>
+<!-- Group 2 -->
+<div>
+<div class="flex justify-between items-center mb-xs">
+<span class="font-body-md text-body-md font-medium text-on-surface">Ados (12-15)</span>
+<span class="font-label-md text-label-md text-on-surface-variant">64%</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 64%"></div>
+</div>
+</div>
+<!-- Group 3 -->
+<div>
+<div class="flex justify-between items-center mb-xs">
+<span class="font-body-md text-body-md font-medium text-on-surface">Louange</span>
+<span class="font-label-md text-label-md text-on-surface-variant">94%</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 94%"></div>
+</div>
+</div>
+<!-- Group 4 -->
+<div>
+<div class="flex justify-between items-center mb-xs">
+<span class="font-body-md text-body-md font-medium text-on-surface">Enfants</span>
+<span class="font-label-md text-label-md text-on-surface-variant">42%</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-error h-full rounded-full" style="width: 42%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Absences Fréquentes Alerts -->
+<div class="lg:col-span-3 bg-error-container/10 border border-error/20 p-md rounded-xl">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">warning</span>
+<h3 class="font-headline-md text-headline-md text-error">Absences fréquentes</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- Alert Item 1 -->
+<div class="bg-surface-container-low p-md rounded-lg shadow-sm border border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 bg-error/20 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-error">person_off</span>
+</div>
+<div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">Julie Martin</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">3 absences consécutives</p>
+</div>
+</div>
+<button class="bg-primary-container text-on-primary px-3 py-1.5 rounded-lg font-label-md text-label-md transition-all active:scale-95">Contacter</button>
+</div>
+<!-- Alert Item 2 -->
+<div class="bg-surface-container-low p-md rounded-lg shadow-sm border border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 bg-error/20 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-error">person_off</span>
+</div>
+<div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">Marc Royer</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Absence non justifiée (S4)</p>
+</div>
+</div>
+<button class="bg-primary-container text-on-primary px-3 py-1.5 rounded-lg font-label-md text-label-md transition-all active:scale-95">Contacter</button>
+</div>
+<!-- Alert Item 3 -->
+<div class="bg-surface-container-low p-md rounded-lg shadow-sm border border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 bg-error/20 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-error">person_off</span>
+</div>
+<div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">Chloé Petit</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Baisse d'assiduité -15%</p>
+</div>
+</div>
+<button class="bg-primary-container text-on-primary px-3 py-1.5 rounded-lg font-label-md text-label-md transition-all active:scale-95">Contacter</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Nav Bar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface/80 backdrop-blur-lg border-t border-outline-variant/30 shadow-2xl rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 transition-transform duration-200 active:scale-90 hover:text-primary" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Accueil</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 transition-transform duration-200 active:scale-90 hover:text-primary" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary rounded-xl px-4 py-1.5 transition-transform duration-200 active:scale-90 shadow-lg shadow-primary/30" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">how_to_reg</span>
+<span class="font-label-md text-label-md">Appel</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 transition-transform duration-200 active:scale-90 hover:text-primary" href="#">
+<span class="material-symbols-outlined">diversity_3</span>
+<span class="font-label-md text-label-md">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 transition-transform duration-200 active:scale-90 hover:text-primary" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Paramètres</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for contact buttons
+        document.querySelectorAll('button').forEach(btn => {
+            if (btn.innerText.includes('Contacter')) {
+                btn.addEventListener('click', function() {
+                    const originalText = this.innerText;
+                    this.innerText = 'Appel...';
+                    this.classList.replace('bg-primary-container', 'bg-secondary-container');
+                    this.classList.replace('text-on-primary', 'text-on-secondary-container');
+                    setTimeout(() => {
+                        this.innerText = originalText;
+                        this.classList.replace('bg-secondary-container', 'bg-primary-container');
+                        this.classList.replace('text-on-secondary-container', 'text-on-primary');
+                    }, 2000);
+                });
+            }
+        });
+    </script>
+</body></html>

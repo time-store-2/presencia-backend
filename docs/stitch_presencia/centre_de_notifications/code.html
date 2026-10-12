@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .glass-blur {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FAF7F5;
+        }
+        .unread-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #a13a15;
+            box-shadow: 0 0 8px rgba(161, 58, 21, 0.4);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#390b00",
+                        "tertiary": "#6949ab",
+                        "surface": "#fff8f6",
+                        "secondary-fixed-dim": "#fdba49",
+                        "surface-container": "#fceae3",
+                        "surface-bright": "#fff8f6",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#e7d7d0",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#f6e5de",
+                        "primary-fixed-dim": "#ffb59d",
+                        "surface-container-highest": "#f0dfd8",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#25005a",
+                        "on-secondary-fixed-variant": "#614000",
+                        "inverse-surface": "#382e2a",
+                        "tertiary-fixed": "#eaddff",
+                        "on-secondary-container": "#704b00",
+                        "on-tertiary-container": "#fffcff",
+                        "on-surface": "#221a16",
+                        "tertiary-container": "#8262c6",
+                        "tertiary-fixed-dim": "#d2bcff",
+                        "surface-tint": "#a43c17",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#281800",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#f0dfd8",
+                        "primary": "#a13a15",
+                        "on-error": "#ffffff",
+                        "on-background": "#221a16",
+                        "on-tertiary-fixed-variant": "#533294",
+                        "inverse-primary": "#ffb59d",
+                        "secondary-container": "#fdba49",
+                        "on-primary-container": "#fffcff",
+                        "outline-variant": "#dec0b7",
+                        "outline": "#8b716a",
+                        "on-surface-variant": "#57423b",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#ffede6",
+                        "on-primary-fixed-variant": "#842600",
+                        "surface-container-low": "#fff1eb",
+                        "secondary-fixed": "#ffddaf",
+                        "primary-container": "#c2522b",
+                        "secondary": "#805600",
+                        "primary-fixed": "#ffdbd0",
+                        "background": "#fff8f6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "md": "16px",
+                        "gutter": "12px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "container-margin": "20px",
+                        "xs": "4px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen text-on-surface">
+<!-- TopAppBar Mapping -->
+<header class="bg-surface dark:bg-on-background flex justify-between items-center px-container-margin py-md w-full sticky top-0 z-40">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed-dim hover:bg-surface-container-low transition-colors p-sm rounded-full active:opacity-80 active:scale-95 transition-all">menu</button>
+<h1 class="text-headline-lg font-headline-lg font-bold text-primary dark:text-primary-fixed-dim">Presencia</h1>
+</div>
+<div class="flex items-center gap-md">
+<div class="h-10 w-10 rounded-full overflow-hidden border-2 border-surface-container">
+<img alt="Leader Profile" class="h-full w-full object-cover" data-alt="A close-up portrait of a friendly and approachable male youth leader in his late 20s. He has a warm smile, styled short dark hair, and is wearing a modern casual linen shirt. The background is a soft-focus interior of a community space with warm wooden textures and organic earthy tones, matching a professional yet welcoming church environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBY3p_HMHB_q1l1GPTUDSN0A5z6orYZ0oHZ-gXiMu7gu7dTh71zkzoZFm6Vw1Q-D0WjMAgfEQOnXd_PU-m4zd3q6R_daNb8TZgG4HhX-epOI6rzAzZPD0Y1mGMDs0OEA3gdJ9-vwPrQ1HWNHyaPbJX3C6CCjo63pxQ55BJBIb7Pv-TlIlq1S7cgTZfG5I6bp3qz8yGe03n0HNY87rU6ixnCCI24Z7Ns3A6A_pHrVZSBpuigYLlaM2_Tie68_yOFKDM8B_k8UhhecQ"/>
+</div>
+</div>
+</header>
+<main class="px-container-margin pb-32 pt-md">
+<div class="flex items-center justify-between mb-lg">
+<h2 class="text-headline-md font-headline-md text-on-surface">Centre de Notifications</h2>
+<button class="text-primary font-label-md text-label-md hover:bg-surface-container-low px-sm py-xs rounded-lg transition-colors">Tout marquer comme lu</button>
+</div>
+<!-- Filter Chips -->
+<div class="flex gap-sm mb-lg overflow-x-auto pb-xs">
+<button class="bg-primary text-on-primary px-md py-sm rounded-full text-label-md font-label-md shadow-sm whitespace-nowrap">Tout</button>
+<button class="bg-surface-container text-on-surface-variant px-md py-sm rounded-full text-label-md font-label-md whitespace-nowrap hover:bg-surface-container-high transition-colors">Engagement</button>
+<button class="bg-surface-container text-on-surface-variant px-md py-sm rounded-full text-label-md font-label-md whitespace-nowrap hover:bg-surface-container-high transition-colors">Sécurité</button>
+<button class="bg-surface-container text-on-surface-variant px-md py-sm rounded-full text-label-md font-label-md whitespace-nowrap hover:bg-surface-container-high transition-colors">Système</button>
+</div>
+<div class="space-y-md">
+<!-- Unread Engagement Notification -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-[0_4px_12px_rgba(122,99,88,0.08)] relative active:scale-[0.98] transition-all cursor-pointer">
+<div class="flex gap-md">
+<div class="h-12 w-12 rounded-full bg-[#EAF5EF] flex items-center justify-center text-[#2D7A56] shrink-0">
+<span class="material-symbols-outlined">person_add</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-xs">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-[#2D7A56]">Engagement</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">À l'instant</span>
+</div>
+<p class="text-body-md font-headline-md text-on-surface leading-tight mb-xs">Nouveau jeune inscrit dans le groupe <span class="text-primary">Musique</span></p>
+<p class="text-body-md text-on-surface-variant">Léo Marois vient de rejoindre l'équipe de louange.</p>
+</div>
+<div class="unread-indicator mt-md"></div>
+</div>
+</div>
+<!-- Warning/Security Notification -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-[0_4px_12px_rgba(122,99,88,0.08)] relative active:scale-[0.98] transition-all cursor-pointer border-l-4 border-error">
+<div class="flex gap-md">
+<div class="h-12 w-12 rounded-full bg-[#FDECEA] flex items-center justify-center text-[#C0392B] shrink-0">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-xs">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-[#C0392B]">Sécurité / Engagement</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Il y a 2h</span>
+</div>
+<p class="text-body-md font-headline-md text-on-surface leading-tight mb-xs">Alerte : David K. a manqué 4 séances</p>
+<p class="text-body-md text-on-surface-variant">Une prise de contact est recommandée pour s'assurer qu'il va bien.</p>
+</div>
+<div class="unread-indicator mt-md"></div>
+</div>
+</div>
+<!-- Reminder/Engagement Notification -->
+<div class="bg-surface-container-low p-md rounded-xl relative opacity-80 active:scale-[0.98] transition-all cursor-pointer">
+<div class="flex gap-md">
+<div class="h-12 w-12 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-container shrink-0">
+<span class="material-symbols-outlined">event</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-xs">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-secondary">Rappel</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Il y a 5h</span>
+</div>
+<p class="text-body-md font-headline-md text-on-surface leading-tight mb-xs">Rappel : Séance demain à 14h</p>
+<p class="text-body-md text-on-surface-variant">Groupe 'Jeunes Leaders'. 15 participants confirmés.</p>
+</div>
+</div>
+</div>
+<!-- System Notification -->
+<div class="bg-surface-container-low p-md rounded-xl relative opacity-80 active:scale-[0.98] transition-all cursor-pointer">
+<div class="flex gap-md">
+<div class="h-12 w-12 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed-variant shrink-0">
+<span class="material-symbols-outlined">settings</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-xs">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-tertiary">Système</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Hier</span>
+</div>
+<p class="text-body-md font-headline-md text-on-surface leading-tight mb-xs">Mise à jour réussie</p>
+<p class="text-body-md text-on-surface-variant">L'exportation des données de présence du mois d'août est prête.</p>
+</div>
+</div>
+</div>
+<!-- Another Engagement Notif -->
+<div class="bg-surface-container-low p-md rounded-xl relative opacity-80 active:scale-[0.98] transition-all cursor-pointer">
+<div class="flex gap-md">
+<div class="h-12 w-12 rounded-full bg-[#EAF5EF] flex items-center justify-center text-[#2D7A56] shrink-0">
+<span class="material-symbols-outlined">chat_bubble</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-xs">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-[#2D7A56]">Engagement</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Il y a 2 jours</span>
+</div>
+<p class="text-body-md font-headline-md text-on-surface leading-tight mb-xs">Nouvelle note de Sarah B.</p>
+<p class="text-body-md text-on-surface-variant">"A besoin de prière pour ses examens de fin d'année."</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Optional: Clear all button at bottom for better mobile UX -->
+<div class="mt-xl flex justify-center">
+<button class="bg-surface-container-highest text-on-surface-variant px-xl py-md rounded-xl font-label-md text-label-md flex items-center gap-sm hover:bg-surface-variant transition-all active:scale-95">
+<span class="material-symbols-outlined">delete_sweep</span>
+                Effacer les anciennes notifications
+            </button>
+</div>
+</main>
+<!-- BottomNavBar Mapping -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-sm pb-safe pt-sm bg-surface/80 dark:bg-on-background/80 backdrop-blur-md shadow-[0_-4px_12px_rgba(122,99,88,0.08)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-sm py-xs rounded-xl active:scale-90 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm font-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-sm py-xs rounded-xl active:scale-90 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-sm font-label-sm">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-sm py-xs rounded-xl active:scale-90 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="text-label-sm font-label-sm">Appel</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-sm py-xs rounded-xl active:scale-90 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">hub</span>
+<span class="text-label-sm font-label-sm">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-sm py-xs active:scale-90 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-sm font-label-sm">Paramètres</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction: Mark as read on click
+        document.querySelectorAll('.cursor-pointer').forEach(card => {
+            card.addEventListener('click', function() {
+                const indicator = this.querySelector('.unread-indicator');
+                if (indicator) {
+                    indicator.style.opacity = '0';
+                    setTimeout(() => {
+                        indicator.remove();
+                    }, 300);
+                }
+                this.style.opacity = '0.8';
+                this.classList.remove('bg-surface-container-lowest');
+                this.classList.add('bg-surface-container-low');
+            });
+        });
+    </script>
+</body></html>

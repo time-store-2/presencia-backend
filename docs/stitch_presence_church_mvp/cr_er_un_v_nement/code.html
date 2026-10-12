@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Nouvel événement - Kindred Path</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        
+        .sanctuary-shadow {
+            box-shadow: 0px 4px 20px rgba(45, 106, 79, 0.05);
+        }
+
+        .active-event-card {
+            border: 2px solid #0f5238;
+            background-color: #a8e7c5;
+        }
+
+        body {
+            background-color: #FAFAF8;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #0f5238;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#ffdad2",
+                      "on-surface": "#191d0e",
+                      "on-primary": "#ffffff",
+                      "secondary-fixed-dim": "#ffb4a2",
+                      "inverse-primary": "#95d4b3",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed": "#ffdcc2",
+                      "surface-container-low": "#f2f6dd",
+                      "on-secondary-fixed-variant": "#83260e",
+                      "tertiary-fixed-dim": "#f4bb8e",
+                      "primary-container": "#2d6a4f",
+                      "on-error-container": "#93000a",
+                      "on-primary-container": "#a8e7c5",
+                      "surface-variant": "#e0e5cc",
+                      "error": "#ba1a1a",
+                      "on-surface-variant": "#404943",
+                      "surface-tint": "#2c694e",
+                      "on-tertiary": "#ffffff",
+                      "outline-variant": "#bfc9c1",
+                      "outline": "#707973",
+                      "secondary": "#a33d23",
+                      "on-tertiary-fixed-variant": "#653e1b",
+                      "surface": "#f7fce3",
+                      "on-secondary-container": "#731a04",
+                      "inverse-on-surface": "#eff3da",
+                      "on-error": "#ffffff",
+                      "primary-fixed-dim": "#95d4b3",
+                      "surface-bright": "#f7fce3",
+                      "primary-fixed": "#b1f0ce",
+                      "secondary-container": "#ff8162",
+                      "surface-container-lowest": "#ffffff",
+                      "on-background": "#191d0e",
+                      "on-tertiary-container": "#ffd0ad",
+                      "tertiary": "#653e1b",
+                      "background": "#f7fce3",
+                      "on-primary-fixed-variant": "#0e5138",
+                      "on-secondary-fixed": "#3c0700",
+                      "surface-container": "#ecf0d8",
+                      "on-tertiary-fixed": "#2e1500",
+                      "surface-dim": "#d8dcc4",
+                      "surface-container-highest": "#e0e5cc",
+                      "tertiary-container": "#805530",
+                      "surface-container-high": "#e6ebd2",
+                      "inverse-surface": "#2e3222",
+                      "error-container": "#ffdad6",
+                      "primary": "#0f5238",
+                      "on-primary-fixed": "#002114"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "48px",
+                      "gutter": "24px",
+                      "xs": "4px",
+                      "margin-desktop": "40px",
+                      "sm": "12px",
+                      "base": "8px",
+                      "xl": "80px",
+                      "margin-mobile": "16px",
+                      "md": "24px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "display-lg": ["Plus Jakarta Sans"],
+                      "body-sm": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"],
+                      "label-sm": ["Plus Jakarta Sans"],
+                      "display-lg-mobile": ["Plus Jakarta Sans"],
+                      "label-md": ["Plus Jakarta Sans"],
+                      "headline-sm": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "60px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface pb-32">
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky z-50 bg-background/80 backdrop-blur-md">
+<div class="flex items-center justify-between px-margin-mobile py-4 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<button aria-label="Retour" class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+                    arrow_back
+                </button>
+<h1 class="font-headline-sm text-headline-sm-mobile text-primary">Nouvel événement</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+                    notifications
+                </span>
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant">
+<img alt="Member profile photo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFLnV5H8Hh8OXFJoNrcjVqO4Cz9wCdH0f-8tX7BdM1c-LfFSdpfXeoqcwPAAxXX9Vnq0NbicM_nEvJq7vRXrIGgipsOPhYOnkuX7pDTmX8m-yco2Ge3ZYhJy9t-NkxGFiXeF3Z8VhM6AijrxMSP5Uusd0fEd1ZsGAP1pyQY_3vO0N1BA9NUAlcZN1ZHtkHixDk-rrO5ZoV4WWYw1z7a5YDsS2Erp1tXVh0G8OkBUQci99mLadRl8rAmmBOyh-PE4YAhXbLm51F"/>
+</div>
+</div>
+</div>
+</header>
+<main class="px-margin-mobile mt-6 space-y-8 max-w-lg mx-auto">
+<!-- Illustration Header -->
+<div class="flex flex-col items-center justify-center space-y-4">
+<div class="w-[60px] h-[60px] bg-primary/10 rounded-xl flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[32px]" data-weight="fill">star</span>
+</div>
+<p class="font-body-md text-on-surface-variant text-center">Commencez par choisir le type de rencontre pour votre communauté.</p>
+</div>
+<!-- Event Type Grid -->
+<section class="space-y-4">
+<h2 class="font-label-md text-on-surface-variant">Type d'événement</h2>
+<div class="grid grid-cols-2 gap-4">
+<!-- Active Card -->
+<button class="flex flex-col items-center justify-center p-4 rounded-2xl sanctuary-shadow border-2 border-primary bg-primary-container/10 transition-all active:scale-95">
+<span class="material-symbols-outlined text-[28px] text-primary mb-2">church</span>
+<span class="font-label-sm text-primary">Culte spécial</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 rounded-2xl sanctuary-shadow border border-outline-variant bg-white transition-all hover:bg-surface-container-high active:scale-95">
+<span class="material-symbols-outlined text-[28px] text-secondary mb-2">camping</span>
+<span class="font-label-sm text-on-surface-variant">Camp</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 rounded-2xl sanctuary-shadow border border-outline-variant bg-white transition-all hover:bg-surface-container-high active:scale-95">
+<span class="material-symbols-outlined text-[28px] text-secondary-container mb-2">hiking</span>
+<span class="font-label-sm text-on-surface-variant">Sortie</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 rounded-2xl sanctuary-shadow border border-outline-variant bg-white transition-all hover:bg-surface-container-high active:scale-95">
+<span class="material-symbols-outlined text-[28px] text-tertiary mb-2">school</span>
+<span class="font-label-sm text-on-surface-variant">Formation</span>
+</button>
+</div>
+</section>
+<!-- Form Details -->
+<section class="space-y-6">
+<div class="space-y-2">
+<label class="font-label-md text-on-surface-variant" for="title">Titre de l'événement</label>
+<input class="w-full px-4 py-3 rounded-xl bg-surface-container border border-outline-variant font-body-md" id="title" placeholder="Ex: Culte de Jeunesse" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-on-surface-variant" for="description">Description</label>
+<textarea class="w-full px-4 py-3 rounded-xl bg-surface-container border border-outline-variant font-body-md resize-none" id="description" placeholder="Parlez-nous du programme..." rows="3"></textarea>
+</div>
+<div class="space-y-2">
+<label class="font-label-md text-on-surface-variant" for="location">Lieu</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">map</span>
+<input class="w-full pl-12 pr-4 py-3 rounded-xl bg-surface-container border border-outline-variant font-body-md" id="location" placeholder="Rechercher une adresse ou salle" type="text"/>
+</div>
+</div>
+</section>
+<!-- Dates Section -->
+<section class="space-y-4">
+<h2 class="font-label-md text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span> Dates &amp; Heures
+            </h2>
+<div class="grid grid-cols-1 gap-4">
+<div class="flex items-center gap-3 bg-white p-4 rounded-2xl border border-outline-variant sanctuary-shadow">
+<span class="material-symbols-outlined text-primary">event_available</span>
+<div class="flex-1">
+<p class="font-label-sm text-on-surface-variant">Début</p>
+<p class="font-body-md">Samedi 14 Oct. — 18:00</p>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<div class="flex items-center gap-3 bg-white p-4 rounded-2xl border border-outline-variant sanctuary-shadow">
+<span class="material-symbols-outlined text-secondary">event_busy</span>
+<div class="flex-1">
+<p class="font-label-sm text-on-surface-variant">Fin</p>
+<p class="font-body-md">Samedi 14 Oct. — 21:00</p>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Participants Section -->
+<section class="space-y-4">
+<h2 class="font-label-md text-on-surface-variant">Participants &amp; Groupes</h2>
+<div class="flex flex-wrap gap-2">
+<span class="px-4 py-2 rounded-full bg-primary/10 text-primary font-label-sm flex items-center gap-2 border border-primary/20">
+                    Jeunesse <span class="material-symbols-outlined text-[16px]">close</span>
+</span>
+<span class="px-4 py-2 rounded-full bg-primary/10 text-primary font-label-sm flex items-center gap-2 border border-primary/20">
+                    Musique <span class="material-symbols-outlined text-[16px]">close</span>
+</span>
+<button class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm flex items-center gap-2 border border-outline-variant">
+<span class="material-symbols-outlined text-[16px]">add</span> Ajouter
+                </button>
+</div>
+<div class="space-y-2 mt-4">
+<label class="font-label-md text-on-surface-variant">Capacité maximale</label>
+<div class="flex items-center gap-4">
+<input class="w-32 px-4 py-3 rounded-xl bg-surface-container border border-outline-variant font-body-md" type="number" value="150"/>
+<span class="font-body-sm text-on-surface-variant">places disponibles</span>
+</div>
+</div>
+</section>
+<!-- Toggle Attendance -->
+<section class="flex items-center justify-between bg-secondary-fixed/30 p-4 rounded-2xl border border-secondary-fixed">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">assignment_turned_in</span>
+<span class="font-label-md text-on-secondary-container">Enregistrer les présences</span>
+</div>
+<button class="w-12 h-6 bg-primary rounded-full relative flex items-center px-1 transition-colors" onclick="this.classList.toggle('bg-primary'); this.classList.toggle('bg-outline')">
+<div class="w-4 h-4 bg-white rounded-full translate-x-6"></div>
+</button>
+</section>
+<!-- Main CTA -->
+<div class="pt-4 pb-8">
+<button class="w-full py-4 bg-primary text-white rounded-2xl font-headline-sm flex items-center justify-center gap-3 shadow-lg active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined">calendar_add_on</span>
+                Créer l'événement
+            </button>
+</div>
+</main>
+<!-- Bottom Nav Bar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 pb-safe px-2 bg-surface dark:bg-surface-dim z-50 rounded-t-xl shadow-[0px_-4px_20px_rgba(45,106,79,0.05)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">child_care</span>
+<span class="font-label-sm text-label-sm">Youth</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+<span class="font-label-sm text-label-sm">Appel/QR</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-sm text-label-sm">Groups</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for event type selection
+        const eventCards = document.querySelectorAll('.grid button');
+        eventCards.forEach(card => {
+            card.addEventListener('click', () => {
+                eventCards.forEach(c => {
+                    c.classList.remove('border-primary', 'bg-primary-container/10');
+                    c.classList.add('border-outline-variant', 'bg-white');
+                    const text = c.querySelector('span:last-child');
+                    text.classList.remove('text-primary');
+                    text.classList.add('text-on-surface-variant');
+                });
+                card.classList.add('border-primary', 'bg-primary-container/10');
+                card.classList.remove('border-outline-variant', 'bg-white');
+                const text = card.querySelector('span:last-child');
+                text.classList.add('text-primary');
+                text.classList.remove('text-on-surface-variant');
+            });
+        });
+
+        // Toggle micro-interaction
+        const toggleBtn = document.querySelector('section button.w-12');
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => {
+                const dot = toggleBtn.querySelector('div');
+                dot.classList.toggle('translate-x-6');
+                dot.classList.toggle('translate-x-0');
+            });
+        }
+    </script>
+</body></html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aperçu Parent - Presencia</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#fdba49",
+                        "on-tertiary-fixed-variant": "#533294",
+                        "surface-variant": "#f0dfd8",
+                        "surface-container-low": "#fff1eb",
+                        "on-tertiary-container": "#fffcff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#d2bcff",
+                        "primary-fixed-dim": "#ffb59d",
+                        "surface-container-high": "#f6e5de",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#eaddff",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#fffcff",
+                        "surface-tint": "#a43c17",
+                        "surface": "#fff8f6",
+                        "outline-variant": "#dec0b7",
+                        "background": "#fff8f6",
+                        "on-primary-fixed": "#390b00",
+                        "inverse-primary": "#ffb59d",
+                        "secondary-fixed": "#ffddaf",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#221a16",
+                        "on-primary": "#ffffff",
+                        "primary": "#a13a15",
+                        "surface-dim": "#e7d7d0",
+                        "on-background": "#221a16",
+                        "on-tertiary-fixed": "#25005a",
+                        "inverse-surface": "#382e2a",
+                        "tertiary": "#6949ab",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#57423b",
+                        "primary-fixed": "#ffdbd0",
+                        "on-secondary-fixed-variant": "#614000",
+                        "on-primary-fixed-variant": "#842600",
+                        "tertiary-container": "#8262c6",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#281800",
+                        "secondary": "#805600",
+                        "inverse-on-surface": "#ffede6",
+                        "surface-container-highest": "#f0dfd8",
+                        "outline": "#8b716a",
+                        "secondary-fixed-dim": "#fdba49",
+                        "primary-container": "#c2522b",
+                        "on-secondary-container": "#704b00",
+                        "surface-container": "#fceae3",
+                        "surface-bright": "#fff8f6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "unit": "4px",
+                        "sm": "8px",
+                        "gutter": "12px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "container-margin": "20px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #dec0b7; border-radius: 10px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-margin h-16 bg-surface dark:bg-on-surface shadow-[0_4px_12px_rgba(122,99,88,0.08)]">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+<h1 class="text-headline-md font-headline-md text-primary">Aperçu Parent</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-variant p-2 rounded-full transition-colors active:scale-95">notifications</button>
+</div>
+</header>
+<main class="pt-20 px-container-margin max-w-md mx-auto">
+<!-- Banner Information for Leader -->
+<div class="bg-primary-fixed text-on-primary-fixed p-md rounded-xl mb-lg shadow-sm border border-primary/10 flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">info</span>
+<p class="text-label-md font-label-md leading-tight">Vous visualisez l'interface telle qu'elle apparaît pour les parents de votre groupe.</p>
+</div>
+<!-- Child Selector (Asymmetric Layout) -->
+<section class="mb-xl">
+<div class="flex items-center justify-between mb-md">
+<h2 class="text-headline-md font-headline-md">Mes Enfants</h2>
+<button class="text-primary font-label-md text-label-md flex items-center">Gérer <span class="material-symbols-outlined ml-1">chevron_right</span></button>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-2 no-scrollbar">
+<div class="flex-shrink-0 w-24 h-32 bg-white rounded-xl shadow-[0_4px_12px_rgba(122,99,88,0.08)] border-2 border-primary p-2 flex flex-col items-center justify-center gap-2">
+<img alt="Avatar" class="w-14 h-14 rounded-full object-cover" data-alt="A portrait of a cheerful young boy with curly hair in a natural outdoor setting, softly lit by the golden hour sun. The photography is warm and inviting, aligning with a radical hospitality brand aesthetic using earthy tones. He wears a casual terracotta colored sweater, fitting perfectly into the church youth group brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkH0V7W29q_wldZz9ui1WexBb32dQwh-iGd7tS3YeCXgyeyjMPx6uKHyu8BqOWjG2xDuP2OJihdjXWhTRjrAG-PRjd-7kT90YwnJgFJ45nE56gO48G3NW_aHYzwrILZciGvjsCQ9M_uDpwUmONRb0tMJ6-qwDgtHPHNZOOsUqcwrAXbkKftY6CGNTrIbB962ZyTOK4axgwl0aHUzOz39SHEytq9mdX4O9cjvWS-PyCA7IDVudq1aNb1lND7VXoFRSA8l-mRVrwOw"/>
+<span class="text-label-md font-label-md">Lucas</span>
+</div>
+<div class="flex-shrink-0 w-24 h-32 bg-surface-container-lowest rounded-xl shadow-sm p-2 flex flex-col items-center justify-center gap-2 opacity-60">
+<img alt="Avatar" class="w-14 h-14 rounded-full object-cover" data-alt="A professional, clean portrait of a smiling young girl with long braided hair against a soft-focus garden background. The lighting is bright and airy, reflecting a modern corporate yet warm aesthetic. Her clothing is in soft beige and earth tones, maintaining the cohesive visual palette of the youth community app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCx4HAgfBXe6YFJ69TA9qicMO_6jP5_ALclZ8UNH_4WWHB_4iTaZt2ePKG46z3DmvLNbkzyUfy2w8rWS4Vga83ctywGEurojtz7rgpUVvyIffdia_7y5PArPqwHCB8UNQ6qphSalw8OqOyhVG44VfkJxt81l4uDFngMz_Ob1OBOdptBHNoleDLbnmvXNgxLZwO6e9cMpkBnqJVcjJC6lrk7MQzAS_YycqRNLWWOpN1t8jUUdmI61twWRQjiAPgl-3tiUNSy_gf6bA"/>
+<span class="text-label-md font-label-md">Emma</span>
+</div>
+<div class="flex-shrink-0 w-24 h-32 bg-surface-container flex items-center justify-center rounded-xl border-2 border-dashed border-outline-variant">
+<span class="material-symbols-outlined text-outline">add</span>
+</div>
+</div>
+</section>
+<!-- Attendance Calendar Section -->
+<section class="mb-xl bg-white rounded-xl p-md shadow-[0_4px_12px_rgba(122,99,88,0.08)]">
+<div class="flex items-center justify-between mb-lg">
+<div>
+<h3 class="text-headline-md font-headline-md">Assiduité</h3>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Lucas • Session d'Automne</p>
+</div>
+<div class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full text-label-md font-label-md">
+                    85% Présent
+                </div>
+</div>
+<!-- Custom Horizontal Calendar -->
+<div class="grid grid-cols-7 gap-2 text-center mb-md">
+<div class="text-label-sm font-label-sm text-outline">Dim</div>
+<div class="text-label-sm font-label-sm text-outline">Lun</div>
+<div class="text-label-sm font-label-sm text-outline">Mar</div>
+<div class="text-label-sm font-label-sm text-outline">Mer</div>
+<div class="text-label-sm font-label-sm text-outline">Jeu</div>
+<div class="text-label-sm font-label-sm text-outline">Ven</div>
+<div class="text-label-sm font-label-sm text-outline">Sam</div>
+<div class="h-8 flex items-center justify-center text-label-md">28</div>
+<div class="h-8 flex items-center justify-center text-label-md">29</div>
+<div class="h-8 flex items-center justify-center text-label-md">30</div>
+<div class="h-8 flex items-center justify-center text-label-md bg-secondary-container/20 rounded-full text-secondary font-bold">1</div>
+<div class="h-8 flex items-center justify-center text-label-md">2</div>
+<div class="h-8 flex items-center justify-center text-label-md">3</div>
+<div class="h-8 flex items-center justify-center text-label-md">4</div>
+</div>
+<!-- List of Recent Events -->
+<div class="space-y-sm">
+<div class="flex items-center justify-between p-sm rounded-lg hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-[#2D7A56]"></div>
+<span class="text-body-md font-body-md">Culte Jeunesse</span>
+</div>
+<span class="text-label-sm font-label-sm px-2 py-0.5 rounded-full bg-[#EAF5EF] text-[#2D7A56]">Présent</span>
+</div>
+<div class="flex items-center justify-between p-sm rounded-lg hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-[#C0392B]"></div>
+<span class="text-body-md font-body-md">Groupe de Partage</span>
+</div>
+<span class="text-label-sm font-label-sm px-2 py-0.5 rounded-full bg-[#FDECEA] text-[#C0392B]">Absent</span>
+</div>
+<div class="flex items-center justify-between p-sm rounded-lg hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-[#D97706]"></div>
+<span class="text-body-md font-body-md">Sortie Pizza</span>
+</div>
+<span class="text-label-sm font-label-sm px-2 py-0.5 rounded-full bg-[#FEF3C7] text-[#D97706]">Retard</span>
+</div>
+</div>
+</section>
+<!-- Bento Grid for Resources & Announcements -->
+<section class="grid grid-cols-2 gap-md mb-xl">
+<!-- Latest Announcement -->
+<div class="col-span-2 bg-[#FDF0EB] rounded-2xl p-lg relative overflow-hidden group">
+<div class="relative z-10">
+<h3 class="text-headline-md font-headline-md text-primary mb-1">Annonce Importante</h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-lg">Inscription ouverte pour le camp d'été 2024 ! Places limitées.</p>
+<button class="bg-primary text-white px-lg py-sm rounded-xl text-label-md font-label-md transition-transform active:scale-95">S'inscrire</button>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[120px]">campaign</span>
+</div>
+</div>
+<!-- Shared Resource 1 -->
+<div class="bg-white rounded-2xl p-md shadow-sm border border-surface-variant/30 flex flex-col gap-3">
+<div class="w-10 h-10 rounded-lg bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<h4 class="text-label-md font-label-md">Guide Parental</h4>
+<p class="text-label-sm font-label-sm text-outline">Accompagner la foi à la maison.</p>
+</div>
+<!-- Shared Resource 2 -->
+<div class="bg-white rounded-2xl p-md shadow-sm border border-surface-variant/30 flex flex-col gap-3">
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined">play_circle</span>
+</div>
+<h4 class="text-label-md font-label-md">Playlist Culte</h4>
+<p class="text-label-sm font-label-sm text-outline">Les chants de cette semaine.</p>
+</div>
+</section>
+<!-- Leader Quick Action -->
+<div class="bg-surface-container-high rounded-xl p-md flex items-center justify-between mb-xl border border-outline-variant/20">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-primary/10 rounded-full">
+<span class="material-symbols-outlined text-primary">chat</span>
+</div>
+<span class="text-label-md font-label-md">Contacter les parents</span>
+</div>
+<span class="material-symbols-outlined text-outline">arrow_forward</span>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-20 bg-surface/80 dark:bg-on-surface/80 backdrop-blur-md border-t border-surface-variant shadow-[0_-4px_12px_rgba(122,99,88,0.08)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-label-sm font-label-sm">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="text-label-sm font-label-sm">Événements</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="family_restroom" style="font-variation-settings: 'FILL' 1;">family_restroom</span>
+<span class="text-label-sm font-label-sm">Parents</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-label-sm font-label-sm">Profil</span>
+</a>
+</nav>
+<script>
+        // Simple Interaction logic
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('click', (e) => {
+                if(el.classList.contains('active:scale-95') || el.classList.contains('active:scale-90')) return;
+                el.classList.add('scale-95');
+                setTimeout(() => el.classList.remove('scale-95'), 150);
+            });
+        });
+
+        // Child selector toggle
+        const childCards = document.querySelectorAll('section:nth-of-type(1) .flex-shrink-0');
+        childCards.forEach(card => {
+            card.addEventListener('click', () => {
+                childCards.forEach(c => {
+                    c.classList.remove('border-2', 'border-primary', 'opacity-100');
+                    c.classList.add('opacity-60');
+                });
+                card.classList.add('border-2', 'border-primary', 'opacity-100');
+                card.classList.remove('opacity-60');
+            });
+        });
+    </script>
+</body></html>

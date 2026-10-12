@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Presencia - Bienvenue</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#614000",
+                    "on-error": "#ffffff",
+                    "secondary": "#805600",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed": "#25005a",
+                    "surface-variant": "#f0dfd8",
+                    "surface-bright": "#fff8f6",
+                    "secondary-fixed": "#ffddaf",
+                    "on-background": "#221a16",
+                    "inverse-surface": "#382e2a",
+                    "on-tertiary-container": "#fffcff",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#f0dfd8",
+                    "on-secondary-container": "#704b00",
+                    "background": "#fff8f6",
+                    "primary-container": "#c2522b",
+                    "on-primary-container": "#fffcff",
+                    "inverse-on-surface": "#ffede6",
+                    "tertiary-fixed-dim": "#d2bcff",
+                    "secondary-container": "#fdba49",
+                    "tertiary": "#6949ab",
+                    "primary": "#a13a15",
+                    "surface-tint": "#a43c17",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#f6e5de",
+                    "on-tertiary-fixed-variant": "#533294",
+                    "on-secondary-fixed": "#281800",
+                    "on-surface-variant": "#57423b",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#ffdbd0",
+                    "on-primary-fixed-variant": "#842600",
+                    "surface-container": "#fceae3",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#ffb59d",
+                    "tertiary-container": "#8262c6",
+                    "outline": "#8b716a",
+                    "on-primary-fixed": "#390b00",
+                    "primary-fixed-dim": "#ffb59d",
+                    "surface": "#fff8f6",
+                    "secondary-fixed-dim": "#fdba49",
+                    "on-surface": "#221a16",
+                    "tertiary-fixed": "#eaddff",
+                    "surface-dim": "#e7d7d0",
+                    "outline-variant": "#dec0b7",
+                    "surface-container-low": "#fff1eb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "gutter": "12px",
+                    "unit": "4px",
+                    "container-margin": "20px",
+                    "xs": "4px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #fff8f6; /* surface-bright */
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .splash-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+        }
+
+        .logo-animation {
+            animation: heartBeat 2.5s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+            0% { transform: scale(1); opacity: 0.9; }
+            14% { transform: scale(1.1); opacity: 1; }
+            28% { transform: scale(1); opacity: 0.9; }
+            42% { transform: scale(1.1); opacity: 1; }
+            70% { transform: scale(1); opacity: 0.9; }
+        }
+
+        .fade-in {
+            animation: fadeIn 1.2s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .loader-bar {
+            width: 140px;
+            height: 3px;
+            background-color: #f0dfd8; /* surface-variant */
+            border-radius: 9999px;
+            overflow: hidden;
+            position: absolute;
+            bottom: 64px;
+        }
+
+        .loader-progress {
+            width: 40%;
+            height: 100%;
+            background-color: #a13a15; /* primary */
+            border-radius: 9999px;
+            animation: loadingProgress 1.8s infinite ease-in-out;
+        }
+
+        @keyframes loadingProgress {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(300%); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-bright">
+<div class="splash-container">
+<!-- Logo Section -->
+<div class="flex flex-col items-center gap-md">
+<div class="logo-animation flex items-center justify-center">
+<div class="w-24 h-24 bg-primary rounded-[24px] flex items-center justify-center shadow-lg" style="box-shadow: 0 12px 32px rgba(161, 58, 21, 0.15);">
+<span class="material-symbols-outlined text-[64px] text-white select-none" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+</div>
+<!-- Brand Name -->
+<div class="fade-in text-center mt-md">
+<h1 class="font-display-lg text-display-lg text-primary tracking-tight">Presencia</h1>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-70 mt-xs">L'hospitalité radicale</p>
+</div>
+</div>
+<!-- Subtle Background Decorative Element -->
+<div class="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
+<div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-primary-fixed-dim blur-[120px]"></div>
+<div class="absolute -bottom-[10%] -right-[10%] w-[50%] h-[50%] rounded-full bg-secondary-fixed-dim blur-[140px]"></div>
+</div>
+<!-- Discret Loading Indicator -->
+<div class="loader-bar">
+<div class="loader-progress"></div>
+</div>
+<!-- Tagline/Footer (Optional but elegant) -->
+<div class="absolute bottom-sm text-center fade-in" style="animation-delay: 0.5s;">
+<p class="font-label-sm text-label-sm text-outline-variant uppercase tracking-[0.2em]">Service de Communauté</p>
+</div>
+</div>
+<script>
+        // Interactive splash effect: Subtle mouse movement influence
+        document.addEventListener('mousemove', (e) => {
+            const container = document.querySelector('.splash-container');
+            const moveX = (e.clientX - window.innerWidth / 2) / 50;
+            const moveY = (e.clientY - window.innerHeight / 2) / 50;
+            
+            const logo = document.querySelector('.logo-animation');
+            logo.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+
+        // Simulating a navigation delay to the dashboard
+        // In a real app, this would check authentication and load assets
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                console.log('Transition to main app layout...');
+                // document.body.style.opacity = '0';
+                // document.body.style.transition = 'opacity 0.8s ease';
+            }, 3000);
+        });
+    </script>
+</body></html>

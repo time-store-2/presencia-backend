@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Onboarding - Collaboration simplifiée</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#614000",
+                    "on-error": "#ffffff",
+                    "secondary": "#805600",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed": "#25005a",
+                    "surface-variant": "#f0dfd8",
+                    "surface-bright": "#fff8f6",
+                    "secondary-fixed": "#ffddaf",
+                    "on-background": "#221a16",
+                    "inverse-surface": "#382e2a",
+                    "on-tertiary-container": "#fffcff",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#f0dfd8",
+                    "on-secondary-container": "#704b00",
+                    "background": "#fff8f6",
+                    "primary-container": "#c2522b",
+                    "on-primary-container": "#fffcff",
+                    "inverse-on-surface": "#ffede6",
+                    "tertiary-fixed-dim": "#d2bcff",
+                    "secondary-container": "#fdba49",
+                    "tertiary": "#6949ab",
+                    "primary": "#a13a15",
+                    "surface-tint": "#a43c17",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#f6e5de",
+                    "on-tertiary-fixed-variant": "#533294",
+                    "on-secondary-fixed": "#281800",
+                    "on-surface-variant": "#57423b",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#ffdbd0",
+                    "on-primary-fixed-variant": "#842600",
+                    "surface-container": "#fceae3",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#ffb59d",
+                    "tertiary-container": "#8262c6",
+                    "outline": "#8b716a",
+                    "on-primary-fixed": "#390b00",
+                    "primary-fixed-dim": "#ffb59d",
+                    "surface": "#fff8f6",
+                    "secondary-fixed-dim": "#fdba49",
+                    "on-surface": "#221a16",
+                    "tertiary-fixed": "#eaddff",
+                    "surface-dim": "#e7d7d0",
+                    "outline-variant": "#dec0b7",
+                    "surface-container-low": "#fff1eb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "gutter": "12px",
+                    "unit": "4px",
+                    "container-margin": "20px",
+                    "xs": "4px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #fff8f6;
+            color: #221a16;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .blob {
+            position: absolute;
+            filter: blur(60px);
+            z-index: -1;
+            opacity: 0.4;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-screen">
+<!-- Atmospheric Blobs for Tactile Warmth -->
+<div class="blob bg-primary w-64 h-64 rounded-full top-[-10%] right-[-10%]"></div>
+<div class="blob bg-secondary w-72 h-72 rounded-full bottom-[20%] left-[-20%]"></div>
+<main class="flex-1 flex flex-col items-center justify-between px-container-margin py-xl max-w-lg mx-auto w-full">
+<!-- Top Branding / Skip Action -->
+<div class="w-full flex justify-end items-center mb-md">
+<button class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors">
+                Passer l'introduction
+            </button>
+</div>
+<!-- Illustration Section -->
+<div class="relative w-full aspect-square max-w-[320px] flex items-center justify-center fade-in">
+<!-- Glassmorphism Container for the Illustration -->
+<div class="absolute inset-0 bg-white/30 backdrop-blur-md rounded-[32px] border border-white/50 shadow-[0_8px_32px_rgba(122,99,88,0.05)] overflow-hidden">
+<img alt="Collaboration" class="w-full h-full object-cover" data-alt="A diverse team of young community leaders collaborating in a bright, warm-toned modern church office. They are gathered around a wooden table with digital tablets, smiling and sharing ideas. The lighting is soft and natural, emphasizing a welcoming, communal atmosphere with earthy terracotta and pale wood accents. The overall style is professional yet tactile and cozy, reflecting radical hospitality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbtA0o9HfmriTaL9K9Fc_JRjOccs64nFoI5yVQydhZJbmmy2iDtaRrAJYO3bZKfj_-IjUOAEcM4pbnyicALy37zIJc-BxSMTJtgZDadsmrPxm6ee7gx-ez5vdET_ViqTIMqamJdnEMBuTTfv_dRkADVA8OIrvXMtqjloIwG3B1LxOGeQCpFC9Hj6Nl-NrHI-6jOcpY1ZNxM1Cm4uTGaJT7JODiFhdKtrcbrfkkofAhm72Q9XejezRVhdqGehZg_BLaMVKPfKBPjQ"/>
+</div>
+<!-- Floating Decorative Element: Role Badges -->
+<div class="absolute -bottom-4 -right-4 bg-surface-container-lowest p-md rounded-xl shadow-lg border border-surface-variant flex flex-col gap-xs animate-bounce" style="animation-duration: 3s;">
+<div class="flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="font-label-sm text-label-sm text-on-surface">Administrateur</span>
+</div>
+<div class="flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="font-label-sm text-label-sm text-on-surface">Animateur</span>
+</div>
+</div>
+</div>
+<!-- Content Section -->
+<div class="w-full text-center mt-xl space-y-md fade-in" style="animation-delay: 0.2s;">
+<h1 class="font-display-lg text-display-lg text-on-background tracking-tight">
+                Collaboration simplifiée
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant px-sm">
+                Invitez vos collaborateurs et gérez ensemble les groupes de votre église avec des rôles personnalisés.
+            </p>
+</div>
+<!-- Footer Actions -->
+<div class="w-full mt-xl space-y-lg fade-in" style="animation-delay: 0.4s;">
+<!-- Progression Indicator -->
+<div class="flex justify-center items-center gap-sm">
+<div class="h-1.5 w-4 rounded-full bg-surface-container-highest"></div>
+<div class="h-1.5 w-8 rounded-full bg-primary transition-all"></div>
+<div class="h-1.5 w-4 rounded-full bg-surface-container-highest"></div>
+</div>
+<!-- Primary Action -->
+<div class="flex flex-col gap-md">
+<button class="w-full bg-primary text-on-primary py-md px-lg rounded-xl font-headline-md text-headline-md shadow-md active:scale-95 transition-all hover:bg-primary-container">
+                    Suivant
+                </button>
+</div>
+</div>
+</main>
+<script>
+        // Simple Interaction Logic
+        document.querySelector('button.bg-primary').addEventListener('click', () => {
+            // Trigger a transition out before navigating
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.4s ease-out';
+            setTimeout(() => {
+                // Potential navigation logic would go here
+                console.log("Navigating to step 3/3");
+            }, 400);
+        });
+
+        // Hover effect for the skip button
+        const skipBtn = document.querySelector('.text-on-surface-variant');
+        skipBtn.addEventListener('mouseenter', () => {
+            skipBtn.style.transform = 'translateX(2px)';
+            skipBtn.style.transition = 'transform 0.2s ease-out';
+        });
+        skipBtn.addEventListener('mouseleave', () => {
+            skipBtn.style.transform = 'translateX(0)';
+        });
+    </script>
+</body></html>

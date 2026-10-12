@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Presencia - Faire l'appel</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+        }
+        body {
+            background-color: #111413;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(177, 205, 193, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(160, 207, 204, 0.1) 0px, transparent 50%);
+            min-height: 100vh;
+            color: #e1e3e1;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#b1cdc1",
+                        "surface-bright": "#373a39",
+                        "primary-fixed": "#cde9dd",
+                        "on-error": "#690005",
+                        "inverse-on-surface": "#2e3130",
+                        "on-background": "#e1e3e1",
+                        "on-tertiary-container": "#484d4c",
+                        "secondary-container": "#1e4e4c",
+                        "surface-container-lowest": "#0c0f0e",
+                        "on-primary-fixed-variant": "#334c43",
+                        "on-secondary-fixed": "#00201f",
+                        "surface-container": "#1d201f",
+                        "tertiary": "#d6dad8",
+                        "background": "#111413",
+                        "on-primary-fixed": "#072019",
+                        "primary": "#c3dfd3",
+                        "on-tertiary-fixed": "#181c1c",
+                        "surface-dim": "#111413",
+                        "tertiary-container": "#babebc",
+                        "surface-container-highest": "#323534",
+                        "error-container": "#93000a",
+                        "inverse-surface": "#e1e3e1",
+                        "surface-container-high": "#282b29",
+                        "on-primary": "#1d352d",
+                        "secondary-fixed-dim": "#a0cfcc",
+                        "inverse-primary": "#4b645a",
+                        "on-secondary": "#003735",
+                        "secondary-fixed": "#bbece8",
+                        "on-surface": "#e1e3e1",
+                        "on-primary-container": "#395148",
+                        "surface-variant": "#323534",
+                        "on-surface-variant": "#c2c8c4",
+                        "error": "#ffb4ab",
+                        "surface-tint": "#b1cdc1",
+                        "tertiary-fixed": "#dfe3e1",
+                        "surface-container-low": "#191c1b",
+                        "on-secondary-fixed-variant": "#1e4e4c",
+                        "tertiary-fixed-dim": "#c3c7c6",
+                        "primary-container": "#a8c3b8",
+                        "on-error-container": "#ffdad6",
+                        "outline-variant": "#424845",
+                        "outline": "#8c928e",
+                        "secondary": "#a0cfcc",
+                        "on-tertiary": "#2d3130",
+                        "surface": "#111413",
+                        "on-secondary-container": "#8fbeba",
+                        "on-tertiary-fixed-variant": "#434847"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "xl": "64px",
+                        "md": "24px",
+                        "lg": "40px",
+                        "container-padding-mobile": "20px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "container-padding-desktop": "120px",
+                        "sm": "12px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "1.4", "letterSpacing": "0.03em", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "0em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-white/10 dark:bg-black/10 backdrop-blur-[40px] border-b border-white/15 shadow-[0_20px_40px_rgba(0,0,0,0.1)] flex justify-between items-center px-container-padding-mobile py-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-white/20">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a young mentor with a friendly expression. Soft studio lighting highlights his features against a blurred, misty teal background. The image has a calm, empathetic mood and follows the ethereal aesthetic of the Presencia brand system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7Q6kKpLSYd3aW6Q2qSZfaj0oKp4kjsU0aZOizg9e3VFICd8iFNOjhnanOs_UxTZjSPfQd_8ISJavgWgq4e-W_6fLm3SvWF0GAQrjUMEd_5we2qEFAhG9Mkt_HbcWP0nSi0jAGtQDtVIxDiQYs-ZWgUL-eDwvwPmwCnOMMuOQUnx4-kjKGxFd5O8k8PDuC1iQMvkB4AFYpzOB-DH_7H9VLXskIF4FfEqIDU4p8xv-ekqsqO2gg09qveAk2Hg3lSaYYzE_unBNFoQ"/>
+</div>
+<h1 class="font-headline-md text-headline-md font-semibold text-primary dark:text-primary-fixed-dim">Presencia</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface hover:bg-white/5 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<main class="max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop pt-8 pb-32">
+<!-- Header Section -->
+<section class="mb-lg">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-2">Faire l'appel</h2>
+<p class="text-on-surface-variant font-body-md">Session : Club de Foot Jeunesse - 24 Mai 2024</p>
+</section>
+<!-- Stats Section (Bento Grid) -->
+<section class="grid grid-cols-3 gap-4 mb-lg">
+<div class="glass-card rounded-3xl p-md flex flex-col items-center justify-center text-center">
+<span class="text-primary font-bold text-headline-md mb-1" id="stat-presents">18</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Présents</span>
+</div>
+<div class="glass-card rounded-3xl p-md flex flex-col items-center justify-center text-center">
+<span class="text-error font-bold text-headline-md mb-1" id="stat-absents">3</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Absents</span>
+</div>
+<div class="glass-card rounded-3xl p-md flex flex-col items-center justify-center text-center">
+<span class="text-secondary font-bold text-headline-md mb-1" id="stat-late">2</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Retards</span>
+</div>
+</section>
+<!-- Search Bar -->
+<div class="mb-md">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-white/5 border border-white/10 rounded-full py-3 pl-12 pr-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all" placeholder="Rechercher un jeune..." type="text"/>
+</div>
+</div>
+<!-- Youth List -->
+<div class="space-y-4">
+<!-- List Item Template -->
+<div class="glass-card rounded-3xl p-4 flex items-center justify-between group hover:bg-white/15 transition-all">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full border border-white/10 overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="A portrait of a teenage boy with a thoughtful expression, set against a soft, out-of-focus park background. The lighting is warm and natural, suggesting a late afternoon glow. The image style is soft and minimalist, perfectly aligned with the ethereal digital sanctuary aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYkDsZxujqi8PfBfxfZAzhJfjf_rC_1MhXR2godsTn0kDVcog4DzEDx7D8FCit_mPhgSaWeH81WT1AWa3dlFLNwQR8ej7E39xxUaekLZfU9B0C3w8l1Qx5ms1jpQ4fuWIWO7BxqphRoVRxX7u-TW7fQnFKV9ETtCGP-AWxzqY_Ct__4if5D3NaUJ2c61ucd4ekmuJny75rdPDjnbNOI8vhV7yzGS-43W7Lpn7v3s2VyzA1VlfLwaS8zy48WNKFdTpRtpO1pjTNUQ"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Lucas Bernard</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">U15 - Milieu</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="w-10 h-10 rounded-full flex items-center justify-center font-bold font-label-md text-label-md border border-white/10 text-on-surface-variant hover:bg-primary/20 hover:text-primary transition-all active:scale-90 attendance-btn" data-status="P">P</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center font-bold font-label-md text-label-md border border-white/10 text-on-surface-variant hover:bg-error/20 hover:text-error transition-all active:scale-90 attendance-btn" data-status="A">A</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center font-bold font-label-md text-label-md border border-white/10 text-on-surface-variant hover:bg-secondary/20 hover:text-secondary transition-all active:scale-90 attendance-btn" data-status="R">R</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center font-bold font-label-md text-label-md border border-white/10 text-on-surface-variant hover:bg-white/10 hover:text-on-surface transition-all active:scale-90 attendance-btn" data-status="E">E</button>
+</div>
+</div>
+<!-- List Item 2 -->
+<div class="glass-card rounded-3xl p-4 flex items-center justify-between group hover:bg-white/15 transition-all">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full border border-white/10 overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="Close-up portrait of a young girl with curly hair and a gentle smile. She is positioned in a modern setting with high-key lighting that creates soft shadows and a dreamy, ethereal feel. The color palette features muted sage and teal tones, providing a serene and professional look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4zFIXqvbvreyPAMTI0NKQvWMKLHMzHa7Zt834nUTA952S1FBTfVAhux4AtqQ1_lxblnPszWlpUgQd-ckGMnYPR-p6MIPJpKzguYKu-CffwcEiHS4Q3PfVEsgMYbwoNNHY9Kw7sDsUI4MyYMx_5jmFl7DKIM4kcPaIMN0oKthTxpBmOFclk74OSnGLUQVM5JINZ3xDIFKJkWd8sC4n0EtnSUhktEHJXCQPsaAxz74CnUk9j3Ba864xfIQmsdWpoBU79-wAnagaLg"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Léa Dubois</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">U15 - Défense</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="w-10 h-10 rounded-full flex items-center justify-center font-bold font-label-md text-label-md border border-white/10 text-on-surface-variant hover:bg-primary/20 hover:text-primary transition-all active:scale-90 attendance-btn" data-status="P">P</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center font-bold font-label-md text-label-md border border-white/10 text-on-surface-variant hover:bg-error/20 hover:text-error transition-all active:scale-90 attendance-btn" data-status="A">A</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center font-bold font-label-md text-label-md border border-white/10 text-on-surface-variant hover:bg-secondary/20 hover:text-secondary transition-all active:scale-90 attendance-btn" data-status="R">R</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center font-bold font-label-md text-label-md border border-white/10 text-on-surface-variant hover:bg-white/10 hover:text-on-surface transition-all active:scale-90 attendance-btn" data-status="E">E</button>
+</div>
+</div>
+<!-- List Item 3 -->
+<div class="glass-card rounded-3xl p-4 flex items-center justify-between group hover:bg-white/15 transition-all">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full border border-white/10 overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="A portrait of a young woman looking confidently towards the camera. The background is a soft gradient of morning light coming through a frosted window. The image is minimalist and spacious, conveying a sense of mental clarity and tranquility through its cool teal and grey color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy5BsVzlSAhz1F9sLhg3gRoZeosYD9_9HWYeZVcAw8R15Eftkj9wHrSu19A6mh-j5Gsm-_ZwhNMRR99HWBkXnRdzGulyANqKoLgHDDfUFkn2PgnvYYiTGxabQnS0BFvKqX6i7eFR2pQNkwuoDgQ6cFZ53m7aDzTX5JQ-6-nALjykII544MhyuJLeqfglsqgTAOw9oN_7qxEDLHzR8w6sDzffnhsg4qR-ayDDKyAvi1A3Me-iwLWARES57L8CzN7PHdPcmrpZpQ4Q"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Amine Khaldi</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">U15 - Attaque</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="w-10 h-10 rounded-full flex items-center justify-center font-bold font-label-md text-label-md border border-white/10 text-on-surface-variant hover:bg-primary/20 hover:text-primary transition-all active:scale-90 attendance-btn" data-status="P">P</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center font-bold font-label-md text-label-md border border-white/10 text-on-surface-variant hover:bg-error/20 hover:text-error transition-all active:scale-90 attendance-btn" data-status="A">A</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center font-bold font-label-md text-label-md border border-white/10 text-on-surface-variant hover:bg-secondary/20 hover:text-secondary transition-all active:scale-90 attendance-btn" data-status="R">R</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center font-bold font-label-md text-label-md border border-white/10 text-on-surface-variant hover:bg-white/10 hover:text-on-surface transition-all active:scale-90 attendance-btn" data-status="E">E</button>
+</div>
+</div>
+<!-- List Item 4 -->
+<div class="glass-card rounded-3xl p-4 flex items-center justify-between group hover:bg-white/15 transition-all">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full border border-white/10 overflow-hidden bg-primary/10 flex items-center justify-center">
+<span class="text-primary font-bold text-label-md">SK</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Sami Kassir</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">U15 - Gardien</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="w-10 h-10 rounded-full flex items-center justify-center font-bold font-label-md text-label-md border border-white/10 text-on-surface-variant hover:bg-primary/20 hover:text-primary transition-all active:scale-90 attendance-btn" data-status="P">P</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center font-bold font-label-md text-label-md border border-white/10 text-on-surface-variant hover:bg-error/20 hover:text-error transition-all active:scale-90 attendance-btn" data-status="A">A</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center font-bold font-label-md text-label-md border border-white/10 text-on-surface-variant hover:bg-secondary/20 hover:text-secondary transition-all active:scale-90 attendance-btn" data-status="R">R</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center font-bold font-label-md text-label-md border border-white/10 text-on-surface-variant hover:bg-white/10 hover:text-on-surface transition-all active:scale-90 attendance-btn" data-status="E">E</button>
+</div>
+</div>
+</div>
+<!-- Floating Action Button -->
+<div class="fixed bottom-32 right-gutter z-40">
+<button class="bg-primary text-on-primary font-label-md text-label-md flex items-center gap-2 px-8 py-4 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.3)] hover:scale-105 active:scale-95 transition-all duration-300">
+<span class="material-symbols-outlined">save</span>
+<span>Sauvegarder l'appel</span>
+</button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-gutter pb-8 pt-2 bg-white/12 dark:bg-surface-container/30 backdrop-blur-[40px] border-t border-white/15">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant/70 px-4 py-2 hover:bg-white/10 transition-all active:scale-90 duration-300 rounded-full cursor-pointer">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant/70 px-4 py-2 hover:bg-white/10 transition-all active:scale-90 duration-300 rounded-full cursor-pointer">
+<span class="material-symbols-outlined">person_celebrate</span>
+<span class="font-label-sm text-label-sm">Jeunes</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary/20 text-primary dark:text-primary-fixed rounded-full px-4 py-2 transition-all active:scale-90 duration-300 cursor-pointer">
+<span class="material-symbols-outlined">fact_check</span>
+<span class="font-label-sm text-label-sm">Appel</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant/70 px-4 py-2 hover:bg-white/10 transition-all active:scale-90 duration-300 rounded-full cursor-pointer">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-sm text-label-sm">Groups</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant/70 px-4 py-2 hover:bg-white/10 transition-all active:scale-90 duration-300 rounded-full cursor-pointer">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</div>
+</nav>
+<script>
+        document.querySelectorAll('.attendance-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const parent = this.parentElement;
+                const siblings = parent.querySelectorAll('.attendance-btn');
+                const status = this.getAttribute('data-status');
+                
+                // Clear active states
+                siblings.forEach(btn => {
+                    btn.classList.remove('bg-primary', 'text-on-primary', 'bg-error', 'text-on-error', 'bg-secondary', 'text-on-secondary', 'bg-white/20', 'text-white', 'border-transparent');
+                    btn.classList.add('border-white/10', 'text-on-surface-variant');
+                });
+
+                // Apply active style
+                this.classList.remove('border-white/10', 'text-on-surface-variant');
+                this.classList.add('border-transparent');
+                
+                if(status === 'P') {
+                    this.classList.add('bg-primary', 'text-on-primary');
+                } else if(status === 'A') {
+                    this.classList.add('bg-error', 'text-on-error');
+                } else if(status === 'R') {
+                    this.classList.add('bg-secondary', 'text-on-secondary');
+                } else if(status === 'E') {
+                    this.classList.add('bg-white/20', 'text-white');
+                }
+
+                // Small haptic-like animation
+                this.classList.add('scale-110');
+                setTimeout(() => this.classList.remove('scale-110'), 200);
+                
+                updateStats();
+            });
+        });
+
+        function updateStats() {
+            // This would normally recalculate based on selected buttons
+            // For demo, we just add a small glow effect to the stats cards
+            const stats = document.querySelectorAll('.glass-card p');
+            stats.forEach(stat => {
+                stat.parentElement.classList.add('ring-1', 'ring-white/30');
+                setTimeout(() => stat.parentElement.classList.remove('ring-1', 'ring-white/30'), 500);
+            });
+        }
+    </script>
+</body></html>

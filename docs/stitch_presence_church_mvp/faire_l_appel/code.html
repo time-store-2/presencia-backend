@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Faire l'appel - École du dimanche</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .status-btn-active {
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#cfe9d8",
+                        "outline": "#707973",
+                        "primary-fixed-dim": "#95d4b3",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#8d4d4e",
+                        "surface-container": "#eceeea",
+                        "surface-container-highest": "#e1e3df",
+                        "error-container": "#ffdad6",
+                        "background": "#f8faf6",
+                        "on-primary-fixed-variant": "#0e5138",
+                        "on-tertiary-fixed": "#390b0e",
+                        "on-tertiary-fixed-variant": "#6f3537",
+                        "inverse-on-surface": "#eff1ed",
+                        "surface-variant": "#e1e3df",
+                        "surface-container-low": "#f2f4f0",
+                        "inverse-surface": "#2e312f",
+                        "inverse-primary": "#95d4b3",
+                        "on-primary-fixed": "#002114",
+                        "secondary-container": "#cfe9d8",
+                        "surface": "#f8faf6",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#f8faf6",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#a8e7c5",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-background": "#191c1a",
+                        "on-surface-variant": "#404943",
+                        "secondary-fixed-dim": "#b3ccbd",
+                        "surface-container-high": "#e7e9e5",
+                        "on-secondary-fixed": "#092016",
+                        "secondary": "#4c6357",
+                        "tertiary-fixed": "#ffdad9",
+                        "outline-variant": "#bfc9c1",
+                        "on-surface": "#191c1a",
+                        "on-tertiary-container": "#ffcfce",
+                        "surface-dim": "#d8dbd7",
+                        "primary-fixed": "#b1f0ce",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#354c3f",
+                        "on-secondary-container": "#526a5c",
+                        "primary": "#0f5238",
+                        "tertiary": "#713638",
+                        "surface-tint": "#2c694e",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb3b3",
+                        "primary-container": "#2d6a4f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "margin-mobile": "20px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "margin-desktop": "40px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-bold": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "headline-md": ["20px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                        "label-bold": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["22px", {"lineHeight": "1.3", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body-md text-on-background min-h-screen pb-32">
+<!-- Top Navigation Header -->
+<header class="sticky top-0 z-40 bg-surface/80 backdrop-blur-md">
+<div class="flex items-center justify-between px-margin-mobile py-md max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<div>
+<h1 class="font-headline-md text-headline-md text-on-surface">École du dimanche</h1>
+<p class="font-label-md text-label-md text-outline">Dimanche 15 juin</p>
+</div>
+</div>
+<button class="bg-[#D8F3DC] text-primary px-lg py-sm rounded-xl font-label-bold text-label-bold hover:opacity-90 active:scale-95 transition-all">
+                Enregistrer
+            </button>
+</div>
+<!-- Progress Bar Section -->
+<div class="px-margin-mobile pb-md">
+<div class="flex justify-between items-end mb-xs">
+<span class="font-label-bold text-label-bold text-primary">32 / 47 enregistrés</span>
+<span class="font-label-md text-label-md text-outline">68% complété</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full transition-all duration-500" style="width: 68%;"></div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-margin-mobile pt-md">
+<!-- Status Legend & Search -->
+<section class="space-y-lg mb-xl">
+<div class="flex items-center gap-3 overflow-x-auto scrollbar-hide py-xs">
+<div class="flex items-center gap-2 px-md py-sm bg-surface-container-lowest border border-outline-variant rounded-full flex-shrink-0">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="font-label-md text-label-md">Présent</span>
+</div>
+<div class="flex items-center gap-2 px-md py-sm bg-surface-container-lowest border border-outline-variant rounded-full flex-shrink-0">
+<span class="w-3 h-3 rounded-full bg-error"></span>
+<span class="font-label-md text-label-md">Absent</span>
+</div>
+<div class="flex items-center gap-2 px-md py-sm bg-surface-container-lowest border border-outline-variant rounded-full flex-shrink-0">
+<span class="w-3 h-3 rounded-full bg-orange-500"></span>
+<span class="font-label-md text-label-md">En retard</span>
+</div>
+<div class="flex items-center gap-2 px-md py-sm bg-surface-container-lowest border border-outline-variant rounded-full flex-shrink-0">
+<span class="w-3 h-3 rounded-full bg-outline"></span>
+<span class="font-label-md text-label-md">Excusé</span>
+</div>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full h-14 pl-12 pr-4 bg-[#F7F7F5] border-none rounded-xl focus:ring-2 focus:ring-primary placeholder:text-outline/60 font-body-md" placeholder="Rechercher un jeune..." type="text"/>
+</div>
+</section>
+<!-- Attendance List -->
+<section class="space-y-md">
+<h2 class="font-label-bold text-label-bold text-outline uppercase tracking-widest">Liste des élèves (47)</h2>
+<div class="grid gap-md">
+<!-- Card 1 (Active Present) -->
+<div class="bg-surface-container-lowest p-md rounded-[20px] border border-[#E8E8E4] shadow-sm flex items-center justify-between group transition-all hover:shadow-md">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-fixed">
+<img alt="Lucas Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2eCQo5qwJ2Vm-ztaMPtum8xoQvX5yeALi7GFGrKQYbPjTsVd5nrW-ZB4JgFyzRM6G0wZjTDbLw-MfpAegv4ocpI0m6bdwNQG2Nae5i1ZJzs4yCFBSBT98Co5fki3ClO8qleZaKPcSD5ylJEGHNQi5CH3Sb_8l7Yh0hDBY_aiSqAAp3ZJjhqagtytNjy6EMNuGJwFE3570pTfwHSSu9wBbkiW_p9rQu0ykq55-IYeg5qi5BItwAlTlMmjWacmwEaD1mjJbmN7u"/>
+</div>
+<div>
+<h3 class="font-headline-md text-body-lg text-on-surface">Lucas Bernard</h3>
+<p class="font-label-md text-label-md text-outline">Groupe A • 14 ans</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-primary text-white status-btn-active">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-surface-container-high text-outline-variant hover:bg-error/10 hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-surface-container-high text-outline-variant hover:bg-orange-500/10 hover:text-orange-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-surface-container-high text-outline-variant hover:bg-outline/10 hover:text-outline transition-colors">
+<span class="material-symbols-outlined text-[20px]">outlined_flag</span>
+</button>
+</div>
+</div>
+<!-- Card 2 (Active Absent) -->
+<div class="bg-surface-container-lowest p-md rounded-[20px] border border-[#E8E8E4] shadow-sm flex items-center justify-between group transition-all">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-error-container">
+<img alt="Emma Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCouuSqqyGD0QpVlMpfywSHfaanLhnmvalvlthTd5Jy5ipf1QSqmukM2TIUNwkeP7HlQ6xpRovRnBvtdRpLDKxvTlJquHQDferNBnZUXCVY1n9OJUE4UGLf1kA_CCofcin2BfF69UO8oeeZWSwmNeZ0Y4m_MCfYMF0nlJYot9KAc0mb3sAaLsPS90w3BAHNGQ_51YEuudZ_fmsdPk7mQ0Xta0bv5k5Zn6I1ZGXDMMij87RFw1KSFNKyviIBW6hz5qv5XzWceWWW"/>
+</div>
+<div>
+<h3 class="font-headline-md text-body-lg text-on-surface">Emma Gauthier</h3>
+<p class="font-label-md text-label-md text-outline">Groupe B • 15 ans</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-surface-container-high text-outline-variant">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-error text-white status-btn-active">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">close</span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-surface-container-high text-outline-variant">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-surface-container-high text-outline-variant">
+<span class="material-symbols-outlined text-[20px]">outlined_flag</span>
+</button>
+</div>
+</div>
+<!-- Card 3 (Unset) -->
+<div class="bg-surface-container-lowest p-md rounded-[20px] border border-[#E8E8E4] shadow-sm flex items-center justify-between group transition-all">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-surface-variant">
+<img alt="Thomas Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHnw8m-egKq5ET9z4E9WkRiIzf85MD7RaqxhzhUxCSSSga3FZ1L9mZuWN2-Q6kAeopMED0FRKClcvoqgIB_QJZuLVJ1EQrngVf4lPf9mul2zq65Q_jEpN7z2Vw67QqvGBYNTZdnASGnDqvN5n2ieuG0JBRmrO7HYIKxUDlyn8L7WqbYumgyqQzCU-3lSYSRTVpveAHeKvLJM_pcBGubrce31xPeUgCzpBu2op7AsEaNw7dXu-NihLCh7frLr1ejVJ1yiOnWMiZ"/>
+</div>
+<div>
+<h3 class="font-headline-md text-body-lg text-on-surface">Thomas Leroy</h3>
+<p class="font-label-md text-label-md text-outline">Groupe A • 13 ans</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-surface-container-high text-outline-variant hover:bg-primary-container/20 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-surface-container-high text-outline-variant">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-surface-container-high text-outline-variant">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-surface-container-high text-outline-variant">
+<span class="material-symbols-outlined text-[20px]">outlined_flag</span>
+</button>
+</div>
+</div>
+<!-- Card 4 (Active Late) -->
+<div class="bg-surface-container-lowest p-md rounded-[20px] border border-[#E8E8E4] shadow-sm flex items-center justify-between group transition-all">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-orange-200">
+<img alt="Julie Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChXHUSEHwR_O7xg6idzLSiWH3E8WPrdnrOiGUTwfyZ10nQNkBOkmSnNKsfXp--Tg_mZ7TctkIwnypDaFsFTnfx0Omwu1GBSPVWFQK0afbLzHaNP8pGkF3jjA1EjJB5TowFBUsmra2QfFwIfLWRTz5YBbwl9Jo4SpY8BWY872OUdOv1C4gJ4JzjNMUII_U7LPWKjgFzb21tULt5fTF4TNI67WIXlHtcrZWjiHbxJWBXAxE7YLPdcMd3jO1nssFsialFkKS3OoOU"/>
+</div>
+<div>
+<h3 class="font-headline-md text-body-lg text-on-surface">Julie Martin</h3>
+<p class="font-label-md text-label-md text-outline">Groupe C • 14 ans</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-surface-container-high text-outline-variant">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-surface-container-high text-outline-variant">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-orange-500 text-white status-btn-active">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">schedule</span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-surface-container-high text-outline-variant">
+<span class="material-symbols-outlined text-[20px]">outlined_flag</span>
+</button>
+</div>
+</div>
+<!-- Card 5 (Active Excused) -->
+<div class="bg-surface-container-lowest p-md rounded-[20px] border border-[#E8E8E4] shadow-sm flex items-center justify-between group transition-all">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-outline-variant">
+<img alt="Yanis Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJSGMFWJkLxIc1qySKnOU74-CPY6JBl7sttFoTMsVtAVR216BriC0KJaS4GS4Q2k-hqEeFV-nKusKG0ZZJnNINosvTwnjLNd91d8WQ7s4E5Q-Wuq6Jw4Rv8u-m70yPXcGNpb3jyzBf3dY5lgEVVIdwJHiGfiF5vmLXePv8rsX4F4B-ihKHTR-JQW-LM0IuCi7dY2wR5q0IYB_cQ_lobhWPeMqre6ibnogC8oQPgJ1daJzOKiydeo1l5RZxQ7uTE10rWUrMxFAg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-body-lg text-on-surface">Yanis Dubois</h3>
+<p class="font-label-md text-label-md text-outline">Groupe B • 16 ans</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-surface-container-high text-outline-variant">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-surface-container-high text-outline-variant">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-surface-container-high text-outline-variant">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+</button>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center bg-outline text-white status-btn-active">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">outlined_flag</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Sticky Bottom Bar -->
+<div class="fixed bottom-0 left-0 w-full z-50 bg-white shadow-[0_-8px_24px_rgba(0,0,0,0.08)] px-margin-mobile py-lg pb-safe">
+<div class="max-w-7xl mx-auto">
+<div class="flex items-center justify-between mb-lg bg-[#FAFAF8] px-md py-sm rounded-xl border border-[#F0F0EC]">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-bold text-label-bold">32</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="font-label-bold text-label-bold">10</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-orange-500"></span>
+<span class="font-label-bold text-label-bold">3</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span class="font-label-bold text-label-bold">2</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md text-outline">Total: 47</span>
+</div>
+</div>
+<button class="w-full h-14 bg-primary text-white rounded-xl font-headline-md text-body-lg flex items-center justify-center gap-2 hover:brightness-110 active:scale-[0.98] transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">save</span>
+                Enregistrer l'appel
+            </button>
+</div>
+</div>
+<!-- Background Decoration -->
+<div class="fixed top-0 right-0 -z-10 w-1/3 h-1/2 opacity-20 blur-[120px] bg-primary-fixed pointer-events-none"></div>
+<div class="fixed bottom-0 left-0 -z-10 w-1/3 h-1/2 opacity-20 blur-[120px] bg-secondary-fixed pointer-events-none"></div>
+<script>
+        // Micro-interactions for status buttons
+        document.querySelectorAll('.grid button').forEach(button => {
+            button.addEventListener('click', function() {
+                const parent = this.parentElement;
+                // Deactivate all others in this row
+                parent.querySelectorAll('button').forEach(btn => {
+                    btn.classList.remove('status-btn-active', 'bg-primary', 'bg-error', 'bg-orange-500', 'bg-outline', 'text-white');
+                    btn.classList.add('bg-surface-container-high', 'text-outline-variant');
+                    const icon = btn.querySelector('.material-symbols-outlined');
+                    if(icon) icon.style.fontVariationSettings = "'FILL' 0";
+                });
+                
+                // Activate clicked one
+                this.classList.remove('bg-surface-container-high', 'text-outline-variant');
+                this.classList.add('status-btn-active', 'text-white');
+                const iconName = this.querySelector('.material-symbols-outlined').textContent.trim();
+                
+                if(iconName === 'check_circle') this.classList.add('bg-primary');
+                else if(iconName === 'close') this.classList.add('bg-error');
+                else if(iconName === 'schedule') this.classList.add('bg-orange-500');
+                else if(iconName === 'outlined_flag') this.classList.add('bg-outline');
+                
+                const icon = this.querySelector('.material-symbols-outlined');
+                if(icon) icon.style.fontVariationSettings = "'FILL' 1";
+
+                // Simple scale animation
+                this.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+
+        // Search highlight placeholder
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-2', 'ring-primary/20');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-2', 'ring-primary/20');
+        });
+    </script>
+</body></html>

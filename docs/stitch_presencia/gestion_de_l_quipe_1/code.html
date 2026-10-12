@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "on-primary-fixed": "#390b00",
+                  "tertiary": "#6949ab",
+                  "surface": "#fff8f6",
+                  "secondary-fixed-dim": "#fdba49",
+                  "surface-container": "#fceae3",
+                  "surface-bright": "#fff8f6",
+                  "error-container": "#ffdad6",
+                  "surface-container-high": "#f6e5de",
+                  "primary-fixed-dim": "#ffb59d",
+                  "surface-container-highest": "#f0dfd8",
+                  "on-error-container": "#93000a",
+                  "on-tertiary-fixed": "#25005a",
+                  "on-secondary-fixed-variant": "#614000",
+                  "inverse-surface": "#382e2a",
+                  "tertiary-fixed": "#eaddff",
+                  "on-secondary-container": "#704b00",
+                  "on-tertiary-container": "#fffcff",
+                  "on-surface": "#221a16",
+                  "tertiary-container": "#8262c6",
+                  "tertiary-fixed-dim": "#d2bcff",
+                  "surface-tint": "#a43c17",
+                  "surface-container-lowest": "#ffffff",
+                  "on-secondary-fixed": "#281800",
+                  "on-secondary": "#ffffff",
+                  "surface-variant": "#f0dfd8",
+                  "primary": "#a13a15",
+                  "on-error": "#ffffff",
+                  "on-background": "#221a16",
+                  "on-tertiary-fixed-variant": "#533294",
+                  "inverse-primary": "#ffb59d",
+                  "secondary-container": "#fdba49",
+                  "on-primary-container": "#fffcff",
+                  "outline-variant": "#dec0b7",
+                  "outline": "#8b716a",
+                  "on-surface-variant": "#57423b",
+                  "error": "#ba1a1a",
+                  "inverse-on-surface": "#ffede6",
+                  "on-primary-fixed-variant": "#842600",
+                  "surface-container-low": "#fff1eb",
+                  "secondary-fixed": "#ffddaf",
+                  "primary-container": "#c2522b",
+                  "secondary": "#805600",
+                  "primary-fixed": "#ffdbd0",
+                  "background": "#fff8f6"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "sm": "8px",
+                  "container-margin": "20px",
+                  "xs": "4px",
+                  "xl": "32px",
+                  "unit": "4px",
+                  "md": "16px",
+                  "gutter": "12px",
+                  "lg": "24px"
+          },
+          "fontFamily": {
+                  "headline-md": ["Inter"],
+                  "body-md": ["Inter"],
+                  "body-lg": ["Inter"],
+                  "label-md": ["Inter"],
+                  "label-sm": ["Inter"],
+                  "display-lg": ["Inter"],
+                  "headline-lg": ["Inter"]
+          },
+          "fontSize": {
+                  "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                  "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                  "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                  "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                  "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                  "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #FAF7F5;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .card-shadow {
+      box-shadow: 0 4px 12px rgba(122, 99, 88, 0.08);
+    }
+    .active-scale:active {
+      transform: scale(0.95);
+      transition: transform 0.15s ease-in-out;
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface bg-background min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-container-margin py-md w-full sticky top-0 z-40 bg-surface dark:bg-on-background">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed-dim p-xs hover:bg-surface-container-low transition-colors rounded-full active-scale">
+        menu
+      </button>
+<h1 class="text-headline-lg font-headline-lg font-bold text-primary dark:text-primary-fixed-dim">Presencia</h1>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-surface-variant overflow-hidden">
+<img alt="Profile photo of youth leader" class="w-full h-full object-cover" data-alt="A close-up professional portrait of a smiling young adult youth leader in a modern church office. The lighting is warm and natural, coming from a nearby window, casting soft shadows. The background is slightly blurred, showing organic textures of wood and indoor plants, maintaining the brand's earthy and radical hospitality aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4PGuBHHF6u-yOGfkrDHcn62APTvlAcdy_GxTNBUj2RM_Jbq63uM1gCLJqgkCQFbyASENBrqQb3IXPOnSKCvrCyEzKPMrK8i-PCtK76pgRgWNqHITeWKx8I9qPXX9J7Esy00AcLPtZ6b6EOyGMDK3ZEI9OR9AVOkaW6iZY2sOpGLGDPQB801R4kdFXa97LHP7Zwf-aWiiHWvV3WV9lNL1_Nmx7JOgGbkk4YCqf_pYL84GbNyiYnMkfO19WjZeozmKIxaUuOuCbiQ"/>
+</div>
+</header>
+<main class="px-container-margin pt-md">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-lg">
+<div>
+<h2 class="text-display-lg font-display-lg text-on-surface mb-xs">L'Équipe</h2>
+<p class="text-body-md text-on-surface-variant">Gérez les accès et rôles des moniteurs.</p>
+</div>
+<button class="hidden md:flex items-center gap-xs bg-primary text-on-primary px-lg py-md rounded-xl font-label-md active-scale transition-all hover:bg-primary-container shadow-md">
+<span class="material-symbols-outlined">person_add</span>
+        Inviter un Moniteur
+      </button>
+</div>
+<!-- Stats Summary Bento-ish -->
+<div class="grid grid-cols-2 gap-md mb-xl">
+<div class="bg-surface-container-low p-lg rounded-2xl flex flex-col gap-xs">
+<span class="text-label-md text-on-surface-variant uppercase tracking-wider">Total</span>
+<span class="text-display-lg font-display-lg text-primary">12</span>
+</div>
+<div class="bg-primary-container/10 p-lg rounded-2xl flex flex-col gap-xs">
+<span class="text-label-md text-on-surface-variant uppercase tracking-wider">Admins</span>
+<span class="text-display-lg font-display-lg text-primary">3</span>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="relative mb-lg">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-lowest border-outline-variant border-1.5 rounded-xl pl-11 pr-md py-md text-body-md focus:border-primary focus:ring-0 transition-all outline-none" placeholder="Rechercher un membre..." type="text"/>
+</div>
+<!-- Monitor List -->
+<div class="flex flex-col gap-md">
+<!-- Admin Card -->
+<div class="bg-surface-container-lowest p-md rounded-2xl card-shadow flex items-center gap-md border border-transparent hover:border-primary-fixed transition-all cursor-pointer group">
+<div class="w-14 h-14 rounded-full overflow-hidden relative border-2 border-primary-fixed">
+<img alt="Marc, Admin" class="w-full h-full object-cover" data-alt="Portrait of a mature man with a welcoming smile, acting as a church administrator. He is wearing a casual brown linen shirt. The setting is a brightly lit community hall with warm terracotta accents and soft morning light. High quality photography with a shallow depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnNoRDWR4VsbNjYH0IJpDOJUXW8l4N_dSDPjzXZHwGc9nwQzXf7J1GI7JPiojfQiIXpe0DX9inF5Hq77cNHicVH3WnmUiGMJNXhUyMaae8Ez6ZXg-ZvBYH1Dog6_4kHP7sM63Vdf-jY-nwVD9xCvFWy1nJBxSIgALdRUuFH5HF65J7kEnRaRpcUcBG9SPbeaUEtVn0kJ4K9uZnNya0AEIDi_Wvw3OOOVwpme84PjPvCloWzKHw30hc99U1UUxfqN_Vg6l3zB7JGg"/>
+<div class="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border-2 border-surface rounded-full"></div>
+</div>
+<div class="flex-1">
+<h3 class="text-body-lg font-bold text-on-surface group-hover:text-primary transition-colors">Marc Dubois</h3>
+<div class="flex items-center gap-xs">
+<span class="text-label-sm text-on-surface-variant">Administrateur</span>
+<span class="w-1 h-1 bg-outline rounded-full"></span>
+<span class="text-label-sm text-on-surface-variant">Responsable Jeunes</span>
+</div>
+</div>
+<div class="bg-surface-container-high px-sm py-xs rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+</div>
+</div>
+<!-- Leader Card -->
+<div class="bg-surface-container-lowest p-md rounded-2xl card-shadow flex items-center gap-md border border-transparent hover:border-primary-fixed transition-all cursor-pointer group">
+<div class="w-14 h-14 rounded-full overflow-hidden relative border-2 border-surface-variant">
+<img alt="Sarah, Leader" class="w-full h-full object-cover" data-alt="A portrait of a young woman with curly hair, smiling warmly. She represents a church youth leader. Background shows a modern, cozy common room with minimalist wooden furniture and soft earthy tones. The lighting is diffused and pleasant, enhancing the radical hospitality vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBF-TSGULMuNyrto453690Vs57rB6F4e-BxRMvo1wvj4JWgfC-tvtoJACW0X2FPu1nZye9H3ha37hkjop3LeQZfrAQ7DkILibzrVO7Dkwh5WkZTbqWtjOGeZBPKHj_S8JFgqEBWuNFXnUmpsaC6khso_z7bmYpTMsh14p9dWZLJsG-h3HyDeocN9BJvnnPZg-SShsFl8eT2dom-_sXFW7xDh0BJA4w0AXH5kgxlzrW26ntf3yGMbIbJ464oLht1FgqctzJxehxAHw"/>
+</div>
+<div class="flex-1">
+<h3 class="text-body-lg font-bold text-on-surface group-hover:text-primary transition-colors">Sarah Lefebvre</h3>
+<div class="flex items-center gap-xs">
+<span class="text-label-sm text-on-surface-variant">Leader</span>
+<span class="w-1 h-1 bg-outline rounded-full"></span>
+<span class="text-label-sm text-on-surface-variant">Groupe Ados</span>
+</div>
+</div>
+<div class="bg-surface-container-high px-sm py-xs rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+</div>
+</div>
+<!-- Leader Card 2 -->
+<div class="bg-surface-container-lowest p-md rounded-2xl card-shadow flex items-center gap-md border border-transparent hover:border-primary-fixed transition-all cursor-pointer group">
+<div class="w-14 h-14 rounded-full overflow-hidden relative border-2 border-surface-variant">
+<img alt="Thomas, Leader" class="w-full h-full object-cover" data-alt="Close-up photo of a cheerful young man in his late 20s, a church monitor. He has a friendly and approachable expression. The lighting is golden hour, creating warm highlights on his face and the textured brick wall in the background. Soft, professional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQeOCToyVREEta4x3zIalBtjGRZFgH5cJ3Mza9fJbdX0PtuRQfEvQxjCzU62sHQitPydIkTTrBb3o3_Ml2_XH6VVzYx1IAUFVSQSCY1H5WoKYC_P76U7pDEo3xCAmLCcAbWQH8lpkl3bo4X45hnURPXHcUG62amF1Yp8TxjuJRKNtt54fzc19Z2DXRtq9-UAyXryQh2_LNFYyjRlkEeqjYDWTMEjCn_IWeFUMNqcqog6Wo9KszrqmbcuwKHVzOXwNl1wYWsEnGBg"/>
+</div>
+<div class="flex-1">
+<h3 class="text-body-lg font-bold text-on-surface group-hover:text-primary transition-colors">Thomas Morel</h3>
+<div class="flex items-center gap-xs">
+<span class="text-label-sm text-on-surface-variant">Leader</span>
+<span class="w-1 h-1 bg-outline rounded-full"></span>
+<span class="text-label-sm text-on-surface-variant">Musique &amp; Louange</span>
+</div>
+</div>
+<div class="bg-surface-container-high px-sm py-xs rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+</div>
+</div>
+<!-- Pending Invite Card -->
+<div class="bg-surface-container p-md rounded-2xl border-2 border-dashed border-outline-variant flex items-center gap-md opacity-70">
+<div class="w-14 h-14 rounded-full bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">mail</span>
+</div>
+<div class="flex-1">
+<h3 class="text-body-lg font-bold text-on-surface">lucas@church.com</h3>
+<span class="text-label-sm text-on-surface-variant italic">Invitation en attente...</span>
+</div>
+<button class="text-primary text-label-md font-bold underline decoration-2 underline-offset-4 active-scale">Renvoyer</button>
+</div>
+</div>
+</main>
+<!-- Mobile FAB -->
+<button class="md:hidden fixed bottom-24 right-container-margin w-16 h-16 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center active-scale z-50 transition-transform hover:rotate-90">
+<span class="material-symbols-outlined text-[32px]">person_add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-sm pb-safe pt-sm bg-surface/80 dark:bg-on-background/80 backdrop-blur-md shadow-[0_-4px_12px_rgba(122,99,88,0.08)]">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all rounded-xl px-sm py-xs active-scale">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm font-label-sm">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all rounded-xl px-sm py-xs active-scale">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-sm font-label-sm">Jeunes</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all rounded-xl px-sm py-xs active-scale">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="text-label-sm font-label-sm">Appel</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-sm py-xs active-scale">
+<span class="material-symbols-outlined">hub</span>
+<span class="text-label-sm font-label-sm">Groupes</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all rounded-xl px-sm py-xs active-scale">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-sm font-label-sm">Paramètres</span>
+</button>
+</nav>
+<script>
+    // Lightweight interaction script
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.card-shadow');
+      cards.forEach(card => {
+        card.addEventListener('mousedown', () => {
+          card.style.transform = 'translateY(2px)';
+          card.style.boxShadow = '0 2px 6px rgba(122, 99, 88, 0.04)';
+        });
+        card.addEventListener('mouseup', () => {
+          card.style.transform = 'translateY(0px)';
+          card.style.boxShadow = '0 4px 12px rgba(122, 99, 88, 0.08)';
+        });
+      });
+    });
+  </script>
+</body></html>

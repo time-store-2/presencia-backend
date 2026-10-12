@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ecclesia Flow V2-9: Group Statistics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#4edea3",
+                        "surface-dim": "#d3daea",
+                        "primary-fixed": "#e2dfff",
+                        "inverse-surface": "#2a313d",
+                        "on-surface": "#151c27",
+                        "tertiary-fixed-dim": "#d0bcff",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface-container-high": "#e2e8f8",
+                        "tertiary": "#571ac0",
+                        "surface": "#f9f9ff",
+                        "on-tertiary-fixed-variant": "#5516be",
+                        "surface-tint": "#4d44e3",
+                        "secondary": "#006c49",
+                        "inverse-primary": "#c3c0ff",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#e3d5ff",
+                        "surface-container-highest": "#dce2f3",
+                        "on-tertiary-fixed": "#23005c",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#ebf1ff",
+                        "outline": "#777587",
+                        "tertiary-container": "#6f3dd9",
+                        "background": "#f9f9ff",
+                        "on-secondary-container": "#00714d",
+                        "on-background": "#151c27",
+                        "on-surface-variant": "#464555",
+                        "error": "#ba1a1a",
+                        "primary": "#3525cd",
+                        "on-primary-fixed": "#00106b",
+                        "tertiary-fixed": "#e9ddff",
+                        "primary-container": "#4f46e5",
+                        "surface-container-low": "#f0f3ff",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "surface-variant": "#dce2f3",
+                        "on-primary-container": "#dad7ff",
+                        "surface-bright": "#f9f9ff",
+                        "on-secondary-fixed": "#002113",
+                        "surface-container": "#e7eefe",
+                        "secondary-container": "#6cf8bb",
+                        "outline-variant": "#c7c4d8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "xs": "4px",
+                        "base": "4px",
+                        "md": "16px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "margin-tablet": "32px",
+                        "lg": "24px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "display": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .bento-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .bento-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="bg-surface shadow-sm docked full-width top-0 z-50 flex justify-between items-center px-margin-mobile h-16 w-full sticky">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-headline-lg" data-icon="church">church</span>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary">ChurchPresence</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="transition-all duration-200 active:scale-95 text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="Profile" data-alt="A professional headshot of a young, modern church administrator in a bright, airy office environment. The person is smiling warmly, conveying reliability and leadership. The background is softly blurred with hints of minimalist corporate furniture and indoor plants, consistent with a clean and indigo-themed design aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoLVZOSY-CjwNcJzC7jlMvY8VJZ8DezOJ73JCdxhqtKX4F5c-WqaN3s_kr6m-cE1oLtkB29Vcb7fz4f0fTkuPdiFh1wr36OUBsh62iBOvPcB2X0Y3Ta9CMf7slpBuN8lpNWZBbTNfYfIizsGSAdNAD_Qf8ugfpiWTsdTZ2uBdmlKJbfn8FjHAAt1_0hUukjrBg3Z5eLOXUbqyGJA32nvRnumzZnkxIO3UBbKNC0d_eaB7yDGuyoxRTfm7RVFWHOj5CQdy5w46y1-Q"/>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-margin-mobile pt-lg space-y-lg">
+<!-- Header Section -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<p class="font-label-md text-label-md text-primary uppercase tracking-wider mb-base">Statistiques du Groupe</p>
+<h2 class="font-display text-display">Jeunes Adultes - Sud</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Analyse détaillée de l'engagement pour le T3 2024</p>
+</div>
+<div class="flex gap-sm">
+<button class="bg-primary text-on-primary px-4 py-2 rounded-xl font-medium text-sm flex items-center gap-2 transition-all active:scale-95">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+                    Exporter PDF
+                </button>
+<button class="bg-primary-container text-on-primary-container px-4 py-2 rounded-xl font-medium text-sm transition-all active:scale-95">
+                    Filtrer
+                </button>
+</div>
+</section>
+<!-- Bento Grid Stats -->
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-gutter">
+<!-- Attendance Summary -->
+<div class="col-span-1 lg:col-span-2 bento-card bg-white p-md rounded-xl shadow-sm flex flex-col justify-between min-h-[160px]">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-secondary-container rounded-lg">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="analytics">analytics</span>
+</div>
+<span class="text-secondary font-semibold text-xs">+4.2% ce mois</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface-variant">Présence Moyenne</h3>
+<div class="flex items-baseline gap-2">
+<p class="text-4xl font-bold text-on-surface">86%</p>
+<p class="text-sm text-on-surface-variant">42 participants/sess.</p>
+</div>
+</div>
+</div>
+<!-- Absences Insight -->
+<div class="col-span-1 bento-card bg-white p-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="p-2 bg-error-container w-fit rounded-lg">
+<span class="material-symbols-outlined text-on-error-container" data-icon="event_busy">event_busy</span>
+</div>
+<div class="mt-4">
+<h3 class="font-label-md text-label-md text-on-surface-variant">Absences Consécutives</h3>
+<p class="text-2xl font-bold text-on-surface">5 Membres</p>
+<p class="text-xs text-error font-medium mt-1">Action requise</p>
+</div>
+</div>
+<!-- New Members -->
+<div class="col-span-1 bento-card bg-white p-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="p-2 bg-primary-fixed w-fit rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="person_add">person_add</span>
+</div>
+<div class="mt-4">
+<h3 class="font-label-md text-label-md text-on-surface-variant">Nouveaux ce mois</h3>
+<p class="text-2xl font-bold text-on-surface">+12</p>
+<p class="text-xs text-on-surface-variant mt-1">Cibles de bienvenue</p>
+</div>
+</div>
+<!-- Main Attendance Chart -->
+<div class="col-span-1 md:col-span-3 lg:col-span-3 bg-white p-lg rounded-xl shadow-sm bento-card">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="font-headline-md text-headline-md">Historique de Présence</h3>
+<select class="border-none bg-surface-container-low text-sm rounded-lg py-1 px-3 focus:ring-2 focus:ring-primary">
+<option>Dernières 8 semaines</option>
+<option>Dernière année</option>
+</select>
+</div>
+<div class="h-64 flex items-end gap-3 justify-between">
+<!-- Simple Bar Chart Visualization -->
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-surface-container-highest rounded-t-lg relative h-[60%] group-hover:bg-primary-container transition-colors cursor-pointer">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">78%</div>
+</div>
+<span class="text-[10px] text-on-surface-variant">Sem 01</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-surface-container-highest rounded-t-lg relative h-[85%] group-hover:bg-primary-container transition-colors cursor-pointer">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">92%</div>
+</div>
+<span class="text-[10px] text-on-surface-variant">Sem 02</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-primary-container rounded-t-lg relative h-[95%]">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-white text-[10px] px-2 py-1 rounded">98%</div>
+</div>
+<span class="text-[10px] font-bold text-primary">Sem 03</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-surface-container-highest rounded-t-lg relative h-[70%] group-hover:bg-primary-container transition-colors cursor-pointer"></div>
+<span class="text-[10px] text-on-surface-variant">Sem 04</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-surface-container-highest rounded-t-lg relative h-[80%] group-hover:bg-primary-container transition-colors cursor-pointer"></div>
+<span class="text-[10px] text-on-surface-variant">Sem 05</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-surface-container-highest rounded-t-lg relative h-[65%] group-hover:bg-primary-container transition-colors cursor-pointer"></div>
+<span class="text-[10px] text-on-surface-variant">Sem 06</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-surface-container-highest rounded-t-lg relative h-[88%] group-hover:bg-primary-container transition-colors cursor-pointer"></div>
+<span class="text-[10px] text-on-surface-variant">Sem 07</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-surface-container-highest rounded-t-lg relative h-[75%] group-hover:bg-primary-container transition-colors cursor-pointer"></div>
+<span class="text-[10px] text-on-surface-variant">Sem 08</span>
+</div>
+</div>
+</div>
+<!-- Top Performers (Engagement) -->
+<div class="col-span-1 bg-white p-lg rounded-xl shadow-sm bento-card">
+<h3 class="font-headline-md text-headline-md mb-md">Engagement Top</h3>
+<div class="space-y-md">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">1</div>
+<div class="flex-1">
+<p class="font-body-md font-semibold">Marc Dubois</p>
+<p class="text-[11px] text-on-surface-variant">100% Présence • 12 sess.</p>
+</div>
+<span class="material-symbols-outlined text-secondary" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">2</div>
+<div class="flex-1">
+<p class="font-body-md font-semibold">Sarah Lévesque</p>
+<p class="text-[11px] text-on-surface-variant">96% Présence • 11 sess.</p>
+</div>
+<span class="material-symbols-outlined text-secondary" data-icon="star_half">star_half</span>
+</div>
+<div class="flex items-center gap-3 border-t border-surface-variant pt-md mt-md">
+<button class="text-primary font-label-md hover:underline w-full text-center">Voir le classement complet</button>
+</div>
+</div>
+</div>
+<!-- Absence Patterns -->
+<div class="col-span-1 lg:col-span-2 bg-white p-lg rounded-xl shadow-sm bento-card">
+<h3 class="font-headline-md text-headline-md mb-md">Motifs d'Absence</h3>
+<div class="space-y-sm">
+<div class="space-y-1">
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium">Travail / Études</span>
+<span class="text-on-surface-variant">45%</span>
+</div>
+<div class="w-full bg-surface-container-low h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[45%]"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium">Voyage</span>
+<span class="text-on-surface-variant">25%</span>
+</div>
+<div class="w-full bg-surface-container-low h-2 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full w-[25%]"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium">Santé</span>
+<span class="text-on-surface-variant">15%</span>
+</div>
+<div class="w-full bg-surface-container-low h-2 rounded-full overflow-hidden">
+<div class="bg-outline h-full w-[15%]"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium">Non spécifié</span>
+<span class="text-on-surface-variant">15%</span>
+</div>
+<div class="w-full bg-surface-container-low h-2 rounded-full overflow-hidden">
+<div class="bg-surface-variant h-full w-[15%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Session Heatmap (simplified) -->
+<div class="col-span-1 lg:col-span-2 bg-white p-lg rounded-xl shadow-sm bento-card relative overflow-hidden">
+<div class="absolute -right-4 -top-4 w-32 h-32 bg-primary/5 rounded-full blur-3xl"></div>
+<h3 class="font-headline-md text-headline-md mb-md">Intensité par Horaire</h3>
+<div class="grid grid-cols-7 gap-1">
+<!-- Header -->
+<div class="text-[9px] text-center font-bold text-on-surface-variant">L</div>
+<div class="text-[9px] text-center font-bold text-on-surface-variant">M</div>
+<div class="text-[9px] text-center font-bold text-on-surface-variant">M</div>
+<div class="text-[9px] text-center font-bold text-on-surface-variant">J</div>
+<div class="text-[9px] text-center font-bold text-on-surface-variant">V</div>
+<div class="text-[9px] text-center font-bold text-on-surface-variant">S</div>
+<div class="text-[9px] text-center font-bold text-on-surface-variant">D</div>
+<!-- Week Row (Placeholder squares) -->
+<div class="aspect-square bg-surface-container-low rounded-sm"></div>
+<div class="aspect-square bg-surface-container-low rounded-sm"></div>
+<div class="aspect-square bg-primary-container/40 rounded-sm"></div>
+<div class="aspect-square bg-surface-container-low rounded-sm"></div>
+<div class="aspect-square bg-primary-container/20 rounded-sm"></div>
+<div class="aspect-square bg-surface-container-low rounded-sm"></div>
+<div class="aspect-square bg-primary rounded-sm border border-primary-fixed"></div>
+<!-- More squares -->
+<div class="aspect-square bg-primary-container/10 rounded-sm"></div>
+<div class="aspect-square bg-surface-container-low rounded-sm"></div>
+<div class="aspect-square bg-primary-container/60 rounded-sm"></div>
+<div class="aspect-square bg-surface-container-low rounded-sm"></div>
+<div class="aspect-square bg-primary-container/30 rounded-sm"></div>
+<div class="aspect-square bg-surface-container-low rounded-sm"></div>
+<div class="aspect-square bg-primary/80 rounded-sm"></div>
+</div>
+<div class="mt-md flex justify-between items-center text-[10px] text-on-surface-variant">
+<span>Moins actif</span>
+<div class="flex gap-1">
+<div class="w-3 h-3 bg-surface-container-low rounded-sm"></div>
+<div class="w-3 h-3 bg-primary-container/40 rounded-sm"></div>
+<div class="w-3 h-3 bg-primary/80 rounded-sm"></div>
+</div>
+<span>Très actif</span>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface shadow-[0_-1px_10px_0_rgba(0,0,0,0.05)] rounded-t-xl md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Accueil</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="how_to_reg">how_to_reg</span>
+<span class="font-label-md text-label-md">Appel</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1 transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="diversity_3" style="font-variation-settings: 'FILL' 1;">diversity_3</span>
+<span class="font-label-md text-label-md">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Paramètres</span>
+</a>
+</nav>
+<!-- FAB (Suppressed on Stats page per mandate) -->
+<script>
+        // Micro-interactions for bar hover/selection
+        document.querySelectorAll('.flex-1.flex.flex-col').forEach(bar => {
+            bar.addEventListener('click', () => {
+                // Remove active classes
+                document.querySelectorAll('.flex-1.flex.flex-col div').forEach(d => {
+                    d.classList.remove('bg-primary-container');
+                    d.classList.add('bg-surface-container-highest');
+                });
+                // Add to clicked
+                const inner = bar.querySelector('div');
+                inner.classList.add('bg-primary-container');
+                inner.classList.remove('bg-surface-container-highest');
+            });
+        });
+    </script>
+</body></html>

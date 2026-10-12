@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#571ac0",
+                        "tertiary-container": "#6f3dd9",
+                        "tertiary-fixed": "#e9ddff",
+                        "on-secondary-container": "#00714d",
+                        "surface-container-low": "#f0f3ff",
+                        "on-background": "#151c27",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "surface-tint": "#4d44e3",
+                        "secondary": "#006c49",
+                        "on-tertiary-container": "#e3d5ff",
+                        "surface-container": "#e7eefe",
+                        "outline": "#777587",
+                        "on-tertiary-fixed-variant": "#5516be",
+                        "tertiary-fixed-dim": "#d0bcff",
+                        "on-primary-fixed": "#0f0069",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "surface": "#f9f9ff",
+                        "surface-bright": "#f9f9ff",
+                        "surface-variant": "#dce2f3",
+                        "on-tertiary-fixed": "#23005c",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#e2e8f8",
+                        "on-surface": "#151c27",
+                        "inverse-primary": "#c3c0ff",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-secondary-fixed-variant": "#005236",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#002113",
+                        "on-primary-container": "#dad7ff",
+                        "inverse-surface": "#2a313d",
+                        "primary": "#3525cd",
+                        "outline-variant": "#c7c4d8",
+                        "on-surface-variant": "#464555",
+                        "background": "#f9f9ff",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#e2dfff",
+                        "surface-container-highest": "#dce2f3",
+                        "secondary-container": "#6cf8bb",
+                        "secondary-fixed-dim": "#4edea3",
+                        "primary-container": "#4f46e5",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#d3daea",
+                        "inverse-on-surface": "#ebf1ff",
+                        "on-primary-fixed-variant": "#3323cc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "lg": "24px",
+                        "base": "4px",
+                        "margin-tablet": "32px",
+                        "md": "16px",
+                        "sm": "8px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "display": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#0f172a] text-on-surface selection:bg-primary-container/30">
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky bg-surface-dim/80 backdrop-blur-md z-40 shadow-sm flex items-center justify-between px-margin-mobile py-sm">
+<div class="flex items-center gap-sm">
+<span class="font-headline-lg text-headline-lg font-bold text-primary-fixed-dim">Ecclesia Flow</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-outline p-2 hover:bg-surface-container-high rounded-full transition-colors">notifications</button>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-primary-container flex items-center justify-center text-[12px] font-bold text-white">
+                JD
+            </div>
+</div>
+</header>
+<main class="min-h-screen pb-32 px-margin-mobile pt-lg max-w-4xl mx-auto">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-xl">
+<div>
+<h1 class="font-display text-display text-white">Groupes</h1>
+<p class="font-body-md text-body-md text-outline-variant mt-xs">Gérez vos communautés et activités</p>
+</div>
+<button class="bg-primary-container text-white px-md py-sm rounded-xl font-label-md text-label-md flex items-center gap-2 hover:opacity-90 active:scale-95 transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                Nouveau Groupe
+            </button>
+</div>
+<!-- Bento Search & Filter -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md mb-xl">
+<div class="md:col-span-2 glass-card rounded-xl p-sm flex items-center gap-md group focus-within:border-primary-fixed-dim transition-all">
+<span class="material-symbols-outlined text-outline ml-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-white w-full placeholder:text-outline font-body-md" placeholder="Rechercher un groupe..." type="text"/>
+</div>
+<div class="glass-card rounded-xl p-sm flex items-center justify-between px-md">
+<span class="font-label-md text-label-md text-outline-variant">Trier par:</span>
+<button class="text-primary-fixed-dim font-label-md text-label-md flex items-center gap-1">
+                    Activité
+                    <span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Groups List -->
+<div class="grid grid-cols-1 gap-md">
+<!-- Group Card 1 -->
+<div class="glass-card p-md rounded-xl hover:translate-y-[-2px] transition-all cursor-pointer group">
+<div class="flex items-start justify-between mb-md">
+<div class="flex gap-md">
+<div class="w-12 h-12 rounded-xl bg-tertiary-container flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[28px]">church</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-white group-hover:text-primary-fixed-dim transition-colors">Chorale Gospel</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="bg-on-secondary-container/20 text-on-secondary-container px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">Musical</span>
+<span class="text-outline-variant text-[12px]">• Hebdomadaire</span>
+</div>
+</div>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-white transition-colors">more_vert</button>
+</div>
+<div class="grid grid-cols-2 gap-md py-md border-t border-white/5">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-outline text-[18px]">group</span>
+<div class="flex flex-col">
+<span class="text-white font-label-md text-label-md leading-none">24 membres</span>
+<span class="text-outline text-[10px] uppercase font-semibold">Taille du groupe</span>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<div class="w-6 h-6 rounded-full overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="A professional studio portrait of a charismatic male choir leader with a warm smile, set against a dark, moody background that fits a modern premium dark-mode application UI. The lighting is dramatic and cinematic, highlighting facial features with a soft glow in a corporate yet spiritual setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7SBvDlagh61zsRH2mgh7WpUBK8AJHzzwYqdEyETuEuuZWyfFFxiwtMEaYfO7IYkb5rF9GiJ0KXxQsNpKbY7JPpDeQA2nilFXY5MuwjrC3t6kQfDqoYm7frKzfS91QLm4e3x_vijrDG63uLB3kBfxWRj1L83F5CNSiczOm-voEwtY_YqqbHxvxbvMPj4ganvMaTXUXx-eMYrBF_QYNeIY_Ho8yNO24gFAP39M2_xGCvlhD2122AZrSnD2fcL-kyqxkFHPhDM4EKQ8"/>
+</div>
+<div class="flex flex-col">
+<span class="text-white font-label-md text-label-md leading-none">Marc Dupont</span>
+<span class="text-outline text-[10px] uppercase font-semibold">Responsable</span>
+</div>
+</div>
+</div>
+<div class="flex justify-end pt-sm">
+<button class="text-primary-fixed-dim font-label-md text-label-md hover:underline flex items-center gap-1">
+                        Gérer le groupe <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Group Card 2 -->
+<div class="glass-card p-md rounded-xl hover:translate-y-[-2px] transition-all cursor-pointer group">
+<div class="flex items-start justify-between mb-md">
+<div class="flex gap-md">
+<div class="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[28px]">volunteer_activism</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-white group-hover:text-primary-fixed-dim transition-colors">Action Sociale</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="bg-primary/20 text-primary-fixed-dim px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">Service</span>
+<span class="text-outline-variant text-[12px]">• Mensuel</span>
+</div>
+</div>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-white transition-colors">more_vert</button>
+</div>
+<div class="grid grid-cols-2 gap-md py-md border-t border-white/5">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-outline text-[18px]">group</span>
+<div class="flex flex-col">
+<span class="text-white font-label-md text-label-md leading-none">12 membres</span>
+<span class="text-outline text-[10px] uppercase font-semibold">Taille du groupe</span>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<div class="w-6 h-6 rounded-full overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="A portrait of a serene female community organizer in a modern dark office setting. She has a compassionate expression, softly lit by high-end ambient light that emphasizes clarity and professionalism. The background is a sophisticated navy blue with subtle bokeh effects, matching the dark mode church administration theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0HlppAp9FO1CAGLK_qTG2PHqIVQEuJXwGRzR9dCVHTphwylIbw_4foi1tO7fnEYY0Y0sAf-XzGe-WWul-2btONjHWOBt45JcPK_Zwb0OsWD-I-TEvABIMxf9gxiyw_QtF-zFJ4rILJd0SoAVTwmWPbOciwVq1CaDKDLYEWp-oRa-VRbZ1YB8yFSz0CgBojNwLTsck3-bXlrSVSMpAcv8PEz1fmuU8__tnl7WSco3c7X4hZ17Kt0xyzFXmvpXuxC80sCCN0oiKz1c"/>
+</div>
+<div class="flex flex-col">
+<span class="text-white font-label-md text-label-md leading-none">Sarah Martin</span>
+<span class="text-outline text-[10px] uppercase font-semibold">Responsable</span>
+</div>
+</div>
+</div>
+<div class="flex justify-end pt-sm">
+<button class="text-primary-fixed-dim font-label-md text-label-md hover:underline flex items-center gap-1">
+                        Gérer le groupe <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Group Card 3 -->
+<div class="glass-card p-md rounded-xl hover:translate-y-[-2px] transition-all cursor-pointer group">
+<div class="flex items-start justify-between mb-md">
+<div class="flex gap-md">
+<div class="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[28px]">menu_book</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-white group-hover:text-primary-fixed-dim transition-colors">Étude Biblique Jeunes</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="bg-tertiary/20 text-tertiary-fixed-dim px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">Formation</span>
+<span class="text-outline-variant text-[12px]">• Mardi soir</span>
+</div>
+</div>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-white transition-colors">more_vert</button>
+</div>
+<div class="grid grid-cols-2 gap-md py-md border-t border-white/5">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-outline text-[18px]">group</span>
+<div class="flex flex-col">
+<span class="text-white font-label-md text-label-md leading-none">38 membres</span>
+<span class="text-outline text-[10px] uppercase font-semibold">Taille du groupe</span>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<div class="w-6 h-6 rounded-full overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="A portrait of a young male youth leader with a friendly and approachable look, captured in high-resolution detail. The lighting is soft and modern, reflecting off a deep navy blue background consistent with a high-end productivity app's dark aesthetic. He wears a casual but professional outfit, symbolizing modern leadership." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiTE-6lfPg_xdixHoATbEzucql0n3MReU3lnGWE4sQwmXzo0HUvr66zrBfOO6OtysTR8Gh42doQ8LbVgm3gMCP1cRTTug9kTa1YRRgQZPnRB6dIPaONrKUbJ36xvM-3WVF7iqJcnLbQ8x50dVXKQ_ay-5Za8YkXD5SLa2y2RxG-D2w8QQcb04au83pRf2fCJwIRv_toMvAz042FXi4ctqkkXeRtCqBGWB02ON2X85EClh0j-V3RWTBBznbL2K2TCpDiHFk7rsz1Rc"/>
+</div>
+<div class="flex flex-col">
+<span class="text-white font-label-md text-label-md leading-none">Thomas Petit</span>
+<span class="text-outline text-[10px] uppercase font-semibold">Responsable</span>
+</div>
+</div>
+</div>
+<div class="flex justify-end pt-sm">
+<button class="text-primary-fixed-dim font-label-md text-label-md hover:underline flex items-center gap-1">
+                        Gérer le groupe <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Empty State Preview (Contextual Action) -->
+<div class="mt-xl glass-card rounded-xl border-dashed border-outline-variant p-xl flex flex-col items-center text-center opacity-80">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-outline text-[32px]">hub</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-white">Prêt à fédérer ?</h4>
+<p class="font-body-md text-body-md text-outline max-w-xs mt-sm">Créez des sous-groupes thématiques pour faciliter la communication au sein de votre paroisse.</p>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 border-t border-outline bg-surface-container-low/95 backdrop-blur-lg">
+<a class="flex flex-col items-center justify-center text-outline-variant hover:bg-surface-container-highest transition-colors px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Accueil</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline-variant hover:bg-surface-container-highest transition-colors px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline-variant hover:bg-surface-container-highest transition-colors px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="how_to_reg">how_to_reg</span>
+<span class="font-label-md text-label-md">Appel</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary text-on-primary rounded-full px-4 py-1 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="hub" style="font-variation-settings: 'FILL' 1;">hub</span>
+<span class="font-label-md text-label-md">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline-variant hover:bg-surface-container-highest transition-colors px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Paramètres</span>
+</a>
+</nav>
+<script>
+        // Simple interaction for cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.add('scale-98');
+                setTimeout(() => card.classList.remove('scale-98'), 100);
+            });
+        });
+    </script>
+</body></html>

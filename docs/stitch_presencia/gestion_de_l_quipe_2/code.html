@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#fff8f6",
+                    "inverse-surface": "#382e2a",
+                    "surface-container": "#fceae3",
+                    "surface": "#fff8f6",
+                    "on-primary-fixed": "#390b00",
+                    "inverse-on-surface": "#ffede6",
+                    "on-tertiary-fixed": "#25005a",
+                    "surface-container-high": "#f6e5de",
+                    "on-primary-container": "#fffcff",
+                    "on-surface-variant": "#57423b",
+                    "inverse-primary": "#ffb59d",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "outline": "#8b716a",
+                    "on-tertiary-fixed-variant": "#533294",
+                    "on-background": "#221a16",
+                    "on-secondary-container": "#704b00",
+                    "surface-container-highest": "#f0dfd8",
+                    "surface-variant": "#f0dfd8",
+                    "on-primary-fixed-variant": "#842600",
+                    "surface-container-low": "#fff1eb",
+                    "tertiary-fixed-dim": "#d2bcff",
+                    "error": "#ba1a1a",
+                    "surface-dim": "#e7d7d0",
+                    "on-secondary-fixed-variant": "#614000",
+                    "tertiary-container": "#8262c6",
+                    "on-tertiary-container": "#fffcff",
+                    "primary-fixed-dim": "#ffb59d",
+                    "outline-variant": "#dec0b7",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#281800",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#ffdbd0",
+                    "secondary-fixed-dim": "#fdba49",
+                    "secondary-container": "#fdba49",
+                    "secondary": "#805600",
+                    "on-surface": "#221a16",
+                    "tertiary-fixed": "#eaddff",
+                    "surface-tint": "#a43c17",
+                    "primary": "#a13a15",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#ffddaf",
+                    "primary-container": "#c2522b",
+                    "tertiary": "#6949ab",
+                    "error-container": "#ffdad6",
+                    "background": "#fff8f6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "lg": "24px",
+                    "sm": "8px",
+                    "container-margin": "20px",
+                    "unit": "4px",
+                    "xs": "4px",
+                    "md": "16px",
+                    "gutter": "12px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #FAF7F5; /* Warm off-white from style guidance */
+            color: #221a16;
+            font-family: 'Inter', sans-serif;
+        }
+        .student-card-shadow {
+            shadow: 0 4px 12px rgba(122, 99, 88, 0.08);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            backdrop-filter: blur(10px);
+        }
+        .active-tab-indicator {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-on-background flex justify-between items-center px-container-margin py-md w-full sticky top-0 z-40">
+<div class="flex items-center gap-md">
+<button class="hover:bg-surface-container-low transition-colors p-sm rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">menu</span>
+</button>
+<h1 class="text-headline-lg font-headline-lg font-bold text-primary dark:text-primary-fixed-dim">Presencia</h1>
+</div>
+<div class="flex items-center">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="Leader Profile" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a young male youth leader with a friendly expression. He has short dark hair and is wearing a simple modern terracotta-colored shirt. The background is a soft-focus warm neutral office setting with natural sunlight streaming in, maintaining the radical hospitality aesthetic of the brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQFW1yGq6FpdukFQx74I6nUHxdcI6_7P40mQh5yjYXwfBphQV6zuA-osHeh7Y2eZFMinE5sU1Etfp20m5SGPkiMoRYMqzAwEnCtFVV1sXvjz9-qYdowcuPL3tHCgAgNT6mHheZkyDprjiXgeNYVnxDVQrwFMhikX9pLthIZLVyS_I8DPHyficSbyUGlLWX3fB4TpCg2Xyi2XQbsNGnxJTsUedch0h0ijP6JwCMxfi1ADMc83fzxAP8Z6gyed7LC8xICpZ-w9nnkg"/>
+</div>
+</div>
+</header>
+<main class="px-container-margin mt-lg max-w-2xl mx-auto">
+<!-- Section Header -->
+<div class="mb-xl">
+<h2 class="text-headline-md font-headline-md text-on-surface mb-xs">Gestion de l'Équipe</h2>
+<p class="text-body-md text-on-surface-variant">Gérez les accès et les rôles des moniteurs de votre église.</p>
+</div>
+<!-- Team Stats Summary -->
+<div class="grid grid-cols-2 gap-md mb-xl">
+<div class="bg-[#FDF0EB] p-md rounded-xl flex flex-col gap-xs">
+<span class="text-label-md text-primary">Total Membres</span>
+<span class="text-headline-lg font-bold text-on-surface">12</span>
+</div>
+<div class="bg-surface-container-low p-md rounded-xl flex flex-col gap-xs">
+<span class="text-label-md text-on-surface-variant">Administrateurs</span>
+<span class="text-headline-lg font-bold text-on-surface">3</span>
+</div>
+</div>
+<!-- Search & Filter -->
+<div class="relative mb-lg">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-xl pr-md py-md bg-white border border-[#EDE3DE] rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-outline-variant" placeholder="Rechercher un moniteur..." type="text"/>
+</div>
+<!-- Team List -->
+<div class="flex flex-col gap-md">
+<!-- Team Member Card 1 -->
+<div class="bg-white p-md rounded-xl flex items-center justify-between shadow-[0_4px_12px_rgba(122,99,88,0.08)] active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container">
+<img alt="Jean" class="w-full h-full object-cover" data-alt="A friendly portrait of a man in his late 20s with glasses and a warm smile. He is wearing a minimalist beige hoodie. The artistic style is clean and contemporary with soft shadows and a warm earthy color palette that feels welcoming and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOp9b7zAXI2yVYFvTFkInlPaoz3nWt-GDGr7JaQwDzHgOgUGuljnAcWzFkA4DrZ5RsY8ciDGBRXXFwPGiigSyVb6TCpgceB2U9Nvo_Hg0bT4JhJQkXG6my5TXoOzRR9eGHuFNQBrmwtjvvBMqSD12dgf_atXE2GYlWJb-L9O69x6qq-1qryb3FlZjGuKtTfA19FQcr07hFucTDwIQk06-bxiHJOHPfVkBqrEGlks5HiHwAChm2D1gNsbSJsM7TefgnwiaHNPGfJg"/>
+</div>
+<div>
+<h3 class="text-body-lg font-bold text-on-surface">Jean Dupont</h3>
+<p class="text-label-md text-on-surface-variant">jean.d@eglise.fr</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-xs">
+<span class="px-md py-xs rounded-full text-label-sm font-bold bg-[#EAF5EF] text-[#2D7A56]">Admin</span>
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Team Member Card 2 -->
+<div class="bg-white p-md rounded-xl flex items-center justify-between shadow-[0_4px_12px_rgba(122,99,88,0.08)] active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container">
+<img alt="Marie" class="w-full h-full object-cover" data-alt="A portrait of a young woman with a kind and focused expression. She is wearing a soft grey sweater and has her hair in a neat bun. The lighting is soft and golden, evocative of a warm communal environment, maintaining the radical hospitality design principles of the app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKIcSMHz_CKdinmxA-vBTi1KcMAljztNIkMEsiBWFl0G8TBY9gSrdpdiI77obWeBWv71kmSylokTxbwukAInpPp4aLOTL45nZA0BaWM4KoHDGyRM1RjSnBl0VKZ4oRKcYAuJaZ-Uq04LC3n69unPt6EtBtwCw6ZameFREpxEABjMGxh3eIxQ6Qx5N0FkohaAPtfPXWx9xcmaupR1sizlQ3_VMXQ-II743zVhSGVssutC5j7SszxVUCphq0yqFOBEkx2wpACPrFFw"/>
+</div>
+<div>
+<h3 class="text-body-lg font-bold text-on-surface">Marie Lefebvre</h3>
+<p class="text-label-md text-on-surface-variant">marie.l@eglise.fr</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-xs">
+<span class="px-md py-xs rounded-full text-label-sm font-bold bg-surface-container-high text-on-surface-variant">Lecteur</span>
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Team Member Card 3 -->
+<div class="bg-white p-md rounded-xl flex items-center justify-between shadow-[0_4px_12px_rgba(122,99,88,0.08)] active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container">
+<img alt="Thomas" class="w-full h-full object-cover" data-alt="A close-up of a smiling young adult male with a creative and energetic vibe. He is wearing a dark green polo shirt. The scene is lit with warm, ambient indoor lighting, set against a blurred background that looks like a modern community space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9Hj6RgI1FlNBVsejWp9fSapR2fbTy3ul3xfDkMXtJj4HSCHIwMNOxhKLpP8Kg8hCi2HJJH6O982HXh5D1gUhjybmsoEXvrkeG-DRet1yltUMZAV4ZpAGzNK1JWPzEDER3EfNvHraokEXx06mvefmcoCvSbh-szseT1xN2dLAPt-9voWjFoeMpyuXZwYYCUbOQZ_ccHS2CElpU406xGFxJuKFln0ZoSdAtJ49Aiw2nqeyLr73zzNcwBRQHNJfEfyH0w18M16kl8A"/>
+</div>
+<div>
+<h3 class="text-body-lg font-bold text-on-surface">Thomas Martin</h3>
+<p class="text-label-md text-on-surface-variant">thomas.m@eglise.fr</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-xs">
+<span class="px-md py-xs rounded-full text-label-sm font-bold bg-surface-container-high text-on-surface-variant">Lecteur</span>
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Team Member Card 4 -->
+<div class="bg-white p-md rounded-xl flex items-center justify-between shadow-[0_4px_12px_rgba(122,99,88,0.08)] active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container">
+<img alt="Sarah" class="w-full h-full object-cover" data-alt="A portrait of a cheerful woman in her 30s with curly hair and a welcoming look. She is wearing a soft terracotta scarf over a white blouse. The visual style is warm, organic, and professional, perfectly aligning with the church administration theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo85sRZcky2VjWSeUMMqNB0_wVH9UbfX6_jmIwPG0yeE4wVr4zfyR7cogVCl7mc9eCiIEaP7AiKTE9vYASVR1tWjQyI0dDd1lIWwvcsXvfELwYiGKe3eDC9Z_R7B5LLJ7G8ZKiXbZhbl_KykHhfYpfc2NpxxeWbN5F78xQD_cKUTm4kEtNhYF1f4PTkc3k450dFkZAkXbobONUuK__DvFR84cP1hjmQg6GtLH2GnjEsxKF4fRJVZqAgyrOta8VSRZs3VkrB8At3g"/>
+</div>
+<div>
+<h3 class="text-body-lg font-bold text-on-surface">Sarah Bernard</h3>
+<p class="text-label-md text-on-surface-variant">sarah.b@eglise.fr</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-xs">
+<span class="px-md py-xs rounded-full text-label-sm font-bold bg-[#EAF5EF] text-[#2D7A56]">Admin</span>
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB for inviting new monitor -->
+<button class="fixed bottom-24 right-container-margin w-14 h-14 bg-primary text-on-primary rounded-xl shadow-lg flex items-center justify-center hover:scale-105 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0, 'wght' 600;">person_add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-sm pb-safe pt-sm bg-surface/80 dark:bg-on-background/80 backdrop-blur-md shadow-[0_-4px_12px_rgba(122,99,88,0.08)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all rounded-xl px-sm py-xs" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm font-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all rounded-xl px-sm py-xs" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-sm font-label-sm">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all rounded-xl px-sm py-xs" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="text-label-sm font-label-sm">Appel</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all rounded-xl px-sm py-xs" href="#">
+<span class="material-symbols-outlined">hub</span>
+<span class="text-label-sm font-label-sm">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-sm py-xs active:scale-90 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-sm font-label-sm">Paramètres</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for list items
+        document.querySelectorAll('.bg-white.p-md').forEach(card => {
+            card.addEventListener('touchstart', () => {
+                card.style.transform = 'scale(0.98)';
+            });
+            card.addEventListener('touchend', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+
+        // Search highlight interaction
+        const searchInput = document.querySelector('input');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-2', 'ring-primary/20');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-2', 'ring-primary/20');
+        });
+    </script>
+</body></html>

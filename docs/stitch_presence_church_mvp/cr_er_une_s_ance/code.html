@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Créer une séance - Youth Management</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#cfe9d8",
+                        "outline": "#707973",
+                        "primary-fixed-dim": "#95d4b3",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#8d4d4e",
+                        "surface-container": "#eceeea",
+                        "surface-container-highest": "#e1e3df",
+                        "error-container": "#ffdad6",
+                        "background": "#f8faf6",
+                        "on-primary-fixed-variant": "#0e5138",
+                        "on-tertiary-fixed": "#390b0e",
+                        "on-tertiary-fixed-variant": "#6f3537",
+                        "inverse-on-surface": "#eff1ed",
+                        "surface-variant": "#e1e3df",
+                        "surface-container-low": "#f2f4f0",
+                        "inverse-surface": "#2e312f",
+                        "inverse-primary": "#95d4b3",
+                        "on-primary-fixed": "#002114",
+                        "secondary-container": "#cfe9d8",
+                        "surface": "#f8faf6",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#f8faf6",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#a8e7c5",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-background": "#191c1a",
+                        "on-surface-variant": "#404943",
+                        "secondary-fixed-dim": "#b3ccbd",
+                        "surface-container-high": "#e7e9e5",
+                        "on-secondary-fixed": "#092016",
+                        "secondary": "#4c6357",
+                        "tertiary-fixed": "#ffdad9",
+                        "outline-variant": "#bfc9c1",
+                        "on-surface": "#191c1a",
+                        "on-tertiary-container": "#ffcfce",
+                        "surface-dim": "#d8dbd7",
+                        "primary-fixed": "#b1f0ce",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#354c3f",
+                        "on-secondary-container": "#526a5c",
+                        "primary": "#0f5238",
+                        "tertiary": "#713638",
+                        "surface-tint": "#2c694e",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb3b3",
+                        "primary-container": "#2d6a4f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "margin-mobile": "20px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "margin-desktop": "40px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-bold": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "headline-md": ["20px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                        "label-bold": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["22px", {"lineHeight": "1.3", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #f8faf6;
+            color: #191c1a;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-toggle:checked + .toggle-slider {
+            background-color: #0f5238;
+        }
+        .custom-toggle:checked + .toggle-slider:after {
+            transform: translateX(20px);
+        }
+        .toggle-slider:after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            background: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            transition: 0.2s;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md antialiased">
+<!-- Header Navigation -->
+<header class="bg-surface sticky top-0 z-50 transition-colors duration-200">
+<div class="flex items-center justify-between px-margin-mobile py-md w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<button class="p-1 -ml-1 rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Nouvelle séance</h1>
+</div>
+<div class="flex items-center">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAT31RHpXqvbHPazEftEtVs8d-kuji5cfUbLseAHpJFB7mgQQjDPvGmchfjEdPozIeP1fscZN9FA82z3DCU22vUbYNIccnbNBUoNdrpUYSY4OP2fdg4peeCtiqKSkBXuaMx9HrD-qYIGgpucZAV63Dvb87yLO_vzRreArKDql3BK5M7UgxtJl3aZR71uYhLZoYJ0M7cWNxMGgr7IV5NxPH_mFrrbjp01xkO0chl18Ae0Z3sfYIDTSBGVscMC_KNWcZ8m71tp2Go"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-md mx-auto px-margin-mobile pt-lg pb-40">
+<!-- Illustration / Intro -->
+<div class="flex flex-col items-center mb-xl">
+<div class="w-20 h-20 bg-secondary-container rounded-3xl flex items-center justify-center mb-md shadow-sm">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'opsz' 48;">calendar_add_on</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Créer une séance</h2>
+<p class="text-on-surface-variant text-center px-4 mt-2">Planifiez un nouveau rassemblement et gérez les présences de votre groupe.</p>
+</div>
+<!-- Form Section -->
+<form class="space-y-lg">
+<!-- Group Selection -->
+<div class="space-y-xs">
+<label class="font-label-bold text-label-bold text-outline uppercase tracking-wider pl-1">Groupe</label>
+<div class="relative group">
+<select class="w-full h-14 bg-[#F7F7F5] border-0 rounded-xl px-4 appearance-none focus:ring-2 focus:ring-primary transition-all text-body-lg font-body-lg">
+<option>Groupe des Ados (12-15)</option>
+<option>Jeunes Adultes (16-25)</option>
+<option>Éclaireurs</option>
+<option>Musique &amp; Louange</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-outline">expand_more</span>
+</div>
+</div>
+<!-- Date Selection -->
+<div class="space-y-xs">
+<label class="font-label-bold text-label-bold text-outline uppercase tracking-wider pl-1">Date</label>
+<div class="relative">
+<input class="w-full h-14 bg-[#F7F7F5] border-0 rounded-xl px-4 focus:ring-2 focus:ring-primary transition-all text-body-lg font-body-lg" type="date" value="2023-10-27"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-outline">calendar_today</span>
+</div>
+</div>
+<!-- Time Selection -->
+<div class="grid grid-cols-2 gap-gutter">
+<div class="space-y-xs">
+<label class="font-label-bold text-label-bold text-outline uppercase tracking-wider pl-1">Heure Début</label>
+<input class="w-full h-14 bg-[#F7F7F5] border-0 rounded-xl px-4 focus:ring-2 focus:ring-primary transition-all text-body-lg font-body-lg" type="time" value="18:30"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-bold text-label-bold text-outline uppercase tracking-wider pl-1">Heure Fin</label>
+<input class="w-full h-14 bg-[#F7F7F5] border-0 rounded-xl px-4 focus:ring-2 focus:ring-primary transition-all text-body-lg font-body-lg" type="time" value="20:30"/>
+</div>
+</div>
+<!-- Theme / Description -->
+<div class="space-y-xs">
+<label class="font-label-bold text-label-bold text-outline uppercase tracking-wider pl-1">Thème (optionnel)</label>
+<input class="w-full h-14 bg-[#F7F7F5] border-0 rounded-xl px-4 focus:ring-2 focus:ring-primary transition-all text-body-lg font-body-lg placeholder:text-outline-variant" placeholder="Ex: La persévérance dans la foi" type="text"/>
+</div>
+<!-- Options Toggles -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-[20px] p-md space-y-md shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-body-lg font-bold text-on-surface">Commencer l'appel tout de suite</span>
+<span class="text-label-md text-on-surface-variant">L'écran d'appel s'ouvrira après création</span>
+</div>
+<label class="relative inline-block w-11 h-6">
+<input checked="" class="sr-only peer custom-toggle" type="checkbox"/>
+<span class="toggle-slider absolute cursor-pointer inset-0 bg-outline-variant rounded-full transition-all"></span>
+</label>
+</div>
+<div class="h-[1px] bg-surface-variant"></div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-body-lg font-bold text-on-surface">Présence par défaut : Présent</span>
+<span class="text-label-md text-on-surface-variant">Marque tout le monde présent au début</span>
+</div>
+<label class="relative inline-block w-11 h-6">
+<input class="sr-only peer custom-toggle" type="checkbox"/>
+<span class="toggle-slider absolute cursor-pointer inset-0 bg-outline-variant rounded-full transition-all"></span>
+</label>
+</div>
+</div>
+</form>
+</main>
+<!-- Fixed Footer Action Buttons -->
+<footer class="fixed bottom-0 left-0 w-full bg-surface border-t border-surface-variant/50 px-margin-mobile pt-md pb-10 flex flex-col gap-sm z-50">
+<button class="w-full h-14 bg-primary text-on-primary rounded-2xl font-headline-md flex items-center justify-center gap-2 active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">how_to_reg</span>
+            Créer et lancer l'appel
+        </button>
+<button class="w-full h-14 bg-transparent border-2 border-primary/20 text-primary rounded-2xl font-body-lg font-bold flex items-center justify-center active:scale-95 transition-transform duration-150">
+            Créer sans lancer
+        </button>
+</footer>
+<!-- Bottom Navigation Component (Suppressed per "Task-Focused" rule but standard shell logic usually applies to top-level, this is a sub-page with a "Back" button) -->
+<!-- As requested by rule: Suppress navigation shell for task-focused pages with "Back" action. -->
+<script>
+        // Micro-interactions
+        document.querySelectorAll('button, input, select').forEach(el => {
+            el.addEventListener('touchstart', () => {
+                el.style.opacity = '0.8';
+            });
+            el.addEventListener('touchend', () => {
+                el.style.opacity = '1';
+            });
+        });
+
+        // Prevention of elastic scroll issues on forms
+        document.addEventListener('touchmove', function (e) {
+            if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+                // Allows scroll only on the main container
+            }
+        }, { passive: false });
+    </script>
+</body></html>

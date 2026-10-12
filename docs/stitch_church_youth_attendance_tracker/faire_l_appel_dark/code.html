@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#e9ddff",
+                        "on-secondary-fixed-variant": "#005236",
+                        "inverse-surface": "#2a313d",
+                        "tertiary-container": "#6f3dd9",
+                        "on-surface": "#151c27",
+                        "on-tertiary-container": "#e3d5ff",
+                        "on-secondary-container": "#00714d",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "surface-container-high": "#e2e8f8",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#23005c",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#dce2f3",
+                        "surface-container": "#e7eefe",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#d3daea",
+                        "surface-bright": "#f9f9ff",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#0f0069",
+                        "surface": "#f9f9ff",
+                        "secondary-fixed-dim": "#4edea3",
+                        "tertiary": "#571ac0",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "secondary": "#006c49",
+                        "primary-fixed": "#e2dfff",
+                        "primary-container": "#4f46e5",
+                        "surface-container-low": "#f0f3ff",
+                        "outline-variant": "#c7c4d8",
+                        "on-primary-container": "#dad7ff",
+                        "inverse-on-surface": "#ebf1ff",
+                        "error": "#ba1a1a",
+                        "outline": "#777587",
+                        "on-surface-variant": "#464555",
+                        "surface-variant": "#dce2f3",
+                        "secondary-container": "#6cf8bb",
+                        "on-tertiary-fixed-variant": "#5516be",
+                        "inverse-primary": "#c3c0ff",
+                        "primary": "#3525cd",
+                        "on-error": "#ffffff",
+                        "on-background": "#151c27",
+                        "surface-tint": "#4d44e3",
+                        "tertiary-fixed-dim": "#d0bcff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#002113",
+                        // Custom Dark Overrides for specific prompt requirements
+                        "dark-bg": "#0F172A",
+                        "dark-surface": "#1E293B"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "xl": "32px",
+                        "margin-tablet": "32px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "base": "4px",
+                        "margin-mobile": "16px",
+                        "md": "16px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "display": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }],
+                        "display": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .attendance-card {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .attendance-btn {
+            transition: all 0.15s ease-in-out;
+        }
+        .status-present-active { background-color: #D1FAE5; color: #065F46; }
+        .status-absent-active { background-color: #FEE2E2; color: #991B1B; }
+        .status-late-active { background-color: #FEF3C7; color: #92400E; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-dark-bg text-on-background min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-dark-bg/80 backdrop-blur-md shadow-sm">
+<div class="flex items-center justify-between px-margin-mobile py-sm w-full">
+<div class="flex items-center gap-3">
+<button class="active:scale-95 transition-transform duration-200 text-on-surface-variant dark:text-outline p-2 hover:bg-surface-container dark:hover:bg-dark-surface rounded-full">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div>
+<h1 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim leading-tight">Faire l'appel</h1>
+<p class="font-label-md text-label-md text-outline">Session : Groupe des Jeunes</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="bg-dark-surface p-2 rounded-xl flex items-center gap-2 border border-outline/20">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[20px]">calendar_today</span>
+<span class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant">24 Oct 2023</span>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-md mx-auto px-margin-mobile pt-lg space-y-md">
+<!-- Summary Stats Section -->
+<div class="grid grid-cols-3 gap-sm mb-lg">
+<div class="bg-dark-surface p-md rounded-xl border border-outline/10 text-center">
+<p class="font-label-sm text-label-sm text-outline mb-xs">Présents</p>
+<p class="font-headline-md text-headline-md text-secondary-fixed-dim" id="present-count">0</p>
+</div>
+<div class="bg-dark-surface p-md rounded-xl border border-outline/10 text-center">
+<p class="font-label-sm text-label-sm text-outline mb-xs">Absents</p>
+<p class="font-headline-md text-headline-md text-error" id="absent-count">0</p>
+</div>
+<div class="bg-dark-surface p-md rounded-xl border border-outline/10 text-center">
+<p class="font-label-sm text-label-sm text-outline mb-xs">Retards</p>
+<p class="font-headline-md text-headline-md text-tertiary-fixed-dim" id="late-count">0</p>
+</div>
+</div>
+<!-- Attendance List -->
+<div class="space-y-md" id="attendance-list">
+<!-- Member Row 1 -->
+<div class="attendance-card bg-dark-surface p-md rounded-xl border border-outline/10 flex flex-col gap-md shadow-sm">
+<div class="flex items-center gap-md">
+<img alt="Avatar" class="w-10 h-10 rounded-full border-2 border-primary/20" data-alt="A professional close-up portrait of a young man with a friendly expression, captured with warm studio lighting that highlights his features against a soft, dark-blue textured background. The image has a clean, high-end corporate feel with shallow depth of field, maintaining a consistent modern aesthetic of the Ecclesia Flow application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAR9AJtHKBIuosvGwA17lZrUunNrk8FGmdgta_xy_8jenY_6MhuymfI0utcQIOj3lg2UHM3hw2CGrsLIs_YeYUx_RSOaGl_2ZdXTHDmSI4MlrwNlbrbiy3xIukatG66PeVWgWltpB-m_qIgc23rF-OxcI_LTTSKC0bTboyymsILroAhfaNgVwjV8G_0IYA63vsrxAUUdw3NG35kRzyo23W4LZRfOJz2vvPWAeZbqwkxR2JDVAw22m3IzcI1nR9ZAdcybsUsVfuwPCw"/>
+<div class="flex-1">
+<h3 class="font-body-lg text-body-lg text-on-primary-fixed-dim font-semibold">Jean Dupont</h3>
+<p class="font-label-md text-label-md text-outline">Chœur des Jeunes</p>
+</div>
+<span class="material-symbols-outlined text-outline">info</span>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<button class="attendance-btn py-sm px-2 rounded-lg border border-outline/20 font-label-md text-label-md flex items-center justify-center gap-1 text-outline-variant hover:bg-white/5 active:scale-95" onclick="setStatus(this, 'present')">
+<span class="material-symbols-outlined text-[18px]">check_circle</span> Présent
+                    </button>
+<button class="attendance-btn py-sm px-2 rounded-lg border border-outline/20 font-label-md text-label-md flex items-center justify-center gap-1 text-outline-variant hover:bg-white/5 active:scale-95" onclick="setStatus(this, 'absent')">
+<span class="material-symbols-outlined text-[18px]">cancel</span> Absent
+                    </button>
+<button class="attendance-btn py-sm px-2 rounded-lg border border-outline/20 font-label-md text-label-md flex items-center justify-center gap-1 text-outline-variant hover:bg-white/5 active:scale-95" onclick="setStatus(this, 'late')">
+<span class="material-symbols-outlined text-[18px]">schedule</span> Retard
+                    </button>
+</div>
+</div>
+<!-- Member Row 2 -->
+<div class="attendance-card bg-dark-surface p-md rounded-xl border border-outline/10 flex flex-col gap-md shadow-sm">
+<div class="flex items-center gap-md">
+<img alt="Avatar" class="w-10 h-10 rounded-full border-2 border-primary/20" data-alt="A portrait of a young woman with a bright, welcoming smile, wearing a professional navy blue top. The background is a minimalist, softly blurred modern workspace with deep slate and indigo tones. High-quality digital photography with a crisp focus on her face, reflecting a community-focused and reliable persona consistent with a church administration app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKrewIgiMM-pGrryHEikeOsyXJ57xOuoQbyvPC3xIyecr3SOI7rOeisLM3OvzZJyRgif_QAeNKcjII_GGhYHt8pUGc4H1Sg_M3CfIcX35_2P3KE_I2OmHpP0K_tZMpRghNK-UgtgV2Yg2HI2uEWtBt3ThJzzKEODampqWlhY2JVrfPyoByKMCwlzFpL3_3trwfn3HEFGPey40cMatrT1sf0WjNJjfED_j2Ok1v4ryEgRm0Mt-lzTSeqEHHdQ7UXSBskVeXFdGf_Hw"/>
+<div class="flex-1">
+<h3 class="font-body-lg text-body-lg text-on-primary-fixed-dim font-semibold">Marie Lefebvre</h3>
+<p class="font-label-md text-label-md text-outline">Groupe d'étude Biblique</p>
+</div>
+<span class="material-symbols-outlined text-outline">info</span>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<button class="attendance-btn py-sm px-2 rounded-lg border border-outline/20 font-label-md text-label-md flex items-center justify-center gap-1 text-outline-variant hover:bg-white/5 active:scale-95" onclick="setStatus(this, 'present')">
+<span class="material-symbols-outlined text-[18px]">check_circle</span> Présent
+                    </button>
+<button class="attendance-btn py-sm px-2 rounded-lg border border-outline/20 font-label-md text-label-md flex items-center justify-center gap-1 text-outline-variant hover:bg-white/5 active:scale-95" onclick="setStatus(this, 'absent')">
+<span class="material-symbols-outlined text-[18px]">cancel</span> Absent
+                    </button>
+<button class="attendance-btn py-sm px-2 rounded-lg border border-outline/20 font-label-md text-label-md flex items-center justify-center gap-1 text-outline-variant hover:bg-white/5 active:scale-95" onclick="setStatus(this, 'late')">
+<span class="material-symbols-outlined text-[18px]">schedule</span> Retard
+                    </button>
+</div>
+</div>
+<!-- Member Row 3 -->
+<div class="attendance-card bg-dark-surface p-md rounded-xl border border-outline/10 flex flex-col gap-md shadow-sm">
+<div class="flex items-center gap-md">
+<img alt="Avatar" class="w-10 h-10 rounded-full border-2 border-primary/20" data-alt="A profile photograph of a teenage boy with a thoughtful expression, set against a dark architectural interior with soft indigo lighting accents. The style is modern and high-resolution, following a Corporate aesthetic with clean lines and balanced composition. The image evokes a sense of church community engagement and modern digital identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdCwEa4idEeJk81Vcby5gDDqR5mlq2jagMtEweaEdWeQExLspJMUU3ru9EGqCu0Zn81ftJ1bp7Z9vlhJTIKKSAYLURdoynIhzwC1lHkdIFnMHKInNNdHgDzu4w4sPU7yxa65orJa5Eq67FzwBgUwwVWOalHkNbPt6IkbpPNeaY8m4EFGYYiByg35IEzJy_vsvEesLtf8RwWEgPq0sp4Plr1nYoGBcAOZbLyuMAQOvUihZqMkh_AzYwOYsEmQNH5dZNb4vSVyMqS2M"/>
+<div class="flex-1">
+<h3 class="font-body-lg text-body-lg text-on-primary-fixed-dim font-semibold">Thomas Petit</h3>
+<p class="font-label-md text-label-md text-outline">Bénévole Accueil</p>
+</div>
+<span class="material-symbols-outlined text-outline">info</span>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<button class="attendance-btn py-sm px-2 rounded-lg border border-outline/20 font-label-md text-label-md flex items-center justify-center gap-1 text-outline-variant hover:bg-white/5 active:scale-95" onclick="setStatus(this, 'present')">
+<span class="material-symbols-outlined text-[18px]">check_circle</span> Présent
+                    </button>
+<button class="attendance-btn py-sm px-2 rounded-lg border border-outline/20 font-label-md text-label-md flex items-center justify-center gap-1 text-outline-variant hover:bg-white/5 active:scale-95" onclick="setStatus(this, 'absent')">
+<span class="material-symbols-outlined text-[18px]">cancel</span> Absent
+                    </button>
+<button class="attendance-btn py-sm px-2 rounded-lg border border-outline/20 font-label-md text-label-md flex items-center justify-center gap-1 text-outline-variant hover:bg-white/5 active:scale-95" onclick="setStatus(this, 'late')">
+<span class="material-symbols-outlined text-[18px]">schedule</span> Retard
+                    </button>
+</div>
+</div>
+<!-- Member Row 4 -->
+<div class="attendance-card bg-dark-surface p-md rounded-xl border border-outline/10 flex flex-col gap-md shadow-sm">
+<div class="flex items-center gap-md">
+<img alt="Avatar" class="w-10 h-10 rounded-full border-2 border-primary/20" data-alt="A portrait of a serene young woman with long hair, looking directly into the camera with a calm, confident gaze. The lighting is soft and cinematic, with cool blue tones and deep shadows that create a professional yet welcoming atmosphere. The background features subtle geometric patterns of a modern church community center." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUxPdSG7prcW_1gYsPoyFsvqdAJ6yViyAXX_Y0Hj0v9zWV9JFv4-cIMzOPjBjRpVkfcAPe7LGw3pLygs4K37Ou1R_kfvdvyFHH8hPz40zmqJMfzj_5iA5fRgw4QUgTTsE-oNGAwa2Qm_nOzrNGd7mwSrwr0GiK08-4SmLKJviLTOelbmeEGG7GjvZEQ1bpppWGgIo4x5_kPUK0mCysfq8mb9VBMQV3ovOb02qbsUNIeTPdNCjwqxZkP5Q2eWy484tilt7zEAbTieE"/>
+<div class="flex-1">
+<h3 class="font-body-lg text-body-lg text-on-primary-fixed-dim font-semibold">Sophie Arnould</h3>
+<p class="font-label-md text-label-md text-outline">Coordination</p>
+</div>
+<span class="material-symbols-outlined text-outline">info</span>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<button class="attendance-btn py-sm px-2 rounded-lg border border-outline/20 font-label-md text-label-md flex items-center justify-center gap-1 text-outline-variant hover:bg-white/5 active:scale-95" onclick="setStatus(this, 'present')">
+<span class="material-symbols-outlined text-[18px]">check_circle</span> Présent
+                    </button>
+<button class="attendance-btn py-sm px-2 rounded-lg border border-outline/20 font-label-md text-label-md flex items-center justify-center gap-1 text-outline-variant hover:bg-white/5 active:scale-95" onclick="setStatus(this, 'absent')">
+<span class="material-symbols-outlined text-[18px]">cancel</span> Absent
+                    </button>
+<button class="attendance-btn py-sm px-2 rounded-lg border border-outline/20 font-label-md text-label-md flex items-center justify-center gap-1 text-outline-variant hover:bg-white/5 active:scale-95" onclick="setStatus(this, 'late')">
+<span class="material-symbols-outlined text-[18px]">schedule</span> Retard
+                    </button>
+</div>
+</div>
+</div>
+<!-- Spacer for FAB/Footer -->
+<div class="h-24"></div>
+</main>
+<!-- Save Button Container -->
+<div class="fixed bottom-0 left-0 w-full p-md bg-dark-bg/90 backdrop-blur-md border-t border-outline/10 flex justify-center items-center gap-md z-50">
+<button class="w-full max-w-md bg-primary-container text-white py-md px-xl rounded-xl font-headline-md text-headline-md font-bold shadow-lg shadow-primary-container/20 active:scale-95 transition-all flex items-center justify-center gap-2" onclick="saveAttendance()">
+<span class="material-symbols-outlined">save</span>
+            Enregistrer l'appel
+        </button>
+</div>
+<!-- Notification Toast (Hidden by default) -->
+<div class="fixed bottom-24 left-1/2 -translate-x-1/2 bg-secondary-container text-on-secondary-container px-lg py-sm rounded-full shadow-xl opacity-0 transition-opacity duration-300 pointer-events-none flex items-center gap-2" id="toast">
+<span class="material-symbols-outlined">check_circle</span>
+<span class="font-label-md text-label-md">Présences enregistrées avec succès !</span>
+</div>
+<script>
+        function setStatus(button, status) {
+            const container = button.closest('.grid');
+            const buttons = container.querySelectorAll('button');
+            
+            // Reset all buttons in this row
+            buttons.forEach(btn => {
+                btn.classList.remove('status-present-active', 'status-absent-active', 'status-late-active', 'border-transparent', 'text-white');
+                btn.classList.add('border-outline/20', 'text-outline-variant');
+            });
+
+            // Set active state
+            button.classList.remove('border-outline/20', 'text-outline-variant');
+            button.classList.add('border-transparent');
+
+            if (status === 'present') {
+                button.classList.add('bg-secondary', 'text-white');
+            } else if (status === 'absent') {
+                button.classList.add('bg-error', 'text-white');
+            } else if (status === 'late') {
+                button.classList.add('bg-tertiary', 'text-white');
+            }
+
+            updateCounts();
+        }
+
+        function updateCounts() {
+            const allButtons = document.querySelectorAll('.attendance-btn');
+            let present = 0, absent = 0, late = 0;
+
+            allButtons.forEach(btn => {
+                if (btn.classList.contains('bg-secondary')) present++;
+                if (btn.classList.contains('bg-error')) absent++;
+                if (btn.classList.contains('bg-tertiary')) late++;
+            });
+
+            document.getElementById('present-count').innerText = present;
+            document.getElementById('absent-count').innerText = absent;
+            document.getElementById('late-count').innerText = late;
+        }
+
+        function saveAttendance() {
+            const toast = document.getElementById('toast');
+            toast.classList.remove('opacity-0');
+            toast.classList.add('opacity-100');
+            
+            setTimeout(() => {
+                toast.classList.remove('opacity-100');
+                toast.classList.add('opacity-0');
+            }, 3000);
+        }
+    </script>
+</body></html>

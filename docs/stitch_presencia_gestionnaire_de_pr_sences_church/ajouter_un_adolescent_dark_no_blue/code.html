@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Ajouter un adolescent - Gestion Jeunesse</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#ffffff",
+                        "inverse-on-surface": "#f4f4f5",
+                        "tertiary-container": "#7c2d12",
+                        "tertiary-fixed-dim": "#fb923c",
+                        "on-error-container": "#991b1b",
+                        "secondary": "#71717a",
+                        "on-tertiary-fixed": "#431407",
+                        "on-tertiary-fixed-variant": "#7c2d12",
+                        "primary": "#6366f1",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#27272a",
+                        "surface": "#18181b",
+                        "primary-fixed-dim": "#a5b4fc",
+                        "on-secondary-container": "#d4d4d8",
+                        "on-primary-fixed": "#1e1b4b",
+                        "on-surface": "#f4f4f5",
+                        "on-secondary-fixed": "#18181b",
+                        "secondary-container": "#3f3f46",
+                        "on-background": "#f4f4f5",
+                        "inverse-surface": "#3f3f46",
+                        "error-container": "#fee2e2",
+                        "tertiary": "#ea580c",
+                        "surface-tint": "#6366f1",
+                        "on-surface-variant": "#a1a1aa",
+                        "secondary-fixed": "#e4e4e7",
+                        "outline-variant": "#52525b",
+                        "error": "#ef4444",
+                        "on-secondary-fixed-variant": "#3f3f46",
+                        "surface-variant": "#52525b",
+                        "surface-container-highest": "#3f3f46",
+                        "tertiary-fixed": "#ffedd5",
+                        "inverse-primary": "#a5b4fc",
+                        "surface-container-high": "#323235",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#ffedd5",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#1f1f23",
+                        "outline": "#71717a",
+                        "on-primary-fixed-variant": "#4338ca",
+                        "on-primary-container": "#e0e7ff",
+                        "secondary-fixed-dim": "#a1a1aa",
+                        "primary-container": "#6366f1",
+                        "surface-container-lowest": "#09090b",
+                        "primary-fixed": "#e0e7ff",
+                        "surface-dim": "#18181b",
+                        "background": "#18181b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "base": "4px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #18181b;
+            color: #f4f4f5;
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #52525b;
+            border-radius: 10px;
+        }
+        .form-input-focus:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen pb-32">
+<!-- Top App Bar -->
+<header class="flex items-center justify-between px-margin-mobile h-14 w-full fixed top-0 z-50 bg-surface border-b border-outline-variant/10 shadow-sm dark:bg-surface-container">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 transition-transform text-primary dark:text-inverse-primary">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm text-on-surface">Nouvel adolescent</h1>
+</div>
+<div class="flex items-center">
+<button class="material-symbols-outlined text-on-surface-variant p-2">notifications</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="mt-14 px-margin-mobile flex-grow max-w-2xl mx-auto w-full py-8">
+<!-- Profile Photo Section -->
+<section class="flex flex-col items-center mb-10">
+<div class="relative">
+<div class="w-32 h-32 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant border-4 border-surface-container">
+<span class="material-symbols-outlined !text-6xl">person</span>
+</div>
+<button class="absolute bottom-0 right-0 bg-primary p-2 rounded-full shadow-lg active:scale-90 transition-all border-2 border-surface">
+<span class="material-symbols-outlined text-white text-sm">photo_camera</span>
+</button>
+</div>
+<p class="mt-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Photo de profil</p>
+</section>
+<!-- Form Section -->
+<form class="space-y-8">
+<!-- INFORMATIONS PERSONNELLES -->
+<fieldset class="space-y-4">
+<legend class="font-label-lg text-label-lg text-primary uppercase tracking-widest mb-2 px-1">Informations personnelles</legend>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1">Prénom</label>
+<input class="w-full bg-surface-container border-none rounded-lg p-4 font-body-md text-body-md text-on-surface form-input-focus transition-all" placeholder="Ex: Jean" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1">Nom</label>
+<input class="w-full bg-surface-container border-none rounded-lg p-4 font-body-md text-body-md text-on-surface form-input-focus transition-all" placeholder="Ex: Dupont" type="text"/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1">Genre</label>
+<div class="flex p-1 bg-surface-container rounded-xl w-full">
+<button class="flex-1 py-3 px-4 rounded-lg font-label-lg text-label-lg bg-primary text-white transition-all" data-gender="male" onclick="toggleGender(this)" type="button">Masculin</button>
+<button class="flex-1 py-3 px-4 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high transition-all" data-gender="female" onclick="toggleGender(this)" type="button">Féminin</button>
+</div>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1">Date de naissance</label>
+<div class="relative">
+<input class="w-full bg-surface-container border-none rounded-lg p-4 font-body-md text-body-md text-on-surface form-input-focus transition-all appearance-none" type="date"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">calendar_today</span>
+</div>
+</div>
+</fieldset>
+<!-- PARENT / TUTEUR -->
+<fieldset class="space-y-4 pt-4 border-t border-outline-variant/20">
+<legend class="font-label-lg text-label-lg text-primary uppercase tracking-widest mb-2 px-1">Parent / Tuteur</legend>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1">Nom du parent</label>
+<div class="relative">
+<input class="w-full bg-surface-container border-none rounded-lg p-4 pl-12 font-body-md text-body-md text-on-surface form-input-focus transition-all" placeholder="Nom complet" type="text"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">person_search</span>
+</div>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1">Téléphone</label>
+<div class="relative">
+<input class="w-full bg-surface-container border-none rounded-lg p-4 pl-12 font-body-md text-body-md text-on-surface form-input-focus transition-all" placeholder="+33 0 00 00 00 00" type="tel"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">call</span>
+</div>
+</div>
+</fieldset>
+<!-- GROUPE -->
+<fieldset class="space-y-4 pt-4 border-t border-outline-variant/20">
+<legend class="font-label-lg text-label-lg text-primary uppercase tracking-widest mb-2 px-1">Groupe</legend>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1">Assignation</label>
+<div class="relative">
+<select class="w-full bg-surface-container border-none rounded-lg p-4 font-body-md text-body-md text-on-surface form-input-focus transition-all appearance-none">
+<option disabled="" selected="" value="">Choisir un groupe</option>
+<option value="1">Groupe Junior (11-13 ans)</option>
+<option value="2">Groupe Ados (14-17 ans)</option>
+<option value="3">Jeunes Adultes (18+ ans)</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+</fieldset>
+<!-- Submit Button -->
+<div class="pt-8 pb-12">
+<button class="w-full bg-primary text-white py-5 rounded-xl font-headline-sm text-headline-sm shadow-lg active:scale-[0.98] transition-all flex items-center justify-center gap-3" type="submit">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">save</span>
+                    Enregistrer
+                </button>
+</div>
+</form>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-surface shadow-lg rounded-t-xl border-t border-outline-variant/10">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-all p-2 rounded-2xl" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Accueil</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary text-white rounded-2xl px-3 py-1 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-md text-label-md">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-all p-2 rounded-2xl" href="#">
+<span class="material-symbols-outlined" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span class="font-label-md text-label-md">Appel</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-all p-2 rounded-2xl" href="#">
+<span class="material-symbols-outlined" data-icon="diversity_3">diversity_3</span>
+<span class="font-label-md text-label-md">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-all p-2 rounded-2xl" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Paramètres</span>
+</a>
+</nav>
+<script>
+        function toggleGender(btn) {
+            const container = btn.parentElement;
+            const buttons = container.querySelectorAll('button');
+            
+            buttons.forEach(b => {
+                b.classList.remove('bg-primary', 'text-white');
+                b.classList.add('text-on-surface-variant');
+            });
+            
+            btn.classList.add('bg-primary', 'text-white');
+            btn.classList.remove('text-on-surface-variant');
+        }
+
+        // Form submission prevent default for demo
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Adolescent enregistré avec succès !');
+        });
+    </script>
+</body></html>

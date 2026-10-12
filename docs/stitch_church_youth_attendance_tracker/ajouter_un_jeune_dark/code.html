@@ -1,0 +1,267 @@
+<!DOCTYPE html><html class="dark" lang="fr"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Ecclesia Flow - Ajouter un Adolescent</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#571ac0",
+                    "tertiary-container": "#6f3dd9",
+                    "tertiary-fixed": "#e9ddff",
+                    "on-secondary-container": "#00714d",
+                    "surface-container-low": "#f0f3ff",
+                    "on-background": "#151c27",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "surface-tint": "#4d44e3",
+                    "secondary": "#006c49",
+                    "on-tertiary-container": "#e3d5ff",
+                    "surface-container": "#e7eefe",
+                    "outline": "#777587",
+                    "on-tertiary-fixed-variant": "#5516be",
+                    "tertiary-fixed-dim": "#d0bcff",
+                    "on-primary-fixed": "#0f0069",
+                    "on-error-container": "#93000a",
+                    "on-secondary": "#ffffff",
+                    "surface": "#f9f9ff",
+                    "surface-bright": "#f9f9ff",
+                    "surface-variant": "#dce2f3",
+                    "on-tertiary-fixed": "#23005c",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-high": "#e2e8f8",
+                    "on-surface": "#151c27",
+                    "inverse-primary": "#c3c0ff",
+                    "secondary-fixed": "#6ffbbe",
+                    "on-secondary-fixed-variant": "#005236",
+                    "error": "#ba1a1a",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed": "#002113",
+                    "on-primary-container": "#dad7ff",
+                    "inverse-surface": "#2a313d",
+                    "primary": "#3525cd",
+                    "outline-variant": "#c7c4d8",
+                    "on-surface-variant": "#464555",
+                    "background": "#f9f9ff",
+                    "on-error": "#ffffff",
+                    "primary-fixed": "#e2dfff",
+                    "surface-container-highest": "#dce2f3",
+                    "secondary-container": "#6cf8bb",
+                    "secondary-fixed-dim": "#4edea3",
+                    "primary-container": "#4f46e5",
+                    "on-tertiary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#d3daea",
+                    "inverse-on-surface": "#ebf1ff",
+                    "on-primary-fixed-variant": "#3323cc"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "margin-tablet": "32px",
+                    "md": "16px",
+                    "sm": "8px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "display": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0F172A; /* Deeper dark background for contrast */
+            color: #F8FAFC;
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-input {
+            background-color: #1E293B;
+            border: 1px solid #334155;
+            color: #FFFFFF;
+            transition: border-color 0.2s, ring 0.2s;
+        }
+        .custom-input:focus {
+            border-color: #4F46E5;
+            ring: 2px solid #4F46E5;
+            outline: none;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky z-40 bg-slate-900/80 backdrop-blur-md shadow-sm flex items-center justify-between px-4 py-3">
+<div class="flex items-center gap-3">
+<button class="p-2 hover:bg-slate-800 rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined text-white">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-white">Nouveau Profil</h1>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-white font-bold text-xs">
+                JD
+            </div>
+</div>
+</header>
+<main class="max-w-xl mx-auto px-margin-mobile pt-lg">
+<!-- Hero Section / Context -->
+<section class="mb-lg text-center">
+<div class="relative inline-block mb-md">
+<div class="w-24 h-24 rounded-full bg-slate-800 border-2 border-dashed border-slate-700 flex flex-col items-center justify-center overflow-hidden group cursor-pointer hover:border-primary-container transition-colors">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-primary-container">add_a_photo</span>
+<span class="text-[10px] font-label-md text-slate-500 group-hover:text-primary-container mt-1">Photo</span>
+</div>
+</div>
+<p class="font-body-md text-slate-400">Remplissez les informations pour intégrer un nouvel adolescent à la communauté Ecclesia Flow.</p>
+</section>
+<!-- Form Section -->
+<form class="space-y-md">
+<!-- Bento style grouping -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Nom/Prénom -->
+<div class="space-y-sm">
+<label class="font-label-md text-slate-300 ml-1">Prénom</label>
+<input class="custom-input w-full px-md py-3 rounded-xl font-body-md placeholder:text-slate-500" placeholder="ex: Marc" type="text">
+</div>
+<div class="space-y-sm">
+<label class="font-label-md text-slate-300 ml-1">Nom</label>
+<input class="custom-input w-full px-md py-3 rounded-xl font-body-md placeholder:text-slate-500" placeholder="ex: Dubois" type="text">
+</div>
+</div>
+<!-- Date de naissance -->
+<div class="space-y-sm">
+<label class="font-label-md text-slate-300 ml-1">Date de naissance</label>
+<div class="relative">
+<input class="custom-input w-full px-md py-3 rounded-xl font-body-md appearance-none placeholder:text-slate-500" type="date">
+<span class="material-symbols-outlined absolute right-4 top-3 text-slate-500 pointer-events-none">calendar_today</span>
+</div>
+</div>
+<!-- Groupe Selection -->
+<div class="space-y-sm">
+<label class="font-label-md text-slate-300 ml-1">Groupe d'affectation</label>
+<select class="custom-input w-full px-md py-3 rounded-xl font-body-md appearance-none placeholder:text-slate-500">
+<option disabled="" selected="" value="">Choisir un groupe...</option>
+<option value="juniors">Juniors (12-14 ans)</option>
+<option value="seniors">Séniors (15-17 ans)</option>
+<option value="animation">Jeunes Animateurs</option>
+</select>
+</div>
+<!-- Parent Contacts (Visual Separation) -->
+<div class="pt-md">
+<div class="h-px bg-slate-800 w-full mb-md"></div>
+<h3 class="font-label-md text-primary-fixed-dim uppercase tracking-wider mb-sm">Contact Responsable</h3>
+<div class="space-y-sm">
+<label class="font-label-md text-slate-300 ml-1">Téléphone parents</label>
+<div class="flex gap-2">
+<div class="bg-slate-900/50 border border-slate-700 px-3 py-3 rounded-xl flex items-center gap-1 text-slate-300">
+<span class="text-sm font-medium">+33</span>
+</div>
+<input class="custom-input flex-1 px-md py-3 rounded-xl font-body-md placeholder:text-slate-500" placeholder="6 12 34 56 78" type="tel">
+</div>
+</div>
+</div>
+<!-- Additional Meta (Bento Card) -->
+<div class="glass-card p-md rounded-2xl mt-lg">
+<div class="flex items-start gap-md">
+<div class="p-2 bg-indigo-500/10 rounded-lg">
+<span class="material-symbols-outlined text-indigo-400">info</span>
+</div>
+<div>
+<h4 class="font-headline-md text-[16px] text-white">Note Administrative</h4>
+<p class="font-body-md text-slate-400 text-sm mt-1">L'adolescent recevra automatiquement une invitation pour rejoindre son groupe sur l'application après validation.</p>
+</div>
+</div>
+</div>
+<!-- Submit Button -->
+<div class="pt-lg">
+<button class="w-full bg-[#4F46E5] hover:bg-[#4338CA] text-white font-headline-md py-4 rounded-xl shadow-lg shadow-indigo-500/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2" type="submit">
+<span class="material-symbols-outlined">person_add</span>
+                    Enregistrer l'adolescent
+                </button>
+</div>
+</form>
+<!-- Aesthetic Decoration -->
+<div class="mt-xl h-32 w-full relative opacity-20 pointer-events-none overflow-hidden rounded-2xl">
+<div class="absolute inset-0 bg-gradient-to-r from-primary to-tertiary blur-3xl rounded-full translate-y-12"></div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 border-t border-slate-800 bg-slate-900/95 backdrop-blur-md">
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-white transition-colors py-1" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md mt-1">Accueil</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-white rounded-full px-4 py-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-md text-label-md mt-1">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-white transition-colors py-1" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="font-label-md text-label-md mt-1">Appel</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-white transition-colors py-1" href="#">
+<span class="material-symbols-outlined">hub</span>
+<span class="font-label-md text-label-md mt-1">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-white transition-colors py-1" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md mt-1">Paramètres</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for form focus
+        document.querySelectorAll('input, select').forEach(element => {
+            element.addEventListener('focus', () => {
+                element.parentElement.querySelector('label')?.classList.add('text-primary-fixed-dim');
+            });
+            element.addEventListener('blur', () => {
+                element.parentElement.querySelector('label')?.classList.remove('text-primary-fixed-dim');
+            });
+        });
+    </script>
+
+
+</body></html>

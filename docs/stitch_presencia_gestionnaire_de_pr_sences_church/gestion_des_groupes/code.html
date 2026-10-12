@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Groupes - Gestion Jeunesse</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .summary-gradient {
+            background: linear-gradient(135deg, #4f46e5 0%, #3525cd 100%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#f9f9ff",
+                        "inverse-on-surface": "#edf0ff",
+                        "tertiary-container": "#a44100",
+                        "tertiary-fixed-dim": "#ffb695",
+                        "on-error-container": "#93000a",
+                        "secondary": "#585f6c",
+                        "on-tertiary-fixed": "#351000",
+                        "on-tertiary-fixed-variant": "#7b2f00",
+                        "primary": "#3525cd",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#e9edff",
+                        "surface": "#f9f9ff",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "on-secondary-container": "#5e6572",
+                        "on-primary-fixed": "#0f0069",
+                        "on-surface": "#141b2b",
+                        "on-secondary-fixed": "#151c27",
+                        "secondary-container": "#dce2f3",
+                        "on-background": "#141b2b",
+                        "inverse-surface": "#293040",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#7e3000",
+                        "surface-tint": "#4d44e3",
+                        "on-surface-variant": "#464555",
+                        "secondary-fixed": "#dce2f3",
+                        "outline-variant": "#c7c4d8",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#404754",
+                        "surface-variant": "#dce2f7",
+                        "surface-container-highest": "#dce2f7",
+                        "tertiary-fixed": "#ffdbcc",
+                        "inverse-primary": "#c3c0ff",
+                        "surface-container-high": "#e1e8fd",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#ffd2be",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#f1f3ff",
+                        "outline": "#777587",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "on-primary-container": "#dad7ff",
+                        "secondary-fixed-dim": "#c0c7d6",
+                        "primary-container": "#4f46e5",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#e2dfff",
+                        "surface-dim": "#d3daef",
+                        "background": "#f9f9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "base": "4px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface dark:bg-inverse-surface text-on-surface dark:text-inverse-on-surface min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="flex items-center justify-between px-margin-mobile h-14 w-full fixed top-0 z-50 bg-surface dark:bg-inverse-surface shadow-sm dark:bg-surface-container">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary cursor-pointer active:scale-95 transition-transform">menu</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">Gestion Jeunesse</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant dark:text-outline-variant p-2 rounded-full hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors cursor-pointer">notifications</span>
+</div>
+</header>
+<!-- Main Content -->
+<main class="pt-20 px-margin-mobile max-w-screen-xl mx-auto">
+<!-- Header Section -->
+<div class="flex items-center justify-between mb-lg">
+<div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface dark:text-inverse-on-surface">Groupes</h2>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant">4 groupes actifs</p>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary px-6 py-2.5 rounded-xl font-label-lg transition-all active:scale-95 flex items-center gap-2 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                Créer
+            </button>
+</div>
+<!-- Summary Card -->
+<section class="summary-gradient rounded-3xl p-lg mb-xl shadow-xl relative overflow-hidden">
+<div class="absolute -right-10 -top-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+<div class="grid grid-cols-3 gap-4 relative z-10">
+<div class="text-center border-r border-white/10">
+<p class="font-headline-md text-headline-md text-white">47</p>
+<p class="font-label-md text-label-md text-white/70 uppercase tracking-wider">Jeunes</p>
+</div>
+<div class="text-center border-r border-white/10">
+<p class="font-headline-md text-headline-md text-white">4</p>
+<p class="font-label-md text-label-md text-white/70 uppercase tracking-wider">Groupes</p>
+</div>
+<div class="text-center">
+<p class="font-headline-md text-headline-md text-white">68%</p>
+<p class="font-label-md text-label-md text-white/70 uppercase tracking-wider">Pr\u00e9sence moy.</p>
+</div>
+</div>
+</section>
+<!-- Groups List -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Group Card 1 -->
+<div class="glass-card rounded-[24px] p-lg flex flex-col gap-md hover:border-primary/30 transition-all group">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px]">church</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface dark:text-inverse-on-surface">École du dimanche</h3>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant">18 adolescents</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant cursor-pointer">more_vert</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant uppercase">Présence moyenne</span>
+<span class="font-label-lg text-label-lg text-primary dark:text-primary-fixed-dim">72%</span>
+</div>
+<div class="w-full h-2.5 bg-surface-container dark:bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary transition-all duration-1000" style="width: 72%"></div>
+</div>
+</div>
+<div class="flex gap-3 pt-2">
+<button class="flex-1 bg-primary/10 text-primary dark:text-primary-fixed-dim hover:bg-primary/20 font-label-lg py-3 rounded-xl transition-colors active:scale-95">Faire l'appel</button>
+<button class="flex-1 bg-secondary-container dark:bg-on-secondary-fixed-variant text-on-secondary-container dark:text-inverse-on-surface hover:opacity-80 font-label-lg py-3 rounded-xl transition-colors active:scale-95">Voir les jeunes</button>
+</div>
+</div>
+<!-- Group Card 2 -->
+<div class="glass-card rounded-[24px] p-lg flex flex-col gap-md hover:border-tertiary/30 transition-all group">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-2xl bg-tertiary-fixed-dim/20 flex items-center justify-center text-tertiary-fixed-dim group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px]">volunteer_activism</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface dark:text-inverse-on-surface">Louange Jeunes</h3>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant">12 membres</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant cursor-pointer">more_vert</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant uppercase">Présence moyenne</span>
+<span class="font-label-lg text-label-lg text-tertiary-fixed-dim">85%</span>
+</div>
+<div class="w-full h-2.5 bg-surface-container dark:bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-fixed-dim transition-all duration-1000" style="width: 85%"></div>
+</div>
+</div>
+<div class="flex gap-3 pt-2">
+<button class="flex-1 bg-tertiary-container/20 text-tertiary-fixed-dim hover:bg-tertiary-container/30 font-label-lg py-3 rounded-xl transition-colors active:scale-95">Faire l'appel</button>
+<button class="flex-1 bg-secondary-container dark:bg-on-secondary-fixed-variant text-on-secondary-container dark:text-inverse-on-surface hover:opacity-80 font-label-lg py-3 rounded-xl transition-colors active:scale-95">Voir les jeunes</button>
+</div>
+</div>
+<!-- Group Card 3 -->
+<div class="glass-card rounded-[24px] p-lg flex flex-col gap-md hover:border-error/30 transition-all group">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-2xl bg-error-container/20 flex items-center justify-center text-error group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px]">sports_soccer</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface dark:text-inverse-on-surface">Club Sportif</h3>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant">10 jeunes</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant cursor-pointer">more_vert</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant uppercase">Présence moyenne</span>
+<span class="font-label-lg text-label-lg text-error">45%</span>
+</div>
+<div class="w-full h-2.5 bg-surface-container dark:bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-error transition-all duration-1000" style="width: 45%"></div>
+</div>
+</div>
+<div class="flex gap-3 pt-2">
+<button class="flex-1 bg-error-container/20 text-error hover:bg-error-container/30 font-label-lg py-3 rounded-xl transition-colors active:scale-95">Faire l'appel</button>
+<button class="flex-1 bg-secondary-container dark:bg-on-secondary-fixed-variant text-on-secondary-container dark:text-inverse-on-surface hover:opacity-80 font-label-lg py-3 rounded-xl transition-colors active:scale-95">Voir les jeunes</button>
+</div>
+</div>
+<!-- Group Card 4 -->
+<div class="glass-card rounded-[24px] p-lg flex flex-col gap-md hover:border-primary-fixed-dim/30 transition-all group">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-2xl bg-secondary-container/30 flex items-center justify-center text-secondary-fixed-dim group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px]">menu_book</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface dark:text-inverse-on-surface">Étude Biblique</h3>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant">7 participants</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant cursor-pointer">more_vert</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant uppercase">Présence moyenne</span>
+<span class="font-label-lg text-label-lg text-secondary-fixed-dim">70%</span>
+</div>
+<div class="w-full h-2.5 bg-surface-container dark:bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-secondary-fixed-dim transition-all duration-1000" style="width: 70%"></div>
+</div>
+</div>
+<div class="flex gap-3 pt-2">
+<button class="flex-1 bg-secondary-fixed-dim/10 text-secondary-fixed-dim hover:bg-secondary-fixed-dim/20 font-label-lg py-3 rounded-xl transition-colors active:scale-95">Faire l'appel</button>
+<button class="flex-1 bg-secondary-container dark:bg-on-secondary-fixed-variant text-on-secondary-container dark:text-inverse-on-surface hover:opacity-80 font-label-lg py-3 rounded-xl transition-colors active:scale-95">Voir les jeunes</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-surface dark:bg-inverse-surface shadow-lg rounded-t-xl">
+<!-- Accueil -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-secondary-container hover:bg-surface-container-low dark:hover:bg-secondary-container transition-all active:scale-90 duration-200 cursor-pointer px-3 py-1 rounded-2xl">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Accueil</span>
+</div>
+<!-- Jeunes -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-secondary-container hover:bg-surface-container-low dark:hover:bg-secondary-container transition-all active:scale-90 duration-200 cursor-pointer px-3 py-1 rounded-2xl">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Jeunes</span>
+</div>
+<!-- Appel (Scanner) -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-secondary-container hover:bg-surface-container-low dark:hover:bg-secondary-container transition-all active:scale-90 duration-200 cursor-pointer px-3 py-1 rounded-2xl">
+<span class="material-symbols-outlined" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span class="font-label-md text-label-md">Appel</span>
+</div>
+<!-- Groupes (ACTIVE) -->
+<div class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-2xl px-3 py-1 active:scale-90 duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="diversity_3" style="font-variation-settings: 'FILL' 1;">diversity_3</span>
+<span class="font-label-md text-label-md">Groupes</span>
+</div>
+<!-- Paramètres -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-secondary-container hover:bg-surface-container-low dark:hover:bg-secondary-container transition-all active:scale-90 duration-200 cursor-pointer px-3 py-1 rounded-2xl">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Param\u00e8tres</span>
+</div>
+</nav>
+<script>
+        // Simple click interaction logic for active states
+        document.querySelectorAll('nav div').forEach(item => {
+            item.addEventListener('click', () => {
+                // In a real app, navigation logic would happen here.
+                // For demo, we just keep Groupes as active.
+            });
+        });
+    </script>
+</body></html>

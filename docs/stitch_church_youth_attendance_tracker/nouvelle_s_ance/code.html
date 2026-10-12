@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nouvelle Séance - ChurchPresence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F9FAFB;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(229, 231, 235, 0.5);
+        }
+        .avatar-stack img {
+            border: 2px solid white;
+        }
+        .custom-toggle:checked + .toggle-bg {
+            background-color: #4F46E5;
+        }
+        .custom-toggle:checked + .toggle-bg .toggle-dot {
+            transform: translateX(100%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#e2dfff",
+                        "inverse-surface": "#2a313d",
+                        "secondary-fixed-dim": "#4edea3",
+                        "surface-dim": "#d3daea",
+                        "tertiary": "#571ac0",
+                        "surface": "#f9f9ff",
+                        "on-tertiary-fixed-variant": "#5516be",
+                        "surface-container-high": "#e2e8f8",
+                        "surface-tint": "#4d44e3",
+                        "tertiary-fixed-dim": "#d0bcff",
+                        "on-surface": "#151c27",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface-container-highest": "#dce2f3",
+                        "on-tertiary-fixed": "#23005c",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#c3c0ff",
+                        "error-container": "#ffdad6",
+                        "secondary": "#006c49",
+                        "on-tertiary-container": "#e3d5ff",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#6f3dd9",
+                        "background": "#f9f9ff",
+                        "on-secondary-container": "#00714d",
+                        "outline": "#777587",
+                        "inverse-on-surface": "#ebf1ff",
+                        "primary": "#3525cd",
+                        "tertiary-fixed": "#e9ddff",
+                        "on-primary-fixed": "#0f0069",
+                        "on-background": "#151c27",
+                        "on-surface-variant": "#464555",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f0f3ff",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "primary-container": "#4f46e5",
+                        "on-secondary-fixed": "#002113",
+                        "surface-bright": "#f9f9ff",
+                        "surface-variant": "#dce2f3",
+                        "on-primary-container": "#dad7ff",
+                        "surface-container": "#e7eefe",
+                        "secondary-container": "#6cf8bb",
+                        "outline-variant": "#c7c4d8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "xl": "32px",
+                        "margin-tablet": "32px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "base": "4px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "display": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-bright min-h-screen pb-32">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-surface shadow-sm px-margin-mobile h-16 flex justify-between items-center w-full">
+<div class="flex items-center gap-3">
+<button class="transition-all duration-200 active:scale-95 text-primary">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-on-surface">Nouvelle séance</h1>
+</div>
+<button class="transition-all duration-200 active:scale-95 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</header>
+<main class="max-w-xl mx-auto px-margin-mobile mt-lg">
+<!-- Header Illustration Section -->
+<section class="flex flex-col items-center mb-xl">
+<div class="w-16 h-16 bg-primary-container rounded-xl flex items-center justify-center mb-md shadow-sm">
+<span class="material-symbols-outlined text-white text-[32px]">calendar_add_on</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Créer une séance</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 text-center">Planifiez et gérez la présence de votre groupe.</p>
+</section>
+<!-- Main Form Card -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm border border-outline-variant/30 space-y-lg">
+<!-- Group Selection -->
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider block">Groupe</label>
+<div class="relative">
+<select class="w-full h-12 bg-white border border-outline-variant rounded-xl px-4 appearance-none font-body-lg text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-all">
+<option>École du dimanche</option>
+<option>Groupe de louange</option>
+<option>Réunion des jeunes</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-3 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Date Selection -->
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider block">Date de la séance</label>
+<div class="relative">
+<input class="w-full h-12 bg-white border border-outline-variant rounded-xl px-4 pl-12 font-body-lg text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-all" readonly="" type="text" value="Dimanche 15 juin 2025"/>
+<span class="material-symbols-outlined absolute left-4 top-3 text-primary">event</span>
+</div>
+</div>
+<!-- Time Selection -->
+<div class="grid grid-cols-2 gap-gutter">
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider block">Heure de début</label>
+<div class="relative">
+<input class="w-full h-12 bg-white border border-outline-variant rounded-xl px-4 font-body-lg text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-all" type="time" value="10:00"/>
+</div>
+</div>
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider block">Heure de fin</label>
+<div class="relative">
+<input class="w-full h-12 bg-white border border-outline-variant rounded-xl px-4 font-body-lg text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-all" type="time" value="12:00"/>
+</div>
+</div>
+</div>
+<!-- Theme/Title -->
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider block">Thème / Titre (Optionnel)</label>
+<input class="w-full h-12 bg-white border border-outline-variant rounded-xl px-4 font-body-lg text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="ex: Étude biblique" type="text"/>
+</div>
+<hr class="border-outline-variant/30"/>
+<!-- Options Section -->
+<div class="space-y-md">
+<h3 class="font-label-md text-label-md text-primary font-bold">OPTIONS DE SÉANCE</h3>
+<!-- Toggle 1: Commencer l'appel -->
+<div class="flex items-center justify-between">
+<div>
+<p class="font-body-lg text-on-surface font-medium">Commencer l'appel tout de suite</p>
+<p class="font-label-sm text-on-surface-variant">L'interface d'appel s'ouvrira après création</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only custom-toggle" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant rounded-full transition-colors toggle-bg relative">
+<div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform toggle-dot"></div>
+</div>
+</label>
+</div>
+<!-- Toggle 2: Marquer tout le monde présent -->
+<div class="flex items-center justify-between">
+<div>
+<p class="font-body-lg text-on-surface font-medium">Marquer tout le monde présent</p>
+<p class="font-label-sm text-on-surface-variant">Par défaut pour tous les participants</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only custom-toggle" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-variant rounded-full transition-colors toggle-bg relative">
+<div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform toggle-dot"></div>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- Participants Preview Card -->
+<div class="mt-lg bg-surface-container-low rounded-xl p-md border border-outline-variant/20 flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="avatar-stack flex -space-x-3">
+<img alt="Participant" class="w-8 h-8 rounded-full" data-alt="A portrait-style close-up of a diverse young man with a friendly expression, styled in a clean, modern illustration for a professional application. The lighting is bright and even, reinforcing a positive, communal atmosphere. The background is a soft, muted pastel indigo, consistent with a clean and contemporary church management UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG6H6keqvK6yVTe9KFD-O5hPwhcfoOfDpkVMfVVWvjpEzYxz_J-mBwAIBiXfyBu7MZpjK7T7m9vjLMoYXfa40c7mRnM-zwPGr-3Gx-Ro1D5-r1ZP2impp1cZmPYrzGoJg3TNupBK4Few5txzaaIEUOYRv7aE7G1VI1A5VXKhpbA1ySmVNJQDhNxD7pVbqyCKDmjiWUtGK2fDOJ8EbWv4cvtXhz7JygxCk2LN0-9N_9O54IKAZR5WeZnsysb0_2bUnjSl5MS54S6vQ"/>
+<img alt="Participant" class="w-8 h-8 rounded-full" data-alt="A profile illustration of a smiling young woman with dark hair and glasses, rendered in a crisp, modern vector style. She has a welcoming look, suitable for a community-based social app. The color palette is high-key with soft highlights and deep, rich indigo accents, creating a professional yet approachable corporate look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBa03MbcGFrk9yTFdJCpAce5jNkHdfRLQVatgT3my8QI3-qkdZRSFyGvor3C3JbcqHvzyvhLAHW1IRfZao8PPpnebK824hxBcpfDVgoIHec9yVsMIWcPSpRnONff0srHGrwv8JfwZz1mft4OyDDuKHmDbjgsr0yM3pga9_rdLdC2MJ3EvsvuqbapiNaKlWq3l_PpbSYoaLRyPHY7Gu0XxYXdN9tAVKAVa06A7lTMAh2npTFWqJ6NuEpcTqQfQdO7up0TK6_9YwIqBE"/>
+<img alt="Participant" class="w-8 h-8 rounded-full" data-alt="A bright, modern avatar illustration of a young teenager with short hair, smiling warmly. The art style is minimalist and clean, utilizing a professional palette of soft blues and crisp whites. The lighting is soft and professional, evoking a sense of clarity and reliability within a modern productivity tool's interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZrbeneDBdnf_6nQPSOB8C6U0bDnJPQcMcZGoikjluQXiBZpxtcIjYq1NQtUCtCtdcHsCXbri4iP3JlGstKeTbVSEJO5gWi7NlNLh514anlB44Dods0tqdqzYlPCXtUX_D8ABiCcM8gPpIy1uRdgH5oD8tktD4QhotFFIOt8_0ePpbGd16h4fuHF60lVhzZCUgOjsyGVdHeNWmq9GEBXU2iAJFAHZKdB2AmiQyUCsd3rO8qs9Dul4AZb9LmAS9trSC2_VAGqFlzxA"/>
+<div class="w-8 h-8 rounded-full bg-primary-container text-white flex items-center justify-center font-label-sm border-2 border-white">+15</div>
+</div>
+<div>
+<p class="font-body-lg text-on-surface font-semibold">18 jeunes</p>
+<p class="font-label-sm text-on-surface-variant">Inscrits à l'École du dimanche</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+<!-- Sticky Bottom Actions -->
+<div class="fixed bottom-0 left-0 w-full bg-surface/90 backdrop-blur-md p-md border-t border-outline-variant/10">
+<div class="max-w-xl mx-auto flex flex-col gap-sm">
+<button class="w-full h-14 bg-primary text-white rounded-xl font-body-lg font-bold flex items-center justify-center gap-2 shadow-lg shadow-primary/20 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined">check_circle</span>
+                    Créer et lancer l'appel
+                </button>
+<button class="w-full h-10 text-primary font-body-md font-semibold active:scale-[0.98] transition-all">
+                    Créer sans lancer l'appel
+                </button>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Mock (following JSON) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface shadow-[0_-1px_2px_0_rgba(0,0,0,0.05)] md:hidden pointer-events-none opacity-20">
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Accueil</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Jeunes</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="font-label-md text-label-md">Appel</span>
+</div>
+</nav>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('button, select, input[type="checkbox"]').forEach(el => {
+            el.addEventListener('click', () => {
+                if (window.navigator.vibrate) {
+                    window.navigator.vibrate(5);
+                }
+            });
+        });
+
+        // Simple form validation visual cue
+        const mainButton = document.querySelector('button.bg-primary');
+        mainButton.addEventListener('click', () => {
+            mainButton.classList.add('bg-secondary');
+            mainButton.innerHTML = '<span class="material-symbols-outlined">check</span> Séance créée !';
+            setTimeout(() => {
+                mainButton.classList.remove('bg-secondary');
+                mainButton.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Créer et lancer l\'appel';
+            }, 2000);
+        });
+    </script>
+</body></html>

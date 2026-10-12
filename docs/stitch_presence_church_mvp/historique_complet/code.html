@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Historique Complet - David Koffi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #E8E8E4;
+            border-radius: 10px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-24">
+<!-- Top App Bar (Based on JSON TopAppBar) -->
+<header class="sticky top-0 z-50 bg-surface/80 backdrop-blur-md">
+<div class="flex items-center justify-between px-margin-mobile py-md w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-md">
+<button class="p-xs hover:bg-surface-container-low rounded-full transition-colors duration-200">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Historique</h1>
+</div>
+<button class="p-xs hover:bg-surface-container-low rounded-full transition-colors duration-200">
+<span class="material-symbols-outlined text-on-surface-variant">filter_list</span>
+</button>
+</div>
+</header>
+<main class="px-margin-mobile pt-sm max-w-lg mx-auto">
+<!-- Profile Summary Section -->
+<section class="mb-xl animate-in fade-in slide-in-from-bottom-4 duration-700">
+<div class="bg-surface-container-lowest rounded-[20px] p-lg border border-surface-variant shadow-sm flex items-center gap-lg">
+<div class="relative">
+<img class="w-16 h-16 rounded-full object-cover border-2 border-primary-fixed shadow-sm" data-alt="A professional and friendly portrait of a young African man named David Koffi. He is smiling warmly against a soft, out-of-focus natural background. The lighting is warm and golden, emphasizing a welcoming community atmosphere. The image has a clean, modern aesthetic with high clarity and a shallow depth of field, fitting for a premium church community management platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwgErqFQ65gv58S6SKSVdh5BiNo3C3sUZQFKCUXrNVmSvhUoc23QPsVMGltXaqhHiEHCgGRIwyvb4yxHJx8GBbIuUO8FMlbq83bBvtglN9unuI5samI6HDKCbS6fOx-1pkar-I4ufAQe2CJwB3gwt8TTIasN-WtagIE6n9bP4F0DyB61BPNZHHgkIVyaKNsJhNoXtm6e1fPpG5Kl8z263T8RQ7pEk3XeAjoJQaw7GDkCo0j_-HkSNdDPGrpn9_FS-vBzhgXTLN"/>
+<div class="absolute -bottom-1 -right-1 bg-primary text-white p-1 rounded-full border-2 border-surface-container-lowest">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="flex-1">
+<h2 class="font-headline-md text-headline-md text-on-surface">David Koffi</h2>
+<div class="flex items-center gap-sm mt-xs">
+<span class="text-label-bold font-label-bold text-outline uppercase tracking-wider">Taux de présence</span>
+<span class="text-primary font-bold">78%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-sm overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 78%"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Grid (Bento Style) -->
+<section class="grid grid-cols-3 gap-md mb-xl">
+<div class="bg-surface-container-lowest border border-surface-variant p-md rounded-xl flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary mb-xs" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-display font-display leading-none mb-xs text-primary">24</span>
+<span class="text-label-md font-label-md text-on-surface-variant">Présences</span>
+</div>
+<div class="bg-surface-container-lowest border border-surface-variant p-md rounded-xl flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-error mb-xs" style="font-variation-settings: 'FILL' 1;">cancel</span>
+<span class="text-display font-display leading-none mb-xs text-error">04</span>
+<span class="text-label-md font-label-md text-on-surface-variant">Absences</span>
+</div>
+<div class="bg-surface-container-lowest border border-surface-variant p-md rounded-xl flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-secondary mb-xs" style="font-variation-settings: 'FILL' 1;">schedule</span>
+<span class="text-display font-display leading-none mb-xs text-secondary">02</span>
+<span class="text-label-md font-label-md text-on-surface-variant">Retards</span>
+</div>
+</section>
+<!-- Filters (Chips) -->
+<section class="mb-lg overflow-x-auto pb-xs custom-scrollbar">
+<div class="flex items-center gap-sm whitespace-nowrap">
+<button class="px-lg py-sm rounded-full bg-primary text-white font-label-bold text-label-md transition-all active:scale-95 shadow-md shadow-primary/20">Tout</button>
+<button class="px-lg py-sm rounded-full bg-surface-container-low border border-surface-variant text-on-surface-variant font-label-bold text-label-md hover:bg-surface-container-high transition-all">Ce mois</button>
+<button class="px-lg py-sm rounded-full bg-surface-container-low border border-surface-variant text-on-surface-variant font-label-bold text-label-md hover:bg-surface-container-high transition-all">3 mois</button>
+<button class="px-lg py-sm rounded-full bg-surface-container-low border border-surface-variant text-on-surface-variant font-label-bold text-label-md hover:bg-surface-container-high transition-all">Cette année</button>
+</div>
+</section>
+<!-- Attendance List -->
+<section class="space-y-xl">
+<!-- June 2025 Group -->
+<div>
+<h3 class="font-headline-md text-headline-md text-primary px-xs mb-md flex items-center justify-between">
+                    Juin 2025
+                    <span class="text-label-md font-label-md text-outline">4 séances</span>
+</h3>
+<div class="space-y-sm">
+<!-- Session Item: Present -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-[20px] p-md flex items-center gap-md transition-transform active:scale-[0.98]">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex flex-col items-center justify-center text-primary border border-primary/20">
+<span class="text-label-bold font-label-bold leading-none">28</span>
+<span class="text-[10px] uppercase font-bold">JUN</span>
+</div>
+<div class="flex-1">
+<p class="font-headline-md text-[16px] text-on-surface">Culte des Jeunes</p>
+<p class="text-label-md font-label-md text-outline">16:30 • Église Principale</p>
+</div>
+<span class="px-sm py-1 bg-primary/10 text-primary text-label-bold font-label-bold rounded-lg uppercase tracking-tight">Présent</span>
+</div>
+<!-- Session Item: Late -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-[20px] p-md flex items-center gap-md transition-transform active:scale-[0.98]">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex flex-col items-center justify-center text-secondary border border-outline-variant">
+<span class="text-label-bold font-label-bold leading-none">21</span>
+<span class="text-[10px] uppercase font-bold">JUN</span>
+</div>
+<div class="flex-1">
+<p class="font-headline-md text-[16px] text-on-surface">Étude Biblique</p>
+<p class="text-label-md font-label-md text-outline">18:00 • Salle de Prière</p>
+</div>
+<span class="px-sm py-1 bg-surface-container-high text-secondary text-label-bold font-label-bold rounded-lg uppercase tracking-tight">Retard</span>
+</div>
+<!-- Session Item: Absent -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-[20px] p-md flex items-center gap-md transition-transform active:scale-[0.98]">
+<div class="w-12 h-12 rounded-xl bg-error/5 flex flex-col items-center justify-center text-error border border-error/20">
+<span class="text-label-bold font-label-bold leading-none">14</span>
+<span class="text-[10px] uppercase font-bold">JUN</span>
+</div>
+<div class="flex-1">
+<p class="font-headline-md text-[16px] text-on-surface">Répétition Chorale</p>
+<p class="text-label-md font-label-md text-outline">15:00 • Auditorium</p>
+</div>
+<span class="px-sm py-1 bg-error/10 text-error text-label-bold font-label-bold rounded-lg uppercase tracking-tight">Absent</span>
+</div>
+<!-- Session Item: Excused -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-[20px] p-md flex items-center gap-md transition-transform active:scale-[0.98]">
+<div class="w-12 h-12 rounded-xl bg-surface-container-low flex flex-col items-center justify-center text-outline border border-surface-variant">
+<span class="text-label-bold font-label-bold leading-none">07</span>
+<span class="text-[10px] uppercase font-bold">JUN</span>
+</div>
+<div class="flex-1">
+<p class="font-headline-md text-[16px] text-on-surface">Sortie Évangélisation</p>
+<p class="text-label-md font-label-md text-outline">09:00 • Terrain Sport</p>
+</div>
+<span class="px-sm py-1 bg-surface-container-low border border-surface-variant text-outline text-label-bold font-label-bold rounded-lg uppercase tracking-tight">Excusé</span>
+</div>
+</div>
+</div>
+<!-- May 2025 Group -->
+<div>
+<h3 class="font-headline-md text-headline-md text-primary px-xs mb-md flex items-center justify-between">
+                    Mai 2025
+                    <span class="text-label-md font-label-md text-outline">1 séance</span>
+</h3>
+<div class="space-y-sm">
+<div class="bg-surface-container-lowest border border-surface-variant rounded-[20px] p-md flex items-center gap-md transition-transform active:scale-[0.98]">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex flex-col items-center justify-center text-primary border border-primary/20">
+<span class="text-label-bold font-label-bold leading-none">31</span>
+<span class="text-[10px] uppercase font-bold">MAI</span>
+</div>
+<div class="flex-1">
+<p class="font-headline-md text-[16px] text-on-surface">Veillée de Prière</p>
+<p class="text-label-md font-label-md text-outline">22:00 • Temple</p>
+</div>
+<span class="px-sm py-1 bg-primary/10 text-primary text-label-bold font-label-bold rounded-lg uppercase tracking-tight">Présent</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Empty State (Reference/Hidden) -->
+<section class="hidden py-xl flex flex-col items-center text-center animate-in fade-in zoom-in-95 duration-500" id="empty-state">
+<div class="w-24 h-24 rounded-full bg-surface-container flex items-center justify-center mb-lg">
+<span class="material-symbols-outlined text-4xl text-outline-variant">calendar_today</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-xs">Aucune séance</h4>
+<p class="text-body-md font-body-md text-outline px-xl">L'historique des présences pour cette période est actuellement vide.</p>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Based on JSON BottomNavBar) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-2 py-sm pb-safe bg-surface border-t border-surface-variant z-50">
+<a class="flex flex-col items-center justify-center text-outline hover:opacity-80 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Accueil</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim bg-secondary-container dark:bg-secondary-fixed-dim rounded-full px-4 py-1 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-md text-label-md">Jeunes</span>
+</a>
+<button class="flex flex-col items-center justify-center text-outline hover:opacity-80 active:scale-95 transition-all">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="font-label-md text-label-md">Appel</span>
+</button>
+<a class="flex flex-col items-center justify-center text-outline hover:opacity-80 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline hover:opacity-80 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Paramètres</span>
+</a>
+</nav>
+<script>
+        // Simple Interaction logic
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                // Haptic feedback simulation or navigation could be added here
+                console.log('Action performed on: ' + this.textContent.trim());
+            });
+        });
+
+        // Toggle empty state for demonstration if needed (e.g. by filter)
+        function toggleEmptyState(show) {
+            const list = document.querySelectorAll('section')[4];
+            const empty = document.getElementById('empty-state');
+            if(show) {
+                list.classList.add('hidden');
+                empty.classList.remove('hidden');
+            } else {
+                list.classList.remove('hidden');
+                empty.classList.add('hidden');
+            }
+        }
+    </script>
+</body></html>

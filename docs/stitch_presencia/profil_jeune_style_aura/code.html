@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Presencia - Youth Profile Detail</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#1b1b1b",
+                    "primary": "#000000",
+                    "surface-dim": "#dadada",
+                    "on-tertiary-fixed-variant": "#41474e",
+                    "tertiary-fixed-dim": "#c1c7cf",
+                    "on-secondary-fixed": "#191c1d",
+                    "on-error-container": "#93000a",
+                    "surface-bright": "#f9f9f9",
+                    "secondary": "#5c5f60",
+                    "inverse-on-surface": "#f1f1f1",
+                    "on-primary-container": "#848484",
+                    "error-container": "#ffdad6",
+                    "surface-tint": "#5e5e5e",
+                    "primary-fixed": "#e2e2e2",
+                    "surface-variant": "#e2e2e2",
+                    "secondary-container": "#e1e3e4",
+                    "on-primary-fixed-variant": "#474747",
+                    "on-primary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#1b1b1b",
+                    "tertiary": "#000000",
+                    "secondary-fixed-dim": "#c5c7c8",
+                    "surface-container-high": "#e8e8e8",
+                    "outline": "#7e7576",
+                    "on-error": "#ffffff",
+                    "on-secondary-container": "#626566",
+                    "error": "#ba1a1a",
+                    "inverse-surface": "#303030",
+                    "background": "#f9f9f9",
+                    "on-background": "#1b1b1b",
+                    "surface-container-highest": "#e2e2e2",
+                    "on-tertiary-container": "#7e848c",
+                    "on-tertiary-fixed": "#161c22",
+                    "inverse-primary": "#c6c6c6",
+                    "tertiary-container": "#161c22",
+                    "outline-variant": "#cfc4c5",
+                    "secondary-fixed": "#e1e3e4",
+                    "surface": "#f9f9f9",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed": "#dde3eb",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#454748",
+                    "on-surface-variant": "#4c4546",
+                    "primary-container": "#1b1b1b",
+                    "surface-container-low": "#f3f3f3",
+                    "primary-fixed-dim": "#c6c6c6",
+                    "surface-container": "#eeeeee"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "margin-desktop": "64px",
+                    "margin-mobile": "20px",
+                    "unit": "8px",
+                    "gutter": "24px",
+                    "section-gap": "80px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Manrope"],
+                    "body-sm": ["Manrope"],
+                    "title-md": ["Manrope"],
+                    "headline-lg-mobile": ["Playfair Display"],
+                    "label-caps": ["Manrope"],
+                    "headline-lg": ["Playfair Display"],
+                    "display-lg": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "title-md": ["18px", {"lineHeight": "24px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0px 12px 32px rgba(0, 0, 0, 0.04);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e2e2e2;
+            border-radius: 10px;
+        }
+        .hero-img-gradient {
+            background: linear-gradient(to bottom, transparent 60%, rgba(249, 249, 249, 1) 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-lg overflow-x-hidden">
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 z-[60] w-full bg-surface/80 dark:bg-surface/80 backdrop-blur-xl shadow-sm px-margin-mobile py-4 flex justify-between items-center md:px-margin-desktop">
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity" data-icon="arrow_back"></button>
+<span class="font-display-lg text-headline-lg-mobile tracking-tight text-primary">Presencia</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:opacity-80" data-icon="share"></button>
+<button class="material-symbols-outlined text-primary hover:opacity-80" data-icon="more_vert"></button>
+</div>
+</header>
+<main class="pt-16 pb-32 max-w-screen-xl mx-auto">
+<!-- Hero Section -->
+<section class="relative w-full aspect-[4/5] md:aspect-[21/9] overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A cinematic, high-fashion portrait of a young person with an elegant, focused expression. The setting is a minimalist architectural space with soft, natural side-lighting creating long shadows and high contrast. The color palette is composed of sophisticated whites, grays, and deep blacks, reflecting a luxury aura and serene atmosphere. The overall mood is one of prestige and digital intelligence, consistent with an AI-curated boutique experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXFRfkaAkThriNMKQ4iGuE7UBIhdorFu0WwfD-xAgYRkIRax2nqj5V5ll1N2UbKj6zRbmEtB3OkK5_b_dk4XIsywK2tRizDasFkjYlHVhIsIuvvdfVTHJPF05B1pEpXqZTRSeBvkMQWaKa0exapa9WGBlrJ8cPAuZrUiW4rvXuACLX3FJ7oocon__xhI1-Y1ryCtZ3MqIVk6mUvU759t5RNTAwuCj3HrQ15UmkeCZXmX2DxY7cVxpd_1ReoVlFnHHzYkPRemCm3g"/>
+<div class="absolute inset-0 hero-img-gradient"></div>
+<div class="absolute bottom-10 left-margin-mobile md:left-margin-desktop z-10">
+<span class="font-label-caps text-label-caps text-secondary tracking-widest uppercase mb-2 block">Youth Member</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary">Julian Sterling</h1>
+<p class="font-body-lg text-secondary italic">"Leadership is an act of presence."</p>
+</div>
+</section>
+<!-- Stats Bento Grid -->
+<section class="px-margin-mobile md:px-margin-desktop -mt-12 relative z-20">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<!-- Stat 1 -->
+<div class="glass-card p-6 rounded-lg flex flex-col items-center justify-center text-center">
+<span class="font-label-caps text-label-caps text-secondary-container bg-primary text-white px-3 py-1 rounded-full mb-3 uppercase">Attendance</span>
+<div class="font-display-lg text-headline-lg text-primary">94%</div>
+<p class="font-body-sm text-secondary">Consistent Presence</p>
+</div>
+<!-- Stat 2 -->
+<div class="glass-card p-6 rounded-lg flex flex-col items-center justify-center text-center">
+<span class="font-label-caps text-label-caps text-primary border border-primary/20 px-3 py-1 rounded-full mb-3 uppercase">Engagement</span>
+<div class="font-display-lg text-headline-lg text-primary">High</div>
+<p class="font-body-sm text-secondary">Peer Interaction</p>
+</div>
+<!-- Stat 3 -->
+<div class="glass-card p-6 rounded-lg flex flex-col items-center justify-center text-center">
+<span class="font-label-caps text-label-caps text-primary border border-primary/20 px-3 py-1 rounded-full mb-3 uppercase">Projects</span>
+<div class="font-display-lg text-headline-lg text-primary">06</div>
+<p class="font-body-sm text-secondary">Community Led</p>
+</div>
+<!-- Stat 4 -->
+<div class="glass-card p-6 rounded-lg flex flex-col items-center justify-center text-center">
+<span class="font-label-caps text-label-caps text-primary border border-primary/20 px-3 py-1 rounded-full mb-3 uppercase">Growth</span>
+<div class="font-display-lg text-headline-lg text-primary">+12%</div>
+<p class="font-body-sm text-secondary">MoM Development</p>
+</div>
+</div>
+</section>
+<!-- Main Content Area -->
+<section class="mt-section-gap px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Timeline Section -->
+<div class="md:col-span-2 space-y-8">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Recent Activity</h2>
+<button class="font-label-caps text-label-caps text-primary border-b border-primary pb-1">View All</button>
+</div>
+<div class="space-y-6 relative border-l border-surface-container-highest ml-4 pl-8 py-2">
+<!-- Activity Item 1 -->
+<div class="relative">
+<div class="absolute -left-[37px] top-1 w-4 h-4 bg-primary rounded-full border-4 border-surface"></div>
+<span class="font-label-caps text-label-caps text-secondary mb-1 block">OCT 24, 2023</span>
+<h4 class="font-title-md text-title-md text-primary">Lead Workshop: Digital Literacy</h4>
+<p class="font-body-lg text-secondary max-w-prose">Successfully organized and facilitated a 2-hour session for junior members on ethical AI usage.</p>
+</div>
+<!-- Activity Item 2 -->
+<div class="relative">
+<div class="absolute -left-[37px] top-1 w-4 h-4 bg-surface-container-highest rounded-full border-4 border-surface"></div>
+<span class="font-label-caps text-label-caps text-secondary mb-1 block">OCT 18, 2023</span>
+<h4 class="font-title-md text-title-md text-primary">Community Service Outreach</h4>
+<p class="font-body-lg text-secondary max-w-prose">Participated in the neighborhood restoration initiative. Demonstrated excellent teamwork skills.</p>
+</div>
+<!-- Activity Item 3 -->
+<div class="relative">
+<div class="absolute -left-[37px] top-1 w-4 h-4 bg-surface-container-highest rounded-full border-4 border-surface"></div>
+<span class="font-label-caps text-label-caps text-secondary mb-1 block">OCT 12, 2023</span>
+<h4 class="font-title-md text-title-md text-primary">Achievement: Youth Mentor Badge</h4>
+<p class="font-body-lg text-secondary max-w-prose">Recognized for consistent mentorship of three younger peers over the last quarter.</p>
+</div>
+</div>
+</div>
+<!-- Pastoral Notes Section -->
+<div class="space-y-6">
+<div class="glass-card p-8 rounded-lg">
+<h3 class="font-title-md text-title-md text-primary mb-6 flex items-center justify-between">
+                        Pastoral Notes
+                        <button class="material-symbols-outlined text-secondary text-sm" data-icon="edit_note"></button>
+</h3>
+<div class="space-y-6">
+<div class="p-4 bg-surface-container-low rounded-lg border border-primary/5">
+<div class="flex items-center gap-2 mb-3">
+<img class="w-6 h-6 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSTCNw6le5crwmLQJHrte2zYKhh1HUf7JUB67KJLIy_igm1zxNZlOXXnCnQnGq95zv1UarmV3WuuqMBEFbtD7uwmarOZW8el4Yaw1d3xqCG9Gnr5dmCVQ5McNEzlgwftRZvQN1sbML0S7Pwi5THgbG1qzO8md7JnADeNQU69LvRFNYMokJTPO40ouR4DfHLUNoxpDvHMZ5GRQwUInRa34dmHE8W-LIZYn-W0nLD9cqXby7Wn3-2mKjUSUNhQm_1Un2xq4KfaAHEw"/>
+<span class="font-label-caps text-[10px] text-secondary">LEADER: MICHAEL D. • 2D AGO</span>
+</div>
+<p class="font-body-sm italic text-on-surface-variant">"Julian has shown remarkable maturity in recent sessions. His ability to bridge gaps between different personality groups is a key asset to our group."</p>
+</div>
+<div class="p-4 bg-surface-container-low rounded-lg border border-primary/5">
+<div class="flex items-center gap-2 mb-3">
+<img class="w-6 h-6 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPUItHJMYwmcVZoq_1R0bi_h_o9iGfCo1zqoebQZvFzWwRrqJptC1Cq1Wht67UQkPw2zEm8Vn_S-t4Jpyc5Ew64xx2lOLLvvCJ_Iy5yy6j-Imh5tYRGSPSqVUSaGVYdj72k9a8psFlZpAvogQgfaC1Ng4-Iwgjxv-0y6NeMM0wJRf69d3lmmKFoKJsgScSMhTjhHpdU1V39qz08nHwlmiS9j0fZMbQllkR5RmrUeUFb27D07AhmDOD-eyqglNPTeNfQRQ3IFHOHg"/>
+<span class="font-label-caps text-[10px] text-secondary">LEADER: SARAH W. • 1W AGO</span>
+</div>
+<p class="font-body-sm italic text-on-surface-variant">"Inquired about leadership training for next semester. Highly recommended for the ambassador program."</p>
+</div>
+</div>
+<button class="w-full mt-8 py-4 bg-primary text-white rounded-full font-label-caps text-label-caps hover:opacity-90 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="add"></span>
+                        ADD NEW NOTE
+                    </button>
+</div>
+<!-- Action Links -->
+<div class="flex flex-col gap-3">
+<button class="flex items-center justify-between p-5 glass-card rounded-lg hover:scale-[1.02] transition-transform">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="mail"></span>
+<span class="font-title-md text-sm">Message Julian</span>
+</div>
+<span class="material-symbols-outlined text-secondary" data-icon="chevron_right"></span>
+</button>
+<button class="flex items-center justify-between p-5 glass-card rounded-lg hover:scale-[1.02] transition-transform">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="assessment"></span>
+<span class="font-title-md text-sm">Download Growth Report</span>
+</div>
+<span class="material-symbols-outlined text-secondary" data-icon="download"></span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-6 left-0 right-0 z-50 flex justify-around items-center">
+<div class="bg-surface-container-lowest/90 backdrop-blur-2xl border border-white/20 shadow-[0px_12px_32px_rgba(0,0,0,0.04)] w-[90%] max-w-md rounded-full px-6 py-3 flex justify-around items-center">
+<a class="flex flex-col items-center justify-center text-secondary/60 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="home"></span>
+<span class="font-label-caps text-[10px] uppercase mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="group" style="font-variation-settings: 'FILL' 1;"></span>
+<span class="font-label-caps text-[10px] uppercase mt-1">Youth</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary/60 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="how_to_reg"></span>
+<span class="font-label-caps text-[10px] uppercase mt-1">Attendance</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary/60 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="hub"></span>
+<span class="font-label-caps text-[10px] uppercase mt-1">Groups</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary/60 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings"></span>
+<span class="font-label-caps text-[10px] uppercase mt-1">Settings</span>
+</a>
+</div>
+</nav>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.style.transform = 'scale(0.98)';
+                card.style.transition = 'transform 0.2s';
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+
+        // Simple scroll parallax for hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroImage = document.querySelector('section img');
+            if(heroImage) {
+                heroImage.style.transform = `translateY(${scrolled * 0.4}px)`;
+            }
+        });
+    </script>
+</body></html>

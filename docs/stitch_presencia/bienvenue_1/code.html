@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bienvenue chez Presencia</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed": "#390b00",
+                    "tertiary": "#6949ab",
+                    "surface": "#fff8f6",
+                    "secondary-fixed-dim": "#fdba49",
+                    "surface-container": "#fceae3",
+                    "surface-bright": "#fff8f6",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#e7d7d0",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#f6e5de",
+                    "primary-fixed-dim": "#ffb59d",
+                    "surface-container-highest": "#f0dfd8",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#25005a",
+                    "on-secondary-fixed-variant": "#614000",
+                    "inverse-surface": "#382e2a",
+                    "tertiary-fixed": "#eaddff",
+                    "on-secondary-container": "#704b00",
+                    "on-tertiary-container": "#fffcff",
+                    "on-surface": "#221a16",
+                    "tertiary-container": "#8262c6",
+                    "tertiary-fixed-dim": "#d2bcff",
+                    "surface-tint": "#a43c17",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed": "#281800",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#f0dfd8",
+                    "primary": "#a13a15",
+                    "on-error": "#ffffff",
+                    "on-background": "#221a16",
+                    "on-tertiary-fixed-variant": "#533294",
+                    "inverse-primary": "#ffb59d",
+                    "secondary-container": "#fdba49",
+                    "on-primary-container": "#fffcff",
+                    "outline-variant": "#dec0b7",
+                    "outline": "#8b716a",
+                    "on-surface-variant": "#57423b",
+                    "error": "#ba1a1a",
+                    "inverse-on-surface": "#ffede6",
+                    "on-primary-fixed-variant": "#842600",
+                    "surface-container-low": "#fff1eb",
+                    "secondary-fixed": "#ffddaf",
+                    "primary-container": "#c2522b",
+                    "secondary": "#805600",
+                    "primary-fixed": "#ffdbd0",
+                    "background": "#fff8f6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "container-margin": "20px",
+                    "xs": "4px",
+                    "xl": "32px",
+                    "unit": "4px",
+                    "md": "16px",
+                    "gutter": "12px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #fff8f6;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .soft-shadow {
+            shadow-color: #7A6358;
+            box-shadow: 0 4px 12px rgba(122, 99, 88, 0.08);
+        }
+        .hero-gradient {
+            background: linear-gradient(180deg, rgba(255, 248, 246, 0) 0%, rgba(255, 248, 246, 1) 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-fixed-dim">
+<!-- Main Canvas -->
+<main class="min-h-screen flex flex-col items-center justify-between relative">
+<!-- Animated Background Element (Subtle) -->
+<div class="absolute inset-0 z-0 opacity-20 pointer-events-none overflow-hidden">
+
+</div>
+<!-- Hero Section -->
+<section class="relative w-full flex-grow flex flex-col items-center justify-center pt-xl z-10 px-container-margin">
+<div class="relative w-full max-w-md aspect-[4/5] rounded-[2rem] overflow-hidden soft-shadow mb-lg group">
+<img alt="Youth Community" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A diverse group of joyful young adults sitting together in a sun-drenched community hall, laughing and sharing stories. The scene is bathed in warm, golden light, creating a welcoming and inclusive atmosphere. The colors are rich with earthy terracotta and soft cream tones, reflecting a modern, supportive environment for youth growth and collaboration." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVSZAUvGpsLrEXr8hvp6_6cgDsMuNvCy1awU-AtsdPbjo_wxvxh8Gay_m-OONksVIzOXE6nkBW3JSKq6sX7eEy2Gjfei9GT-QJ6XYJQ6wsuBVPT9O_A_LH85TJTfoUjWjHwaGq0NHzX89B37XKchcHpLYZb3GAHt5tBml1EnbjzNt8lwpiQ_CRlyHnzSeolkyXVUb1i9UPXwHmjcKuh_MInWrpsyTR9JjtTHJUPUgPjInzS8Fqwd1h7vYtnQLoCE3noWqUZzW_Sg"/>
+<div class="absolute inset-0 hero-gradient"></div>
+<!-- Branding Anchor -->
+<div class="absolute top-lg left-1/2 -translate-x-1/2 text-center">
+<h1 class="text-headline-lg font-headline-lg text-primary drop-shadow-sm tracking-tight">Presencia</h1>
+</div>
+</div>
+<!-- Content Area -->
+<div class="w-full max-w-md text-center animate-fade-in-up">
+<h2 class="text-display-lg font-display-lg text-on-background mb-md">
+                    Cultivons l'accueil, ensemble.
+                </h2>
+<!-- Benefit Bento Grid -->
+<div class="grid grid-cols-3 gap-sm mb-xl">
+<div class="flex flex-col items-center p-sm bg-surface-container-low rounded-xl">
+<div class="w-10 h-10 flex items-center justify-center bg-primary-container text-on-primary-container rounded-full mb-xs">
+<span class="material-symbols-outlined text-[20px]" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Simple</span>
+</div>
+<div class="flex flex-col items-center p-sm bg-surface-container-low rounded-xl">
+<div class="w-10 h-10 flex items-center justify-center bg-secondary-container text-on-secondary-container rounded-full mb-xs">
+<span class="material-symbols-outlined text-[20px]" data-icon="groups">groups</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Collaboratif</span>
+</div>
+<div class="flex flex-col items-center p-sm bg-surface-container-low rounded-xl">
+<div class="w-10 h-10 flex items-center justify-center bg-tertiary-container text-on-tertiary-container rounded-full mb-xs">
+<span class="material-symbols-outlined text-[20px]" data-icon="verified_user">verified_user</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Sécurisé</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Action Bottom Sheet -->
+<footer class="w-full max-w-md p-container-margin pb-xl z-20">
+<div class="flex flex-col gap-md">
+<!-- Primary Action -->
+<button class="w-full bg-primary-container text-on-primary-container py-md px-lg rounded-xl font-headline-md text-headline-md soft-shadow active:scale-[0.98] transition-all hover:bg-primary-container/90">
+                    Commencer l'aventure
+                </button>
+<!-- Secondary Action -->
+<div class="flex items-center justify-center gap-sm">
+<span class="text-body-md font-body-md text-on-surface-variant">Déjà membre ?</span>
+<button class="text-primary font-headline-md text-headline-md underline underline-offset-4 decoration-primary-fixed-dim hover:text-primary-container transition-colors">
+                        Se connecter
+                    </button>
+</div>
+</div>
+<!-- Accessibility Note -->
+<p class="mt-xl text-center text-label-sm font-label-sm text-outline px-md">
+                En continuant, vous rejoignez une communauté dédiée à l'accompagnement et à l'épanouissement de la jeunesse.
+            </p>
+</footer>
+</main>
+<!-- Micro-interaction Scripts -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Fade-in animation for content
+            const elements = document.querySelectorAll('.animate-fade-in-up');
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = `opacity 0.8s ease-out ${index * 0.2}s, transform 0.8s ease-out ${index * 0.2}s`;
+                
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, 100);
+            });
+
+            // Button tactile feedback
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(btn => {
+                btn.addEventListener('mousedown', () => {
+                    btn.classList.add('scale-95');
+                });
+                btn.addEventListener('mouseup', () => {
+                    btn.classList.remove('scale-95');
+                });
+                btn.addEventListener('mouseleave', () => {
+                    btn.classList.remove('scale-95');
+                });
+            });
+        });
+    </script>
+</body></html>

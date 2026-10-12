@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Kindred Path - Notifications</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#ffdad2",
+                        "on-surface": "#191d0e",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#ffb4a2",
+                        "inverse-primary": "#95d4b3",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#ffdcc2",
+                        "surface-container-low": "#f2f6dd",
+                        "on-secondary-fixed-variant": "#83260e",
+                        "tertiary-fixed-dim": "#f4bb8e",
+                        "primary-container": "#2d6a4f",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#a8e7c5",
+                        "surface-variant": "#e0e5cc",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#404943",
+                        "surface-tint": "#2c694e",
+                        "on-tertiary": "#ffffff",
+                        "outline-variant": "#bfc9c1",
+                        "outline": "#707973",
+                        "secondary": "#a33d23",
+                        "on-tertiary-fixed-variant": "#653e1b",
+                        "surface": "#f7fce3",
+                        "on-secondary-container": "#731a04",
+                        "inverse-on-surface": "#eff3da",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#95d4b3",
+                        "surface-bright": "#f7fce3",
+                        "primary-fixed": "#b1f0ce",
+                        "secondary-container": "#ff8162",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#191d0e",
+                        "on-tertiary-container": "#ffd0ad",
+                        "tertiary": "#653e1b",
+                        "background": "#f7fce3",
+                        "on-primary-fixed-variant": "#0e5138",
+                        "on-secondary-fixed": "#3c0700",
+                        "surface-container": "#ecf0d8",
+                        "on-tertiary-fixed": "#2e1500",
+                        "surface-dim": "#d8dcc4",
+                        "surface-container-highest": "#e0e5cc",
+                        "tertiary-container": "#805530",
+                        "surface-container-high": "#e6ebd2",
+                        "inverse-surface": "#2e3222",
+                        "error-container": "#ffdad6",
+                        "primary": "#0f5238",
+                        "on-primary-fixed": "#002114"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "48px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "margin-desktop": "40px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "xl": "80px",
+                        "margin-mobile": "16px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "60px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #FAFAF8;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .sanctuary-shadow {
+            box-shadow: 0px 4px 20px rgba(45, 106, 79, 0.05);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .notification-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .notification-card:active {
+            transform: scale(0.98);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen text-on-surface pb-32">
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky z-40 bg-background/80 backdrop-blur-md px-margin-mobile py-4 flex items-center justify-between">
+<h1 class="font-headline-md text-headline-md text-primary">Notifications</h1>
+<button class="font-label-md text-label-md text-primary bg-primary-fixed/20 px-4 py-2 rounded-full hover:opacity-80 transition-opacity active:scale-95">
+            Tout lire
+        </button>
+</header>
+<main class="max-w-7xl mx-auto">
+<!-- Filter Chips -->
+<div class="flex overflow-x-auto no-scrollbar gap-2 px-margin-mobile py-2 mb-4">
+<button class="whitespace-nowrap px-4 py-2 rounded-full font-label-md text-label-md bg-primary-container text-on-primary-container">
+                Toutes
+            </button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full font-label-md text-label-md bg-surface-container-high text-on-surface-variant">
+                Absences
+            </button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full font-label-md text-label-md bg-surface-container-high text-on-surface-variant">
+                Rappels
+            </button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full font-label-md text-label-md bg-surface-container-high text-on-surface-variant">
+                Système
+            </button>
+</div>
+<!-- Section: Today -->
+<div class="px-margin-mobile mb-6">
+<h2 class="font-label-md text-label-md text-outline mb-4 uppercase tracking-wider">Aujourd'hui</h2>
+<div class="space-y-3">
+<!-- Notification 1: Absence (Unread) -->
+<div class="notification-card sanctuary-shadow bg-white rounded-[14px] border-l-[3px] border-primary p-4 flex gap-4">
+<div class="w-10 h-10 rounded-full bg-error-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-error" data-icon="person_off">person_off</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-sm text-headline-sm text-on-surface leading-tight">Sarah Martin — 3 absences</h3>
+<span class="font-label-sm text-label-sm text-outline">09:42</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">L'étudiante a dépassé le quota d'absences autorisées pour ce mois.</p>
+</div>
+</div>
+<!-- Notification 2: Reminder -->
+<div class="notification-card sanctuary-shadow bg-white rounded-[14px] border-l-[3px] border-transparent p-4 flex gap-4">
+<div class="w-10 h-10 rounded-full bg-tertiary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-tertiary-container" data-icon="notifications">notifications</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-sm text-headline-sm text-on-surface leading-tight">Séance demain à 10h00</h3>
+<span class="font-label-sm text-label-sm text-outline">Hier</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Préparation du groupe de jeunes : thématique "Vivre ensemble".</p>
+</div>
+</div>
+<!-- Notification 3: Success -->
+<div class="notification-card sanctuary-shadow bg-white rounded-[14px] border-l-[3px] border-transparent p-4 flex gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-sm text-headline-sm text-on-surface leading-tight">Appel enregistré avec succès</h3>
+<span class="font-label-sm text-label-sm text-outline">2h ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Le registre de présence pour la séance du matin a été synchronisé.</p>
+</div>
+</div>
+<!-- Notification 4: System -->
+<div class="notification-card sanctuary-shadow bg-white rounded-[14px] border-l-[3px] border-transparent p-4 flex gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-outline" data-icon="info">info</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-sm text-headline-sm text-on-surface leading-tight">Nouveau membre ajouté</h3>
+<span class="font-label-sm text-label-sm text-outline">10:15</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Jean Dupont vient de rejoindre le groupe "Bénévolat".</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Optional Placeholder for "Earlier" -->
+<div class="px-margin-mobile opacity-40 select-none">
+<h2 class="font-label-md text-label-md text-outline mb-4 uppercase tracking-wider">Plus tôt</h2>
+<div class="h-32 rounded-[20px] border-2 border-dashed border-outline-variant flex items-center justify-center bg-surface-container-low/30">
+<p class="font-body-sm text-body-sm">Archives des notifications</p>
+</div>
+</div>
+<!-- Empty State Example (Hidden by default, used for logic demonstration) -->
+<div class="hidden flex-col items-center justify-center py-20 px-10 text-center" id="empty-state">
+<div class="w-20 h-20 rounded-full bg-surface-container-high flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-outline text-4xl" data-icon="notifications_off">notifications_off</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface-variant">Aucune notification</h3>
+<p class="font-body-md text-body-md text-outline mt-2">Vous êtes à jour ! Prenez un moment pour respirer.</p>
+</div>
+</main>
+<!-- Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 pb-safe px-2 bg-surface dark:bg-surface-dim shadow-[0px_-4px_20px_rgba(45,106,79,0.05)] rounded-t-xl z-50">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="child_care">child_care</span>
+<span class="font-label-sm text-label-sm">Youth</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span class="font-label-sm text-label-sm">Appel/QR</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-sm text-label-sm">Groups</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</button>
+</nav>
+<script>
+        // Micro-interactions for chips
+        const chips = document.querySelectorAll('.no-scrollbar button');
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                chips.forEach(c => {
+                    c.classList.remove('bg-primary-container', 'text-on-primary-container');
+                    c.classList.add('bg-surface-container-high', 'text-on-surface-variant');
+                });
+                chip.classList.add('bg-primary-container', 'text-on-primary-container');
+                chip.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
+            });
+        });
+
+        // Swipe to dismiss simulation (Visual Only)
+        let startX = 0;
+        document.querySelectorAll('.notification-card').forEach(card => {
+            card.addEventListener('touchstart', e => {
+                startX = e.touches[0].clientX;
+            });
+            card.addEventListener('touchmove', e => {
+                let diff = e.touches[0].clientX - startX;
+                if (diff < -50) {
+                    card.style.transform = `translateX(${diff}px)`;
+                    card.style.opacity = 1 - Math.abs(diff/200);
+                }
+            });
+            card.addEventListener('touchend', e => {
+                card.style.transform = '';
+                card.style.opacity = '';
+            });
+        });
+    </script>
+</body></html>

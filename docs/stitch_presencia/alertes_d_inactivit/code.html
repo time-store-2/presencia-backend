@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FAF7F5; /* Brand base layer */
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-header {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .student-card-shadow {
+            box-shadow: 0 4px 12px rgba(122, 99, 88, 0.08);
+        }
+        .active-nav-item {
+            scale: 0.95;
+            transition: all 0.2s ease-in-out;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#390b00",
+                        "tertiary": "#6949ab",
+                        "surface": "#fff8f6",
+                        "secondary-fixed-dim": "#fdba49",
+                        "surface-container": "#fceae3",
+                        "surface-bright": "#fff8f6",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#e7d7d0",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#f6e5de",
+                        "primary-fixed-dim": "#ffb59d",
+                        "surface-container-highest": "#f0dfd8",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#25005a",
+                        "on-secondary-fixed-variant": "#614000",
+                        "inverse-surface": "#382e2a",
+                        "tertiary-fixed": "#eaddff",
+                        "on-secondary-container": "#704b00",
+                        "on-tertiary-container": "#fffcff",
+                        "on-surface": "#221a16",
+                        "tertiary-container": "#8262c6",
+                        "tertiary-fixed-dim": "#d2bcff",
+                        "surface-tint": "#a43c17",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#281800",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#f0dfd8",
+                        "primary": "#a13a15",
+                        "on-error": "#ffffff",
+                        "on-background": "#221a16",
+                        "on-tertiary-fixed-variant": "#533294",
+                        "inverse-primary": "#ffb59d",
+                        "secondary-container": "#fdba49",
+                        "on-primary-container": "#fffcff",
+                        "outline-variant": "#dec0b7",
+                        "outline": "#8b716a",
+                        "on-surface-variant": "#57423b",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#ffede6",
+                        "on-primary-fixed-variant": "#842600",
+                        "surface-container-low": "#fff1eb",
+                        "secondary-fixed": "#ffddaf",
+                        "primary-container": "#c2522b",
+                        "secondary": "#805600",
+                        "primary-fixed": "#ffdbd0",
+                        "background": "#fff8f6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "md": "16px",
+                        "gutter": "12px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "container-margin": "20px",
+                        "xs": "4px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-container-margin py-md w-full sticky top-0 z-40 bg-surface dark:bg-on-background glass-header">
+<div class="flex items-center gap-md">
+<button class="p-xs rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">menu</span>
+</button>
+<h1 class="text-headline-lg font-headline-lg font-bold text-primary dark:text-primary-fixed-dim">Presencia</h1>
+</div>
+<div class="flex items-center">
+<img alt="Profile" class="w-10 h-10 rounded-full border-2 border-primary-container" data-alt="A professional close-up portrait of a young male youth leader with a friendly and welcoming expression. He is photographed in a bright, modern office with soft natural lighting and warm earthy tones. The aesthetic is clean and corporate, featuring a palette of terracotta and soft whites to match the brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk9hpEkgRU1qOVaFuRs9Cefax4R02dgODmOdNWCZBX28GbV7I-ops9AYYh1LI6216HkQx240RRAksBCE7SjC7FUvxNqisMMWeus_dZo1fpgcgIJQuwicgs2MJ-Jx9skjvvwJuX7s1Y_5mo2bKV5JosOp5q_UOmBORP-pUZww4YM2HZ_HgWdB_0_kC3mWP7jaMCt3tbX_uoBcVXLJTGGUHq8-6AWv3zV_L9Bnkt8IuFkqmvhn3h72AfAoSxm7HpCHk0__0Jcv685w"/>
+</div>
+</header>
+<main class="max-w-xl mx-auto px-container-margin pt-lg">
+<!-- Screen Title & Bulk Action -->
+<div class="mb-lg flex flex-col gap-sm">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="text-headline-md font-headline-md text-on-surface">Alertes d'Inactivité</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Absences consécutives (&gt; 4 séances)</p>
+</div>
+<span class="bg-error-container text-on-error-container px-sm py-xs rounded-full text-label-md font-label-md">8 jeunes</span>
+</div>
+<button class="mt-md w-full bg-primary text-on-primary py-md px-lg rounded-xl font-label-md flex items-center justify-center gap-sm active:scale-95 transition-transform student-card-shadow" onclick="relancerTout()">
+<span class="material-symbols-outlined">campaign</span>
+                Relancer tout le monde
+            </button>
+</div>
+<!-- Student Cards List -->
+<div class="flex flex-col gap-md" id="inactivity-list">
+<!-- Student Item 1 -->
+<div class="bg-surface-container-lowest p-md rounded-xl student-card-shadow flex items-start gap-md border border-surface-variant/20 group">
+<img alt="Jean" class="w-14 h-14 rounded-full object-cover bg-surface-container" data-alt="A studio portrait of a teenage boy with curly dark hair and a bright smile, wearing a casual mustard-colored hoodie. The background is a soft, solid terracotta tone that aligns with the radical hospitality design system. The lighting is soft and even, creating a warm, approachable atmosphere for a youth church community platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9Q3A20v35b24t40cRd_MvMFXFK3cl3AalTMsV6tLW6Z-skjubmgiYAF6h83xL6QtJGAZDTx5ZjLV0kUvtM-TuXZzKsD4RRpDfGNVM2SwnmUATq7F2k26qs2bvf4tbmaVPbxuaJJ9Hc9c2xQYtNpppnEl7NfFfEa-C_4BNX1Ejh5JsAdq270t1EhjlREmOnDlY7QStM4f1EKuo2bVRJjcuQNb646_UYNhCbkG-7nSkdG0j1JAL7OgHEQsiWpEMNRdPa3F7yUqflA"/>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-body-lg font-bold text-on-surface">Jean Dupont</h3>
+<p class="text-label-md font-label-md text-on-surface-variant">Groupe : Jeunes-A</p>
+</div>
+<span class="bg-[#FDECEA] text-[#C0392B] px-sm py-xs rounded-full text-label-sm font-bold">Absent depuis 5 séances</span>
+</div>
+<div class="mt-md flex justify-end">
+<button class="bg-surface-container-high text-primary px-lg py-sm rounded-lg font-label-md hover:bg-primary-fixed-dim transition-colors flex items-center gap-xs" onclick="relancer(this)">
+<span class="material-symbols-outlined text-[18px]">send</span>
+                            Relancer
+                        </button>
+</div>
+</div>
+</div>
+<!-- Student Item 2 -->
+<div class="bg-surface-container-lowest p-md rounded-xl student-card-shadow flex items-start gap-md border border-surface-variant/20">
+<img alt="Marie" class="w-14 h-14 rounded-full object-cover bg-surface-container" data-alt="A portrait of a young teenage girl with glasses and braided hair, wearing a clean white t-shirt. She is smiling gently in a bright, modern setting with warm wood textures in the background. The photo style is vibrant yet professional, reflecting a sense of belonging and community care in a church setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZboXbfn8VTlXbemxXUegcaAQUcILlN7EMznb2MnsBV62vggEtKp_jZgVO7bhFMxAjrT_q3fyu04Lvduj-sN74Qbv84CHgU_qAFwvhZvpxYzd774-ILKADyHwGD6f68uGtaM0KbUpKKHBnLF-v2YE9USKa2dXCmnELd78XvE2SSFIwTZnXJjPH1c0iRm_TriCQYvlndQyg9ZdhN83hlBHvMK5uesoLxlisTaSnqMwKas6iaJIUy46sI2NSNDy6Fptm1Lk66qDv2w"/>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-body-lg font-bold text-on-surface">Marie Lefebvre</h3>
+<p class="text-label-md font-label-md text-on-surface-variant">Groupe : Éclaireurs</p>
+</div>
+<span class="bg-[#FDECEA] text-[#C0392B] px-sm py-xs rounded-full text-label-sm font-bold">Absent depuis 7 séances</span>
+</div>
+<div class="mt-md flex justify-end">
+<button class="bg-surface-container-high text-primary px-lg py-sm rounded-lg font-label-md hover:bg-primary-fixed-dim transition-colors flex items-center gap-xs" onclick="relancer(this)">
+<span class="material-symbols-outlined text-[18px]">send</span>
+                            Relancer
+                        </button>
+</div>
+</div>
+</div>
+<!-- Student Item 3 -->
+<div class="bg-surface-container-lowest p-md rounded-xl student-card-shadow flex items-start gap-md border border-surface-variant/20">
+<img alt="Lucas" class="w-14 h-14 rounded-full object-cover bg-surface-container" data-alt="A cheerful portrait of a young boy with light brown hair in a denim jacket, laughing. The setting is an outdoor courtyard with soft evening sunlight, creating warm golden highlights. The image is clean and high-quality, fitting a modern digital interface for youth church administrative tools with a focus on radical hospitality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGOMgaMKfdF1_z_KWh2qbc9Zl0JbHvyj5oTGaUB3g6jf-Jim6Pl6Czn_WPjwD1C_sRGuU06wthLzKrRwGQ4LoOx9bMDA02qmUkbj5SwNFV_SyXeO8gb5_FfAgMmS2Wo_PUUDRBIw1fyXcOw-psb0aF-n_d00w7JQtzx4JP9ZuXzfoNuvz2hY8-zcCXdvqnMtW4xzfnydDVbI-50K7_77Hwg4BwvfeChtBJmfAQls0gY7Bx9a0k-h1ASqLSjGRikVV2Tr5IKz4MzA"/>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-body-lg font-bold text-on-surface">Lucas Martin</h3>
+<p class="text-label-md font-label-md text-on-surface-variant">Groupe : Jeunes-A</p>
+</div>
+<span class="bg-[#FDECEA] text-[#C0392B] px-sm py-xs rounded-full text-label-sm font-bold">Absent depuis 6 séances</span>
+</div>
+<div class="mt-md flex justify-end">
+<button class="bg-surface-container-high text-primary px-lg py-sm rounded-lg font-label-md hover:bg-primary-fixed-dim transition-colors flex items-center gap-xs" onclick="relancer(this)">
+<span class="material-symbols-outlined text-[18px]">send</span>
+                            Relancer
+                        </button>
+</div>
+</div>
+</div>
+<!-- Student Item 4 -->
+<div class="bg-surface-container-lowest p-md rounded-xl student-card-shadow flex items-start gap-md border border-surface-variant/20">
+<img alt="Sarah" class="w-14 h-14 rounded-full object-cover bg-surface-container" data-alt="A portrait of a teenage girl with dark curly hair wearing a soft knit beige sweater. She is looking thoughtfully at the camera in a minimalist, sun-drenched room with warm terracotta accents. The style is professional and communal, emphasizing the gentle, supportive nature of church youth group leadership tracking." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPSYgp0IVlZRXGhfTi_QvWGvyyfvD7pMBuDox_y-lYq2PCNbfdLsFowLGmF0ZQeANoQHvE4lwrC85OyQ4qGP58Ld4h0Grw6EYC08-SPEMLmoU_TUDbT3iHcBsnm342_AX6H7wc6ROr6SGOB6RSHzBGyfCNg4P-kjzEpwayMO-E5JkHmLaPmdg54bE_rl5FaaHfbak2Stf9Pbn3NwWO3o3dVBNU8TGYQ2yEUJSSfy5jIcCtf-oQxznx_1IwDZrC8AxxfZYKAIqI6w"/>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-body-lg font-bold text-on-surface">Sarah Garcia</h3>
+<p class="text-label-md font-label-md text-on-surface-variant">Groupe : Explorateurs</p>
+</div>
+<span class="bg-[#FDECEA] text-[#C0392B] px-sm py-xs rounded-full text-label-sm font-bold">Absent depuis 5 séances</span>
+</div>
+<div class="mt-md flex justify-end">
+<button class="bg-surface-container-high text-primary px-lg py-sm rounded-lg font-label-md hover:bg-primary-fixed-dim transition-colors flex items-center gap-xs" onclick="relancer(this)">
+<span class="material-symbols-outlined text-[18px]">send</span>
+                            Relancer
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-sm pb-safe pt-sm bg-surface/80 dark:bg-on-background/80 backdrop-blur-md shadow-[0_-4px_12px_rgba(122,99,88,0.08)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-sm py-xs rounded-xl" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm font-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-sm py-xs rounded-xl" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-sm font-label-sm">Jeunes</span>
+</a>
+<!-- Active Tab: Appel (since inactivity alerts is part of attendance tracking) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-sm py-xs scale-90 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">how_to_reg</span>
+<span class="text-label-sm font-label-sm">Appel</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-sm py-xs rounded-xl" href="#">
+<span class="material-symbols-outlined">hub</span>
+<span class="text-label-sm font-label-sm">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-sm py-xs rounded-xl" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-sm font-label-sm">Paramètres</span>
+</a>
+</nav>
+<!-- Floating Toast for feedback -->
+<div class="fixed bottom-24 left-1/2 -translate-x-1/2 bg-on-background text-surface px-lg py-md rounded-full shadow-lg text-label-md font-label-md flex items-center gap-sm opacity-0 pointer-events-none transition-all duration-300" id="toast">
+<span class="material-symbols-outlined">check_circle</span>
+<span id="toast-message">Relance envoyée !</span>
+</div>
+<script>
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.innerText = message;
+            toast.style.opacity = '1';
+            toast.style.transform = 'translate(-50%, -12px)';
+            
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translate(-50%, 0)';
+            }, 3000);
+        }
+
+        function relancer(btn) {
+            const name = btn.closest('.flex-1').querySelector('h3').innerText;
+            btn.innerHTML = `<span class="material-symbols-outlined animate-spin">sync</span> Envoi...`;
+            btn.disabled = true;
+            btn.classList.add('opacity-50');
+
+            setTimeout(() => {
+                btn.innerHTML = `<span class="material-symbols-outlined">done</span> Fait`;
+                btn.classList.replace('text-primary', 'text-tertiary');
+                showToast(`Relance envoyée à ${name}`);
+            }, 1000);
+        }
+
+        function relancerTout() {
+            const btns = document.querySelectorAll('#inactivity-list button');
+            btns.forEach((btn, index) => {
+                setTimeout(() => {
+                    if (!btn.disabled) relancer(btn);
+                }, index * 200);
+            });
+            setTimeout(() => {
+                showToast('Toutes les relances ont été envoyées');
+            }, btns.length * 200 + 500);
+        }
+    </script>
+</body></html>

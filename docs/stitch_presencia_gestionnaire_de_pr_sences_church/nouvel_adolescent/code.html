@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Nouvel adolescent - Presencia</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#494bd6",
+                    "secondary-container": "#6cf8bb",
+                    "tertiary-fixed-dim": "#d0bcff",
+                    "tertiary": "#6b38d4",
+                    "primary": "#4648d4",
+                    "background": "#fcf9f8",
+                    "inverse-on-surface": "#f3f0ef",
+                    "on-primary-container": "#fffbff",
+                    "primary-container": "#6063ee",
+                    "surface-container-highest": "#e5e2e1",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#00714d",
+                    "on-background": "#1c1b1b",
+                    "inverse-surface": "#313030",
+                    "on-tertiary-container": "#fffbff",
+                    "surface-variant": "#e5e2e1",
+                    "surface-bright": "#fcf9f8",
+                    "secondary-fixed": "#6ffbbe",
+                    "on-tertiary": "#ffffff",
+                    "secondary": "#006c49",
+                    "on-tertiary-fixed": "#23005c",
+                    "on-secondary-fixed-variant": "#005236",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "outline-variant": "#c7c4d7",
+                    "surface-dim": "#dcd9d9",
+                    "tertiary-fixed": "#e9ddff",
+                    "surface-container-low": "#f6f3f2",
+                    "on-surface": "#1c1b1b",
+                    "surface": "#fcf9f8",
+                    "secondary-fixed-dim": "#4edea3",
+                    "outline": "#767586",
+                    "tertiary-container": "#8455ef",
+                    "on-primary-fixed": "#07006c",
+                    "primary-fixed-dim": "#c0c1ff",
+                    "surface-container": "#f0edec",
+                    "inverse-primary": "#c0c1ff",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#e1e0ff",
+                    "on-primary-fixed-variant": "#2f2ebe",
+                    "on-surface-variant": "#464554",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed": "#002113",
+                    "on-tertiary-fixed-variant": "#5516be",
+                    "surface-container-high": "#ebe7e7"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "lg": "24px",
+                    "md": "16px",
+                    "margin-mobile": "16px",
+                    "gutter": "16px",
+                    "max-width": "1200px",
+                    "margin-desktop": "32px",
+                    "xl": "32px",
+                    "xs": "4px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "title-md": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "500"}],
+                    "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .section-label {
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        input:focus + label, input:not(:placeholder-shown) + label {
+            transform: translateY(-24px) scale(0.85);
+            color: #4648d4;
+        }
+        .form-input-container label {
+            transition: all 0.2s ease-out;
+            pointer-events: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- Top AppBar -->
+<header class="sticky top-0 z-50 bg-background/80 backdrop-blur-md w-full h-16 flex items-center justify-between px-margin-mobile">
+<div class="flex items-center gap-4">
+<button class="p-2 -ml-2 hover:bg-surface-container-highest rounded-full transition-colors active:scale-95 duration-100">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-semibold text-on-surface">Nouvel adolescent</h1>
+</div>
+<div class="w-10"></div> <!-- Spacer for balance -->
+</header>
+<main class="max-w-[600px] mx-auto px-margin-mobile pt-lg flex flex-col gap-lg">
+<!-- Profile Photo Upload -->
+<section class="flex flex-col items-center gap-sm">
+<div class="relative group cursor-pointer">
+<div class="w-32 h-32 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden transition-transform active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant text-5xl">person</span>
+</div>
+<div class="absolute bottom-1 right-1 bg-primary text-on-primary w-10 h-10 rounded-full flex items-center justify-center shadow-md border-4 border-background">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">photo_camera</span>
+</div>
+</div>
+<button class="font-label-lg text-primary mt-xs">Ajouter une photo</button>
+</section>
+<!-- Form Container -->
+<form class="flex flex-col gap-lg" onsubmit="return false;">
+<!-- Section: Personal Info -->
+<div class="flex flex-col gap-md">
+<h2 class="section-label font-label-sm text-on-surface-variant px-1">Informations personnelles</h2>
+<div class="flex flex-col gap-lg bg-surface-container-low p-md rounded-xl">
+<!-- First Name -->
+<div class="relative form-input-container">
+<input class="w-full h-14 px-4 pt-4 bg-transparent border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-body-lg outline-none transition-all peer" id="first_name" placeholder=" " type="text"/>
+<label class="absolute left-4 top-4 text-on-surface-variant font-body-md peer-focus:text-primary" for="first_name">Prénom</label>
+</div>
+<!-- Last Name -->
+<div class="relative form-input-container">
+<input class="w-full h-14 px-4 pt-4 bg-transparent border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-body-lg outline-none transition-all peer" id="last_name" placeholder=" " type="text"/>
+<label class="absolute left-4 top-4 text-on-surface-variant font-body-md peer-focus:text-primary" for="last_name">Nom</label>
+</div>
+<!-- Gender Selection -->
+<div class="flex flex-col gap-sm">
+<span class="font-label-sm text-on-surface-variant px-1">Sexe</span>
+<div class="flex gap-sm p-1 bg-surface-container rounded-lg">
+<button class="flex-1 py-2 rounded-md font-label-lg transition-all bg-primary text-on-primary shadow-sm" id="btn-m" type="button">Masculin</button>
+<button class="flex-1 py-2 rounded-md font-label-lg transition-all text-on-surface-variant hover:bg-surface-variant" id="btn-f" type="button">Féminin</button>
+</div>
+</div>
+<!-- Birth Date -->
+<div class="relative form-input-container">
+<input class="w-full h-14 px-4 pt-4 bg-transparent border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-body-lg outline-none transition-all peer" id="birth_date" placeholder=" " type="date"/>
+<label class="absolute left-4 top-4 text-on-surface-variant font-body-md peer-focus:text-primary" for="birth_date">Date de naissance</label>
+</div>
+</div>
+</div>
+<!-- Section: Parent -->
+<div class="flex flex-col gap-md">
+<h2 class="section-label font-label-sm text-on-surface-variant px-1">Parent / Tuteur</h2>
+<div class="flex flex-col gap-lg bg-surface-container-low p-md rounded-xl">
+<!-- Parent Name -->
+<div class="relative form-input-container">
+<input class="w-full h-14 px-4 pt-4 bg-transparent border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-body-lg outline-none transition-all peer" id="parent_name" placeholder=" " type="text"/>
+<label class="absolute left-4 top-4 text-on-surface-variant font-body-md peer-focus:text-primary" for="parent_name">Nom du parent</label>
+</div>
+<!-- Phone Number -->
+<div class="relative form-input-container">
+<input class="w-full h-14 px-4 pt-4 bg-transparent border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-body-lg outline-none transition-all peer" id="parent_phone" placeholder=" " type="tel"/>
+<label class="absolute left-4 top-4 text-on-surface-variant font-body-md peer-focus:text-primary" for="parent_phone">Téléphone</label>
+</div>
+</div>
+</div>
+<!-- Section: Group -->
+<div class="flex flex-col gap-md">
+<h2 class="section-label font-label-sm text-on-surface-variant px-1">Groupe</h2>
+<div class="bg-surface-container-low p-md rounded-xl">
+<div class="relative w-full">
+<select class="w-full h-14 px-4 pt-4 bg-transparent border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-body-lg appearance-none outline-none transition-all cursor-pointer" id="group_select">
+<option value="">Sélectionner un groupe</option>
+<option value="1">Groupe Étincelle (12-14 ans)</option>
+<option value="2">Groupe Horizon (15-17 ans)</option>
+<option value="3">Groupe Ambassadeur (18+)</option>
+</select>
+<label class="absolute left-4 top-4 text-on-surface-variant font-body-md pointer-events-none scale-85 -translate-y-6 text-primary" for="group_select">Groupe</label>
+<span class="material-symbols-outlined absolute right-4 top-4 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+</div>
+</form>
+</main>
+<!-- Bottom Action Area -->
+<div class="fixed bottom-0 left-0 right-0 p-margin-mobile bg-background/90 backdrop-blur-md z-40 max-w-[600px] mx-auto">
+<button class="w-full h-12 bg-primary text-on-primary rounded-xl font-title-md flex items-center justify-center gap-sm shadow-lg active:scale-95 transition-all duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">save</span>
+            Enregistrer
+        </button>
+</div>
+<script>
+        // Simple gender toggle interaction
+        const btnM = document.getElementById('btn-m');
+        const btnF = document.getElementById('btn-f');
+
+        const setActive = (active, inactive) => {
+            active.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+            active.classList.remove('text-on-surface-variant', 'hover:bg-surface-variant');
+            inactive.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+            inactive.classList.add('text-on-surface-variant', 'hover:bg-surface-variant');
+        };
+
+        btnM.addEventListener('click', () => setActive(btnM, btnF));
+        btnF.addEventListener('click', () => setActive(btnF, btnM));
+
+        // Interaction for the back button
+        document.querySelector('header button').addEventListener('click', () => {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                alert('Retour à la liste');
+                document.body.style.opacity = '1';
+            }, 300);
+        });
+
+        // Form submission simulation
+        document.querySelector('button.bg-primary').addEventListener('click', () => {
+            const btn = document.querySelector('button.bg-primary');
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Enregistrement...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Adolescent ajouté !';
+                btn.classList.replace('bg-primary', 'bg-secondary');
+                setTimeout(() => {
+                    btn.innerHTML = originalContent;
+                    btn.classList.replace('bg-secondary', 'bg-primary');
+                    btn.disabled = false;
+                }, 2000);
+            }, 1200);
+        });
+    </script>
+</body></html>

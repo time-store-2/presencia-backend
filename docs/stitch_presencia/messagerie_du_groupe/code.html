@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#ffdbd0",
+                        "on-secondary-fixed": "#281800",
+                        "on-primary-fixed-variant": "#842600",
+                        "primary-container": "#c2522b",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#fdba49",
+                        "outline": "#8b716a",
+                        "on-primary-fixed": "#390b00",
+                        "on-primary-container": "#fffcff",
+                        "inverse-surface": "#382e2a",
+                        "surface-container-highest": "#f0dfd8",
+                        "primary-fixed-dim": "#ffb59d",
+                        "tertiary": "#6949ab",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#25005a",
+                        "on-error-container": "#93000a",
+                        "secondary-container": "#fdba49",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#f0dfd8",
+                        "on-tertiary-fixed-variant": "#533294",
+                        "on-surface-variant": "#57423b",
+                        "background": "#fff8f6",
+                        "surface-dim": "#e7d7d0",
+                        "surface": "#fff8f6",
+                        "surface-bright": "#fff8f6",
+                        "secondary": "#805600",
+                        "on-tertiary-container": "#fffcff",
+                        "outline-variant": "#dec0b7",
+                        "tertiary-fixed": "#eaddff",
+                        "tertiary-container": "#8262c6",
+                        "surface-tint": "#a43c17",
+                        "surface-container": "#fceae3",
+                        "on-surface": "#221a16",
+                        "inverse-on-surface": "#ffede6",
+                        "primary": "#a13a15",
+                        "on-secondary-fixed-variant": "#614000",
+                        "surface-container-high": "#f6e5de",
+                        "tertiary-fixed-dim": "#d2bcff",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#ffb59d",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#704b00",
+                        "on-background": "#221a16",
+                        "secondary-fixed": "#ffddaf",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#fff1eb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "gutter": "12px",
+                        "unit": "4px",
+                        "sm": "8px",
+                        "xl": "32px",
+                        "container-margin": "20px",
+                        "lg": "24px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fff8f6;
+            font-family: 'Inter', sans-serif;
+        }
+        .chat-container {
+            height: calc(100vh - 64px - 80px - 80px); /* Adjusting for TopBar, BottomBar and Input */
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #dec0b7 transparent;
+        }
+        .message-bubble-self {
+            border-bottom-right-radius: 4px;
+        }
+        .message-bubble-other {
+            border-bottom-left-radius: 4px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-container-margin h-16 w-full bg-surface shadow-sm">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-full p-2 active:scale-95 duration-200">arrow_back</button>
+<div class="flex flex-col">
+<h1 class="font-headline-md text-headline-md text-primary leading-tight">Discussion Moniteurs</h1>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Groupe Ados • 4 membres</span>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-full p-2 active:scale-95 duration-200">more_vert</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-20 pb-40 px-container-margin min-h-screen">
+<div class="chat-container space-y-lg flex flex-col">
+<!-- System Timestamp -->
+<div class="flex justify-center my-md">
+<span class="bg-surface-container-high px-md py-xs rounded-full font-label-sm text-label-sm text-on-surface-variant">Aujourd'hui</span>
+</div>
+<!-- Message from Sarah -->
+<div class="flex items-end gap-sm max-w-[85%]">
+<div class="w-8 h-8 rounded-full bg-tertiary-container flex items-center justify-center shrink-0 overflow-hidden">
+<img alt="Sarah" class="w-full h-full object-cover" data-alt="A professional headshot of a friendly young woman with a warm smile, wearing casual modern attire. The background is softly blurred with warm wooden textures and indoor plants, creating a welcoming community atmosphere consistent with a youth leadership setting. High-key lighting highlights her features in a natural, organic way." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoaw62vAmEAV0SzsYYFY4G_KO6MsJb_OUEtGXdiM92kmKsIwbRFUrKa1cQHpe95p1MydM22KEhtaJnOnMX36uCeq5OMExEyGbYngdUNaql9I6IWEEhg3JxsZMENN-6p10Dqkk6v9xQgFQK-u4FUnPoEdGNiI8-D-kAd4ggnUCPeW3ysTRPhosTc2eQWEnuwPDgs0FqO2MBlakIysj6FK3iwINv45TTzAzfp3vkIbhHq4tcKV0JlYsD9KEE7ykADQuH3B1Yqw9UKA"/>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant ml-2">Sarah</span>
+<div class="bg-white p-md rounded-xl shadow-[0_4px_12px_rgba(122,99,88,0.08)] message-bubble-other text-on-surface">
+<p class="font-body-md text-body-md">Salut l'équipe ! J'ai terminé le brouillon du programme pour le camp d'été. Qu'est-ce que vous en pensez ?</p>
+</div>
+<span class="font-label-sm text-label-sm text-outline-variant ml-2">09:15</span>
+</div>
+</div>
+<!-- Image Shared by Sarah -->
+<div class="flex items-end gap-sm max-w-[85%]">
+<div class="w-8 shrink-0"></div> <!-- Spacer for alignment -->
+<div class="flex flex-col gap-1">
+<div class="bg-white p-sm rounded-xl shadow-[0_4px_12px_rgba(122,99,88,0.08)] message-bubble-other overflow-hidden">
+<img alt="Planning document" class="rounded-lg w-full max-h-64 object-cover cursor-pointer hover:opacity-95 transition-opacity" data-alt="A top-down view of a hand-written planning document on a rustic wooden table. The document shows a colorful schedule with various activities like 'VTT', 'Soirée Louange', and 'Grand Jeu'. Surrounding the paper are a cup of coffee, some organic-toned pens, and small succulents, evoking a creative and collaborative ministry planning session in a cozy cafe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGnn3W5qDSckJKGwP-IJy-Qh55BiwSgw_gFWcDEpqeDJVwRs6xlNwCnliaDXmiD8U7d5_tw4HG4jH5ivCbQGHZhbVsAjke5ABorw_xeXZRE_0DM5WPWyikg9cb0wuakkfvhE2eWQe3NR3T1Do6IffmitzPq1gsfAhpzz_4T4goXugmZzd2SJUANnQ7dJsl0M9fkem0AB6AF9bJGmDRzql-U1d4bPLuRSjLB2owq92mx5bdCsxF1Ys8ILvmUI_nYF69-MKQIgfbww"/>
+</div>
+</div>
+</div>
+<!-- Message from Thomas -->
+<div class="flex items-end gap-sm max-w-[85%]">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center shrink-0 overflow-hidden">
+<img alt="Thomas" class="w-full h-full object-cover" data-alt="A professional portrait of a young man with a kind and approachable expression, looking directly at the camera. He is wearing a simple earthy-toned t-shirt. The lighting is warm and golden, as if from a sunset, creating a sense of radical hospitality and belonging. The style is modern and clean, fitting for a corporate yet warm church environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCci_ZNPXjRmP4CnTYD3_3YDqMfqJ6rWTj1pRI_Hji6CTvPZOOmdTAOA7SBWMmZ_W1jeLOJmle9Db9Ll_hcScUEZk-j5vVw_vhTvfE-p6GPt2ggw8SX7QRca-8BZ8m9yyNA0XzM-lws_RCTs0-1VDuHXbRlusDoMbJzM-obCGHL5xCCi04gYHN4vMUaICDbDfscXIrEC-Xz2PMnsOYprWfYZkh8D6vOxz7h1nsqeUVEvD7cAOIV2DCDzUav3Y1W1aJsfwHYyDZdgg"/>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant ml-2">Thomas</span>
+<div class="bg-white p-md rounded-xl shadow-[0_4px_12px_rgba(122,99,88,0.08)] message-bubble-other text-on-surface">
+<p class="font-body-md text-body-md">Ça a l'air super Sarah ! On pourrait peut-être rajouter un temps de louange plus long le mardi soir ?</p>
+</div>
+<span class="font-label-sm text-label-sm text-outline-variant ml-2">09:22</span>
+</div>
+</div>
+<!-- Own Message (Self) -->
+<div class="flex items-end gap-sm max-w-[85%] self-end">
+<div class="flex flex-col gap-1 items-end">
+<span class="font-label-sm text-label-sm text-on-surface-variant mr-2">Vous</span>
+<div class="bg-primary-container text-on-primary-container p-md rounded-xl shadow-[0_4px_12px_rgba(161,58,21,0.15)] message-bubble-self">
+<p class="font-body-md text-body-md">Je suis d'accord avec Thomas. Marc, tu pourrais t'occuper de la sono pour cette soirée ?</p>
+</div>
+<div class="flex items-center gap-xs mr-2">
+<span class="font-label-sm text-label-sm text-outline-variant">09:45</span>
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">done_all</span>
+</div>
+</div>
+</div>
+<!-- Message from Marc -->
+<div class="flex items-end gap-sm max-w-[85%]">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center shrink-0 overflow-hidden">
+<img alt="Marc" class="w-full h-full object-cover" data-alt="A portrait of a charismatic young man in his late 20s with a cheerful and energetic vibe. He is standing in a modern, brightly lit communal space with high ceilings and minimalist furniture. The color palette is composed of warm terracotta and soft creams, reflecting a sense of community and professional but welcoming leadership style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFaP9Bgv5HBehLvE72iSNZKSgUEccIWROkTXLFueicOLYP1tOf27uUtb4SGCEMFII7F9Kb8H0A1DV_b6UKKG6xZaBMKtk0kTYnz-NXirla6z7-TN_6vSQlg4hW1Ua6lLirtNwyt8xY4b1PYs4Qm-b88_J7Kh0Ac73i7JX1N0HYJGJgR3b63OUhwJx0jtEBFk9oWltzi0_xcXz28x0mOz2IP6ax6I3WFv5soEMWn_W52lR8AL97T9PggcWjRY19Ocp0tcVg2_rORA"/>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant ml-2">Marc</span>
+<div class="bg-white p-md rounded-xl shadow-[0_4px_12px_rgba(122,99,88,0.08)] message-bubble-other text-on-surface">
+<p class="font-body-md text-body-md">Yes, pas de souci ! Je checke le matos ce week-end. 🎸</p>
+</div>
+<span class="font-label-sm text-label-sm text-outline-variant ml-2">09:47</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Fixed Input Bar -->
+<div class="fixed bottom-20 w-full px-container-margin py-md bg-background/90 backdrop-blur-sm z-40">
+<div class="flex items-center gap-sm bg-surface-container-low border border-outline-variant rounded-full px-md py-sm shadow-sm transition-all focus-within:ring-2 focus-within:ring-primary/20">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">add_circle</button>
+<input class="flex-grow bg-transparent border-none focus:ring-0 font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant/60" placeholder="Écrire un message..." type="text"/>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">mood</button>
+<button class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white active:scale-90 transition-transform shadow-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-[0_-4px_12px_rgba(122,99,88,0.08)] flex justify-around items-center px-4 py-2 w-full h-20">
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Accueil</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-sm text-label-sm">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="font-label-sm text-label-sm">Présence</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-transform duration-150 active:translate-y-0.5" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">forum</span>
+<span class="font-label-sm text-label-sm">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Réglages</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for the send button
+        const sendBtn = document.querySelector('button .material-symbols-outlined[textContent="send"]')?.parentElement;
+        const input = document.querySelector('input');
+
+        if (sendBtn) {
+            sendBtn.addEventListener('click', () => {
+                if (input.value.trim() !== "") {
+                    // Logic for adding message could go here
+                    input.value = "";
+                }
+            });
+        }
+
+        // Auto-scroll to bottom of chat
+        const chatContainer = document.querySelector('.chat-container');
+        if (chatContainer) {
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+    </script>
+</body></html>

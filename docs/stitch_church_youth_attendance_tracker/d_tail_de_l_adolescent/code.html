@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Détail de l'Adolescent - ChurchPresence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .stats-card-overlap {
+            margin-top: -48px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#2a313d",
+                        "primary-fixed": "#e2dfff",
+                        "surface-dim": "#d3daea",
+                        "secondary-fixed-dim": "#4edea3",
+                        "surface-tint": "#4d44e3",
+                        "on-tertiary-fixed-variant": "#5516be",
+                        "tertiary": "#571ac0",
+                        "surface": "#f9f9ff",
+                        "surface-container-high": "#e2e8f8",
+                        "secondary-fixed": "#6ffbbe",
+                        "tertiary-fixed-dim": "#d0bcff",
+                        "on-surface": "#151c27",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#23005c",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#dce2f3",
+                        "on-tertiary-container": "#e3d5ff",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#c3c0ff",
+                        "error-container": "#ffdad6",
+                        "secondary": "#006c49",
+                        "on-secondary-container": "#00714d",
+                        "tertiary-container": "#6f3dd9",
+                        "background": "#f9f9ff",
+                        "outline": "#777587",
+                        "inverse-on-surface": "#ebf1ff",
+                        "tertiary-fixed": "#e9ddff",
+                        "on-primary-fixed": "#0f0069",
+                        "primary": "#3525cd",
+                        "on-surface-variant": "#464555",
+                        "error": "#ba1a1a",
+                        "on-background": "#151c27",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "surface-container-low": "#f0f3ff",
+                        "primary-container": "#4f46e5",
+                        "on-secondary-fixed": "#002113",
+                        "surface-bright": "#f9f9ff",
+                        "on-primary-container": "#dad7ff",
+                        "surface-variant": "#dce2f3",
+                        "secondary-container": "#6cf8bb",
+                        "outline-variant": "#c7c4d8",
+                        "surface-container": "#e7eefe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "xs": "4px",
+                        "base": "4px",
+                        "md": "16px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "margin-tablet": "32px",
+                        "lg": "24px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "display": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen pb-24">
+<!-- Header Transparent Over Hero -->
+<header class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-margin-mobile h-16 transition-colors duration-300" id="mainHeader">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/20 text-white transition-all active:scale-90">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/20 text-white transition-all active:scale-90">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</header>
+<!-- Hero Section -->
+<section class="h-[220px] bg-gradient-to-br from-[#4F46E5] to-[#6366F1] flex flex-col items-center justify-center pt-8">
+<div class="relative">
+<div class="w-24 h-24 rounded-full border-4 border-white overflow-hidden shadow-lg">
+<img alt="David Koffi" class="w-full h-full bg-white" data-alt="A professional 3D stylized character portrait of a teenage boy with a friendly expression. He has short dark hair and is wearing a clean white polo shirt. The background is a solid soft indigo color, matching a modern corporate and spiritual aesthetic. The lighting is bright and studio-quality with soft shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACpKz6ktBkjLevjTS4wX-gPfaSzeqo1JG657TvcnIkgNn-OptwvUgW32qJu_RlKGm3huFX4wkEtusvhSEgEuFvnlifylxs9MdNfDUGFNAssHohW7RspgteV_HsThGKqGe0kiSqSQJrlOZeMcaA5ief_nynAWdSbfXHmG6RRSLFAIRvZfB4S5KCkBjGryA-nTYO6I2pxgMWAcQRMSAGR4Ue4TpHzMp1mhZC8yiMK38Wb2aT_oeFwE9dPQNay_tHIcIW8T6YxS1jMHY"/>
+</div>
+<div class="absolute -bottom-1 -right-1 glass-effect px-2 py-0.5 rounded-full flex items-center gap-1 border border-white/50">
+<span class="w-2 h-2 bg-green-400 rounded-full"></span>
+<span class="text-white text-[10px] font-bold uppercase tracking-wider">Connecté</span>
+</div>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-white mt-3">David Koffi</h1>
+<div class="glass-effect px-3 py-1 rounded-full mt-1">
+<span class="text-white text-label-md font-label-md">Présent aujourd'hui</span>
+</div>
+</section>
+<!-- Main Content Canvas -->
+<main class="px-margin-mobile">
+<!-- Stats Card Overlap -->
+<div class="stats-card-overlap bg-surface-container-lowest rounded-xl p-md shadow-sm border border-outline-variant flex justify-between items-center">
+<div class="flex flex-col items-center flex-1">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wide">Présences</span>
+<span class="text-headline-md font-headline-md text-[#065F46]">28</span>
+</div>
+<div class="w-px h-10 bg-outline-variant/30 mx-2"></div>
+<div class="flex flex-col items-center flex-1">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wide">Absences</span>
+<span class="text-headline-md font-headline-md text-[#991B1B]">5</span>
+</div>
+<div class="w-px h-10 bg-outline-variant/30 mx-2"></div>
+<div class="flex flex-col items-center flex-1">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wide">Retards</span>
+<span class="text-headline-md font-headline-md text-[#92400E]">3</span>
+</div>
+</div>
+<!-- Section Parent -->
+<section class="mt-lg">
+<h2 class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest mb-sm ml-1">Parent ou Tuteur</h2>
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm border border-outline-variant flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]">person</span>
+</div>
+<div class="flex-1">
+<h3 class="text-body-lg font-bold text-on-surface">Jean Koffi</h3>
+<p class="text-body-md text-on-surface-variant">+225 07 08 09 10 11</p>
+</div>
+<div class="flex gap-2">
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary transition-all active:scale-90">
+<span class="material-symbols-outlined">call</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-[#D1FAE5] flex items-center justify-center text-[#065F46] transition-all active:scale-90">
+<span class="material-symbols-outlined">chat</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Section Historique -->
+<section class="mt-lg">
+<div class="flex justify-between items-center mb-sm ml-1">
+<h2 class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest">Historique des présences</h2>
+<button class="text-primary text-label-md font-label-md">VOIR TOUT</button>
+</div>
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant overflow-hidden">
+<!-- List Item 1 -->
+<div class="flex items-center justify-between p-md border-b border-outline-variant/50">
+<div class="flex flex-col">
+<span class="text-body-md font-bold text-on-surface">Culte du Dimanche</span>
+<span class="text-label-sm text-on-surface-variant">12 Mai 2024</span>
+</div>
+<span class="bg-[#D1FAE5] text-[#065F46] text-label-md font-bold px-3 py-1 rounded-full">Présent</span>
+</div>
+<!-- List Item 2 -->
+<div class="flex items-center justify-between p-md border-b border-outline-variant/50">
+<div class="flex flex-col">
+<span class="text-body-md font-bold text-on-surface">Étude Biblique</span>
+<span class="text-label-sm text-on-surface-variant">08 Mai 2024</span>
+</div>
+<span class="bg-[#FEE2E2] text-[#991B1B] text-label-md font-bold px-3 py-1 rounded-full">Absent</span>
+</div>
+<!-- List Item 3 -->
+<div class="flex items-center justify-between p-md border-b border-outline-variant/50">
+<div class="flex flex-col">
+<span class="text-body-md font-bold text-on-surface">Répétition Chorale</span>
+<span class="text-label-sm text-on-surface-variant">04 Mai 2024</span>
+</div>
+<span class="bg-[#FEF3C7] text-[#92400E] text-label-md font-bold px-3 py-1 rounded-full">Retard</span>
+</div>
+<!-- List Item 4 -->
+<div class="flex items-center justify-between p-md border-b border-outline-variant/50">
+<div class="flex flex-col">
+<span class="text-body-md font-bold text-on-surface">Sortie Jeunesse</span>
+<span class="text-label-sm text-on-surface-variant">01 Mai 2024</span>
+</div>
+<span class="bg-[#D1FAE5] text-[#065F46] text-label-md font-bold px-3 py-1 rounded-full">Présent</span>
+</div>
+<!-- List Item 5 -->
+<div class="flex items-center justify-between p-md">
+<div class="flex flex-col">
+<span class="text-body-md font-bold text-on-surface">Culte du Dimanche</span>
+<span class="text-label-sm text-on-surface-variant">28 Avril 2024</span>
+</div>
+<span class="bg-[#D1FAE5] text-[#065F46] text-label-md font-bold px-3 py-1 rounded-full">Présent</span>
+</div>
+</div>
+</section>
+<!-- Quick Actions Bento -->
+<section class="mt-lg">
+<h2 class="text-label-md font-label-md text-on-surface-variant uppercase tracking-widest mb-sm ml-1">Actions rapides</h2>
+<div class="grid grid-cols-2 gap-md">
+<button class="bg-primary-container text-on-primary-container p-md rounded-xl flex flex-col items-start gap-sm shadow-sm transition-all active:scale-95">
+<span class="material-symbols-outlined">add_task</span>
+<span class="font-bold text-body-md">Marquer présent</span>
+</button>
+<button class="bg-surface-container text-on-surface p-md rounded-xl flex flex-col items-start gap-sm border border-outline-variant shadow-sm transition-all active:scale-95">
+<span class="material-symbols-outlined">mail</span>
+<span class="font-bold text-body-md">Envoyer rapport</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Navigation Shell Placeholder (Not visible based on task description, but following Shared Component Logic for app-first feel) -->
+<!-- Applying BottomNavBar logic from JSON -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface dark:bg-inverse-surface shadow-lg rounded-t-xl md:hidden">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 transition-transform duration-200 active:scale-90">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md mt-0.5">Accueil</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-xl px-3 py-1 transition-transform duration-200 active:scale-90">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-md text-label-md mt-0.5">Jeunes</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 transition-transform duration-200 active:scale-90">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="font-label-md text-label-md mt-0.5">Appel</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 transition-transform duration-200 active:scale-90">
+<span class="material-symbols-outlined">diversity_3</span>
+<span class="font-label-md text-label-md mt-0.5">Groupes</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1 transition-transform duration-200 active:scale-90">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md mt-0.5">Paramètres</span>
+</div>
+</nav>
+<script>
+        // Scroll header effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('mainHeader');
+            if (window.scrollY > 50) {
+                header.classList.add('bg-white', 'shadow-md');
+                header.classList.remove('text-white');
+                header.querySelectorAll('button').forEach(btn => {
+                    btn.classList.remove('bg-white/20', 'text-white');
+                    btn.classList.add('bg-surface-container', 'text-on-surface');
+                });
+            } else {
+                header.classList.remove('bg-white', 'shadow-md');
+                header.querySelectorAll('button').forEach(btn => {
+                    btn.classList.add('bg-white/20', 'text-white');
+                    btn.classList.remove('bg-surface-container', 'text-on-surface');
+                });
+            }
+        });
+
+        // Simple feedback for interaction
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Potential haptic feedback or logic here
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Détail Adolescent - Gestion Jeunesse</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#f9f9ff",
+                    "inverse-on-surface": "#f5f5f5",
+                    "tertiary-container": "#a44100",
+                    "tertiary-fixed-dim": "#ffb695",
+                    "on-error-container": "#93000a",
+                    "secondary": "#6b6b6b",
+                    "on-tertiary-fixed": "#351000",
+                    "on-tertiary-fixed-variant": "#7b2f00",
+                    "primary": "#4f46e5",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#1a1a1a",
+                    "surface": "#121212",
+                    "primary-fixed-dim": "#c7c2ff",
+                    "on-secondary-container": "#757575",
+                    "on-primary-fixed": "#0a0045",
+                    "on-surface": "#f5f5f5",
+                    "on-secondary-fixed": "#1a1a1a",
+                    "secondary-container": "#e0e0e0",
+                    "on-background": "#f5f5f5",
+                    "inverse-surface": "#2a2a2a",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#7e3000",
+                    "surface-tint": "#6366f1",
+                    "on-surface-variant": "#a3a3a3",
+                    "secondary-fixed": "#e5e5e5",
+                    "outline-variant": "#404040",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed-variant": "#525252",
+                    "surface-variant": "#262626",
+                    "surface-container-highest": "#2d2d2d",
+                    "tertiary-fixed": "#ffdbcc",
+                    "inverse-primary": "#c7c2ff",
+                    "surface-container-high": "#1f1f1f",
+                    "on-error": "#ffffff",
+                    "on-tertiary-container": "#ffd2be",
+                    "on-primary": "#ffffff",
+                    "surface-container-low": "#171717",
+                    "outline": "#737373",
+                    "on-primary-fixed-variant": "#4338ca",
+                    "on-primary-container": "#e0e7ff",
+                    "secondary-fixed-dim": "#cccccc",
+                    "primary-container": "#4338ca",
+                    "surface-container-lowest": "#0a0a0a",
+                    "primary-fixed": "#e0e7ff",
+                    "surface-dim": "#d4d4d4",
+                    "background": "#121212"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "margin-desktop": "32px",
+                    "lg": "24px",
+                    "md": "16px",
+                    "base": "4px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-effect { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- Hero Section -->
+<header class="relative w-full h-80 bg-gradient-to-br from-primary to-primary-container flex flex-col items-center justify-center pt-8 overflow-hidden">
+<!-- Decoration Circles -->
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-12 -left-12 w-48 h-48 bg-black/10 rounded-full blur-2xl"></div>
+<!-- Navigation Actions -->
+<div class="absolute top-0 left-0 w-full flex items-center justify-between px-margin-mobile h-16 z-10">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 active:scale-95 transition-all text-white">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 active:scale-95 transition-all text-white">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</div>
+<!-- Profile Info -->
+<div class="flex flex-col items-center gap-4 z-10">
+<div class="relative group">
+<div class="absolute inset-0 bg-white/20 rounded-full scale-110 blur-md"></div>
+<img alt="David Koffi" class="w-24 h-24 rounded-full border-4 border-white shadow-xl object-cover relative z-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBa9H-XIZtJ_Kb0-W4UbDajr7rX6KP_Src5gmxwu-FDvEBKDH4wmmMzthzI7rI8amA_yN1sSfwTCTlMJcYBR01olgKM0v_Ky1THl_afnnXJQqoy7yfh9rmFG4nqq1Gu7OWFWkijyHbhU3pMw1SlfS6t9StZIKxHjBiYqhO_S7_sAe3R0ZJruWwVlsrpoQ4GuCHchMD2JZ4ERcZj63kLM4IeD2xPFX-nSdSH26bDwOYZk233Flb7n8oAUEN7hLBgzaKKQJtGlvmdJxM"/>
+</div>
+<div class="text-center">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-white mb-1">David Koffi</h1>
+<p class="font-label-lg text-label-lg text-white/80">École du dimanche</p>
+</div>
+<div class="glass-effect px-4 py-1.5 rounded-full flex items-center gap-2 border border-white/20">
+<span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+<span class="font-label-md text-label-md text-white">Présent</span>
+</div>
+</div>
+</header>
+<main class="px-margin-mobile -mt-8 relative z-20">
+<!-- Stats Card (Overlapping) -->
+<section class="bg-surface-container dark:bg-surface-container rounded-xl shadow-lg p-lg grid grid-cols-3 gap-2 mb-xl">
+<div class="flex flex-col items-center justify-center border-r border-outline-variant">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase mb-1">Présences</span>
+<span class="font-headline-sm text-headline-sm text-primary">28</span>
+</div>
+<div class="flex flex-col items-center justify-center border-r border-outline-variant">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase mb-1">Absences</span>
+<span class="font-headline-sm text-headline-sm text-error">5</span>
+</div>
+<div class="flex flex-col items-center justify-center">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase mb-1">Retards</span>
+<span class="font-headline-sm text-headline-sm text-tertiary-container">3</span>
+</div>
+</section>
+<!-- Parent / Tuteur Section -->
+<section class="mb-xl">
+<h2 class="font-headline-sm text-headline-sm mb-md px-1">Parent / Tuteur</h2>
+<div class="bg-surface-container-low dark:bg-surface-container-low rounded-xl p-md flex items-center justify-between border border-outline-variant/30">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div>
+<h3 class="font-label-lg text-label-lg text-on-surface">Jean Koffi</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">+225 07 00 00 00 00</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="w-10 h-10 rounded-full bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-symbols-outlined">call</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-symbols-outlined">chat</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Attendance History Section -->
+<section class="mb-4">
+<div class="flex items-center justify-between mb-md px-1">
+<h2 class="font-headline-sm text-headline-sm">Historique des présences</h2>
+<button class="font-label-lg text-label-lg text-primary">Voir tout</button>
+</div>
+<div class="space-y-3">
+<!-- History Item 1 -->
+<div class="bg-surface-container-low p-md rounded-xl flex items-center justify-between border-l-4 border-green-500">
+<div>
+<h4 class="font-label-lg text-label-lg">Culte des jeunes</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Dimanche, 22 Oct 2023</p>
+</div>
+<span class="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-3 py-1 rounded-full font-label-md text-label-md">Présent</span>
+</div>
+<!-- History Item 2 -->
+<div class="bg-surface-container-low p-md rounded-xl flex items-center justify-between border-l-4 border-yellow-500">
+<div>
+<h4 class="font-label-lg text-label-lg">Étude Biblique</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Mercredi, 18 Oct 2023</p>
+</div>
+<span class="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 px-3 py-1 rounded-full font-label-md text-label-md">Retard</span>
+</div>
+<!-- History Item 3 -->
+<div class="bg-surface-container-low p-md rounded-xl flex items-center justify-between border-l-4 border-red-500">
+<div>
+<h4 class="font-label-lg text-label-lg">Répétition Chorale</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Samedi, 14 Oct 2023</p>
+</div>
+<span class="bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 px-3 py-1 rounded-full font-label-md text-label-md">Absent</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Fixed) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-surface-container-highest shadow-lg border-t border-outline-variant/20">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Accueil</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-2xl px-3 py-1 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-md text-label-md">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+<span class="font-label-md text-label-md">Appel</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">diversity_3</span>
+<span class="font-label-md text-label-md">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Paramètres</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for buttons
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+    </script>
+<style>
+        .ripple {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+    </style>
+</body></html>

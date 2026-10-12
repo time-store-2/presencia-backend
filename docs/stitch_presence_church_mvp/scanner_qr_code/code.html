@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Scanner QR Code - Kindred Path</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#ffdad2",
+                    "on-surface": "#191d0e",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#ffb4a2",
+                    "inverse-primary": "#95d4b3",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#ffdcc2",
+                    "surface-container-low": "#f2f6dd",
+                    "on-secondary-fixed-variant": "#83260e",
+                    "tertiary-fixed-dim": "#f4bb8e",
+                    "primary-container": "#2d6a4f",
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#a8e7c5",
+                    "surface-variant": "#e0e5cc",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#404943",
+                    "surface-tint": "#2c694e",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#bfc9c1",
+                    "outline": "#707973",
+                    "secondary": "#a33d23",
+                    "on-tertiary-fixed-variant": "#653e1b",
+                    "surface": "#f7fce3",
+                    "on-secondary-container": "#731a04",
+                    "inverse-on-surface": "#eff3da",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#95d4b3",
+                    "surface-bright": "#f7fce3",
+                    "primary-fixed": "#b1f0ce",
+                    "secondary-container": "#ff8162",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#191d0e",
+                    "on-tertiary-container": "#ffd0ad",
+                    "tertiary": "#653e1b",
+                    "background": "#f7fce3",
+                    "on-primary-fixed-variant": "#0e5138",
+                    "on-secondary-fixed": "#3c0700",
+                    "surface-container": "#ecf0d8",
+                    "on-tertiary-fixed": "#2e1500",
+                    "surface-dim": "#d8dcc4",
+                    "surface-container-highest": "#e0e5cc",
+                    "tertiary-container": "#805530",
+                    "surface-container-high": "#e6ebd2",
+                    "inverse-surface": "#2e3222",
+                    "error-container": "#ffdad6",
+                    "primary": "#0f5238",
+                    "on-primary-fixed": "#002114"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "48px",
+                    "gutter": "24px",
+                    "xs": "4px",
+                    "margin-desktop": "40px",
+                    "sm": "12px",
+                    "base": "8px",
+                    "xl": "80px",
+                    "margin-mobile": "16px",
+                    "md": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-sm": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "display-lg-mobile": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-sm": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "60px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #000000; overflow: hidden; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scan-container {
+            mask-image: radial-gradient(circle, transparent 120px, black 121px);
+            -webkit-mask-image: radial-gradient(circle, transparent 120px, black 121px);
+        }
+        .corner-bracket {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-color: #ffffff;
+            border-width: 0px;
+        }
+        .corner-tl { top: 0; left: 0; border-top-width: 3px; border-left-width: 3px; }
+        .corner-tr { top: 0; right: 0; border-top-width: 3px; border-right-width: 3px; }
+        .corner-bl { bottom: 0; left: 0; border-bottom-width: 3px; border-left-width: 3px; }
+        .corner-br { bottom: 0; right: 0; border-bottom-width: 3px; border-right-width: 3px; }
+        
+        .toast-animate {
+            animation: slideUp 0.5s ease-out forwards;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        /* Camera overlay effect */
+        .camera-view {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=1000');
+            background-size: cover;
+            background-position: center;
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="h-full flex flex-col text-white">
+<!-- Camera View Mockup -->
+<div class="fixed inset-0 camera-view z-0"></div>
+<!-- Header Overlay -->
+<header class="relative z-20 h-20 bg-black/40 backdrop-blur-md flex items-center justify-between px-margin-mobile">
+<button aria-label="Retour" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors active:scale-95">
+<span class="material-symbols-outlined text-white">arrow_back</span>
+</button>
+<div class="text-center">
+<h1 class="font-headline-sm text-headline-sm-mobile text-white">Scanner</h1>
+<p class="font-label-sm text-label-sm text-white/70">École du dimanche</p>
+</div>
+<button aria-label="Flash" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors active:scale-95" id="flash-toggle">
+<span class="material-symbols-outlined text-white">flashlight_on</span>
+</button>
+</header>
+<!-- Main Scanner Content -->
+<main class="flex-grow flex flex-col items-center justify-center relative z-10 px-margin-mobile">
+<!-- Scan Frame -->
+<div class="relative w-[240px] h-[240px]">
+<!-- Corner Brackets -->
+<div class="corner-bracket corner-tl"></div>
+<div class="corner-bracket corner-tr"></div>
+<div class="corner-bracket corner-bl"></div>
+<div class="corner-bracket corner-br"></div>
+<!-- Scan Animation Container -->
+<div class="absolute inset-0 overflow-hidden">
+<!-- STITCH_SHADER_START:ANIMATION_31 class="w-full h-full opacity-60" -->
+<div class="w-full h-full opacity-60" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_31" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_31');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+varying vec2 v_texCoord;
+uniform float u_time;
+uniform vec2 u_resolution;
+
+void main() {
+    vec2 uv = v_texCoord;
+    float scanLine = mod(u_time * 0.5, 1.0);
+    float lineThickness = 0.005;
+    float intensity = smoothstep(scanLine - lineThickness, scanLine, uv.y) * 
+                    smoothstep(scanLine + lineThickness, scanLine, uv.y);
+    
+    vec3 green = vec3(0.176, 0.416, 0.31); // #2D6A4F
+    gl_FragColor = vec4(green, intensity * 0.8);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_31 -->
+</div>
+<!-- Target Center -->
+<div class="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none">
+<div class="w-12 h-0.5 bg-white"></div>
+<div class="h-12 w-0.5 bg-white absolute"></div>
+</div>
+</div>
+<p class="mt-8 font-body-md text-body-md text-white/90 bg-black/40 px-4 py-2 rounded-full backdrop-blur-sm">
+            Placez le QR code dans le cadre
+        </p>
+<!-- Toast Notification (Simulated Success State) -->
+<div class="absolute bottom-32 left-margin-mobile right-margin-mobile toast-animate z-30">
+<div class="bg-primary-container text-on-primary-container px-4 py-3 rounded-xl flex items-center gap-3 shadow-lg border border-primary/20">
+<span class="material-symbols-outlined text-[24px]">check_circle</span>
+<div class="flex-grow">
+<p class="font-label-md text-label-md">David Koffi — Présent ✓</p>
+</div>
+<button class="text-on-primary-container/60">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Bottom Controls Overlay -->
+<footer class="relative z-20 bg-black/80 backdrop-blur-xl pt-6 pb-safe-bottom">
+<div class="px-margin-mobile">
+<div class="flex justify-between items-end mb-3">
+<p class="font-headline-sm text-headline-sm-mobile text-white">14 <span class="text-white/50 font-normal">scannés sur 47</span></p>
+<p class="font-label-sm text-label-sm text-primary-fixed">30% complet</p>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-2 bg-white/10 rounded-full overflow-hidden mb-6">
+<div class="h-full bg-primary-container w-[30%] rounded-full shadow-[0_0_12px_rgba(45,106,79,0.5)]"></div>
+</div>
+<!-- Recent Scans Scroll -->
+<div class="mb-4">
+<p class="font-label-sm text-label-sm text-white/50 uppercase tracking-wider mb-3">Derniers passages</p>
+<div class="flex gap-4 overflow-x-auto pb-4 no-scrollbar">
+<!-- Scan Items -->
+<div class="flex flex-col items-center gap-1 shrink-0">
+<div class="w-12 h-12 rounded-full border-2 border-primary-container p-0.5">
+<img alt="" class="w-full h-full rounded-full object-cover" data-alt="Close-up portrait of a young girl with braided hair smiling brightly, natural outdoor soft lighting, cinematic photography style, warm skin tones, professional ministry setting." src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+</div>
+<span class="text-[10px] text-white/70 font-medium">David</span>
+</div>
+<div class="flex flex-col items-center gap-1 shrink-0">
+<div class="w-12 h-12 rounded-full border-2 border-primary-container p-0.5">
+<img alt="" class="w-full h-full rounded-full object-cover" data-alt="Portrait of a young boy in a casual polo shirt, soft indoor lighting, serene expression, warm church community atmosphere, high quality photography." src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+</div>
+<span class="text-[10px] text-white/70 font-medium">Sarah</span>
+</div>
+<div class="flex flex-col items-center gap-1 shrink-0">
+<div class="w-12 h-12 rounded-full border-2 border-primary-container p-0.5">
+<img alt="" class="w-full h-full rounded-full object-cover" data-alt="Professional portrait of a cheerful young woman, soft neutral background, warm lighting, approachable and friendly appearance, high resolution digital photography." src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+</div>
+<span class="text-[10px] text-white/70 font-medium">Klara</span>
+</div>
+<div class="flex flex-col items-center gap-1 shrink-0">
+<div class="w-12 h-12 rounded-full border-2 border-primary-container p-0.5">
+<img alt="" class="w-full h-full rounded-full object-cover" data-alt="Profile photo of a teenage boy, soft focus background, natural daylight, warm aesthetic, part of a vibrant community group." src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+</div>
+<span class="text-[10px] text-white/70 font-medium">Marc</span>
+</div>
+<div class="flex flex-col items-center gap-1 shrink-0">
+<div class="w-12 h-12 rounded-full border-2 border-primary-container p-0.5">
+<img alt="" class="w-full h-full rounded-full object-cover" data-alt="Young girl with a kind smile, high-key lighting, soft clean background, representing youth ministry participants, professional photography style." src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+</div>
+<span class="text-[10px] text-white/70 font-medium">Lea</span>
+</div>
+<!-- Empty slots for visual rhythm -->
+<div class="w-12 h-12 rounded-full bg-white/5 border border-dashed border-white/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-white/20">person</span>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- Bottom Nav (Hidden on Scanner Screen to maximize view, but keeping logic for shell) -->
+<!-- As per rule: suppress if task-focused with "Back" button -->
+<script>
+        // Flash toggle micro-interaction
+        const flashBtn = document.getElementById('flash-toggle');
+        let flashOn = false;
+        flashBtn.addEventListener('click', () => {
+            flashOn = !flashOn;
+            const icon = flashBtn.querySelector('.material-symbols-outlined');
+            icon.textContent = flashOn ? 'flashlight_off' : 'flashlight_on';
+            flashBtn.style.backgroundColor = flashOn ? 'rgba(255, 255, 255, 0.2)' : 'transparent';
+        });
+
+        // Hide toast after 3 seconds
+        setTimeout(() => {
+            const toast = document.querySelector('.toast-animate');
+            if (toast) {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(20px)';
+                toast.style.transition = 'all 0.5s ease-in';
+            }
+        }, 3000);
+    </script>
+</body>
+</html><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<body></body>

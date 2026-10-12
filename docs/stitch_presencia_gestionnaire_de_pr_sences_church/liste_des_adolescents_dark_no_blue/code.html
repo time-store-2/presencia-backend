@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gestion Jeunesse - Liste des Adolescents</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#212121",
+                    "inverse-on-surface": "#ffffff",
+                    "tertiary-container": "#a44100",
+                    "tertiary-fixed-dim": "#ffb695",
+                    "on-error-container": "#93000a",
+                    "secondary": "#757575",
+                    "on-tertiary-fixed": "#351000",
+                    "on-tertiary-fixed-variant": "#7b2f00",
+                    "primary": "#6366F1",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#242424",
+                    "surface": "#121212",
+                    "primary-fixed-dim": "#818cf8",
+                    "on-secondary-container": "#a3a3a3",
+                    "on-primary-fixed": "#1e1b4b",
+                    "on-surface": "#e5e5e5",
+                    "on-background": "#e5e5e5",
+                    "inverse-surface": "#d4d4d4",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#7e3000",
+                    "surface-tint": "#6366F1",
+                    "on-surface-variant": "#a3a3a3",
+                    "secondary-fixed": "#e5e5e5",
+                    "outline-variant": "#404040",
+                    "error": "#ef4444",
+                    "on-secondary-fixed-variant": "#525252",
+                    "surface-variant": "#262626",
+                    "surface-container-highest": "#2e2e2e",
+                    "tertiary-fixed": "#ffdbcc",
+                    "inverse-primary": "#818cf8",
+                    "surface-container-high": "#1f1f1f",
+                    "on-error": "#ffffff",
+                    "on-tertiary-container": "#ffd2be",
+                    "on-primary": "#ffffff",
+                    "surface-container-low": "#1a1a1a",
+                    "outline": "#525252",
+                    "on-primary-fixed-variant": "#4338ca",
+                    "on-primary-container": "#e0e7ff",
+                    "secondary-fixed-dim": "#a3a3a3",
+                    "primary-container": "#4f46e5",
+                    "surface-container-lowest": "#0a0a0a",
+                    "primary-fixed": "#c7d2fe",
+                    "surface-dim": "#121212",
+                    "background": "#121212"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "margin-desktop": "32px",
+                    "lg": "24px",
+                    "md": "16px",
+                    "base": "4px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-pill {
+            background-color: #6366F1;
+            color: #ffffff;
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/80 backdrop-blur-md flex items-center justify-between px-margin-mobile h-14 w-full shadow-sm">
+<div class="flex items-center gap-3">
+<button class="p-2 hover:bg-surface-container-high transition-colors rounded-full active:scale-95">
+<span class="material-symbols-outlined text-primary">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Gestion Jeunesse</h1>
+</div>
+<button class="p-2 hover:bg-surface-container-high transition-colors rounded-full active:scale-95">
+<span class="material-symbols-outlined text-primary">notifications</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="pt-20 px-margin-mobile max-w-2xl mx-auto">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-6">
+<div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Jeunes</h2>
+<p class="font-body-md text-on-surface-variant">47 adolescents</p>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-lg flex items-center gap-2 active:scale-95 transition-transform shadow-lg">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                Ajouter
+            </button>
+</div>
+<!-- Search Bar -->
+<div class="relative mb-6">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container border-none rounded-xl py-3 pl-12 pr-4 text-body-md text-on-surface placeholder:text-on-surface-variant focus:ring-2 focus:ring-primary" placeholder="Rechercher un adolescent..." type="text"/>
+</div>
+<!-- Filter Chips -->
+<div class="flex gap-2 overflow-x-auto no-scrollbar mb-8 -mx-margin-mobile px-margin-mobile">
+<button class="flex-none px-4 py-2 rounded-full font-label-md transition-colors active-pill">Tous</button>
+<button class="flex-none px-4 py-2 rounded-full font-label-md transition-colors bg-surface-container text-on-surface-variant hover:bg-surface-container-high">École du dimanche</button>
+<button class="flex-none px-4 py-2 rounded-full font-label-md transition-colors bg-surface-container text-on-surface-variant hover:bg-surface-container-high">Chorales</button>
+<button class="flex-none px-4 py-2 rounded-full font-label-md transition-colors bg-surface-container text-on-surface-variant hover:bg-surface-container-high">Jeunes leaders</button>
+</div>
+<!-- Adolescents List -->
+<div class="space-y-3">
+<!-- Item 1 -->
+<div class="bg-surface-container-low p-4 rounded-xl flex items-center justify-between hover:bg-surface-container transition-colors cursor-pointer group border border-neutral-800/50">
+<div class="flex items-center gap-4">
+<img alt="David Koffi" class="w-12 h-12 rounded-full object-cover border-2 border-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVQvKONdepkv02xF7F00i6WeNwUtIa4kfkzsTVFO_a49OAvH1Rfe0P7Tkg3grqaFn0Y51t6HggjxN6zHwun4PCv04ORJx0YVjH4wpokCZeD4yaKARW3oE-Cg4UkipNKJGcyE0QMDmzgh-Bwct-h0WYHOLO1aMc0jZMpMZn8MLtQ5Bi_VKGbpvhx5x3hOZKSVEZiMB_A0S4CnoVykCFbXJWfgAmpjF4iVHS_wXa87lVbhBVnnk4CICn8EYOn7K0_notSDEArT0sZS4"/>
+<div>
+<h3 class="font-label-lg text-on-surface">David Koffi</h3>
+<p class="font-label-md text-on-surface-variant">École du dimanche</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-3 py-1 rounded-full bg-green-500/10 text-green-500 text-[10px] font-bold uppercase tracking-wider">Présent</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface-container-low p-4 rounded-xl flex items-center justify-between hover:bg-surface-container transition-colors cursor-pointer group border border-neutral-800/50">
+<div class="flex items-center gap-4">
+<img alt="Sarah Mensah" class="w-12 h-12 rounded-full object-cover border-2 border-neutral-800" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAl7U-VRVaALKtRGyir4tM7UtbDvdeCEAScMyYKSwoO_sGrdHorY5BuPOynoVXfqr9KKN40t7AAl20g7fClFMiymzu5Ano9eoLqOM8uVCFs7jTuj26l_oef4DOd1HoTbKdJ6WyEKfvF5G3QuquerWpYmvCU1pUpGbHKYs-veaHuLbH81JfQcnAMg7axTh5e6tSW0dWkCxP01XcbJkjCaeCr97t_WHwucRdgWAl-6a6m4CPqJvudh4EECyONa1HaWsObM02osneMWmw"/>
+<div>
+<h3 class="font-label-lg text-on-surface">Sarah Mensah</h3>
+<p class="font-label-md text-on-surface-variant">Chorales</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-3 py-1 rounded-full bg-green-500/10 text-green-500 text-[10px] font-bold uppercase tracking-wider">Présent</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="bg-surface-container-low p-4 rounded-xl flex items-center justify-between hover:bg-surface-container transition-colors cursor-pointer group border border-neutral-800/50">
+<div class="flex items-center gap-4">
+<img alt="Isaac Tetteh" class="w-12 h-12 rounded-full object-cover border-2 border-neutral-800" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkJyUF2mpUOJ-_I9XEFw1Xuk0lKlXZice2kb_RWUHoeQEklnftDW1seBdbESyyTJ6iW80D8zh2A5yNZKNrOGQwj20d5SD3yh4i5KxGEPx-fdD6qTr9X77lXyawDQOXdzgZgr2DMgxlOskVzOvge5PwCq4s3BPmcadMVSXaI8oyYicHHBEOfz3rv0zItKLGZsyxtMlc0kpo5SrRPyQP2as76Qk-8FGB1tQnpDx1nVnlk1hqzptsnoacpb3wvS7spJaRFqLMgAsORPs"/>
+<div>
+<h3 class="font-label-lg text-on-surface">Isaac Tetteh</h3>
+<p class="font-label-md text-on-surface-variant">Jeunes leaders</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-3 py-1 rounded-full bg-red-500/10 text-red-500 text-[10px] font-bold uppercase tracking-wider">Absent</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="bg-surface-container-low p-4 rounded-xl flex items-center justify-between hover:bg-surface-container transition-colors cursor-pointer group border border-neutral-800/50">
+<div class="flex items-center gap-4">
+<img alt="Elena Gomez" class="w-12 h-12 rounded-full object-cover border-2 border-neutral-800" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4zsVa7-n6nwgWRuM3ymwjl2rIfV7D_FtTfxX1LsDYUm4mQc6e90g-ZUST7AoEKMzOMbdD3yCImaRjhFEF5n8SZVvhGpfimL4zYJfZUTC7ZZDUx_bD7PZ2MH0N4EVdPL0jhGv9oHFagAJr0ZgsURR7h_dUB1IOKjKZJj_eyioGykOV0o2zQ8j9rNsE5smQyoV2MXlXcJ7cILiTZn6Eg5zx1ISPk7FxkHxH5DeF0jfCsVp0dwhTGgvIowEUsJBKcRvLjpSnuDBbIos"/>
+<div>
+<h3 class="font-label-lg text-on-surface">Elena Gomez</h3>
+<p class="font-label-md text-on-surface-variant">École du dimanche</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-3 py-1 rounded-full bg-green-500/10 text-green-500 text-[10px] font-bold uppercase tracking-wider">Présent</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="bg-surface-container-low p-4 rounded-xl flex items-center justify-between hover:bg-surface-container transition-colors cursor-pointer group border border-neutral-800/50">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-headline-sm">
+                        MK
+                    </div>
+<div>
+<h3 class="font-label-lg text-on-surface">Marie Kouadio</h3>
+<p class="font-label-md text-on-surface-variant">Chorales</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-3 py-1 rounded-full bg-green-500/10 text-green-500 text-[10px] font-bold uppercase tracking-wider">Présent</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-surface border-t border-neutral-800">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-all p-2 rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md mt-1">Accueil</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary text-on-primary rounded-2xl px-4 py-1 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-md text-label-md mt-1">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-all p-2 rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span class="font-label-md text-label-md mt-1">Appel</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-all p-2 rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="diversity_3">diversity_3</span>
+<span class="font-label-md text-label-md mt-1">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-all p-2 rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md mt-1">Paramètres</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions for filter chips
+        const chips = document.querySelectorAll('button.flex-none');
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                chips.forEach(c => {
+                    c.classList.remove('active-pill');
+                    c.classList.add('bg-surface-container', 'text-on-surface-variant');
+                });
+                chip.classList.add('active-pill');
+                chip.classList.remove('bg-surface-container', 'text-on-surface-variant');
+            });
+        });
+
+        // Header visibility on scroll
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > 60) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body></html>

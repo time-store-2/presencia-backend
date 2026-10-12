@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Exporter le Rapport - Presencia</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#ffdbd0",
+                    "on-secondary-fixed": "#281800",
+                    "on-primary-fixed-variant": "#842600",
+                    "primary-container": "#c2522b",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#fdba49",
+                    "outline": "#8b716a",
+                    "on-primary-fixed": "#390b00",
+                    "on-primary-container": "#fffcff",
+                    "inverse-surface": "#382e2a",
+                    "surface-container-highest": "#f0dfd8",
+                    "primary-fixed-dim": "#ffb59d",
+                    "tertiary": "#6949ab",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#25005a",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#fdba49",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-variant": "#f0dfd8",
+                    "on-tertiary-fixed-variant": "#533294",
+                    "on-surface-variant": "#57423b",
+                    "background": "#fff8f6",
+                    "surface-dim": "#e7d7d0",
+                    "surface": "#fff8f6",
+                    "surface-bright": "#fff8f6",
+                    "secondary": "#805600",
+                    "on-tertiary-container": "#fffcff",
+                    "outline-variant": "#dec0b7",
+                    "tertiary-fixed": "#eaddff",
+                    "tertiary-container": "#8262c6",
+                    "surface-tint": "#a43c17",
+                    "surface-container": "#fceae3",
+                    "on-surface": "#221a16",
+                    "inverse-on-surface": "#ffede6",
+                    "primary": "#a13a15",
+                    "on-secondary-fixed-variant": "#614000",
+                    "surface-container-high": "#f6e5de",
+                    "tertiary-fixed-dim": "#d2bcff",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#ffb59d",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-container": "#704b00",
+                    "on-background": "#221a16",
+                    "secondary-fixed": "#ffddaf",
+                    "on-secondary": "#ffffff",
+                    "surface-container-low": "#fff1eb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "gutter": "12px",
+                    "unit": "4px",
+                    "sm": "8px",
+                    "xl": "32px",
+                    "container-margin": "20px",
+                    "lg": "24px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+        .glass-panel { backdrop-filter: blur(10px); background: rgba(255, 248, 246, 0.8); }
+        .pdf-preview-container { perspective: 1000px; }
+        .pdf-page { transform: rotateX(2deg); transition: transform 0.5s ease; box-shadow: 0 10px 30px rgba(122, 99, 88, 0.15); }
+        .pdf-page:hover { transform: rotateX(0deg) translateY(-5px); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-32">
+<!-- Top Navigation -->
+<header class="fixed top-0 w-full z-50 bg-surface shadow-[0_4px_12px_rgba(122,99,88,0.08)] flex items-center justify-between px-container-margin h-16">
+<div class="flex items-center gap-3">
+<button class="p-2 -ml-2 hover:bg-surface-container-low transition-colors rounded-full active:scale-95 duration-200">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary">Exporter le Rapport</h1>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center overflow-hidden">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a young church leader with a friendly expression. The background is softly blurred with warm earthy tones, reflecting a communal and hospitable atmosphere. The lighting is natural and high-key, highlighting the warm skin tones and the modern, minimalist aesthetic of the church administration app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_YToC7chtRJpEYRh3BfxbL-RfsGup4POf-NBy7buP7X4FGffu3lGiRq2YmiwJcZQRhN-Y8P5WLMqS_OF6uG8tKoKpIOf4eIqSaWBseDOCIg6gKLtiq_BNCVb-oU6FBEK1vgDr7Db4WAiUmXXAcw1dDn4ei4aJsgbma8Nihe2Np4ypYZm6NeB2Lh38pRYr0ikjCNN1p2zBKbF7Srai2Awy1nfPbNUYFl6zrNac6l1Nm6JdZx38X2blQzDlXyaTyVNcyFK3SOKjTg"/>
+</div>
+</div>
+</header>
+<main class="pt-24 px-container-margin max-w-lg mx-auto">
+<!-- Configuration Controls -->
+<section class="space-y-md mb-lg">
+<div class="grid grid-cols-2 gap-md">
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant px-1">Mois</label>
+<div class="relative">
+<select class="w-full h-12 pl-md pr-10 bg-surface border-outline-variant border rounded-xl appearance-none focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md">
+<option>Octobre 2023</option>
+<option selected="">Novembre 2023</option>
+<option>Décembre 2023</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant px-1">Groupe</label>
+<div class="relative">
+<select class="w-full h-12 pl-md pr-10 bg-surface border-outline-variant border rounded-xl appearance-none focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md">
+<option>Tous les groupes</option>
+<option selected="">Groupe Ados</option>
+<option>Groupe Étudiants</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+</section>
+<!-- PDF Visual Preview -->
+<section class="pdf-preview-container animate-fade-in" style="animation-delay: 0.1s">
+<div class="pdf-page bg-white w-full rounded-lg overflow-hidden border border-surface-variant">
+<!-- PDF Header -->
+<div class="p-lg bg-surface-container-low flex justify-between items-start border-b border-surface-variant">
+<div>
+<div class="text-[10px] font-bold text-primary tracking-widest uppercase mb-xs">PRESENCIA SYSTEM</div>
+<h2 class="text-headline-md font-bold text-on-surface leading-tight">Rapport Mensuel : Novembre 2023</h2>
+<p class="text-[12px] text-on-surface-variant mt-1">Généré le 01/12/2023 • Groupe Ados</p>
+</div>
+<div class="bg-primary p-2 rounded-lg">
+<span class="material-symbols-outlined text-white text-md">analytics</span>
+</div>
+</div>
+<!-- PDF Content Summary -->
+<div class="p-lg space-y-md">
+<!-- Attendance Table -->
+<div class="space-y-sm">
+<h3 class="text-label-md font-bold text-on-surface border-b pb-1">RÉSUMÉ DE PRÉSENCE</h3>
+<div class="grid grid-cols-4 gap-2 text-[10px] text-on-surface-variant font-bold uppercase tracking-wider">
+<div>Semaine</div>
+<div class="text-center">Présents</div>
+<div class="text-center">Absents</div>
+<div class="text-center">Taux</div>
+</div>
+<div class="space-y-1">
+<div class="grid grid-cols-4 gap-2 text-[11px] py-1 border-b border-surface-variant/30">
+<div class="font-medium">S1 (05/11)</div>
+<div class="text-center">42</div>
+<div class="text-center">8</div>
+<div class="text-center text-primary font-bold">84%</div>
+</div>
+<div class="grid grid-cols-4 gap-2 text-[11px] py-1 border-b border-surface-variant/30">
+<div class="font-medium">S2 (12/11)</div>
+<div class="text-center">45</div>
+<div class="text-center">5</div>
+<div class="text-center text-primary font-bold">90%</div>
+</div>
+<div class="grid grid-cols-4 gap-2 text-[11px] py-1 border-b border-surface-variant/30">
+<div class="font-medium">S3 (19/11)</div>
+<div class="text-center">38</div>
+<div class="text-center">12</div>
+<div class="text-center text-primary font-bold">76%</div>
+</div>
+</div>
+</div>
+<!-- Growth Chart (Visual Representation) -->
+<div class="space-y-sm">
+<h3 class="text-label-md font-bold text-on-surface border-b pb-1">ÉVOLUTION DE CROISSANCE</h3>
+<div class="h-24 w-full bg-surface-container-lowest rounded relative overflow-hidden flex items-end px-2 pb-1 gap-1">
+<div class="bg-primary-container/40 w-full h-[60%] rounded-t-sm"></div>
+<div class="bg-primary-container/40 w-full h-[75%] rounded-t-sm"></div>
+<div class="bg-primary-container/60 w-full h-[65%] rounded-t-sm"></div>
+<div class="bg-primary w-full h-[85%] rounded-t-sm relative">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 text-[8px] font-bold text-primary">Peak</div>
+</div>
+<div class="bg-primary-container/50 w-full h-[70%] rounded-t-sm"></div>
+</div>
+</div>
+<!-- Inactive List -->
+<div class="space-y-sm">
+<div class="flex justify-between items-center border-b pb-1">
+<h3 class="text-label-md font-bold text-on-surface">MEMBRES INACTIFS (&gt; 3 sem.)</h3>
+<span class="text-[10px] text-error font-bold">Alerte Suivi</span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest"></div>
+<div class="text-[11px]">Jean-Luc M.</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest"></div>
+<div class="text-[11px]">Sarah D.</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest"></div>
+<div class="text-[11px]">Théo L.</div>
+</div>
+</div>
+</div>
+</div>
+<!-- PDF Footer -->
+<div class="px-lg py-sm bg-surface-container-highest text-[9px] text-on-surface-variant flex justify-between">
+<span>Document de travail confidentiel</span>
+<span>Page 1 sur 2</span>
+</div>
+</div>
+<div class="mt-md text-center">
+<p class="font-body-md text-body-md text-on-surface-variant italic">Aperçu interactif (2 pages)</p>
+</div>
+</section>
+</main>
+<!-- Bottom Actions Shell -->
+<div class="fixed bottom-0 w-full p-container-margin bg-surface/80 backdrop-blur-md shadow-[0_-4px_12px_rgba(122,99,88,0.08)] flex flex-col gap-md">
+<!-- Settings Toggles -->
+<div class="flex justify-between items-center px-2">
+<div class="flex items-center gap-3">
+<input checked="" class="w-5 h-5 rounded border-outline text-primary focus:ring-primary-container" id="incl-details" type="checkbox"/>
+<label class="font-label-md text-label-md text-on-surface" for="incl-details">Inclure notes détaillées</label>
+</div>
+<div class="flex items-center gap-3">
+<input class="w-5 h-5 rounded border-outline text-primary focus:ring-primary-container" id="incl-photos" type="checkbox"/>
+<label class="font-label-md text-label-md text-on-surface" for="incl-photos">Photos d'activités</label>
+</div>
+</div>
+<button class="w-full h-14 bg-primary text-white rounded-xl flex items-center justify-center gap-3 font-headline-md text-headline-md active:scale-[0.98] transition-transform duration-150 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">download</span>
+            Télécharger PDF
+        </button>
+</div>
+<!-- Background Decoration -->
+<div class="fixed inset-0 -z-10 pointer-events-none opacity-40">
+<div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary-fixed blur-[100px] rounded-full"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary-fixed-dim blur-[100px] rounded-full"></div>
+</div>
+<script>
+        // Micro-interaction for page hover effect
+        const preview = document.querySelector('.pdf-page');
+        preview.addEventListener('mousemove', (e) => {
+            const rect = preview.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 50;
+            const rotateY = (centerX - x) / 50;
+            preview.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+        });
+
+        preview.addEventListener('mouseleave', () => {
+            preview.style.transform = 'rotateX(2deg) translateY(0px)';
+        });
+    </script>
+</body></html>

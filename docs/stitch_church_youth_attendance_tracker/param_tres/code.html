@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Paramètres - ChurchPresence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#777587",
+                    "inverse-on-surface": "#ebf1ff",
+                    "on-secondary-container": "#00714d",
+                    "tertiary-container": "#6f3dd9",
+                    "background": "#f9f9ff",
+                    "on-tertiary-container": "#e3d5ff",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#c3c0ff",
+                    "error-container": "#ffdad6",
+                    "secondary": "#006c49",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#dce2f3",
+                    "on-tertiary-fixed": "#23005c",
+                    "on-secondary-fixed-variant": "#005236",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed": "#6ffbbe",
+                    "tertiary-fixed-dim": "#d0bcff",
+                    "on-surface": "#151c27",
+                    "surface-tint": "#4d44e3",
+                    "tertiary": "#571ac0",
+                    "surface": "#f9f9ff",
+                    "on-tertiary-fixed-variant": "#5516be",
+                    "surface-container-high": "#e2e8f8",
+                    "surface-dim": "#d3daea",
+                    "secondary-fixed-dim": "#4edea3",
+                    "inverse-surface": "#2a313d",
+                    "primary-fixed": "#e2dfff",
+                    "secondary-container": "#6cf8bb",
+                    "outline-variant": "#c7c4d8",
+                    "surface-container": "#e7eefe",
+                    "on-primary-container": "#dad7ff",
+                    "surface-variant": "#dce2f3",
+                    "on-secondary-fixed": "#002113",
+                    "surface-bright": "#f9f9ff",
+                    "primary-container": "#4f46e5",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "surface-container-low": "#f0f3ff",
+                    "on-surface-variant": "#464555",
+                    "error": "#ba1a1a",
+                    "on-background": "#151c27",
+                    "tertiary-fixed": "#e9ddff",
+                    "on-primary-fixed": "#000a63",
+                    "primary": "#3525cd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "xs": "4px",
+                    "base": "4px",
+                    "md": "16px",
+                    "margin-mobile": "16px",
+                    "gutter": "16px",
+                    "margin-tablet": "32px",
+                    "lg": "24px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "display": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .custom-toggle:checked + .toggle-dot { transform: translateX(100%); }
+        .custom-toggle:checked { background-color: #4F46E5; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface shadow-sm h-16 flex justify-between items-center px-margin-mobile">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">church</span>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary">Paramètres</h1>
+</div>
+<button class="transition-all duration-200 active:scale-95 text-on-surface-variant">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</header>
+<main class="pt-20 pb-28 px-margin-mobile max-w-2xl mx-auto">
+<!-- Guest Account Banner -->
+<section class="mb-lg">
+<div class="bg-gradient-to-br from-[#4F46E5] to-[#6366F1] p-lg rounded-xl shadow-sm text-white flex flex-col md:flex-row justify-between items-start md:items-center gap-md">
+<div>
+<h2 class="font-headline-md text-headline-md text-white">Compte Invité</h2>
+<p class="font-body-md text-body-md text-blue-100 mt-1">Créez un compte pour synchroniser vos données sur tous vos appareils.</p>
+</div>
+<button class="bg-white text-[#4F46E5] px-lg py-sm rounded-xl font-label-md text-label-md shadow-sm transition-all active:scale-95">
+                    Créer un compte
+                </button>
+</div>
+</section>
+<!-- Application Section -->
+<section class="mb-lg">
+<h3 class="font-label-md text-label-md text-outline uppercase tracking-wider mb-sm px-1">Application</h3>
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<!-- Langue -->
+<button class="w-full flex items-center justify-between p-md hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-md">
+<div class="bg-blue-100 text-blue-600 p-sm rounded-lg">
+<span class="material-symbols-outlined">language</span>
+</div>
+<div class="text-left">
+<p class="font-body-lg text-body-lg text-on-surface">Langue</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Français</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+<div class="h-[1px] bg-outline-variant mx-md"></div>
+<!-- Thème -->
+<button class="w-full flex items-center justify-between p-md hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-md">
+<div class="bg-yellow-100 text-yellow-700 p-sm rounded-lg">
+<span class="material-symbols-outlined">light_mode</span>
+</div>
+<div class="text-left">
+<p class="font-body-lg text-body-lg text-on-surface">Thème</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Clair</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+<div class="h-[1px] bg-outline-variant mx-md"></div>
+<!-- Notifications -->
+<div class="flex items-center justify-between p-md">
+<div class="flex items-center gap-md">
+<div class="bg-red-100 text-red-600 p-sm rounded-lg">
+<span class="material-symbols-outlined">notifications</span>
+</div>
+<div class="text-left">
+<p class="font-body-lg text-body-lg text-on-surface">Notifications</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Activé</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer custom-toggle" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Données Section -->
+<section class="mb-lg">
+<h3 class="font-label-md text-label-md text-outline uppercase tracking-wider mb-sm px-1">Données</h3>
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<!-- Sauvegarde -->
+<button class="w-full flex items-center justify-between p-md hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-md">
+<div class="bg-green-100 text-green-600 p-sm rounded-lg">
+<span class="material-symbols-outlined">cloud_upload</span>
+</div>
+<div class="text-left">
+<p class="font-body-lg text-body-lg text-on-surface">Sauvegarde</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Dernière: Aujourd'hui</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+<div class="h-[1px] bg-outline-variant mx-md"></div>
+<!-- Exporter -->
+<button class="w-full flex items-center justify-between p-md hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-md">
+<div class="bg-indigo-100 text-indigo-600 p-sm rounded-lg">
+<span class="material-symbols-outlined">ios_share</span>
+</div>
+<div class="text-left">
+<p class="font-body-lg text-body-lg text-on-surface">Exporter</p>
+<p class="font-body-md text-body-md text-on-surface-variant">PDF, Excel, JSON</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+<div class="h-[1px] bg-outline-variant mx-md"></div>
+<!-- Importer -->
+<button class="w-full flex items-center justify-between p-md hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-md">
+<div class="bg-purple-100 text-purple-600 p-sm rounded-lg">
+<span class="material-symbols-outlined">file_download</span>
+</div>
+<div class="text-left">
+<p class="font-body-lg text-body-lg text-on-surface">Importer</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Restaurer des données</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Gestion Section -->
+<section class="mb-lg">
+<h3 class="font-label-md text-label-md text-outline uppercase tracking-wider mb-sm px-1">Gestion</h3>
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<!-- Gérer les groupes -->
+<button class="w-full flex items-center justify-between p-md hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-md">
+<div class="bg-orange-100 text-orange-600 p-sm rounded-lg">
+<span class="material-symbols-outlined">diversity_3</span>
+</div>
+<div class="text-left">
+<p class="font-body-lg text-body-lg text-on-surface">Gérer les groupes</p>
+<p class="font-body-md text-body-md text-on-surface-variant">3 groupes actifs</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+<div class="h-[1px] bg-outline-variant mx-md"></div>
+<!-- Rôles -->
+<button class="w-full flex items-center justify-between p-md hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-md">
+<div class="bg-cyan-100 text-cyan-600 p-sm rounded-lg">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+</div>
+<div class="text-left">
+<p class="font-body-lg text-body-lg text-on-surface">Rôles</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Permissions et accès</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Aide Section -->
+<section class="mb-lg">
+<h3 class="font-label-md text-label-md text-outline uppercase tracking-wider mb-sm px-1">Aide</h3>
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<!-- Guide -->
+<button class="w-full flex items-center justify-between p-md hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-md">
+<div class="bg-teal-100 text-teal-600 p-sm rounded-lg">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<div class="text-left">
+<p class="font-body-lg text-body-lg text-on-surface">Guide</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Tutoriels et conseils</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+<div class="h-[1px] bg-outline-variant mx-md"></div>
+<!-- Contact -->
+<button class="w-full flex items-center justify-between p-md hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-md">
+<div class="bg-pink-100 text-pink-600 p-sm rounded-lg">
+<span class="material-symbols-outlined">support_agent</span>
+</div>
+<div class="text-left">
+<p class="font-body-lg text-body-lg text-on-surface">Contact</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Support technique</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+</div>
+</section>
+<footer class="text-center py-md">
+<p class="font-label-md text-label-md text-outline">ChurchPresence Version 1.0.0</p>
+<p class="font-label-sm text-label-sm text-outline-variant mt-1">© 2024 ChurchPresence App</p>
+</footer>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface shadow-[0_-1px_2px_0_rgba(0,0,0,0.05)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Accueil</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="font-label-md text-label-md">Appel</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined">diversity_3</span>
+<span class="font-label-md text-label-md">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1 transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-md text-label-md">Paramètres</span>
+</a>
+</nav>
+<script>
+        // Simple interactivity for demonstration
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('scale-95');
+            });
+            button.addEventListener('mouseup', () => {
+                button.classList.remove('scale-95');
+            });
+            button.addEventListener('mouseleave', () => {
+                button.classList.remove('scale-95');
+            });
+        });
+    </script>
+</body></html>

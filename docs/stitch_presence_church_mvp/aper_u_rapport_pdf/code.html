@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#ffdad2",
+                    "on-surface": "#191d0e",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#ffb4a2",
+                    "inverse-primary": "#95d4b3",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#ffdcc2",
+                    "surface-container-low": "#f2f6dd",
+                    "on-secondary-fixed-variant": "#83260e",
+                    "tertiary-fixed-dim": "#f4bb8e",
+                    "primary-container": "#2d6a4f",
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#a8e7c5",
+                    "surface-variant": "#e0e5cc",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#404943",
+                    "surface-tint": "#2c694e",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#bfc9c1",
+                    "outline": "#707973",
+                    "secondary": "#a33d23",
+                    "on-tertiary-fixed-variant": "#653e1b",
+                    "surface": "#f7fce3",
+                    "on-secondary-container": "#731a04",
+                    "inverse-on-surface": "#eff3da",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#95d4b3",
+                    "surface-bright": "#f7fce3",
+                    "primary-fixed": "#b1f0ce",
+                    "secondary-container": "#ff8162",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#191d0e",
+                    "on-tertiary-container": "#ffd0ad",
+                    "tertiary": "#653e1b",
+                    "background": "#f7fce3",
+                    "on-primary-fixed-variant": "#0e5138",
+                    "on-secondary-fixed": "#3c0700",
+                    "surface-container": "#ecf0d8",
+                    "on-tertiary-fixed": "#2e1500",
+                    "surface-dim": "#d8dcc4",
+                    "surface-container-highest": "#e0e5cc",
+                    "tertiary-container": "#805530",
+                    "surface-container-high": "#e6ebd2",
+                    "inverse-surface": "#2e3222",
+                    "error-container": "#ffdad6",
+                    "primary": "#0f5238",
+                    "on-primary-fixed": "#002114"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "48px",
+                    "gutter": "24px",
+                    "xs": "4px",
+                    "margin-desktop": "40px",
+                    "sm": "12px",
+                    "base": "8px",
+                    "xl": "80px",
+                    "margin-mobile": "16px",
+                    "md": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-sm": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "display-lg-mobile": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-sm": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "60px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #FAFAF8;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .a4-card {
+            aspect-ratio: 1 / 1.4142;
+            width: 100%;
+            max-width: 320px;
+            box-shadow: 0px 4px 20px rgba(45, 106, 79, 0.05);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .btn-active:active {
+            transform: scale(0.95);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-screen">
+<!-- Top AppBar (Predicted Component Implementation) -->
+<header class="w-full top-0 sticky z-50 bg-background dark:bg-background flex items-center justify-between px-margin-mobile py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<button class="hover:opacity-80 transition-opacity btn-active text-on-surface-variant">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm-mobile text-primary">Aperçu du rapport</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:opacity-80 transition-opacity btn-active text-on-surface-variant">
+<span class="material-symbols-outlined">share</span>
+</button>
+<button class="hover:opacity-80 transition-opacity btn-active text-on-surface-variant">
+<span class="material-symbols-outlined">download</span>
+</button>
+</div>
+</header>
+<main class="flex-grow px-margin-mobile py-6 flex flex-col items-center">
+<!-- Document Viewer Section -->
+<div class="w-full flex flex-col items-center gap-6">
+<!-- A4 Styled Card -->
+<div class="a4-card bg-surface-container-lowest border border-outline-variant/20 rounded-lg p-6 flex flex-col relative overflow-hidden">
+<!-- Watermark / Texture Decoration -->
+<div class="absolute -right-10 -top-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl"></div>
+<!-- Document Header -->
+<div class="flex justify-between items-start mb-6 border-b border-outline-variant/10 pb-4">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<div class="w-6 h-6 bg-primary rounded flex items-center justify-center text-[10px] text-white font-bold">A</div>
+<span class="font-bold text-primary tracking-tight">AtendApp</span>
+</div>
+<h2 class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Rapport de présences</h2>
+</div>
+<div class="text-right">
+<p class="text-[12px] font-bold text-on-surface">Juin 2025</p>
+<p class="text-[8px] text-outline">Ref: RP-2025-06</p>
+</div>
+</div>
+<!-- Section: ECOLE DU DIMANCHE -->
+<div class="mb-4">
+<h3 class="text-[10px] font-bold text-secondary mb-3 border-l-2 border-secondary pl-2">ÉCOLE DU DIMANCHE</h3>
+<!-- Color-coded Stats Blocks -->
+<div class="grid grid-cols-4 gap-2 mb-4">
+<div class="bg-primary/5 p-2 rounded flex flex-col items-center">
+<span class="text-[14px] font-bold text-primary">42</span>
+<span class="text-[6px] text-primary/70 font-semibold uppercase">Présents</span>
+</div>
+<div class="bg-secondary/5 p-2 rounded flex flex-col items-center">
+<span class="text-[14px] font-bold text-secondary">08</span>
+<span class="text-[6px] text-secondary/70 font-semibold uppercase">Absents</span>
+</div>
+<div class="bg-tertiary-container/10 p-2 rounded flex flex-col items-center">
+<span class="text-[14px] font-bold text-tertiary">03</span>
+<span class="text-[6px] text-tertiary/70 font-semibold uppercase">Retards</span>
+</div>
+<div class="bg-on-surface-variant/5 p-2 rounded flex flex-col items-center">
+<span class="text-[14px] font-bold text-on-surface">84%</span>
+<span class="text-[6px] text-on-surface-variant/70 font-semibold uppercase">Taux</span>
+</div>
+</div>
+<!-- Attendance Table -->
+<div class="w-full">
+<div class="grid grid-cols-6 mb-2 border-b border-outline-variant/10 pb-1">
+<div class="col-span-3 text-[7px] font-bold text-outline">NOM ÉLÈVE</div>
+<div class="text-[7px] font-bold text-center text-outline">01/06</div>
+<div class="text-[7px] font-bold text-center text-outline">08/06</div>
+<div class="text-[7px] font-bold text-center text-outline">15/06</div>
+</div>
+<div class="space-y-2">
+<div class="grid grid-cols-6 items-center">
+<div class="col-span-3 text-[8px] font-medium">Marc Dupont</div>
+<div class="flex justify-center"><div class="w-1.5 h-1.5 bg-primary rounded-full"></div></div>
+<div class="flex justify-center"><div class="w-1.5 h-1.5 bg-primary rounded-full"></div></div>
+<div class="flex justify-center"><div class="w-1.5 h-1.5 bg-primary rounded-full"></div></div>
+</div>
+<div class="grid grid-cols-6 items-center">
+<div class="col-span-3 text-[8px] font-medium">Sophie Martin</div>
+<div class="flex justify-center"><div class="w-1.5 h-1.5 bg-primary rounded-full"></div></div>
+<div class="flex justify-center"><div class="w-1.5 h-1.5 bg-error rounded-full"></div></div>
+<div class="flex justify-center"><div class="w-1.5 h-1.5 bg-primary rounded-full"></div></div>
+</div>
+<div class="grid grid-cols-6 items-center">
+<div class="col-span-3 text-[8px] font-medium">Léa Dubois</div>
+<div class="flex justify-center"><div class="w-1.5 h-1.5 bg-error rounded-full"></div></div>
+<div class="flex justify-center"><div class="w-1.5 h-1.5 bg-primary rounded-full"></div></div>
+<div class="flex justify-center"><div class="w-1.5 h-1.5 bg-primary rounded-full"></div></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="mt-auto pt-4 border-t border-outline-variant/10 flex justify-between items-center">
+<p class="text-[6px] text-outline">Généré par AtendApp le 30/06/2025</p>
+<p class="text-[6px] text-outline font-bold">atendapp.com</p>
+</div>
+</div>
+<!-- Page Controls -->
+<div class="flex items-center gap-6 py-2">
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-high text-on-surface-variant btn-active">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<span class="font-label-md text-label-md text-on-surface">Page 1 sur 3</span>
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-high text-on-surface-variant btn-active">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Action Section -->
+<div class="w-full mt-8 space-y-4">
+<button class="w-full bg-primary-container text-on-primary-container py-4 rounded-xl font-label-md text-label-md flex items-center justify-center gap-2 shadow-lg btn-active transition-all active:shadow-sm">
+<span class="material-symbols-outlined">picture_as_pdf</span>
+                Télécharger le PDF
+            </button>
+<button class="w-full bg-surface-container-lowest border border-outline-variant text-on-surface py-4 rounded-xl font-label-md text-label-md flex items-center justify-center gap-2 btn-active transition-all">
+<span class="material-symbols-outlined">share</span>
+                Partager
+            </button>
+<div class="flex justify-center">
+<a class="font-label-md text-label-md text-secondary underline decoration-secondary/30 underline-offset-4 hover:text-secondary-fixed-dim transition-colors" href="#">
+                    Modifier les options
+                </a>
+</div>
+</div>
+</main>
+<!-- Bottom Spacing for safe area -->
+<div class="h-12 w-full"></div>
+<!-- JavaScript for micro-interactions -->
+<script>
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+    </script>
+<style>
+        .ripple {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+        @keyframes ripple-animation {
+            to { transform: scale(4); opacity: 0; }
+        }
+    </style>
+</body></html>

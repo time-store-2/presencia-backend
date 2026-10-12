@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Connexion | Kindred Path</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#edecff",
+                    "secondary-fixed": "#ffdbd2",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#c9c7b5",
+                    "tertiary": "#49483b",
+                    "primary-fixed-dim": "#95d4b3",
+                    "surface-container-highest": "#dfe0ff",
+                    "on-surface": "#161a32",
+                    "secondary-container": "#fc9174",
+                    "on-primary-container": "#a8e7c5",
+                    "on-secondary-container": "#742814",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed-variant": "#7c2e19",
+                    "outline": "#707973",
+                    "surface-container-low": "#f4f2ff",
+                    "on-primary-fixed-variant": "#0e5138",
+                    "on-error": "#ffffff",
+                    "surface-tint": "#2c694e",
+                    "surface-container-high": "#e6e6ff",
+                    "inverse-on-surface": "#f1efff",
+                    "primary-container": "#2d6a4f",
+                    "on-tertiary-fixed": "#1c1c11",
+                    "surface-dim": "#d6d8f9",
+                    "primary-fixed": "#b1f0ce",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed": "#3c0800",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed": "#002114",
+                    "outline-variant": "#bfc9c1",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#95d4b3",
+                    "primary": "#0f5238",
+                    "secondary-fixed-dim": "#ffb4a1",
+                    "on-background": "#161a32",
+                    "surface-bright": "#fbf8ff",
+                    "inverse-surface": "#2b2e48",
+                    "surface-variant": "#dfe0ff",
+                    "secondary": "#9a442d",
+                    "tertiary-container": "#616051",
+                    "on-surface-variant": "#404943",
+                    "surface": "#fbf8ff",
+                    "background": "#fbf8ff",
+                    "on-tertiary-container": "#dddbc8",
+                    "tertiary-fixed": "#e6e3d0",
+                    "on-tertiary-fixed-variant": "#48473a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "gutter": "24px",
+                    "container-max": "1200px",
+                    "lg": "48px",
+                    "md": "24px",
+                    "sm": "12px",
+                    "base": "8px",
+                    "xl": "80px"
+            },
+            "fontFamily": {
+                    "label-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #161a32; /* Using on-background for deep dark state */
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .input-glow:focus-within {
+            box-shadow: 0 0 15px rgba(149, 212, 179, 0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex items-center justify-center min-h-screen p-gutter overflow-hidden">
+<!-- Atmospheric Background Element -->
+<div class="fixed inset-0 z-0">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/20 blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-secondary/10 blur-[120px]"></div>
+</div>
+<main class="relative z-10 w-full max-w-[400px] animate-in fade-in slide-in-from-bottom-4 duration-700">
+<div class="glass-card p-xl rounded-[32px] shadow-2xl flex flex-col items-center">
+<!-- Brand Anchor -->
+<div class="mb-xl flex flex-col items-center gap-base">
+<div class="w-16 h-16 bg-primary dark:bg-primary-fixed-dim rounded-2xl flex items-center justify-center shadow-lg transform rotate-3 hover:rotate-0 transition-transform duration-300">
+<span class="material-symbols-outlined text-on-primary dark:text-on-primary-fixed !text-4xl" style="font-variation-settings: 'FILL' 1;">nature_people</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-primary-fixed-dim tracking-tight">Kindred Path</h1>
+</div>
+<!-- Welcome Text -->
+<div class="w-full mb-xl text-center">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-primary-container mb-xs">Ravi de vous revoir</h2>
+<p class="font-body-md text-body-md text-on-tertiary-container/70">Poursuivez votre chemin avec nous.</p>
+</div>
+<!-- Login Form -->
+<form action="#" class="w-full space-y-md" onsubmit="event.preventDefault();">
+<div class="space-y-xs group">
+<label class="font-label-sm text-label-sm text-on-tertiary-container ml-1" for="email">Email</label>
+<div class="input-glow flex items-center bg-surface-container-low/5 border border-outline/30 rounded-xl px-md py-3 focus-within:border-primary-fixed-dim transition-all duration-300">
+<span class="material-symbols-outlined text-outline group-focus-within:text-primary-fixed-dim mr-sm">mail</span>
+<input class="bg-transparent border-none p-0 w-full focus:ring-0 text-on-surface font-body-md placeholder:text-outline/50" id="email" placeholder="nom@exemple.com" required="" type="email"/>
+</div>
+</div>
+<div class="space-y-xs group">
+<div class="flex justify-between items-center px-1">
+<label class="font-label-sm text-label-sm text-on-tertiary-container" for="password">Mot de passe</label>
+<a class="font-label-sm text-label-sm text-primary-fixed-dim hover:underline transition-all" href="#">Forgot Password?</a>
+</div>
+<div class="input-glow flex items-center bg-surface-container-low/5 border border-outline/30 rounded-xl px-md py-3 focus-within:border-primary-fixed-dim transition-all duration-300">
+<span class="material-symbols-outlined text-outline group-focus-within:text-primary-fixed-dim mr-sm">lock</span>
+<input class="bg-transparent border-none p-0 w-full focus:ring-0 text-on-surface font-body-md placeholder:text-outline/50" id="password" placeholder="••••••••" required="" type="password"/>
+<button class="text-outline hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined !text-sm">visibility</span>
+</button>
+</div>
+</div>
+<button class="w-full bg-primary-fixed-dim text-on-primary-fixed font-label-md text-label-md py-4 rounded-xl shadow-lg hover:bg-primary-fixed hover:scale-[1.02] active:scale-95 transition-all duration-200 mt-base" type="submit">
+                    Se connecter
+                </button>
+</form>
+<!-- Divider -->
+<div class="w-full flex items-center gap-md my-xl">
+<div class="h-[1px] flex-1 bg-outline/20"></div>
+<span class="font-label-sm text-label-sm text-outline/50">OU</span>
+<div class="h-[1px] flex-1 bg-outline/20"></div>
+</div>
+<!-- Social Login -->
+<div class="w-full flex flex-col gap-sm">
+<button class="w-full flex items-center justify-center gap-sm bg-white/5 border border-outline/20 font-label-md text-label-md text-on-surface py-3 rounded-xl hover:bg-white/10 transition-colors">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M12.48 10.92v3.28h7.84c-.24 1.84-.90 3.15-1.91 4.15-1.27 1.23-3.26 2.4-6.77 2.4-5.44 0-9.61-4.41-9.61-9.85s4.17-9.85 9.61-9.85c3.11 0 5.39 1.22 7.01 2.76l2.31-2.31c-2.32-2.18-5.38-3.45-9.32-3.45-7.75 0-14 6.25-14 14s6.25 14 14 14c4.15 0 7.31-1.37 9.77-3.92 2.54-2.54 3.34-6.11 3.34-9.14 0-.69-.05-1.35-.15-1.97h-12.89z" fill="#EA4335"></path>
+</svg>
+                    Google
+                </button>
+<button class="w-full flex items-center justify-center gap-sm bg-white/5 border border-outline/20 font-label-md text-label-md text-on-surface py-3 rounded-xl hover:bg-white/10 transition-colors">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M17.05 20.28c-.96.95-2.04 1.72-3.23 1.72-1.16 0-1.54-.73-2.91-.73s-1.84.71-2.91.71c-1.18 0-2.36-.88-3.38-2.26-2.1-2.83-2.1-7.39 0-10.22 1.02-1.38 2.2-2.26 3.38-2.26 1.07 0 1.54.71 2.91.71s1.75-.73 2.91-.73c.88 0 1.68.48 2.24 1.09-2.73 1.5-2.28 5.48.51 6.64-.61 1.78-1.51 3.23-2.53 4.28zM12.03 7.25c-.02-2.13 1.75-3.88 3.82-3.92.03 2.11-1.78 3.96-3.82 3.92z" fill="currentColor"></path>
+</svg>
+                    Apple
+                </button>
+</div>
+<!-- Sign Up Link -->
+<p class="mt-xl font-body-md text-body-md text-on-tertiary-container/60">
+                Pas encore de compte ? 
+                <a class="text-primary-fixed-dim font-label-md hover:underline ml-1" href="#">Créer un compte</a>
+</p>
+</div>
+</main>
+<!-- Visual Polish: Decorative blurred orb -->
+<div class="fixed top-[20%] right-[15%] w-32 h-32 bg-secondary-container/20 rounded-full blur-3xl z-0 pointer-events-none"></div>
+<script>
+        // Simple micro-interaction for password visibility toggle
+        document.querySelectorAll('button[type="button"]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const input = this.parentElement.querySelector('input');
+                const icon = this.querySelector('span');
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    icon.innerText = 'visibility_off';
+                } else {
+                    input.type = 'password';
+                    icon.innerText = 'visibility';
+                }
+            });
+        });
+
+        // Add a subtle parallax effect to background
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+            document.querySelector('.fixed.inset-0').style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+    </script>
+</body></html>

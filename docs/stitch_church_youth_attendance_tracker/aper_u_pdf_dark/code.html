@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#4edea3",
+                    "surface-dim": "#d3daea",
+                    "primary-fixed": "#e2dfff",
+                    "inverse-surface": "#2a313d",
+                    "on-surface": "#151c27",
+                    "tertiary-fixed-dim": "#d0bcff",
+                    "secondary-fixed": "#6ffbbe",
+                    "surface-container-high": "#e2e8f8",
+                    "tertiary": "#571ac0",
+                    "surface": "#f9f9ff",
+                    "on-tertiary-fixed-variant": "#5516be",
+                    "surface-tint": "#4d44e3",
+                    "secondary": "#006c49",
+                    "inverse-primary": "#c3c0ff",
+                    "error-container": "#ffdad6",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-container": "#e3d5ff",
+                    "surface-container-highest": "#dce2f3",
+                    "on-tertiary-fixed": "#23005c",
+                    "on-secondary-fixed-variant": "#005236",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#ebf1ff",
+                    "outline": "#777587",
+                    "tertiary-container": "#6f3dd9",
+                    "background": "#f9f9ff",
+                    "on-secondary-container": "#00714d",
+                    "on-background": "#151c27",
+                    "on-surface-variant": "#464555",
+                    "error": "#ba1a1a",
+                    "primary": "#3525cd",
+                    "on-primary-fixed": "#0f0069",
+                    "tertiary-fixed": "#e9ddff",
+                    "primary-container": "#4f46e5",
+                    "surface-container-low": "#f0f3ff",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "surface-variant": "#dce2f3",
+                    "on-primary-container": "#dad7ff",
+                    "surface-bright": "#f9f9ff",
+                    "on-secondary-fixed": "#002113",
+                    "surface-container": "#e7eefe",
+                    "secondary-container": "#6cf8bb",
+                    "outline-variant": "#c7c4d8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "xs": "4px",
+                    "base": "4px",
+                    "md": "16px",
+                    "margin-mobile": "16px",
+                    "gutter": "16px",
+                    "margin-tablet": "32px",
+                    "lg": "24px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "display": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #151c27; /* Fallback for dark theme on-surface */
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for preview */
+        .pdf-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .pdf-scroll::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .pdf-scroll::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+        .glass-header {
+            background: rgba(21, 28, 39, 0.8);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-on-surface text-surface h-screen flex flex-col overflow-hidden">
+<!-- TopAppBar -->
+<header class="glass-header fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 shadow-sm border-b border-outline-variant/10">
+<div class="flex items-center gap-3">
+<button class="transition-all duration-200 active:scale-95 text-outline-variant hover:text-primary-fixed">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-fixed" data-icon="church">church</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary-fixed tracking-tight">Rapport d'Activité</h1>
+</div>
+</div>
+<div class="flex items-center gap-2 md:gap-4">
+<button class="flex items-center gap-2 px-4 py-2 rounded-xl bg-surface-container-highest/10 text-surface hover:bg-surface-container-highest/20 transition-all duration-200 font-label-md text-label-md">
+<span class="material-symbols-outlined text-[20px]">share</span>
+<span class="hidden sm:inline">Partager</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary-container text-on-primary-container hover:opacity-90 transition-all duration-200 font-label-md text-label-md shadow-lg">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span class="hidden sm:inline">Télécharger</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 mt-16 overflow-y-auto pdf-scroll bg-on-surface/95 relative px-4 py-8 md:p-12 flex justify-center">
+<!-- Document Backdrop Gradient -->
+<div class="absolute inset-0 pointer-events-none opacity-20">
+<div class="absolute top-0 left-1/4 w-96 h-96 bg-primary rounded-full blur-[128px]"></div>
+<div class="absolute bottom-0 right-1/4 w-96 h-96 bg-tertiary rounded-full blur-[128px]"></div>
+</div>
+<!-- PDF Mockup Card -->
+<div class="w-full max-w-4xl bg-white text-on-surface shadow-2xl rounded-sm min-h-[1200px] flex flex-col relative overflow-hidden">
+<!-- PDF Header -->
+<div class="p-12 border-b border-slate-100 flex justify-between items-start">
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-3xl" style="font-variation-settings: 'FILL' 1;">church</span>
+</div>
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary uppercase tracking-wider">ChurchPresence</h2>
+<p class="text-slate-400 font-label-sm text-label-sm uppercase">Système de gestion ecclésiale</p>
+</div>
+</div>
+<div class="space-y-1">
+<h3 class="font-headline-md text-headline-md text-on-surface">Rapport Mensuel de Fréquentation</h3>
+<p class="text-on-surface-variant font-body-md text-body-md">Période : Octobre 2023</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md font-bold text-on-surface">RÉSUMÉ ANALYTIQUE</p>
+<p class="text-slate-400 text-xs">ID: REP-2023-10-042</p>
+</div>
+</div>
+<!-- PDF Body -->
+<div class="p-12 space-y-12">
+<!-- Top Stats Bento -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+<p class="text-slate-500 font-label-md text-label-md uppercase mb-1">Membres Actifs</p>
+<p class="text-3xl font-display text-on-surface">1,284</p>
+<div class="mt-2 flex items-center text-emerald-600 gap-1 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+4.2% vs sept.</span>
+</div>
+</div>
+<div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+<p class="text-slate-500 font-label-md text-label-md uppercase mb-1">Taux de Présence</p>
+<p class="text-3xl font-display text-on-surface">82%</p>
+<div class="mt-2 flex items-center text-emerald-600 gap-1 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+1.5% vs sept.</span>
+</div>
+</div>
+<div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+<p class="text-slate-500 font-label-md text-label-md uppercase mb-1">Nouveaux Membres</p>
+<p class="text-3xl font-display text-on-surface">24</p>
+<div class="mt-2 flex items-center text-amber-600 gap-1 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-sm">remove</span>
+<span>Stable</span>
+</div>
+</div>
+</div>
+<!-- Analysis Text -->
+<div class="space-y-4">
+<h4 class="font-headline-md text-headline-md text-on-surface border-b-2 border-primary w-fit pb-1">Analyse des Tendances</h4>
+<p class="text-on-surface-variant font-body-lg text-body-lg leading-relaxed">
+                        Le mois d'octobre a montré une croissance soutenue dans les groupes de jeunesse (+12%), tandis que les services du dimanche matin maintiennent une stabilité remarquable. L'initiative de bienvenue mise en place le mois dernier semble porter ses fruits avec un taux de rétention des nouveaux visiteurs s'élevant à 65%. Les données suggèrent un besoin croissant d'espace pour les activités du mercredi soir.
+                    </p>
+</div>
+<!-- Chart Visual Placeholder -->
+<div class="relative w-full h-80 bg-slate-50 rounded-2xl border border-slate-100 overflow-hidden group">
+<!-- Chart Lines Graphic (SVG) -->
+<svg class="absolute bottom-0 left-0 w-full h-full p-8 opacity-60" viewbox="0 0 800 300">
+<path d="M0,250 Q100,180 200,220 T400,150 T600,180 T800,80" fill="none" stroke="#3525cd" stroke-width="4"></path>
+<path d="M0,250 Q100,210 200,240 T400,190 T600,220 T800,150" fill="none" opacity="0.4" stroke="#571ac0" stroke-dasharray="8 4" stroke-width="3"></path>
+<circle cx="200" cy="220" fill="#3525cd" r="6"></circle>
+<circle cx="400" cy="150" fill="#3525cd" r="6"></circle>
+<circle cx="800" cy="80" fill="#3525cd" r="6"></circle>
+</svg>
+<div class="absolute top-6 left-6 space-y-1">
+<p class="font-headline-md text-headline-md text-on-surface">Croissance de la Fréquentation</p>
+<p class="text-slate-400 text-xs uppercase tracking-widest">Évolution hebdomadaire - Octobre</p>
+</div>
+<div class="absolute bottom-6 right-6 flex gap-4">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-primary rounded-full"></div>
+<span class="text-xs text-slate-500 font-medium">Réel</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-tertiary opacity-40 rounded-full"></div>
+<span class="text-xs text-slate-500 font-medium">Prévisionnel</span>
+</div>
+</div>
+</div>
+<!-- Demographic Section -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 pt-8">
+<div class="space-y-6">
+<h4 class="font-headline-md text-headline-md text-on-surface">Répartition Démographique</h4>
+<div class="space-y-4">
+<div class="space-y-2">
+<div class="flex justify-between font-label-md text-label-md">
+<span>Jeunesse (15-25 ans)</span>
+<span class="font-bold">34%</span>
+</div>
+<div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 34%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between font-label-md text-label-md">
+<span>Adultes (26-55 ans)</span>
+<span class="font-bold">48%</span>
+</div>
+<div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 48%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between font-label-md text-label-md">
+<span>Seniors (55+ ans)</span>
+<span class="font-bold">18%</span>
+</div>
+<div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 18%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-primary/5 rounded-2xl p-8 border border-primary/10 self-start">
+<h5 class="font-headline-md text-headline-md text-primary mb-4">Objectifs Novembre</h5>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-on-surface-variant text-body-md">Atteindre 1,350 membres actifs.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-on-surface-variant text-body-md">Lancer le nouveau programme de mentorat.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-on-surface-variant text-body-md">Optimiser l'utilisation de la salle B le mercredi.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- PDF Footer -->
+<div class="mt-auto p-12 border-t border-slate-100 flex justify-between items-center bg-slate-50/50">
+<p class="text-slate-400 text-xs">© 2023 ChurchPresence Intelligence Engine. Généré le 02/11/2023.</p>
+<div class="flex gap-2">
+<span class="text-slate-400 text-xs font-bold">PAGE 01</span>
+<span class="text-slate-300 text-xs">/ 04</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Shell (Mobile only) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-inverse-surface md:hidden shadow-lg rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-outline-variant px-3 py-1 transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Accueil</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline-variant px-3 py-1 transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Jeunes</span>
+</a>
+<div class="flex flex-col items-center justify-center bg-primary text-on-primary rounded-xl px-3 py-1 transition-transform duration-200 active:scale-90 shadow-lg -translate-y-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">summarize</span>
+<span class="font-label-md text-label-md">Rapports</span>
+</div>
+<a class="flex flex-col items-center justify-center text-outline-variant px-3 py-1 transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined">diversity_3</span>
+<span class="font-label-md text-label-md">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline-variant px-3 py-1 transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Paramètres</span>
+</a>
+</nav>
+<!-- Background Decoration for high-end feel -->
+<div class="fixed top-0 right-0 p-8 pointer-events-none opacity-10 hidden lg:block">
+<span class="material-symbols-outlined text-[300px] text-primary rotate-12">description</span>
+</div>
+</body></html>
