@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload'
 import { filterMembers, isAdmin } from '../access/roles'
+import { normalizePhone } from '../lib/phone'
 
 export const Members: CollectionConfig = {
   slug: 'members',
@@ -93,16 +94,6 @@ export const Members: CollectionConfig = {
       ],
     },
     {
-      name: 'registrationNumber',
-      type: 'text',
-      label: 'Matricule (école / entreprise)',
-    },
-    {
-      name: 'position',
-      type: 'text',
-      label: 'Poste (entreprise)',
-    },
-    {
       name: 'groups',
       type: 'relationship',
       relationTo: 'groups',
@@ -133,14 +124,23 @@ export const Members: CollectionConfig = {
   ],
   access: {
     // Lecture : admin → tous, assistant → membres de ses groupes.
-    // Création publique : nécessaire pour le formulaire d'inscription
-    // (sera remplacée par l'endpoint /api/register à l'étape suivante).
+    // Création : utilisateurs connectés + inscriptions via l'endpoint
+    // public /api/register (droits serveur). Jamais anonyme en direct.
     read: filterMembers,
-    create: () => true,
+    create: ({ req }) => Boolean(req?.user),
     update: isAdmin,
     delete: isAdmin,
   },
   hooks: {
+    // Stocke le téléphone normalisé (chiffres uniquement, avec indicatif).
+    beforeValidate: [
+      ({ data }) => {
+        if (data?.phone) {
+          return { ...data, phone: normalizePhone(data.phone) }
+        }
+        return data
+      },
+    ],
     // Supprimer un membre supprime aussi ses présences (sinon FK NOT NULL).
     beforeDelete: [
       async ({ req, id }) => {

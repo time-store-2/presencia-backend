@@ -560,4 +560,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String sessionTitleExists(Object title) {
     return 'A session titled \"$title\" already exists. Please choose another title.';
   }
+
+  @override
+  String get copyInviteLink => 'Copy registration link';
+
+  @override
+  String get shareInviteLink => 'Share registration link';
+
+  @override
+  String get inviteLinkCopied => 'Registration link copied';
+
+  @override
+  String get noInviteLink => 'No link available for this group';
+
+  @override
+  String get editMemberGroups => 'Edit member groups';
 }

@@ -8,6 +8,8 @@ import '../../models/adolescent.dart';
 import '../../models/parent.dart';
 import '../../core/providers/adolescent_provider.dart';
 import '../../core/providers/attendance_provider.dart';
+import '../../core/providers/auth_provider.dart';
+import '../../core/providers/group_provider.dart';
 import '../../core/themes/app_themes.dart';
 import '../widgets/glass_card.dart';
 import 'add_adolescent_screen.dart';
@@ -55,6 +57,63 @@ class _YouthDetailScreenState extends State<YouthDetailScreen> {
     }
   }
 
+  /// Admin : ajoute/retire le membre de groupes (cases à cocher).
+  Future<void> _showEditGroupsDialog() async {
+    final l10n = AppLocalizations.of(context)!;
+    final gp = context.read<GroupProvider>();
+    await gp.loadGroups();
+    final current = Set<int>.from(
+      await gp.getAdolescentGroupIds(_currentYouth.id!),
+    );
+    if (!mounted) return;
+    final selected = Set<int>.from(current);
+    await showDialog(
+      context: context,
+      builder: (context) => StatefulBuilder(
+        builder: (context, setState) => AlertDialog(
+          title: Text(
+            l10n.editMemberGroups,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+          content: SizedBox(
+            width: double.maxFinite,
+            child: gp.groups.isEmpty
+                ? Text(l10n.emptyList)
+                : ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: gp.groups.length,
+                    itemBuilder: (context, index) {
+                      final group = gp.groups[index];
+                      return CheckboxListTile(
+                        title: Text(group.name),
+                        value: selected.contains(group.id),
+                        onChanged: (bool? value) async {
+                          if (value == true) {
+                            selected.add(group.id!);
+                          } else {
+                            selected.remove(group.id);
+                          }
+                          await gp.syncAdolescentGroups(
+                            _currentYouth.id!,
+                            selected,
+                          );
+                          setState(() {});
+                        },
+                      );
+                    },
+                  ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text(l10n.close),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   void _confirmDelete() {
     final l10n = AppLocalizations.of(context)!;
     showDialog(
@@ -84,13 +143,20 @@ class _YouthDetailScreenState extends State<YouthDetailScreen> {
     final l10n = AppLocalizations.of(context)!;
     final design = Theme.of(context).extension<AppDesignSystem>()!;
     final statusColors = Theme.of(context).extension<StatusColors>()!;
-    
+    final isAdmin = context.watch<AuthProvider>().user?.isAdmin ?? false;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(_currentYouth.fullName),
         elevation: 0,
         backgroundColor: Colors.transparent,
         actions: [
+          if (isAdmin)
+            IconButton(
+              icon: const Icon(Icons.hub_outlined),
+              tooltip: l10n.editMemberGroups,
+              onPressed: _showEditGroupsDialog,
+            ),
           IconButton(
             icon: const Icon(Icons.edit_outlined),
             onPressed: () => Navigator.push(

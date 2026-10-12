@@ -166,5 +166,10 @@
   "splashTagline": "Gestionnaire de présences",
   "groupNameExists": "Un groupe nommé « {name} » existe déjà. Veuillez choisir un autre nom.",
   "youthNameExists": "Un membre nommé « {name} » existe déjà. Veuillez choisir un autre nom.",
-  "sessionTitleExists": "Une séance « {title} » existe déjà. Veuillez choisir un autre titre."
+  "sessionTitleExists": "Une séance « {title} » existe déjà. Veuillez choisir un autre titre.",
+  "copyInviteLink": "Copier le lien d'inscription",
+  "shareInviteLink": "Partager le lien d'inscription",
+  "inviteLinkCopied": "Lien d'inscription copié",
+  "noInviteLink": "Lien indisponible pour ce groupe",
+  "editMemberGroups": "Modifier les groupes du membre"
 }

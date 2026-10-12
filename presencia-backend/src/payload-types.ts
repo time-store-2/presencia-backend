@@ -167,11 +167,14 @@ export interface User {
 export interface Group {
   id: number;
   name: string;
+  /**
+   * Généré automatiquement depuis le nom. Utilisé dans le lien : /inscription?groupe=<slug>
+   */
+  slug?: string | null;
   description?: string | null;
   color?: string | null;
   meetingDay?: string | null;
   meetingTime?: string | null;
-  leader?: (number | null) | User;
   updatedAt: string;
   createdAt: string;
 }
@@ -200,8 +203,6 @@ export interface Member {
     phone?: string | null;
     relation?: ('father' | 'mother' | 'guardian' | 'other') | null;
   };
-  registrationNumber?: string | null;
-  position?: string | null;
   groups?: (number | Group)[] | null;
   registrationDate?: string | null;
   status?: ('active' | 'inactive') | null;
@@ -354,11 +355,11 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface GroupsSelect<T extends boolean = true> {
   name?: T;
+  slug?: T;
   description?: T;
   color?: T;
   meetingDay?: T;
   meetingTime?: T;
-  leader?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -390,8 +391,6 @@ export interface MembersSelect<T extends boolean = true> {
         phone?: T;
         relation?: T;
       };
-  registrationNumber?: T;
-  position?: T;
   groups?: T;
   registrationDate?: T;
   status?: T;

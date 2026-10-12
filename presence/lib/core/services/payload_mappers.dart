@@ -149,6 +149,7 @@ Group groupFromPayload(Map<String, dynamic> json) {
   return Group(
     id: toIntId(json['id']),
     name: json['name']?.toString() ?? '',
+    slug: json['slug']?.toString(),
     description: json['description']?.toString(),
     color: colorFromHex(json['color']),
     createdAt: createdAt,

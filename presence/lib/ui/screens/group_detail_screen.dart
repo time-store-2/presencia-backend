@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:presencia/l10n/app_localizations.dart';
 import '../../models/group.dart';
 import '../../core/providers/adolescent_provider.dart';
 import '../../core/providers/group_provider.dart';
+import '../../core/services/api_service.dart';
 import '../../core/themes/app_themes.dart';
 import '../widgets/app_background.dart';
 import 'youth_detail_screen.dart';
@@ -81,6 +83,40 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
         ),
       );
     }
+  }
+
+  /// Lien d'inscription publique de ce groupe.
+  String? _inviteLink() {
+    final slug = widget.group.slug;
+    if (slug == null || slug.isEmpty) return null;
+    return '${ApiConfig.baseUrl}/inscription?groupe=$slug';
+  }
+
+  void _copyInviteLink() {
+    final l10n = AppLocalizations.of(context)!;
+    final link = _inviteLink();
+    if (link == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(l10n.noInviteLink)),
+      );
+      return;
+    }
+    Clipboard.setData(ClipboardData(text: link));
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(l10n.inviteLinkCopied)),
+    );
+  }
+
+  void _shareInviteLink() {
+    final l10n = AppLocalizations.of(context)!;
+    final link = _inviteLink();
+    if (link == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(l10n.noInviteLink)),
+      );
+      return;
+    }
+    Share.share(link);
   }
 
   void _showAddMembersDialog() async {
@@ -188,6 +224,23 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                  ),
+                  const SizedBox(height: 12),
+                  Wrap(
+                    spacing: 8,
+                    runSpacing: 8,
+                    children: [
+                      OutlinedButton.icon(
+                        onPressed: _copyInviteLink,
+                        icon: const Icon(Icons.link_rounded, size: 18),
+                        label: Text(l10n.copyInviteLink),
+                      ),
+                      OutlinedButton.icon(
+                        onPressed: _shareInviteLink,
+                        icon: const Icon(Icons.share_rounded, size: 18),
+                        label: Text(l10n.shareInviteLink),
+                      ),
+                    ],
                   ),
                 ],
               ),

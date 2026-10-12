@@ -560,4 +560,19 @@ class AppLocalizationsFr extends AppLocalizations {
   String sessionTitleExists(Object title) {
     return 'Une séance « $title » existe déjà. Veuillez choisir un autre titre.';
   }
+
+  @override
+  String get copyInviteLink => 'Copier le lien d\'inscription';
+
+  @override
+  String get shareInviteLink => 'Partager le lien d\'inscription';
+
+  @override
+  String get inviteLinkCopied => 'Lien d\'inscription copié';
+
+  @override
+  String get noInviteLink => 'Lien indisponible pour ce groupe';
+
+  @override
+  String get editMemberGroups => 'Modifier les groupes du membre';
 }

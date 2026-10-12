@@ -1105,6 +1105,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'A session titled \"{title}\" already exists. Please choose another title.'**
   String sessionTitleExists(Object title);
+
+  /// No description provided for @copyInviteLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy registration link'**
+  String get copyInviteLink;
+
+  /// No description provided for @shareInviteLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Share registration link'**
+  String get shareInviteLink;
+
+  /// No description provided for @inviteLinkCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration link copied'**
+  String get inviteLinkCopied;
+
+  /// No description provided for @noInviteLink.
+  ///
+  /// In en, this message translates to:
+  /// **'No link available for this group'**
+  String get noInviteLink;
+
+  /// No description provided for @editMemberGroups.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit member groups'**
+  String get editMemberGroups;
 }
 
 class _AppLocalizationsDelegate

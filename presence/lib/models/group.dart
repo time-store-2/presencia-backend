@@ -1,6 +1,7 @@
 class Group {
   final int? id;
   final String name;
+  final String? slug;
   final String? description;
   final int? color;
   final DateTime createdAt;
@@ -11,6 +12,7 @@ class Group {
   Group({
     this.id,
     required this.name,
+    this.slug,
     this.description,
     this.color,
     required this.createdAt,
@@ -36,6 +38,7 @@ class Group {
     return Group(
       id: map['id'],
       name: map['name'],
+      slug: map['slug'],
       description: map['description'],
       color: map['color'],
       createdAt: DateTime.parse(map['created_at']),
@@ -48,6 +51,7 @@ class Group {
   Group copyWith({
     int? id,
     String? name,
+    String? slug,
     String? description,
     int? color,
     DateTime? createdAt,
@@ -58,6 +62,7 @@ class Group {
     return Group(
       id: id ?? this.id,
       name: name ?? this.name,
+      slug: slug ?? this.slug,
       description: description ?? this.description,
       color: color ?? this.color,
       createdAt: createdAt ?? this.createdAt,
