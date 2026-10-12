@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Détail adolescent - David Koffi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#3323cc",
+                        "primary-container": "#4f46e5",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#c0c1ff",
+                        "outline": "#777587",
+                        "primary-fixed": "#e2dfff",
+                        "on-secondary-fixed": "#07006c",
+                        "tertiary": "#005338",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#dad7ff",
+                        "inverse-surface": "#2e3132",
+                        "on-primary-fixed": "#0f0069",
+                        "surface-container-highest": "#e1e3e4",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#6063ee",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#e1e3e4",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "on-tertiary-fixed": "#002113",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f8f9fa",
+                        "secondary": "#4648d4",
+                        "on-surface-variant": "#464555",
+                        "background": "#f8f9fa",
+                        "surface-dim": "#d9dadb",
+                        "surface": "#f8f9fa",
+                        "tertiary-fixed": "#6ffbbe",
+                        "tertiary-container": "#006e4b",
+                        "surface-tint": "#4d44e3",
+                        "surface-container": "#edeeef",
+                        "on-tertiary-container": "#67f4b7",
+                        "outline-variant": "#c7c4d8",
+                        "on-surface": "#191c1d",
+                        "inverse-on-surface": "#f0f1f2",
+                        "primary": "#3525cd",
+                        "on-secondary-fixed-variant": "#2f2ebe",
+                        "surface-container-high": "#e7e8e9",
+                        "on-secondary-container": "#fffbff",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#191c1d",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "inverse-primary": "#c3c0ff",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#f3f4f5",
+                        "secondary-fixed": "#e1e0ff",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "container-padding": "16px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "unit": "4px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "label-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "title-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "500"}],
+                        "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .bg-indigo-gradient {
+            background: linear-gradient(135deg, #3525cd 0%, #4f46e5 100%);
+        }
+        body {
+            background-color: #f8f9fa;
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface">
+<!-- Sticky Transparent Header -->
+<header class="fixed top-0 left-0 w-full z-50 px-container-padding py-4 flex justify-between items-center bg-transparent pointer-events-none">
+<button aria-label="Retour" class="pointer-events-auto flex items-center justify-center w-10 h-10 rounded-full bg-white/20 backdrop-blur-md text-white transition-all active:scale-95">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button aria-label="Modifier" class="pointer-events-auto flex items-center justify-center w-10 h-10 rounded-full bg-white/20 backdrop-blur-md text-white transition-all active:scale-95">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</header>
+<!-- Hero Section -->
+<section class="bg-indigo-gradient pt-16 pb-24 px-container-padding text-center relative overflow-hidden">
+<!-- Abstract Decorative Circles -->
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+<div class="absolute top-20 -left-10 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
+<div class="relative z-10 flex flex-col items-center">
+<div class="w-24 h-24 rounded-full border-4 border-white/30 p-1 mb-4">
+<img alt="David Koffi" class="w-full h-full object-cover rounded-full shadow-lg" data-alt="A portrait of a young African boy with a friendly and intelligent expression, smiling slightly. He is wearing a clean polo shirt. The background is a soft-focus outdoors scene with natural morning sunlight, creating a warm and professional atmosphere consistent with a modern youth attendance platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnQO5lokEcKntajkcio5IT5Q9AnorO7LrN3wwh_HX0oYMP828aa4-0an52EetZzD_q9-ogJ7gGdzwojkVS2XJcLamvwGq5g8cVrRcLeWTAFk2uSscJwcS9vsFhxVGGlgTZe6VP0mbPx2LCNO_rfAjUtY3XcdZ1-onfBkK3-ky71l7MaRuzJi9PtdTVzu8TpgbrxnFybYNvKVjMX-o5XLdre-0ZdpT78cGSl7XVAgojETJ237uWuE22Eu8prqTPSFlytITdbJn-Si8"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-white mb-1">David Koffi</h1>
+<p class="font-title-md text-title-md text-primary-fixed mb-4">École du dimanche</p>
+<span class="inline-flex items-center gap-1.5 px-4 py-1.5 bg-emerald-500 text-white rounded-full font-label-lg text-label-lg shadow-sm">
+<span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                Présent
+            </span>
+</div>
+</section>
+<!-- Content Area (Relative to handle overlap) -->
+<main class="px-container-padding -mt-12 relative z-20 pb-24">
+<!-- Stats Card (Bento Style) -->
+<div class="grid grid-cols-3 gap-3 bg-white p-4 rounded-xl shadow-md border border-outline-variant mb-6">
+<div class="flex flex-col items-center justify-center p-2 rounded-lg bg-emerald-50 border border-emerald-100">
+<span class="font-headline-md text-headline-md text-emerald-700">28</span>
+<span class="font-label-md text-label-md text-emerald-600 uppercase tracking-wider">Présences</span>
+</div>
+<div class="flex flex-col items-center justify-center p-2 rounded-lg bg-red-50 border border-red-100">
+<span class="font-headline-md text-headline-md text-red-700">5</span>
+<span class="font-label-md text-label-md text-red-600 uppercase tracking-wider">Absences</span>
+</div>
+<div class="flex flex-col items-center justify-center p-2 rounded-lg bg-amber-50 border border-amber-100">
+<span class="font-headline-md text-headline-md text-amber-700">3</span>
+<span class="font-label-md text-label-md text-amber-600 uppercase tracking-wider">Retards</span>
+</div>
+</div>
+<!-- Parent Contact Section -->
+<div class="bg-white rounded-xl shadow-sm border border-outline-variant p-4 mb-6">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">family_restroom</span>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface">Parent</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Contact principal</p>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low border border-surface-variant">
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface">Jean Koffi</span>
+<span class="font-body-md text-body-md text-outline">+225 07 08 09 10 11</span>
+</div>
+<div class="flex gap-2">
+<a aria-label="Appeler" class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center transition-all active:scale-90" href="tel:+2250708091011">
+<span class="material-symbols-outlined">call</span>
+</a>
+<a aria-label="WhatsApp" class="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center transition-all active:scale-90" href="https://wa.me/2250708091011">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Attendance History -->
+<section>
+<div class="flex items-center justify-between mb-4 px-1">
+<h3 class="font-headline-md text-headline-md text-on-surface">Historique récent</h3>
+<button class="font-label-lg text-label-lg text-primary hover:underline">Voir tout</button>
+</div>
+<div class="space-y-3">
+<!-- Item 1 -->
+<div class="flex items-center justify-between p-4 bg-white rounded-xl border border-outline-variant hover:shadow-sm transition-shadow">
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface">Dimanche 15 Oct.</span>
+<span class="font-body-md text-body-md text-outline">École du dimanche</span>
+</div>
+<span class="px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full font-label-md text-label-md">Présent</span>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between p-4 bg-white rounded-xl border border-outline-variant">
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface">Samedi 14 Oct.</span>
+<span class="font-body-md text-body-md text-outline">Répétition Chorale</span>
+</div>
+<span class="px-3 py-1 bg-red-100 text-red-800 rounded-full font-label-md text-label-md">Absent</span>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center justify-between p-4 bg-white rounded-xl border border-outline-variant">
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface">Dimanche 08 Oct.</span>
+<span class="font-body-md text-body-md text-outline">École du dimanche</span>
+</div>
+<span class="px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full font-label-md text-label-md">Présent</span>
+</div>
+<!-- Item 4 -->
+<div class="flex items-center justify-between p-4 bg-white rounded-xl border border-outline-variant">
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface">Samedi 07 Oct.</span>
+<span class="font-body-md text-body-md text-outline">Répétition Chorale</span>
+</div>
+<span class="px-3 py-1 bg-amber-100 text-amber-800 rounded-full font-label-md text-label-md">Retard</span>
+</div>
+<!-- Item 5 -->
+<div class="flex items-center justify-between p-4 bg-white rounded-xl border border-outline-variant">
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface">Dimanche 01 Oct.</span>
+<span class="font-body-md text-body-md text-outline">École du dimanche</span>
+</div>
+<span class="px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full font-label-md text-label-md">Présent</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Contextual mapping) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-surface border-t border-outline-variant shadow-lg md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container rounded-full" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Accueil</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 scale-110 duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-md text-label-md">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container rounded-full" href="#">
+<span class="material-symbols-outlined">check_circle</span>
+<span class="font-label-md text-label-md">Appel</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container rounded-full" href="#">
+<span class="material-symbols-outlined">hub</span>
+<span class="font-label-md text-label-md">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container rounded-full" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Paramètres</span>
+</a>
+</nav>
+<script>
+        // Simple scroll behavior for the header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 80) {
+                header.classList.remove('bg-transparent');
+                header.classList.add('bg-white/80', 'backdrop-blur-lg', 'shadow-sm');
+                header.querySelector('button:first-child').classList.remove('bg-white/20', 'text-white');
+                header.querySelector('button:first-child').classList.add('bg-surface-container', 'text-on-surface');
+                header.querySelector('button:last-child').classList.remove('bg-white/20', 'text-white');
+                header.querySelector('button:last-child').classList.add('bg-surface-container', 'text-on-surface');
+            } else {
+                header.classList.add('bg-transparent');
+                header.classList.remove('bg-white/80', 'backdrop-blur-lg', 'shadow-sm');
+                header.querySelector('button:first-child').classList.add('bg-white/20', 'text-white');
+                header.querySelector('button:first-child').classList.remove('bg-surface-container', 'text-on-surface');
+                header.querySelector('button:last-child').classList.add('bg-white/20', 'text-white');
+                header.querySelector('button:last-child').classList.remove('bg-surface-container', 'text-on-surface');
+            }
+        });
+
+        // Interactive effect for list items
+        document.querySelectorAll('section div[class*="space-y-3"] > div').forEach(item => {
+            item.addEventListener('touchstart', () => {
+                item.style.transform = 'scale(0.98)';
+                item.style.transition = 'transform 0.1s ease';
+            });
+            item.addEventListener('touchend', () => {
+                item.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

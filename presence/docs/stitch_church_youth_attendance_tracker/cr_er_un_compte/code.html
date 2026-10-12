@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "outline": "#777587",
+                    "on-surface-variant": "#464555",
+                    "inverse-primary": "#c3c0ff",
+                    "on-tertiary-fixed-variant": "#5516be",
+                    "on-background": "#151c27",
+                    "on-secondary-container": "#00714d",
+                    "surface-container": "#e7eefe",
+                    "surface": "#f9f9ff",
+                    "surface-bright": "#f9f9ff",
+                    "inverse-surface": "#2a313d",
+                    "surface-container-high": "#e2e8f8",
+                    "on-primary-container": "#dad7ff",
+                    "on-primary-fixed": "#0f0069",
+                    "inverse-on-surface": "#ebf1ff",
+                    "on-tertiary-fixed": "#23005c",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#002113",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#e2dfff",
+                    "secondary-fixed-dim": "#4edea3",
+                    "secondary-container": "#6cf8bb",
+                    "secondary": "#006c49",
+                    "on-surface": "#151c27",
+                    "outline-variant": "#c7c4d8",
+                    "tertiary": "#571ac0",
+                    "error-container": "#ffdad6",
+                    "background": "#f9f9ff",
+                    "tertiary-fixed": "#e9ddff",
+                    "surface-tint": "#4d44e3",
+                    "primary": "#3525cd",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#6ffbbe",
+                    "primary-container": "#4f46e5",
+                    "surface-variant": "#dce2f3",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "surface-container-highest": "#dce2f3",
+                    "surface-dim": "#d3daea",
+                    "on-secondary-fixed-variant": "#005236",
+                    "tertiary-container": "#6f3dd9",
+                    "on-tertiary-container": "#e3d5ff",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "surface-container-low": "#f0f3ff",
+                    "tertiary-fixed-dim": "#d0bcff",
+                    "error": "#ba1a1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "sm": "8px",
+                    "base": "4px",
+                    "margin-tablet": "32px",
+                    "xs": "4px",
+                    "margin-mobile": "16px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "display": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #F9FAFB; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .custom-checkbox:checked { background-color: #4F46E5; background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e"); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex items-center justify-center p-md">
+<div class="w-full max-w-[480px] space-y-lg">
+<!-- Logo and Header -->
+<div class="flex flex-col items-center text-center space-y-md">
+<div class="w-16 h-16 bg-gradient-to-br from-[#4F46E5] to-[#6366F1] rounded-xl flex items-center justify-center shadow-lg transform transition-transform hover:scale-105 duration-300">
+<span class="material-symbols-outlined text-white text-[40px]" data-icon="assignment_turned_in">assignment_turned_in</span>
+</div>
+<div class="space-y-xs">
+<h1 class="font-display text-display text-on-background tracking-tight">Créer un compte</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[280px] mx-auto">Sauvegardez vos données sur tous vos appareils</p>
+</div>
+</div>
+<!-- Main Form Card -->
+<div class="bg-white rounded-xl shadow-sm p-md md:p-lg space-y-md border border-outline-variant/30">
+<form class="space-y-md" id="signupForm">
+<!-- Full Name -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1">Nom complet</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="person">person</span>
+<input class="w-full pl-10 pr-4 py-3 rounded-xl border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md text-body-md" placeholder="Jean Dupont" type="text"/>
+</div>
+</div>
+<!-- Email -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1">Email</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="mail">mail</span>
+<input class="w-full pl-10 pr-4 py-3 rounded-xl border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md text-body-md" placeholder="nom@exemple.com" type="email"/>
+</div>
+</div>
+<!-- Password -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1">Mot de passe</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="lock">lock</span>
+<input class="w-full pl-10 pr-12 py-3 rounded-xl border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md text-body-md" id="passwordInput" placeholder="••••••••" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors" onclick="togglePassword('passwordInput', 'eyeIcon')" type="button">
+<span class="material-symbols-outlined" data-icon="visibility" id="eyeIcon">visibility</span>
+</button>
+</div>
+<!-- Strength Indicator -->
+<div class="flex gap-1 pt-1 h-1.5">
+<div class="flex-1 rounded-full bg-error transition-all duration-300"></div>
+<div class="flex-1 rounded-full bg-error transition-all duration-300"></div>
+<div class="flex-1 rounded-full bg-surface-variant transition-all duration-300"></div>
+<div class="flex-1 rounded-full bg-surface-variant transition-all duration-300"></div>
+</div>
+<p class="font-label-sm text-label-sm text-error mt-1">Sécurité moyenne</p>
+</div>
+<!-- Confirm Password -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1">Confirmer le mot de passe</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="lock_reset">lock_reset</span>
+<input class="w-full pl-10 pr-4 py-3 rounded-xl border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md text-body-md" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<!-- Role Selection -->
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1">Quel est votre rôle ?</label>
+<div class="grid grid-cols-2 gap-sm">
+<label class="relative cursor-pointer">
+<input checked="" class="peer sr-only" name="role" type="radio" value="moniteur"/>
+<div class="p-md rounded-xl border border-outline-variant peer-checked:border-primary peer-checked:bg-secondary-container/20 transition-all text-center space-y-1">
+<span class="material-symbols-outlined text-outline peer-checked:text-primary" data-icon="group">group</span>
+<p class="font-label-md text-label-md text-on-background">Moniteur</p>
+</div>
+</label>
+<label class="relative cursor-pointer">
+<input class="peer sr-only" name="role" type="radio" value="administrateur"/>
+<div class="p-md rounded-xl border border-outline-variant peer-checked:border-primary peer-checked:bg-secondary-container/20 transition-all text-center space-y-1">
+<span class="material-symbols-outlined text-outline peer-checked:text-primary" data-icon="admin_panel_settings">admin_panel_settings</span>
+<p class="font-label-md text-label-md text-on-background">Administrateur</p>
+</div>
+</label>
+</div>
+</div>
+<!-- Terms -->
+<div class="flex items-start gap-sm pt-2">
+<div class="relative flex items-center h-5">
+<input class="custom-checkbox h-6 w-6 rounded-md border-outline-variant text-primary focus:ring-primary transition-all appearance-none cursor-pointer border-[1px]" id="terms" type="checkbox"/>
+</div>
+<label class="font-body-md text-body-md text-on-surface-variant leading-tight" for="terms">
+                        J'accepte les <a class="text-primary font-semibold hover:underline" href="#">conditions d'utilisation</a> et la politique de confidentialité.
+                    </label>
+</div>
+<!-- Main Button -->
+<button class="w-full bg-primary-container hover:bg-primary-container/90 text-white font-semibold py-3.5 rounded-xl shadow-md transition-all active:scale-95 flex items-center justify-center gap-2 font-body-lg text-body-lg" type="submit">
+                    Créer mon compte
+                </button>
+</form>
+<!-- Divider -->
+<div class="relative py-2">
+<div class="absolute inset-0 flex items-center"><div class="w-full border-t border-outline-variant/30"></div></div>
+<div class="relative flex justify-center"><span class="bg-white px-3 font-label-md text-label-md text-outline">ou</span></div>
+</div>
+<!-- Social Logins -->
+<div class="space-y-sm">
+<button class="w-full flex items-center justify-center gap-3 py-3 border border-outline-variant rounded-xl hover:bg-surface-container-low transition-colors font-body-md text-body-md text-on-background">
+<img alt="Google" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4J3EbTw800gARaNieoXdop5xoOAB9MCCxNYlRcA_E7oom8X4B5sSJqgG9rX8Naqmb_hROxoAZfHtEXciBCyMK_NrBmqHxpUxtnU1ffdu82El79lAXHPurriufS10oMhq7lPIop5C3-A80kGbgyDK-rjT5baWpQTkBal1ZfT3SBFsjbNT9IDjd9DrEjNuB9QcvOwDsYq4E6RlQAUz9vf2QvgklVR1v4z1P_4vUGzu-6ePvqhQk90mNUfDIz8LOuaMlP_VHdv3o5t0"/>
+                    Continuer avec Google
+                </button>
+<button class="w-full flex items-center justify-center gap-3 py-3 bg-on-background text-white rounded-xl hover:bg-inverse-surface transition-colors font-body-md text-body-md">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M17.05 20.28c-.96.95-2.04 1.72-3.23 2.3-1.19.58-2.45.86-3.79.86-1.34 0-2.61-.28-3.79-.86-1.19-.58-2.27-1.35-3.23-2.3-1-1-1.78-2.14-2.34-3.41s-.84-2.6-.84-4c0-1.4.28-2.73.84-4s1.34-2.41 2.34-3.41c.96-.96 2.04-1.72 3.23-2.3C10.22 2.58 11.48 2.3 12.82 2.3c1.34 0 2.61.28 3.79.86 1.19.58 2.27 1.35 3.23 2.3 1 1 1.78 2.14 2.34 3.41s.84 2.6.84 4c0 1.4-.28 2.73-.84 4s-1.34 2.41-2.34 3.41z"></path></svg>
+                    Continuer avec Apple
+                </button>
+</div>
+</div>
+<!-- Footer Link -->
+<p class="text-center font-body-md text-body-md text-on-surface-variant">
+            Vous avez déjà un compte ? 
+            <a class="text-primary font-bold hover:underline" href="#">Se connecter</a>
+</p>
+</div>
+<script>
+        function togglePassword(inputId, iconId) {
+            const input = document.getElementById(inputId);
+            const icon = document.getElementById(iconId);
+            if (input.type === "password") {
+                input.type = "text";
+                icon.textContent = "visibility_off";
+            } else {
+                input.type = "password";
+                icon.textContent = "visibility";
+            }
+        }
+
+        // Simple strength visual feedback interaction
+        const pwdInput = document.getElementById('passwordInput');
+        pwdInput.addEventListener('input', (e) => {
+            const val = e.target.value;
+            const segments = document.querySelectorAll('.rounded-full.bg-error, .rounded-full.bg-surface-variant, .rounded-full.bg-secondary, .rounded-full.bg-primary');
+            const label = document.querySelector('.text-label-sm');
+            
+            if (val.length === 0) {
+                segments.forEach(s => { s.className = 'flex-1 rounded-full bg-surface-variant transition-all duration-300'; });
+                label.textContent = '';
+            } else if (val.length < 6) {
+                segments[0].className = 'flex-1 rounded-full bg-error transition-all duration-300';
+                segments[1].className = 'flex-1 rounded-full bg-surface-variant transition-all duration-300';
+                segments[2].className = 'flex-1 rounded-full bg-surface-variant transition-all duration-300';
+                segments[3].className = 'flex-1 rounded-full bg-surface-variant transition-all duration-300';
+                label.textContent = 'Très faible';
+                label.className = 'font-label-sm text-label-sm text-error mt-1';
+            } else if (val.length < 10) {
+                segments[0].className = 'flex-1 rounded-full bg-secondary-container transition-all duration-300';
+                segments[1].className = 'flex-1 rounded-full bg-secondary-container transition-all duration-300';
+                segments[2].className = 'flex-1 rounded-full bg-surface-variant transition-all duration-300';
+                segments[3].className = 'flex-1 rounded-full bg-surface-variant transition-all duration-300';
+                label.textContent = 'Sécurité moyenne';
+                label.className = 'font-label-sm text-label-sm text-secondary mt-1';
+            } else {
+                segments.forEach(s => { s.className = 'flex-1 rounded-full bg-primary-container transition-all duration-300'; });
+                label.textContent = 'Sécurité forte';
+                label.className = 'font-label-sm text-label-sm text-primary mt-1';
+            }
+        });
+    </script>
+</body></html>

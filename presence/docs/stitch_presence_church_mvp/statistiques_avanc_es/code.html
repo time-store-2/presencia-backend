@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Statistiques Avancées - Kindred Path</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#ffdbd2",
+                    "surface-variant": "#dfe0ff",
+                    "surface-bright": "#fbf8ff",
+                    "on-tertiary-container": "#dddbc8",
+                    "on-background": "#161a32",
+                    "inverse-surface": "#2b2e48",
+                    "on-error": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#7c2e19",
+                    "on-tertiary-fixed": "#1c1c11",
+                    "secondary": "#9a442d",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#49483b",
+                    "primary": "#0f5238",
+                    "tertiary-fixed-dim": "#c9c7b5",
+                    "secondary-container": "#fc9174",
+                    "surface-tint": "#2c694e",
+                    "on-secondary-container": "#742814",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#dfe0ff",
+                    "primary-container": "#2d6a4f",
+                    "on-primary-container": "#a8e7c5",
+                    "inverse-on-surface": "#f1efff",
+                    "background": "#fbf8ff",
+                    "primary-fixed": "#b1f0ce",
+                    "on-primary-fixed-variant": "#0e5138",
+                    "error-container": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#95d4b3",
+                    "surface-container": "#edecff",
+                    "surface-container-high": "#e6e6ff",
+                    "on-tertiary-fixed-variant": "#48473a",
+                    "on-secondary-fixed": "#3c0800",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#404943",
+                    "surface": "#fbf8ff",
+                    "secondary-fixed-dim": "#ffb4a1",
+                    "on-surface": "#161a32",
+                    "surface-container-low": "#f4f2ff",
+                    "tertiary-fixed": "#e6e3d0",
+                    "surface-dim": "#d6d8f9",
+                    "outline-variant": "#bfc9c1",
+                    "primary-fixed-dim": "#95d4b3",
+                    "tertiary-container": "#616051",
+                    "outline": "#707973",
+                    "on-primary-fixed": "#002114"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "8px",
+                    "xl": "80px",
+                    "md": "24px",
+                    "lg": "48px",
+                    "xs": "4px",
+                    "sm": "12px",
+                    "gutter": "24px",
+                    "container-max": "1200px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .custom-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#FAFAF8] dark:bg-surface-dim text-on-surface transition-colors duration-300">
+<!-- Top AppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-surface dark:bg-surface-dim shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-fixed overflow-hidden">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a smiling man with a warm and approachable expression, set against a soft-focus office background. The lighting is natural and bright, emphasizing a light-mode aesthetic. The composition is clean and modern, following the Kindred Path brand identity of organic warmth and human-centric clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAusU1FfTf-WUAb2TQIyi4Q7vqgjVuQqupF9N8OjDB5obKtOkU347Fl-Ykyj3s8aw-X-h863sZZqwDMe0WasiKhSaCBLlNPoWrVJpR_YPcgXND9F3VulSA7WuWtQo5BJ3DK0bqlw1pXUph7_a5F8CrJIH9GF22DYxkXjwZejgEEUVLrPugHMMvhuFYZk0o3XTNAzswDQJ1McBFd1cGM2VVdpddJQQvWVZ2lbjIh1aBhCsOVdqVWDdHHemKTktMjXjkBON1ze_fi"/>
+</div>
+<h1 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim">Kindred Path</h1>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 rounded-full border border-outline-variant hover:bg-surface-container-high dark:hover:bg-tertiary-container transition-colors">
+<span class="font-label-md text-label-md">Ce mois</span>
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</header>
+<main class="pt-20 pb-24 px-gutter max-w-container-max mx-auto space-y-6">
+<!-- Période Selector -->
+<div class="flex gap-2 overflow-x-auto pb-2 custom-scrollbar">
+<button class="whitespace-nowrap px-4 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md transition-all active:scale-95">Cette semaine</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-md text-label-md hover:bg-surface-container transition-all">Ce mois</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-md text-label-md hover:bg-surface-container transition-all">Dernier trimestre</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-md text-label-md hover:bg-surface-container transition-all">Année 2024</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-md text-label-md hover:bg-surface-container transition-all">Archives</button>
+</div>
+<!-- Main Score Card -->
+<div class="bg-primary p-6 rounded-3xl text-on-primary shadow-lg relative overflow-hidden">
+<div class="relative z-10">
+<p class="font-label-md text-label-md opacity-80 uppercase tracking-wider">Taux de présence global</p>
+<div class="flex items-baseline gap-3 mt-1">
+<span class="font-display-lg text-display-lg">72%</span>
+<div class="flex items-center gap-1 bg-primary-container text-on-primary-container px-3 py-1 rounded-full">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+<span class="font-label-md text-label-md font-bold">+4%</span>
+</div>
+</div>
+</div>
+<!-- Decorative Pattern -->
+<div class="absolute right-0 bottom-0 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[160px]">bubble_chart</span>
+</div>
+</div>
+<!-- Metric Triplets -->
+<div class="grid grid-cols-3 gap-4">
+<div class="bg-surface dark:bg-surface-container-low p-4 rounded-2xl shadow-sm border border-outline-variant/10 text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Présences</p>
+<p class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim mt-1">452</p>
+</div>
+<div class="bg-surface dark:bg-surface-container-low p-4 rounded-2xl shadow-sm border border-outline-variant/10 text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Absences</p>
+<p class="font-headline-md text-headline-md text-secondary mt-1">112</p>
+</div>
+<div class="bg-surface dark:bg-surface-container-low p-4 rounded-2xl shadow-sm border border-outline-variant/10 text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Retards</p>
+<p class="font-headline-md text-headline-md text-tertiary mt-1">34</p>
+</div>
+</div>
+<!-- Evolution Chart Card -->
+<section class="bg-white dark:bg-surface-container-high p-6 rounded-3xl shadow-sm space-y-6">
+<div class="flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md text-on-surface">Évolution hebdomadaire</h2>
+<div class="flex gap-4">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-primary-container"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Présents</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-secondary-container"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Absents</span>
+</div>
+</div>
+</div>
+<div class="h-48 flex items-end justify-around gap-2 px-2">
+<!-- Bar Groups (Mock Chart) -->
+<div class="flex flex-col items-center gap-2 flex-1 max-w-[60px]">
+<div class="w-full flex items-end gap-1 h-32">
+<div class="w-1/2 bg-primary-container rounded-t-lg h-[80%]"></div>
+<div class="w-1/2 bg-secondary-container rounded-t-lg h-[20%]"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">S1</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 max-w-[60px]">
+<div class="w-full flex items-end gap-1 h-32">
+<div class="w-1/2 bg-primary-container rounded-t-lg h-[65%]"></div>
+<div class="w-1/2 bg-secondary-container rounded-t-lg h-[35%]"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">S2</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 max-w-[60px]">
+<div class="w-full flex items-end gap-1 h-32">
+<div class="w-1/2 bg-primary-container rounded-t-lg h-[90%]"></div>
+<div class="w-1/2 bg-secondary-container rounded-t-lg h-[10%]"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">S3</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 max-w-[60px]">
+<div class="w-full flex items-end gap-1 h-32">
+<div class="w-1/2 bg-primary-container rounded-t-lg h-[75%]"></div>
+<div class="w-1/2 bg-secondary-container rounded-t-lg h-[25%]"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">S4</span>
+</div>
+</div>
+</section>
+<!-- Bento Grid Bottom -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Graphique par Groupe -->
+<section class="bg-surface dark:bg-surface-container-low p-6 rounded-3xl shadow-sm space-y-4">
+<h2 class="font-headline-md text-headline-md text-on-surface">Par Groupe</h2>
+<div class="space-y-4">
+<div class="space-y-1.5">
+<div class="flex justify-between items-center px-1">
+<span class="font-label-md text-label-md">Éclaireurs</span>
+<span class="font-label-md text-label-md text-primary">88%</span>
+</div>
+<div class="h-3 w-full bg-surface-container-highest dark:bg-tertiary-container rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-1000" style="width: 88%"></div>
+</div>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between items-center px-1">
+<span class="font-label-md text-label-md">Pionniers</span>
+<span class="font-label-md text-label-md text-secondary">62%</span>
+</div>
+<div class="h-3 w-full bg-surface-container-highest dark:bg-tertiary-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full transition-all duration-1000" style="width: 62%"></div>
+</div>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between items-center px-1">
+<span class="font-label-md text-label-md">Louveteaux</span>
+<span class="font-label-md text-label-md text-tertiary">75%</span>
+</div>
+<div class="h-3 w-full bg-surface-container-highest dark:bg-tertiary-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary rounded-full transition-all duration-1000" style="width: 75%"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Top 5 Assidus -->
+<section class="bg-surface dark:bg-surface-container-low p-6 rounded-3xl shadow-sm space-y-4">
+<h2 class="font-headline-md text-headline-md text-on-surface">Top 5 Assidus</h2>
+<div class="divide-y divide-outline-variant/10">
+<div class="flex items-center justify-between py-3">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#FFD700]" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<span class="font-body-md text-body-md">Lucas Bernard</span>
+</div>
+<span class="font-label-md text-label-md text-primary">100%</span>
+</div>
+<div class="flex items-center justify-between py-3">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#C0C0C0]" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<span class="font-body-md text-body-md">Emma Petit</span>
+</div>
+<span class="font-label-md text-label-md text-primary">98%</span>
+</div>
+<div class="flex items-center justify-between py-3">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#CD7F32]" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<span class="font-body-md text-body-md">Gabriel Martin</span>
+</div>
+<span class="font-label-md text-label-md text-primary">95%</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Alertes Absences -->
+<section class="space-y-4">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">warning</span>
+                Alertes Absences
+            </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-[#FFFCE6] dark:bg-tertiary-container/20 border-l-4 border-secondary p-4 rounded-xl flex items-center gap-4 transition-transform hover:scale-[1.02]">
+<div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="A portrait of a teenager with a thoughtful expression, lit by warm, ambient sunlight filtering through trees. The photograph has a soft, organic texture and a naturalistic color palette, emphasizing the human-centric and supportive atmosphere of the Kindred Path brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTBaCDtvk3KcZBduN1zUOFyfFBJekACvXM0C3fAxZKHOmotbhzB6mKSPUC6h68DUcE7GfFpFwhDU1dZFpPjK5EK8ndU7f_H66-UBq7bT2Hzvenb89t9dAtaDZZKpFm2uYu01zfGKDexoxVORHagz__xwpNAeiLW9J9lF3G_2YcYc8xX-KyyCGgJAGJ4DQ_GY7vBu6i8PIt3csdJQ-fXZfWOru-13A9Vf5-8kG4YlwPVO8SNC73f7m3zyOBoptYEMNHYpV8ujD0"/>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-secondary font-bold">Théo Dupont</p>
+<p class="font-body-md text-body-md text-on-tertiary-fixed-variant">3 absences consécutives (Groupe Pionniers)</p>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant">mail</button>
+</div>
+<div class="bg-[#FFFCE6] dark:bg-tertiary-container/20 border-l-4 border-secondary p-4 rounded-xl flex items-center gap-4 transition-transform hover:scale-[1.02]">
+<div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="A expressive close-up of a young woman with a calm and resilient gaze, set in an outdoor meadow at golden hour. The soft lighting and natural tones reflect a digital sanctuary aesthetic that is welcoming and reliable, consistent with Kindred Path's visual identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABNcV7GMhKoz9b7NwonsY80g44sQhsgYbnpAeLHNWYa7lPI3FE-ga1EioqChT6pfmKHq1EhgH_u9as6Li4v6b3A0qc_J7wbY0oBU4dMTM9eQkCUv4_Qv9WQYImtdmBYG5ROk031hBQMSs9C4QhSL5k3CUBNfyMKPw6cS-ekC6BaVQo4Ll8VS7fkE6ngnhyrF0Ft7jU1EWu-STUCuKK-3CKum79FRty6gsTiHh8TgSh8Rt4NEGCFPv3bVfkXblExjHpfJdnYHIw"/>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-secondary font-bold">Léa Roussel</p>
+<p class="font-body-md text-body-md text-on-tertiary-fixed-variant">Taux d'assiduité en chute (-15%)</p>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant">mail</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom NavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-surface-container dark:bg-surface-container-low shadow-[0_-4px_20px_0_rgba(15,82,56,0.15)] rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-tertiary-fixed-dim hover:bg-surface-container-highest transition-all px-4 py-1">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Accueil</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-tertiary-fixed-dim hover:bg-surface-container-highest transition-all px-4 py-1">
+<span class="material-symbols-outlined">person_celebrate</span>
+<span class="font-label-sm text-label-sm">Jeunes</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container dark:bg-primary-fixed-dim dark:text-on-primary-fixed rounded-full px-4 py-1">
+<span class="material-symbols-outlined">fact_check</span>
+<span class="font-label-sm text-label-sm">Appel</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-tertiary-fixed-dim hover:bg-surface-container-highest transition-all px-4 py-1">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-sm text-label-sm">Groupes</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-tertiary-fixed-dim hover:bg-surface-container-highest transition-all px-4 py-1">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Paramètres</span>
+</div>
+</nav>
+<script>
+        // Micro-interactions for buttons and list items
+        document.querySelectorAll('button, .transition-transform').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.classList.add('scale-95');
+                setTimeout(() => btn.classList.remove('scale-95'), 150);
+            });
+        });
+
+        // Theme toggle simulation (optional if needed)
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'class') {
+                    const isDark = document.documentElement.classList.contains('dark');
+                    // Logic to adjust any non-tailwind colors if necessary
+                }
+            });
+        });
+        observer.observe(document.documentElement, { attributes: true });
+    </script>
+</body></html>

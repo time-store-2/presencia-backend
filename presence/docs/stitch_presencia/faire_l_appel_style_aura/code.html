@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Presencia - Attendance</title>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#1b1b1b",
+                        "primary": "#000000",
+                        "surface-dim": "#dadada",
+                        "on-tertiary-fixed-variant": "#41474e",
+                        "tertiary-fixed-dim": "#c1c7cf",
+                        "on-secondary-fixed": "#191c1d",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f9f9f9",
+                        "secondary": "#5c5f60",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-primary-container": "#848484",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#5e5e5e",
+                        "primary-fixed": "#e2e2e2",
+                        "surface-variant": "#e2e2e2",
+                        "secondary-container": "#e1e3e4",
+                        "on-primary-fixed-variant": "#474747",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#1b1b1b",
+                        "tertiary": "#000000",
+                        "secondary-fixed-dim": "#c5c7c8",
+                        "surface-container-high": "#e8e8e8",
+                        "outline": "#7e7576",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#626566",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#303030",
+                        "background": "#f9f9f9",
+                        "on-background": "#1b1b1b",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-tertiary-container": "#7e848c",
+                        "on-tertiary-fixed": "#161c22",
+                        "inverse-primary": "#c6c6c6",
+                        "tertiary-container": "#161c22",
+                        "outline-variant": "#cfc4c5",
+                        "secondary-fixed": "#e1e3e4",
+                        "surface": "#f9f9f9",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#dde3eb",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#454748",
+                        "on-surface-variant": "#4c4546",
+                        "primary-container": "#1b1b1b",
+                        "surface-container-low": "#f3f3f3",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "surface-container": "#eeeeee"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px",
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "section-gap": "80px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Manrope"],
+                        "body-sm": ["Manrope"],
+                        "title-md": ["Manrope"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "label-caps": ["Manrope"],
+                        "headline-lg": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "title-md": ["18px", {"lineHeight": "24px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .status-toggle input:checked + div {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        @keyframes subtle-float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+        .float-ai {
+            animation: subtle-float 4s ease-in-out infinite;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-lg min-h-screen pb-32">
+<!-- Top AppBar (from JSON context) -->
+<header class="sticky top-0 z-50 bg-surface/80 backdrop-blur-xl shadow-sm px-margin-mobile py-4 flex justify-between items-center w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A high-end, professional portrait of a youth leader with a kind expression. The lighting is soft and cinematic, following a luxury studio aesthetic with a neutral, clean background. The individual wears sophisticated, minimalist attire in a light-mode color palette of creams and greys." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAl3hzfRAHn_IXO-fyP5_8uKdO5B218FIWvdHo2EUWO2gwqqYCE_UC6kQWPrxqO4GSFp8mVebLR_l06Vf2WV81k2NOggITM1DfZvb3Fzd_QL_MzDLXhGnEhx8XgVTeRSVdX87pRmYEXfHRCFsw2Uq5HZGmjfgL584ZIPjbNC2_BK6VWBomTigcTZFdgkRRGwbfp7AXKHvW5xgbHEzbqbMPS0qg3kZf9U1SR9dgsjuvv4o7x_Av6G0MGkCWQkHlhriHrYvJ6US9oOg"/>
+</div>
+<h1 class="font-display-lg text-headline-lg-mobile tracking-tight text-primary">Presencia</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary text-2xl hover:opacity-80 transition-opacity">notifications</button>
+</div>
+</header>
+<main class="max-w-md mx-auto px-margin-mobile pt-6">
+<!-- Session Header -->
+<section class="mb-8">
+<span class="font-label-caps text-secondary/60 tracking-widest block mb-2">CURRENT SESSION</span>
+<div class="flex items-baseline gap-2">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Advanced Leadership</h2>
+<em class="font-headline-lg-mobile italic text-secondary text-lg">Lab</em>
+</div>
+<p class="text-secondary/80 font-body-sm mt-1">Wednesday, Oct 25 • Room 402 • 4:00 PM</p>
+</section>
+<!-- Stats Bento-ish Layout -->
+<section class="grid grid-cols-3 gap-3 mb-10">
+<div class="glass-card rounded-xl p-4 flex flex-col items-center justify-center text-center shadow-[0px_12px_32px_rgba(0,0,0,0.02)]">
+<span class="text-primary font-display-lg text-2xl">24</span>
+<span class="font-label-caps text-[10px] text-secondary mt-1">PRESENT</span>
+</div>
+<div class="glass-card rounded-xl p-4 flex flex-col items-center justify-center text-center shadow-[0px_12px_32px_rgba(0,0,0,0.02)]">
+<span class="text-error font-display-lg text-2xl">02</span>
+<span class="font-label-caps text-[10px] text-secondary mt-1">ABSENT</span>
+</div>
+<div class="glass-card rounded-xl p-4 flex flex-col items-center justify-center text-center shadow-[0px_12px_32px_rgba(0,0,0,0.02)]">
+<span class="text-secondary font-display-lg text-2xl">01</span>
+<span class="font-label-caps text-[10px] text-secondary mt-1">LATE</span>
+</div>
+</section>
+<!-- Search / Filter Bar -->
+<div class="relative mb-8">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary/40">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-4 pl-12 pr-6 focus:ring-1 focus:ring-primary/10 font-body-sm text-on-surface placeholder:text-secondary/40" placeholder="Find a student..." type="text"/>
+</div>
+<!-- Attendance List -->
+<section class="space-y-4">
+<!-- Student Item 1 -->
+<div class="glass-card rounded-xl p-4 flex items-center gap-4 transition-all hover:scale-[1.01]">
+<div class="w-14 h-14 rounded-full bg-surface-container-highest overflow-hidden border border-white/40">
+<img alt="Student Avatar" class="w-full h-full object-cover" data-alt="A portrait of a young female student with a confident smile, set against a soft-focus architectural background. The lighting is warm and natural, evoking a premium lifestyle feel. The image uses a high-key exposure with subtle shadows to create depth, aligning with a luxury AI e-commerce design aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5h2aZbUkJSidMEiW1oU_6o9ICpB4Q4mcX-j95DrJCTsL7RNL0NpCjX582pp_3tSKU5r0_tapuZ3N2kCqtF9eVbpp1sHGQkXhifcY6klV8GIeToWFbGdTQUV83XF7GaFicycu4jn8PWXvZKIsq7Eutlx0577ss5t5ptwkO6-vGK68wBLs6TnNVfn4u0FeSvmlSWTJGgMFDAHob9vZylZ2S2MegsQ6EwzhSukZd5_dgC1T6ElKEnhRKMmSjGnZDIHy0dZBiBCCspg"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-title-md text-primary">Elena Rodriguez</h3>
+<p class="font-body-sm text-secondary/60">Aura Rank: Platinum</p>
+</div>
+<div class="flex gap-1.5 status-toggle">
+<label class="cursor-pointer">
+<input checked="" class="hidden" name="elena" type="radio"/>
+<div class="w-8 h-8 rounded-full flex items-center justify-center text-secondary/40 bg-surface-container-low transition-colors material-symbols-outlined text-sm" title="Present">how_to_reg</div>
+</label>
+<label class="cursor-pointer">
+<input class="hidden" name="elena" type="radio"/>
+<div class="w-8 h-8 rounded-full flex items-center justify-center text-secondary/40 bg-surface-container-low transition-colors material-symbols-outlined text-sm" title="Late">schedule</div>
+</label>
+<label class="cursor-pointer">
+<input class="hidden" name="elena" type="radio"/>
+<div class="w-8 h-8 rounded-full flex items-center justify-center text-secondary/40 bg-surface-container-low transition-colors material-symbols-outlined text-sm" title="Absent">close</div>
+</label>
+</div>
+</div>
+<!-- Student Item 2 -->
+<div class="glass-card rounded-xl p-4 flex items-center gap-4 transition-all hover:scale-[1.01]">
+<div class="w-14 h-14 rounded-full bg-surface-container-highest overflow-hidden border border-white/40">
+<img alt="Student Avatar" class="w-full h-full object-cover" data-alt="A sharp, minimalist portrait of a young male student in a dark turtleneck, looking thoughtfully off-camera. The lighting is sophisticated, using high-contrast techniques to emphasize facial features against a clean, off-white background. The overall mood is calm, intelligent, and premium, consistent with a high-end AI digital experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMQNkdIsMBSfe3g_Aaqwhqz7Ofdq-oS6k0gFSMhVwkAdpZ0Ej6sTytJkcRb-fbU-_U3uu3BJ1DNdo4TrQ1aspmhOOZpvIeeKWlGB7wrCG3DmQPSagwqMoV_Z1LpsWMsLCSkYItJx1Wk_LIJJTaeBrVdNGUYC7ukejLAEMIA0Qh7Ev29XaWYvgK7iIH7aQd7cusYf5_ePXuGFxNsKuSWSyyBBqf_qXW2RHBYg5lE5XFQMIpvHpYG7ntO2zuHUoGhdUhf289Gg10wg"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-title-md text-primary">Marcus Vance</h3>
+<p class="font-body-sm text-secondary/60">Aura Rank: Gold</p>
+</div>
+<div class="flex gap-1.5 status-toggle">
+<label class="cursor-pointer">
+<input class="hidden" name="marcus" type="radio"/>
+<div class="w-8 h-8 rounded-full flex items-center justify-center text-secondary/40 bg-surface-container-low transition-colors material-symbols-outlined text-sm">how_to_reg</div>
+</label>
+<label class="cursor-pointer">
+<input class="hidden" name="marcus" type="radio"/>
+<div class="w-8 h-8 rounded-full flex items-center justify-center text-secondary/40 bg-surface-container-low transition-colors material-symbols-outlined text-sm">schedule</div>
+</label>
+<label class="cursor-pointer">
+<input checked="" class="hidden" name="marcus" type="radio"/>
+<div class="w-8 h-8 rounded-full flex items-center justify-center text-secondary/40 bg-surface-container-low transition-colors material-symbols-outlined text-sm">close</div>
+</label>
+</div>
+</div>
+<!-- Student Item 3 -->
+<div class="glass-card rounded-xl p-4 flex items-center gap-4 transition-all hover:scale-[1.01]">
+<div class="w-14 h-14 rounded-full bg-surface-container-highest overflow-hidden border border-white/40">
+<img alt="Student Avatar" class="w-full h-full object-cover" data-alt="A stylish portrait of a young woman with a sleek, minimalist aesthetic. She is wearing high-end eyewear and a simple black top. The setting is bright and spacious, with soft lighting that accentuates the clean lines and translucent layers of the surrounding environment, perfectly fitting the glassmorphism and white-space luxury theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuWV5tpJL4oqh9MsrtSge8Y4sRvJtke53P6uo_H-wdy81x6wps6ceJcOAfuFCX0Ghd0jUQVpcMfNoPyVZP-6l1hVsmrllN2-tO3QKZOxLjQ1JpSyF_rPLNShZEA6M9oL7dwcXurAS5EBKDv1Z-NlVHu1RZ8YU-4qC9oQA882HI8sI6q4PZRFIIvtZuVMh-oEFrRsbFBxYdG9GbObGsMV1RLtZEkZ4hKgXsN_LXtkoxjZfTOGdkgWy7Sb3M8D8Cn8Z5KmyJA1bLeA"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-title-md text-primary">Sasha Kim</h3>
+<p class="font-body-sm text-secondary/60">Aura Rank: Platinum</p>
+</div>
+<div class="flex gap-1.5 status-toggle">
+<label class="cursor-pointer">
+<input class="hidden" name="sasha" type="radio"/>
+<div class="w-8 h-8 rounded-full flex items-center justify-center text-secondary/40 bg-surface-container-low transition-colors material-symbols-outlined text-sm">how_to_reg</div>
+</label>
+<label class="cursor-pointer">
+<input checked="" class="hidden" name="sasha" type="radio"/>
+<div class="w-8 h-8 rounded-full flex items-center justify-center text-secondary/40 bg-surface-container-low transition-colors material-symbols-outlined text-sm">schedule</div>
+</label>
+<label class="cursor-pointer">
+<input class="hidden" name="sasha" type="radio"/>
+<div class="w-8 h-8 rounded-full flex items-center justify-center text-secondary/40 bg-surface-container-low transition-colors material-symbols-outlined text-sm">close</div>
+</label>
+</div>
+</div>
+<!-- Student Item 4 -->
+<div class="glass-card rounded-xl p-4 flex items-center gap-4 transition-all hover:scale-[1.01]">
+<div class="w-14 h-14 rounded-full bg-surface-container-highest overflow-hidden border border-white/40">
+<img alt="Student Avatar" class="w-full h-full object-cover" data-alt="A portrait of a young person with an artistic, high-fashion aesthetic. The lighting is cool and diffused, highlighting the clarity and simplicity of the facial structure. The background is a minimalist, textured grey that complements the black-and-white accents of the wardrobe. The mood is one of quiet luxury and aesthetic precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAl18QsoJEn6-6leOBXBj0mj2F-cx5NYIu9Z_HUo8bIiO3sw_IdL9s6IvnqlZb3gWno6C0LsZNTgKGclWD2JNj2gllv0CUtlHyH2UDrIuUA-DGSaPA91fb5AZIkz8dDjTep4KYfr0CIgek4mtNbb6hZhEY7Ih7p2yKO9sKc03__KKIxq02NQObxyzKKH7-r1VCiYWIfH-veWqM1O_U5x3Q-8Hywy5DRyDtWpCwNNJnn2Uvnh-xo6tdtv8OQnFDmauz2a-sbPzi2jg"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-title-md text-primary">Jordan Smith</h3>
+<p class="font-body-sm text-secondary/60">Aura Rank: Silver</p>
+</div>
+<div class="flex gap-1.5 status-toggle">
+<label class="cursor-pointer">
+<input checked="" class="hidden" name="jordan" type="radio"/>
+<div class="w-8 h-8 rounded-full flex items-center justify-center text-secondary/40 bg-surface-container-low transition-colors material-symbols-outlined text-sm">how_to_reg</div>
+</label>
+<label class="cursor-pointer">
+<input class="hidden" name="jordan" type="radio"/>
+<div class="w-8 h-8 rounded-full flex items-center justify-center text-secondary/40 bg-surface-container-low transition-colors material-symbols-outlined text-sm">schedule</div>
+</label>
+<label class="cursor-pointer">
+<input class="hidden" name="jordan" type="radio"/>
+<div class="w-8 h-8 rounded-full flex items-center justify-center text-secondary/40 bg-surface-container-low transition-colors material-symbols-outlined text-sm">close</div>
+</label>
+</div>
+</div>
+</section>
+</main>
+<!-- Fixed Action Area -->
+<div class="fixed bottom-0 left-0 right-0 p-6 flex flex-col items-center pointer-events-none">
+<!-- Floating Save Pill (Action Anchor) -->
+<button class="pointer-events-auto bg-primary text-on-primary w-[90%] max-w-md rounded-full py-5 shadow-[0px_24px_48px_rgba(0,0,0,0.15)] flex items-center justify-center gap-3 active:scale-95 transition-all mb-4">
+<span class="font-label-caps tracking-widest text-[14px]">SAVE SESSION ATTENDANCE</span>
+<span class="material-symbols-outlined">done_all</span>
+</button>
+<!-- Bottom Navigation Bar (from JSON context) -->
+<nav class="pointer-events-auto bg-surface-container-lowest/90 backdrop-blur-2xl border border-white/20 shadow-[0px_12px_32px_rgba(0,0,0,0.04)] w-[90%] max-w-md rounded-full px-6 py-3 flex justify-around items-center">
+<a class="flex flex-col items-center justify-center text-secondary/60 transition-all hover:text-primary" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-[10px] mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary/60 transition-all hover:text-primary" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-caps text-[10px] mt-1">Youth</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary scale-110 transition-transform font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">how_to_reg</span>
+<span class="font-label-caps text-[10px] mt-1">Attendance</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary/60 transition-all hover:text-primary" href="#">
+<span class="material-symbols-outlined">hub</span>
+<span class="font-label-caps text-[10px] mt-1">Groups</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary/60 transition-all hover:text-primary" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-[10px] mt-1">Settings</span>
+</a>
+</nav>
+</div>
+<!-- Micro-interaction Script -->
+<script>
+        // Simple scale effect for toggle buttons
+        document.querySelectorAll('.status-toggle label').forEach(label => {
+            label.addEventListener('click', () => {
+                label.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    label.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+
+        // Add glass depth on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 10) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body></html>

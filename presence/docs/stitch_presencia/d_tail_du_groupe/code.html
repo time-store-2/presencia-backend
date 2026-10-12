@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Détails du Groupe - Presencia</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        body {
+            background-color: #FAF7F5;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .custom-shadow {
+            box-shadow: 0 4px 12px rgba(122, 99, 88, 0.08);
+        }
+        .glass-header {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed": "#ffdbd0",
+                      "on-background": "#221a16",
+                      "on-primary-fixed-variant": "#842600",
+                      "on-tertiary-fixed": "#25005a",
+                      "tertiary-container": "#8262c6",
+                      "on-secondary-fixed": "#281800",
+                      "secondary": "#805600",
+                      "on-secondary-container": "#704b00",
+                      "on-primary-fixed": "#390b00",
+                      "tertiary-fixed": "#eaddff",
+                      "on-error-container": "#93000a",
+                      "surface-container": "#fceae3",
+                      "secondary-fixed": "#ffddaf",
+                      "inverse-primary": "#ffb59d",
+                      "on-primary": "#ffffff",
+                      "surface-dim": "#e7d7d0",
+                      "tertiary": "#6949ab",
+                      "secondary-fixed-dim": "#fdba49",
+                      "secondary-container": "#fdba49",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "surface-tint": "#a43c17",
+                      "on-surface": "#221a16",
+                      "surface-variant": "#f0dfd8",
+                      "outline-variant": "#dec0b7",
+                      "on-secondary": "#ffffff",
+                      "surface-container-low": "#fff1eb",
+                      "on-tertiary-fixed-variant": "#533294",
+                      "error-container": "#ffdad6",
+                      "surface-container-high": "#f6e5de",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed-variant": "#614000",
+                      "inverse-on-surface": "#ffede6",
+                      "primary": "#a13a15",
+                      "primary-container": "#c2522b",
+                      "surface-bright": "#fff8f6",
+                      "surface": "#fff8f6",
+                      "background": "#fff8f6",
+                      "on-tertiary-container": "#fffcff",
+                      "surface-container-highest": "#f0dfd8",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed-dim": "#d2bcff",
+                      "on-surface-variant": "#57423b",
+                      "on-primary-container": "#fffcff",
+                      "inverse-surface": "#382e2a",
+                      "outline": "#8b716a",
+                      "primary-fixed-dim": "#ffb59d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "32px",
+                      "md": "16px",
+                      "lg": "24px",
+                      "container-margin": "20px",
+                      "unit": "4px",
+                      "sm": "8px",
+                      "xs": "4px",
+                      "gutter": "12px"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-md": ["Inter"]
+              },
+              "fontSize": {
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                      "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface">
+<!-- Header / TopAppBar -->
+<header class="sticky top-0 z-40 bg-surface/80 glass-header px-container-margin py-md flex justify-between items-center w-full">
+<div class="flex items-center gap-md">
+<button class="p-xs hover:bg-surface-container-low rounded-full transition-colors active:scale-95" onclick="history.back()">
+<span class="material-symbols-outlined text-primary text-[28px]">arrow_back</span>
+</button>
+<h1 class="text-headline-md font-headline-md text-on-background">École du dimanche</h1>
+</div>
+<button class="p-xs hover:bg-surface-container-low rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined text-primary">edit</span>
+</button>
+</header>
+<main class="px-container-margin pt-md pb-32 max-w-2xl mx-auto space-y-lg">
+<!-- Group Identity Card -->
+<div class="bg-surface-container-low rounded-xl p-lg border border-outline-variant/30">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<span class="bg-secondary-container text-on-secondary-container text-label-sm font-label-sm px-sm py-xs rounded-full uppercase tracking-wider">Groupe Enfants</span>
+<p class="text-body-md text-on-surface-variant mt-md">Formation biblique et activités ludiques pour les enfants de 6 à 12 ans. Séance chaque dimanche matin à 10h00.</p>
+</div>
+</div>
+</div>
+<!-- Quick Stats Grid (Bento Style) -->
+<div class="grid grid-cols-2 gap-md">
+<div class="bg-white custom-shadow rounded-xl p-md flex flex-col justify-between">
+<span class="text-label-md font-label-md text-on-surface-variant">Inscrits</span>
+<div class="flex items-end gap-xs mt-sm">
+<span class="text-display-lg font-display-lg text-primary">42</span>
+<span class="text-body-md text-on-surface-variant pb-unit">enfants</span>
+</div>
+</div>
+<div class="bg-white custom-shadow rounded-xl p-md flex flex-col justify-between">
+<span class="text-label-md font-label-md text-on-surface-variant">Présence Moy.</span>
+<div class="flex items-end gap-xs mt-sm">
+<span class="text-display-lg font-display-lg text-secondary">88%</span>
+</div>
+</div>
+<div class="col-span-2 bg-[#EAF5EF] rounded-xl p-md flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="bg-white p-sm rounded-lg">
+<span class="material-symbols-outlined text-[#2D7A56] fill-icon">how_to_reg</span>
+</div>
+<div>
+<span class="text-label-md font-label-md text-[#2D7A56]">Présents aujourd'hui</span>
+<p class="text-headline-md font-headline-md text-on-background">38</p>
+</div>
+</div>
+<div class="text-right">
+<span class="text-label-md font-label-md text-on-surface-variant">Absents</span>
+<p class="text-headline-md font-headline-md text-[#C0392B]">4</p>
+</div>
+</div>
+</div>
+<!-- Section Title & Search -->
+<div class="flex flex-col gap-md">
+<div class="flex items-center justify-between">
+<h2 class="text-headline-md font-headline-md text-on-background">Membres</h2>
+<span class="text-label-md font-label-md text-on-surface-variant">A-Z</span>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-xl pr-md py-md bg-white border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-body-md outline-none" placeholder="Rechercher un membre..." type="text"/>
+</div>
+</div>
+<!-- Members List -->
+<div class="space-y-md">
+<!-- Member Card 1 -->
+<div class="bg-white custom-shadow rounded-xl p-md flex items-center justify-between group active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-md">
+<div class="relative">
+<img alt="Avatar" class="w-12 h-12 rounded-full object-cover border-2 border-primary-fixed" data-alt="A warm, professional headshot of a smiling young girl with curly hair, set against a soft, sun-drenched outdoor playground background. The image uses a warm terracotta and amber color palette, with high-key lighting that emphasizes a friendly and welcoming church community atmosphere. Minimalist, high-end photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYtIyfa6-9tdaNK7fgXye8S9d_27Ob4gywfTjijAgAiC7htMDkQlpPbK2DIUP1Lc63WL_vyX8O-QgV_A2HHr5mNIEPxCzxY2c4JnJqOiaLh-_wb6DTRom_IYJruPbUGSDU_SM9tGOarUcVvSNv98tC37mE2lAru7Et3RbNpsfL8_mPAeOGGywT2UxX1MViNM57GP8AHBKEeNEE1G9pouGXpoenBDUXDi3LjbzcpMXzO4san6gvyHyy7FYZClBjRHy_5tYy0NO-3g"/>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-[#2D7A56] border-2 border-white rounded-full"></div>
+</div>
+<div>
+<p class="text-body-lg font-semibold text-on-surface">Amandine Bernard</p>
+<div class="flex items-center gap-xs">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Taux: 95%</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span class="text-label-sm font-label-sm text-[#2D7A56] font-bold">Présent</span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<!-- Member Card 2 -->
+<div class="bg-white custom-shadow rounded-xl p-md flex items-center justify-between group active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-md">
+<div class="relative">
+<img alt="Avatar" class="w-12 h-12 rounded-full object-cover border-2 border-primary-fixed" data-alt="Close up portrait of a cheerful young boy with glasses, smiling brightly in a brightly lit, modern classroom environment. The lighting is soft and golden, reflecting the warm church interior. The aesthetic is clean and corporate modern with organic, earthy brown and terracotta tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkAZ9-Svqe5PbXzvU_CkV2sLE2Rr3Mm4pzxt6EhZ6q1uaFkMpfUQ7OARxjfo31QdBlOPheFNqXXJjLTraLfJ57M5ouNOPEloT2Z2Zsqlc1jDEJQiLI15OBP48HmIcognJrQbxVDnPihFHHZQEqBIYKT6in0t1z1Ivlo_bGVwjmfTlHGfC_lor1Lflouz8xpaVgsseoGGec2n2hpcLv07mgSpIwlzB9kfGv_YhMUCyueKpNuHoS1YSHIMWUl5NFChB8LPQ1H0t6Dg"/>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-[#C0392B] border-2 border-white rounded-full"></div>
+</div>
+<div>
+<p class="text-body-lg font-semibold text-on-surface">Lucas Dubois</p>
+<div class="flex items-center gap-xs">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Taux: 72%</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span class="text-label-sm font-label-sm text-[#C0392B] font-bold">Absent</span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<!-- Member Card 3 -->
+<div class="bg-white custom-shadow rounded-xl p-md flex items-center justify-between group active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-md">
+<div class="relative">
+<img alt="Avatar" class="w-12 h-12 rounded-full object-cover border-2 border-primary-fixed" data-alt="Portrait of a young teenager girl with a peaceful expression, standing in a sunlit atrium with wooden architectural details. The lighting is airy and high-key, using a palette of off-whites and soft terracotta. The composition is professional yet intimate, capturing a sense of belonging in a community space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuClgkS-lrh5PALF3fhgooRi3ZChvue1bJdLGlqysbE4lc3y1zOkEeXZJasPBv36keQDgOJ3lJu5VXO9gg7Duf6gahhKZj7-nrxD-d593u34xQcq9BNgFdCuhJcIWuoe0XsKMyLbJmJVP3sQvWBBmF6_OWG5z5rVXPZ6J5Jvu6YOney_7z5GOY0WPh-1oDaJ6ef0fpJ9A4aoACNlfKt8gQaGusOe1A_pVjJRuYaDGbQyUGC-3oY4N_7rbd4w5xMvBPLjZ-VFsJWoPg"/>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-[#D97706] border-2 border-white rounded-full"></div>
+</div>
+<div>
+<p class="text-body-lg font-semibold text-on-surface">Chloé Martin</p>
+<div class="flex items-center gap-xs">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Taux: 88%</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span class="text-label-sm font-label-sm text-[#D97706] font-bold">En retard</span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<!-- Member Card 4 -->
+<div class="bg-white custom-shadow rounded-xl p-md flex items-center justify-between group active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-md">
+<div class="relative">
+<img alt="Avatar" class="w-12 h-12 rounded-full object-cover border-2 border-primary-fixed" data-alt="Candid portrait of a young boy laughing during a youth group session. The background is a soft-focus warm wood interior with cozy lighting. The colors are dominated by earthy browns, deep terracotta, and warm ambers, creating a sense of radical hospitality and a modern corporate church aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAWHKRu3mWJjj-9rrFWwIO2GVPEZae0jWgBpTdQf5YqhsDcllFVsLmCNINjyb1UBciivkgQzS31RFv_m0iIc1HKRxSzhlYp6N5OsFigFoQM_KLkgIFMaNEqqhz-sw_QDgjojkP6U6NOW2PkrzVDPVksGgC1LWf-nY9LSUcPlqrORhFCU8aLq5BLfnTLtpoDK7yxsU1OmRESh28ifAjJfGVgTJz8_TAnVjPW3Qcjre4TgUOUMulrqpbhHUTa9hd86Luci3Vxznrrw"/>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-[#2D7A56] border-2 border-white rounded-full"></div>
+</div>
+<div>
+<p class="text-body-lg font-semibold text-on-surface">Hugo Petit</p>
+<div class="flex items-center gap-xs">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Taux: 91%</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span class="text-label-sm font-label-sm text-[#2D7A56] font-bold">Présent</span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+</main>
+<!-- Floating Action Button (Primary) -->
+<button class="fixed bottom-24 right-container-margin w-14 h-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center active:scale-90 transition-transform z-50">
+<span class="material-symbols-outlined text-[32px]">person_add</span>
+</button>
+<!-- Bottom Navigation Bar (Contextual mapping to 'Groupes') -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-surface/80 backdrop-blur-md flex justify-around items-center px-sm pb-safe pt-sm shadow-[0_-4px_12px_rgba(122,99,88,0.08)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-sm py-xs hover:bg-surface-container-highest transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm font-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-sm py-xs hover:bg-surface-container-highest transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-sm font-label-sm">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-sm py-xs hover:bg-surface-container-highest transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="text-label-sm font-label-sm">Appel</span>
+</a>
+<!-- ACTIVE TAB: Groupes -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-sm py-xs scale-100 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined fill-icon">hub</span>
+<span class="text-label-sm font-label-sm">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-sm py-xs hover:bg-surface-container-highest transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-sm font-label-sm">Paramètres</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for feedback on click
+        document.querySelectorAll('button, .bg-white').forEach(el => {
+            el.addEventListener('touchstart', () => {
+                el.style.transform = 'scale(0.97)';
+            });
+            el.addEventListener('touchend', () => {
+                el.style.transform = 'scale(1)';
+            });
+        });
+
+        // Simple search filter simulation
+        const searchInput = document.querySelector('input[type="text"]');
+        const cards = document.querySelectorAll('.space-y-md > div');
+
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            cards.forEach(card => {
+                const name = card.querySelector('p').textContent.toLowerCase();
+                if (name.includes(term)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body></html>

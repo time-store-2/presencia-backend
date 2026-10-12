@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gestion Jeunesse - Accueil</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#f9f9ff",
+                    "inverse-on-surface": "#edf0ff",
+                    "tertiary-container": "#a44100",
+                    "tertiary-fixed-dim": "#ffb695",
+                    "on-error-container": "#93000a",
+                    "secondary": "#585f6c",
+                    "on-tertiary-fixed": "#351000",
+                    "on-tertiary-fixed-variant": "#7b2f00",
+                    "primary": "#3525cd",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#1E1E1E", /* Custom elevated surface for dark mode per style guide */
+                    "surface": "#121212", /* Darker base for Material 3 dark mode */
+                    "primary-fixed-dim": "#c3c0ff",
+                    "on-secondary-container": "#5e6572",
+                    "on-primary-fixed": "#0f0069",
+                    "on-surface": "#edf0ff",
+                    "on-surface-variant": "#c7c4d8",
+                    "secondary-fixed": "#dce2f3",
+                    "outline-variant": "#464555",
+                    "error": "#ffb4ab",
+                    "on-secondary-fixed-variant": "#404754",
+                    "surface-variant": "#464555",
+                    "surface-container-highest": "#333538",
+                    "tertiary-fixed": "#ffdbcc",
+                    "inverse-primary": "#c3c0ff",
+                    "surface-container-high": "#2b2d31",
+                    "on-error": "#690005",
+                    "on-tertiary-container": "#ffd2be",
+                    "on-primary": "#ffffff",
+                    "surface-container-low": "#1c1c1c",
+                    "outline": "#9190a1",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "on-primary-container": "#dad7ff",
+                    "secondary-fixed-dim": "#c0c7d6",
+                    "primary-container": "#4f46e5",
+                    "surface-container-lowest": "#0f0f0f",
+                    "primary-fixed": "#e2dfff",
+                    "surface-dim": "#121212",
+                    "background": "#121212",
+                    "inverse-surface": "#f9f9ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "margin-desktop": "32px",
+                    "lg": "24px",
+                    "md": "16px",
+                    "base": "4px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-lg": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="flex items-center justify-between px-margin-mobile h-14 w-full fixed top-0 z-50 bg-surface dark:bg-inverse-surface shadow-sm transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary">menu</span>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">Gestion Jeunesse</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-highest hover:bg-surface-container-high transition-colors active:scale-95">
+<span class="material-symbols-outlined text-on-surface">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-20 px-margin-mobile max-w-2xl mx-auto">
+<!-- Greeting & Title -->
+<section class="mb-8">
+<p class="font-body-md text-body-md text-on-surface-variant">Bonjour,</p>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile mt-1">Tableau de bord</h1>
+<p class="font-body-md text-body-md italic text-primary-fixed-dim mt-2 opacity-80">Dimanche 15 juin 2025</p>
+</section>
+<!-- Stats Bento Grid -->
+<section class="grid grid-cols-2 gap-md mb-8">
+<!-- Total Teens -->
+<div class="bg-surface-container p-lg rounded-xl shadow-sm border border-outline-variant/10 flex flex-col gap-2">
+<div class="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed-dim filled-icon">group</span>
+</div>
+<div class="mt-2">
+<p class="font-headline-sm text-headline-sm">47</p>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Adolescents</p>
+</div>
+</div>
+<!-- Present -->
+<div class="bg-surface-container p-lg rounded-xl shadow-sm border border-outline-variant/10 flex flex-col gap-2">
+<div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-emerald-400 filled-icon">check_circle</span>
+</div>
+<div class="mt-2">
+<p class="font-headline-sm text-headline-sm text-emerald-400">32</p>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Présents</p>
+</div>
+</div>
+<!-- Absent -->
+<div class="bg-surface-container p-lg rounded-xl shadow-sm border border-outline-variant/10 flex flex-col gap-2">
+<div class="w-10 h-10 rounded-lg bg-error/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-error filled-icon">cancel</span>
+</div>
+<div class="mt-2">
+<p class="font-headline-sm text-headline-sm text-error">15</p>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Absents</p>
+</div>
+</div>
+<!-- Rate -->
+<div class="bg-surface-container p-lg rounded-xl shadow-sm border border-outline-variant/10 flex flex-col gap-2">
+<div class="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-amber-400 filled-icon">trending_up</span>
+</div>
+<div class="mt-2">
+<p class="font-headline-sm text-headline-sm text-amber-400">68%</p>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Taux du jour</p>
+</div>
+</div>
+</section>
+<!-- Quick Actions -->
+<section class="flex flex-col gap-md mb-8">
+<button class="w-full h-14 bg-primary text-on-primary rounded-xl flex items-center justify-center gap-3 active:scale-[0.98] transition-transform font-label-lg text-label-lg shadow-lg">
+<span class="material-symbols-outlined">assignment</span>
+                Faire l'appel
+            </button>
+<button class="w-full h-14 border border-outline-variant text-on-surface rounded-xl flex items-center justify-center gap-3 active:scale-[0.98] transition-transform font-label-lg text-label-lg bg-surface-container-lowest/50">
+<span class="material-symbols-outlined">person_add</span>
+                Ajouter un jeune
+            </button>
+</section>
+<!-- Recent Sessions -->
+<section class="mb-6">
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-headline-sm text-headline-sm">Dernières séances</h2>
+<a class="font-label-lg text-label-lg text-primary-fixed-dim hover:underline" href="#">Voir tout</a>
+</div>
+<div class="space-y-sm">
+<!-- Session Card 1 -->
+<div class="bg-surface-container p-md rounded-xl flex items-center justify-between hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-primary-fixed-dim">church</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg">École du dimanche</p>
+<p class="font-body-md text-body-md text-on-surface-variant">15 juin 2025</p>
+</div>
+</div>
+<div class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full font-label-md text-label-md">
+                        32/47
+                    </div>
+</div>
+<!-- Session Card 2 -->
+<div class="bg-surface-container p-md rounded-xl flex items-center justify-between hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-primary-fixed-dim">groups</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg">Réunion de prière</p>
+<p class="font-body-md text-body-md text-on-surface-variant">12 juin 2025</p>
+</div>
+</div>
+<div class="bg-surface-container-highest text-on-surface-variant px-3 py-1 rounded-full font-label-md text-label-md">
+                        28/47
+                    </div>
+</div>
+</div>
+</section>
+<!-- Decorative Illustration Area -->
+<section class="mb-12 mt-12">
+<div class="relative w-full h-48 rounded-2xl overflow-hidden bg-surface-container-low border border-outline-variant/10">
+<div class="absolute inset-0 opacity-40 mix-blend-overlay">
+
+</div>
+<div class="relative z-10 p-lg flex flex-col justify-end h-full">
+<h3 class="font-headline-sm text-headline-sm text-on-primary-fixed">Impact Jeunesse</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[80%]">Suivez l'évolution de votre groupe et encouragez l'engagement spirituel.</p>
+</div>
+<img class="absolute right-0 bottom-0 h-32 w-32 object-contain opacity-60" data-alt="A high-quality digital illustration of diverse teenagers participating in a communal activity, rendered in a professional modern corporate style. The scene is bright and optimistic, utilizing a palette of deep indigo and soft lavenders to match the church management app aesthetic. Soft, diffuse lighting creates a welcoming digital hospitality vibe, emphasizing community and growth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_xoCJZS_IIZIoTrUKbpkqo2Ifnat3tSSH5MjgRVnHU2gHk3nni4DaJho3qzO5MrfmlDFoyK--LqxhKegnjjhIzqRbb2xNzpApUUnNaVkGK2dxF-06FAFZT905N7SYCn-JqkYt44NzJWofu9dYnCLiqlOuSh0xTC7CfSkUsUEEPdV2vUpgIWWbZoDVp0HQ20wbV5Tpi4PSdHj5CP6UgyVT-I4vLHf4To1agQINat4RLDeeYq8vRzJp0UoJ35ihAuONMoUOk9y1Sh8"/>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-surface dark:bg-inverse-surface shadow-lg rounded-t-xl">
+<!-- Accueil (Active) -->
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-2xl px-3 py-1 active:scale-90 duration-200 transition-all" href="#">
+<span class="material-symbols-outlined filled-icon">home</span>
+<span class="font-label-md text-label-md">Accueil</span>
+</a>
+<!-- Jeunes -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-secondary-container hover:bg-surface-container-low dark:hover:bg-secondary-container transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Jeunes</span>
+</a>
+<!-- Appel (Center focus) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-secondary-container hover:bg-surface-container-low dark:hover:bg-secondary-container transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+<span class="font-label-md text-label-md">Appel</span>
+</a>
+<!-- Groupes -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-secondary-container hover:bg-surface-container-low dark:hover:bg-secondary-container transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">diversity_3</span>
+<span class="font-label-md text-label-md">Groupes</span>
+</a>
+<!-- Paramètres -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-secondary-container hover:bg-surface-container-low dark:hover:bg-secondary-container transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Paramètres</span>
+</a>
+</nav>
+<script>
+        // Subtle interaction: Card lift on hover logic handled via Tailwind classes
+        // Micro-interactions for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('touchstart', function() {
+                this.classList.add('scale-95');
+            });
+            button.addEventListener('touchend', function() {
+                this.classList.remove('scale-95');
+            });
+        });
+    </script>
+</body></html>

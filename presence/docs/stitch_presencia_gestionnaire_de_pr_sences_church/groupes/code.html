@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Presencia - Gestion des Groupes</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-tint": "#494bd6",
+                      "secondary-container": "#6cf8bb",
+                      "tertiary-fixed-dim": "#d0bcff",
+                      "tertiary": "#6b38d4",
+                      "primary": "#4648d4",
+                      "background": "#fcf9f8",
+                      "inverse-on-surface": "#f3f0ef",
+                      "on-primary-container": "#fffbff",
+                      "primary-container": "#6063ee",
+                      "surface-container-highest": "#e5e2e1",
+                      "on-error-container": "#93000a",
+                      "on-secondary-container": "#00714d",
+                      "on-background": "#1c1b1b",
+                      "inverse-surface": "#313030",
+                      "on-tertiary-container": "#fffbff",
+                      "surface-variant": "#e5e2e1",
+                      "surface-bright": "#fcf9f8",
+                      "secondary-fixed": "#6ffbbe",
+                      "on-tertiary": "#ffffff",
+                      "secondary": "#006c49",
+                      "on-tertiary-fixed": "#23005c",
+                      "on-secondary-fixed-variant": "#005236",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "outline-variant": "#c7c4d7",
+                      "surface-dim": "#dcd9d9",
+                      "tertiary-fixed": "#e9ddff",
+                      "surface-container-low": "#f6f3f2",
+                      "on-surface": "#1c1b1b",
+                      "surface": "#fcf9f8",
+                      "secondary-fixed-dim": "#4edea3",
+                      "outline": "#767586",
+                      "tertiary-container": "#8455ef",
+                      "on-primary-fixed": "#07006c",
+                      "primary-fixed-dim": "#c0c1ff",
+                      "surface-container": "#f0edec",
+                      "inverse-primary": "#c0c1ff",
+                      "on-primary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "primary-fixed": "#e1e0ff",
+                      "on-primary-fixed-variant": "#2f2ebe",
+                      "on-surface-variant": "#464554",
+                      "error": "#ba1a1a",
+                      "on-secondary-fixed": "#002113",
+                      "on-tertiary-fixed-variant": "#5516be",
+                      "surface-container-high": "#ebe7e7"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "8px",
+                      "lg": "24px",
+                      "md": "16px",
+                      "margin-mobile": "16px",
+                      "gutter": "16px",
+                      "max-width": "1200px",
+                      "margin-desktop": "32px",
+                      "xl": "32px",
+                      "xs": "4px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Inter"],
+                      "label-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "title-md": ["Inter"],
+                      "title-lg": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "headline-lg-mobile": ["Inter"]
+              },
+              "fontSize": {
+                      "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.5px", "fontWeight": "400"}],
+                      "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "500"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.25px", "fontWeight": "400"}],
+                      "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.15px", "fontWeight": "500"}],
+                      "title-lg": ["22px", {"lineHeight": "28px", "fontWeight": "500"}],
+                      "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                      "display-lg": ["57px", {"lineHeight": "64px", "letterSpacing": "-0.25px", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav-pill {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .custom-glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- Top App Bar -->
+<header class="bg-surface-container-low sticky top-0 z-40 w-full h-16 flex items-center justify-between px-margin-mobile">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl">church</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">Presencia</h1>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest border border-outline-variant flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a young adult youth ministry leader with a friendly and approachable expression. The lighting is warm and natural, suggesting an indoor community center or office environment. The style is clean and modern, following a corporate photography aesthetic with a shallow depth of field, focusing on the person's face." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL6gbcgIlboDgDp3zRv0-hZLkXO2WlYvJgLzDffc7Vy9cni0R5-TdMrSlEEBnJEVn03wS1pQMM_g566KdfMPfSN7MtIsnFgXUDqj33hCt4GWsnReqYD1gvh7b3WXKCZu8-4RD3cabjB9YQZRtL_EWEUqnst8-_nUP_1tQWvBj9E6VrhQA3hvCqudYT6Hzol-ugQReCG56aw_TbTwMFjUa57YWBuBHh-8F4JamFptQnXui9ezFWX1P2us54CBgTlMivv7xZ6jD_Fa4"/>
+</div>
+</header>
+<main class="max-w-max-width mx-auto px-margin-mobile pt-lg">
+<!-- Section Header -->
+<div class="flex items-center justify-between mb-lg">
+<div>
+<h2 class="font-title-lg text-title-lg text-on-surface">Groupes</h2>
+<p class="font-body-md text-on-surface-variant">4 groupes actifs</p>
+</div>
+<button class="bg-primary text-on-primary px-lg py-sm rounded-xl font-label-lg flex items-center gap-2 shadow-sm hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined">add</span>
+                Créer
+            </button>
+</div>
+<!-- Global Summary Bento Card -->
+<section class="mb-lg">
+<div class="relative overflow-hidden rounded-xl bg-gradient-to-br from-primary/5 to-primary/10 p-lg border border-primary/10">
+<div class="grid grid-cols-3 gap-gutter text-center">
+<div class="flex flex-col">
+<span class="font-headline-lg-mobile text-primary font-extrabold">47</span>
+<span class="font-label-sm text-on-surface-variant uppercase tracking-wider">Jeunes</span>
+</div>
+<div class="flex flex-col border-x border-primary/10">
+<span class="font-headline-lg-mobile text-primary font-extrabold">4</span>
+<span class="font-label-sm text-on-surface-variant uppercase tracking-wider">Groupes</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-lg-mobile text-primary font-extrabold">68%</span>
+<span class="font-label-sm text-on-surface-variant uppercase tracking-wider">Présence</span>
+</div>
+</div>
+<!-- Subtle background decoration -->
+<div class="absolute -right-10 -bottom-10 opacity-5">
+<span class="material-symbols-outlined text-[120px]">hub</span>
+</div>
+</div>
+</section>
+<!-- Groups Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Group Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-md border border-surface-container-high flex flex-col gap-md shadow-sm">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-primary/15 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">school</span>
+</div>
+<div>
+<h3 class="font-title-md text-on-surface font-semibold">École du dimanche</h3>
+<p class="font-body-md text-on-surface-variant">12 membres</p>
+</div>
+</div>
+<button class="text-on-surface-variant hover:bg-surface-container p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-center px-1">
+<span class="font-label-sm text-on-surface-variant">Présence moyenne</span>
+<span class="font-label-sm font-bold text-primary">72%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 72%"></div>
+</div>
+</div>
+<div class="flex gap-sm pt-base">
+<button class="flex-1 bg-primary-fixed text-on-primary-fixed-variant font-label-lg py-md rounded-lg flex items-center justify-center gap-2 transition-all hover:brightness-95">
+<span class="material-symbols-outlined text-lg">how_to_reg</span>
+                        Faire l'appel
+                    </button>
+<button class="flex-1 bg-surface-container text-on-surface-variant font-label-lg py-md rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-surface-container-highest">
+<span class="material-symbols-outlined text-lg">group</span>
+                        Jeunes
+                    </button>
+</div>
+</div>
+<!-- Group Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-md border border-surface-container-high flex flex-col gap-md shadow-sm">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-yellow-100 flex items-center justify-center text-yellow-700">
+<span class="material-symbols-outlined text-3xl">music_note</span>
+</div>
+<div>
+<h3 class="font-title-md text-on-surface font-semibold">Chorale Jeunes</h3>
+<p class="font-body-md text-on-surface-variant">15 membres</p>
+</div>
+</div>
+<button class="text-on-surface-variant hover:bg-surface-container p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-center px-1">
+<span class="font-label-sm text-on-surface-variant">Présence moyenne</span>
+<span class="font-label-sm font-bold text-yellow-700">85%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-yellow-500 h-full rounded-full" style="width: 85%"></div>
+</div>
+</div>
+<div class="flex gap-sm pt-base">
+<button class="flex-1 bg-primary-fixed text-on-primary-fixed-variant font-label-lg py-md rounded-lg flex items-center justify-center gap-2 transition-all hover:brightness-95">
+<span class="material-symbols-outlined text-lg">how_to_reg</span>
+                        Faire l'appel
+                    </button>
+<button class="flex-1 bg-surface-container text-on-surface-variant font-label-lg py-md rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-surface-container-highest">
+<span class="material-symbols-outlined text-lg">group</span>
+                        Jeunes
+                    </button>
+</div>
+</div>
+<!-- Group Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-md border border-surface-container-high flex flex-col gap-md shadow-sm">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-emerald-100 flex items-center justify-center text-emerald-700">
+<span class="material-symbols-outlined text-3xl">sports_soccer</span>
+</div>
+<div>
+<h3 class="font-title-md text-on-surface font-semibold">Club Sportif</h3>
+<p class="font-body-md text-on-surface-variant">20 membres</p>
+</div>
+</div>
+<button class="text-on-surface-variant hover:bg-surface-container p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-center px-1">
+<span class="font-label-sm text-on-surface-variant">Présence moyenne</span>
+<span class="font-label-sm font-bold text-emerald-700">45%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-emerald-500 h-full rounded-full" style="width: 45%"></div>
+</div>
+</div>
+<div class="flex gap-sm pt-base">
+<button class="flex-1 bg-primary-fixed text-on-primary-fixed-variant font-label-lg py-md rounded-lg flex items-center justify-center gap-2 transition-all hover:brightness-95">
+<span class="material-symbols-outlined text-lg">how_to_reg</span>
+                        Faire l'appel
+                    </button>
+<button class="flex-1 bg-surface-container text-on-surface-variant font-label-lg py-md rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-surface-container-highest">
+<span class="material-symbols-outlined text-lg">group</span>
+                        Jeunes
+                    </button>
+</div>
+</div>
+<!-- Group Card 4 -->
+<div class="bg-surface-container-lowest rounded-xl p-md border border-surface-container-high flex flex-col gap-md shadow-sm">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-pink-100 flex items-center justify-center text-pink-700">
+<span class="material-symbols-outlined text-3xl">volunteer_activism</span>
+</div>
+<div>
+<h3 class="font-title-md text-on-surface font-semibold">Service Social</h3>
+<p class="font-body-md text-on-surface-variant">10 membres</p>
+</div>
+</div>
+<button class="text-on-surface-variant hover:bg-surface-container p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-center px-1">
+<span class="font-label-sm text-on-surface-variant">Présence moyenne</span>
+<span class="font-label-sm font-bold text-pink-700">92%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-pink-500 h-full rounded-full" style="width: 92%"></div>
+</div>
+</div>
+<div class="flex gap-sm pt-base">
+<button class="flex-1 bg-primary-fixed text-on-primary-fixed-variant font-label-lg py-md rounded-lg flex items-center justify-center gap-2 transition-all hover:brightness-95">
+<span class="material-symbols-outlined text-lg">how_to_reg</span>
+                        Faire l'appel
+                    </button>
+<button class="flex-1 bg-surface-container text-on-surface-variant font-label-lg py-md rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-surface-container-highest">
+<span class="material-symbols-outlined text-lg">group</span>
+                        Jeunes
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- FAB for quick action -->
+<button class="fixed bottom-24 right-margin-mobile w-14 h-14 bg-primary text-on-primary rounded-2xl shadow-xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-30">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-xs py-sm pb-6 bg-surface border-t border-surface-container-high custom-glass">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-colors rounded-xl px-2 py-1" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm mt-1">Accueil</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-colors rounded-xl px-2 py-1" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-sm mt-1">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-colors rounded-xl px-2 py-1" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="font-label-sm mt-1">Appel</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active-nav-pill scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">hub</span>
+<span class="font-label-sm mt-0.5 font-semibold">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-colors rounded-xl px-2 py-1" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm mt-1">Paramètres</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('touchstart', function() {
+                this.classList.add('scale-95');
+            });
+            btn.addEventListener('touchend', function() {
+                this.classList.remove('scale-95');
+            });
+        });
+
+        // Simple scroll shadow for header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 10) {
+                header.classList.add('shadow-md');
+                header.classList.remove('bg-surface-container-low');
+                header.classList.add('bg-surface');
+            } else {
+                header.classList.remove('shadow-md');
+                header.classList.add('bg-surface-container-low');
+                header.classList.remove('bg-surface');
+            }
+        });
+    </script>
+</body></html>

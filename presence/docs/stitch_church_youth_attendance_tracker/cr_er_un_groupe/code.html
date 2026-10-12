@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#777587",
+                        "inverse-on-surface": "#ebf1ff",
+                        "on-secondary-container": "#00714d",
+                        "tertiary-container": "#6f3dd9",
+                        "background": "#f9f9ff",
+                        "on-tertiary-container": "#e3d5ff",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#c3c0ff",
+                        "error-container": "#ffdad6",
+                        "secondary": "#006c49",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#dce2f3",
+                        "on-tertiary-fixed": "#23005c",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#6ffbbe",
+                        "tertiary-fixed-dim": "#d0bcff",
+                        "on-surface": "#151c27",
+                        "surface-tint": "#4d44e3",
+                        "tertiary": "#571ac0",
+                        "surface": "#f9f9ff",
+                        "on-tertiary-fixed-variant": "#5516be",
+                        "surface-container-high": "#e2e8f8",
+                        "surface-dim": "#d3daea",
+                        "secondary-fixed-dim": "#4edea3",
+                        "inverse-surface": "#2a313d",
+                        "primary-fixed": "#e2dfff",
+                        "secondary-container": "#6cf8bb",
+                        "outline-variant": "#c7c4d8",
+                        "surface-container": "#e7eefe",
+                        "on-primary-container": "#dad7ff",
+                        "surface-variant": "#dce2f3",
+                        "on-secondary-fixed": "#002113",
+                        "surface-bright": "#f9f9ff",
+                        "primary-container": "#4f46e5",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "surface-container-low": "#f0f3ff",
+                        "on-surface-variant": "#464555",
+                        "error": "#ba1a1a",
+                        "on-background": "#151c27",
+                        "tertiary-fixed": "#e9ddff",
+                        "on-primary-fixed": "#0f0069",
+                        "primary": "#3525cd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "xs": "4px",
+                        "base": "4px",
+                        "md": "16px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "margin-tablet": "32px",
+                        "lg": "24px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "display": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9ff;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .color-ring-active {
+            box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px #4f46e5;
+        }
+        .day-chip-active {
+            background-color: #4f46e5;
+            color: #FFFFFF;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface pb-32">
+<!-- Top App Bar (Task Focused: Suppressing Global Nav) -->
+<header class="sticky top-0 z-50 bg-surface shadow-sm h-16 flex items-center px-margin-mobile">
+<button class="p-2 -ml-2 transition-all duration-200 active:scale-95 text-on-surface-variant" onclick="history.back()">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="ml-4 font-headline-md text-headline-md text-on-surface">Nouveau groupe</h1>
+</header>
+<main class="max-w-md mx-auto px-margin-mobile mt-lg space-y-xl">
+<!-- Group Icon Preview & Color Selector -->
+<section class="flex flex-col items-center space-y-lg">
+<div class="w-[72px] h-[72px] bg-primary-container rounded-xl flex items-center justify-center shadow-sm transition-colors duration-300" id="group-icon-preview">
+<span class="material-symbols-outlined text-[32px] text-white" style="font-variation-settings: 'FILL' 1;">groups</span>
+</div>
+<div class="grid grid-cols-4 gap-4 sm:flex sm:flex-wrap sm:justify-center">
+<!-- Color Options -->
+<button class="color-dot w-[44px] h-[44px] rounded-full bg-[#4f46e5] color-ring-active transition-all duration-200" onclick="updateColor('#4f46e5', this)"></button>
+<button class="color-dot w-[44px] h-[44px] rounded-full bg-[#006c49] transition-all duration-200" onclick="updateColor('#006c49', this)"></button>
+<button class="color-dot w-[44px] h-[44px] rounded-full bg-[#ba1a1a] transition-all duration-200" onclick="updateColor('#ba1a1a', this)"></button>
+<button class="color-dot w-[44px] h-[44px] rounded-full bg-[#571ac0] transition-all duration-200" onclick="updateColor('#571ac0', this)"></button>
+<button class="color-dot w-[44px] h-[44px] rounded-full bg-[#0061a4] transition-all duration-200" onclick="updateColor('#0061a4', this)"></button>
+<button class="color-dot w-[44px] h-[44px] rounded-full bg-[#9a4500] transition-all duration-200" onclick="updateColor('#9a4500', this)"></button>
+<button class="color-dot w-[44px] h-[44px] rounded-full bg-[#7d5260] transition-all duration-200" onclick="updateColor('#7d5260', this)"></button>
+<button class="color-dot w-[44px] h-[44px] rounded-full bg-[#6750a4] transition-all duration-200" onclick="updateColor('#6750a4', this)"></button>
+</div>
+</section>
+<!-- Form Section -->
+<form class="space-y-lg" id="createGroupForm">
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant px-1" for="group-name">Nom du groupe</label>
+<input class="w-full h-12 px-md bg-white border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all duration-200 placeholder:text-outline-variant font-body-md" id="group-name" placeholder="Ex: Groupe de Jeunes" type="text"/>
+</div>
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant px-1" for="group-desc">Description</label>
+<textarea class="w-full p-md bg-white border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all duration-200 placeholder:text-outline-variant font-body-md resize-none" id="group-desc" placeholder="Parlez-nous de l'objectif du groupe..." rows="3"></textarea>
+</div>
+<div class="grid grid-cols-2 gap-gutter">
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant px-1">Âge min.</label>
+<div class="relative">
+<select class="w-full h-12 pl-md pr-10 bg-white border border-outline-variant rounded-xl appearance-none focus:ring-2 focus:ring-primary outline-none font-body-md">
+<option>10 ans</option>
+<option>11 ans</option>
+<option>12 ans</option>
+<option>13 ans</option>
+<option>14 ans</option>
+<option>15 ans</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant px-1">Âge max.</label>
+<div class="relative">
+<select class="w-full h-12 pl-md pr-10 bg-white border border-outline-variant rounded-xl appearance-none focus:ring-2 focus:ring-primary outline-none font-body-md">
+<option>18 ans</option>
+<option>19 ans</option>
+<option>20 ans</option>
+<option>21 ans</option>
+<option>25 ans</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+</div>
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant px-1">Responsable</label>
+<div class="relative">
+<select class="w-full h-12 pl-md pr-10 bg-white border border-outline-variant rounded-xl appearance-none focus:ring-2 focus:ring-primary outline-none font-body-md">
+<option>Jean-Michel Dupont</option>
+<option>Sarah Benamara</option>
+<option>Marc Lefebvre</option>
+<option>Claire Vallet</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 pointer-events-none text-on-surface-variant">person_search</span>
+</div>
+</div>
+<!-- Sessions Section -->
+<div class="bg-white p-lg rounded-xl border border-outline-variant space-y-lg">
+<h3 class="font-label-md text-label-md text-primary uppercase tracking-wider">Séances</h3>
+<div class="space-y-sm">
+<p class="font-label-md text-label-md text-on-surface-variant">Jours de la semaine</p>
+<div class="flex flex-wrap gap-2">
+<button class="day-chip h-10 px-4 rounded-full bg-surface-container-low border border-outline-variant text-on-surface-variant font-label-md transition-all duration-200" onclick="toggleDay(this)" type="button">Lun</button>
+<button class="day-chip h-10 px-4 rounded-full bg-surface-container-low border border-outline-variant text-on-surface-variant font-label-md transition-all duration-200" onclick="toggleDay(this)" type="button">Mar</button>
+<button class="day-chip h-10 px-4 rounded-full bg-surface-container-low border border-outline-variant text-on-surface-variant font-label-md transition-all duration-200" onclick="toggleDay(this)" type="button">Mer</button>
+<button class="day-chip h-10 px-4 rounded-full bg-surface-container-low border border-outline-variant text-on-surface-variant font-label-md transition-all duration-200" onclick="toggleDay(this)" type="button">Jeu</button>
+<button class="day-chip h-10 px-4 rounded-full bg-surface-container-low border border-outline-variant text-on-surface-variant font-label-md transition-all duration-200" onclick="toggleDay(this)" type="button">Ven</button>
+<button class="day-chip h-10 px-4 rounded-full bg-surface-container-low border border-outline-variant text-on-surface-variant font-label-md transition-all duration-200" onclick="toggleDay(this)" type="button">Sam</button>
+<button class="day-chip h-10 px-4 rounded-full bg-surface-container-low border border-outline-variant text-on-surface-variant font-label-md transition-all duration-200" onclick="toggleDay(this)" type="button">Dim</button>
+</div>
+</div>
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant">Heure de début</label>
+<div class="relative max-w-[140px]">
+<input class="w-full h-12 pl-md pr-md bg-white border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary outline-none font-body-md" type="time" value="18:30"/>
+</div>
+</div>
+</div>
+</form>
+</main>
+<!-- Fixed Footer Action -->
+<div class="fixed bottom-0 left-0 w-full p-margin-mobile bg-surface-container-lowest shadow-[0_-4px_12px_rgba(0,0,0,0.05)] md:static md:bg-transparent md:shadow-none md:max-w-md md:mx-auto">
+<button class="w-full h-[56px] bg-primary-container text-white rounded-xl font-headline-md text-headline-md flex items-center justify-center gap-2 shadow-lg hover:bg-primary transition-all duration-200 active:scale-95" form="createGroupForm" type="submit">
+<span>Créer le groupe</span>
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<script>
+        function updateColor(color, element) {
+            // Update Icon Preview
+            const preview = document.getElementById('group-icon-preview');
+            preview.style.backgroundColor = color;
+            
+            // Update Active Ring
+            document.querySelectorAll('.color-dot').forEach(btn => {
+                btn.classList.remove('color-ring-active');
+            });
+            element.classList.add('color-ring-active');
+            
+            // Optionally update form button if we want full sync
+            const mainBtn = document.querySelector('button[type="submit"]');
+            mainBtn.style.backgroundColor = color;
+        }
+
+        function toggleDay(btn) {
+            btn.classList.toggle('day-chip-active');
+            btn.classList.toggle('border-transparent');
+            if (btn.classList.contains('day-chip-active')) {
+                btn.style.backgroundColor = '#4f46e5';
+            } else {
+                btn.style.backgroundColor = '';
+            }
+        }
+
+        // Handle Form Submission
+        document.getElementById('createGroupForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span><span>Enregistrement...</span>';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                alert('Groupe créé avec succès !');
+                btn.innerHTML = originalContent;
+                btn.disabled = false;
+            }, 1500);
+        });
+    </script>
+</body></html>

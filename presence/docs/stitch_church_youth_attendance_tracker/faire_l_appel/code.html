@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Faire l'appel - ChurchPresence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#777587",
+                        "inverse-on-surface": "#ebf1ff",
+                        "on-secondary-container": "#00714d",
+                        "tertiary-container": "#6f3dd9",
+                        "background": "#f9f9ff",
+                        "on-tertiary-container": "#e3d5ff",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#c3c0ff",
+                        "error-container": "#ffdad6",
+                        "secondary": "#006c49",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#dce2f3",
+                        "on-tertiary-fixed": "#23005c",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#6ffbbe",
+                        "tertiary-fixed-dim": "#d0bcff",
+                        "on-surface": "#151c27",
+                        "surface-tint": "#4d44e3",
+                        "tertiary": "#571ac0",
+                        "surface": "#f9f9ff",
+                        "on-tertiary-fixed-variant": "#5516be",
+                        "surface-container-high": "#e2e8f8",
+                        "surface-dim": "#d3daea",
+                        "secondary-fixed-dim": "#4edea3",
+                        "inverse-surface": "#2a313d",
+                        "primary-fixed": "#e2dfff",
+                        "secondary-container": "#6cf8bb",
+                        "outline-variant": "#c7c4d8",
+                        "surface-container": "#e7eefe",
+                        "on-primary-container": "#dad7ff",
+                        "surface-variant": "#dce2f3",
+                        "on-secondary-fixed": "#002113",
+                        "surface-bright": "#f9f9ff",
+                        "primary-container": "#4f46e5",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "surface-container-low": "#f0f3ff",
+                        "on-surface-variant": "#464555",
+                        "error": "#ba1a1a",
+                        "on-background": "#151c27",
+                        "tertiary-fixed": "#e9ddff",
+                        "on-primary-fixed": "#0f0069",
+                        "primary": "#3525cd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "xs": "4px",
+                        "base": "4px",
+                        "md": "16px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "margin-tablet": "32px",
+                        "lg": "24px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "display": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .status-btn.active-present { background-color: #D1FAE5; color: #065F46; border-color: #D1FAE5; }
+        .status-btn.active-absent { background-color: #FEE2E2; color: #991B1B; border-color: #FEE2E2; }
+        .status-btn.active-late { background-color: #FEF3C7; color: #92400E; border-color: #FEF3C7; }
+        .status-btn.active-excused { background-color: #E3D5FF; color: #571AC0; border-color: #E3D5FF; }
+        
+        .row-present { border-left: 4px solid #10B981; background-color: #F0FDF4; }
+        .row-absent { border-left: 4px solid #EF4444; background-color: #FEF2F2; }
+        .row-late { border-left: 4px solid #F59E0B; background-color: #FFFBEB; }
+        .row-excused { border-left: 4px solid #8B5CF6; background-color: #F5F3FF; }
+
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface">
+<!-- Top AppBar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface shadow-sm h-16 px-margin-mobile flex items-center justify-between">
+<div class="flex items-center gap-3">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors active:scale-95">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="font-headline-md text-headline-md leading-tight">École du dimanche</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Dimanche 15 juin · 10h00</p>
+</div>
+</div>
+<button class="px-4 py-2 bg-primary-container text-white rounded-xl font-label-md text-label-md shadow-sm hover:opacity-90 transition-all active:scale-95">
+            Enregistrer
+        </button>
+</header>
+<main class="pt-20 pb-32 px-margin-mobile">
+<!-- Progress Bar Section -->
+<section class="mb-lg bg-white p-md rounded-xl shadow-sm border border-outline-variant/20">
+<div class="flex justify-between items-end mb-sm">
+<span class="font-label-md text-label-md text-on-surface-variant">Progression de l'appel</span>
+<span class="font-headline-md text-headline-md text-primary">32/47 <span class="font-body-md text-body-md text-outline">enregistrés</span></span>
+</div>
+<div class="w-full h-2.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 68%;"></div>
+</div>
+</section>
+<!-- Legend & Search -->
+<section class="mb-lg flex flex-col gap-md">
+<div class="flex items-center gap-sm overflow-x-auto hide-scrollbar pb-1">
+<div class="flex items-center gap-xs px-3 py-1.5 bg-[#D1FAE5] text-[#065F46] rounded-full text-xs font-semibold whitespace-nowrap">
+<span class="w-2 h-2 rounded-full bg-[#065F46]"></span> Présent
+                </div>
+<div class="flex items-center gap-xs px-3 py-1.5 bg-[#FEE2E2] text-[#991B1B] rounded-full text-xs font-semibold whitespace-nowrap">
+<span class="w-2 h-2 rounded-full bg-[#991B1B]"></span> Absent
+                </div>
+<div class="flex items-center gap-xs px-3 py-1.5 bg-[#FEF3C7] text-[#92400E] rounded-full text-xs font-semibold whitespace-nowrap">
+<span class="w-2 h-2 rounded-full bg-[#92400E]"></span> Retard
+                </div>
+<div class="flex items-center gap-xs px-3 py-1.5 bg-[#E3D5FF] text-[#571AC0] rounded-full text-xs font-semibold whitespace-nowrap">
+<span class="w-2 h-2 rounded-full bg-[#571AC0]"></span> Excusé
+                </div>
+</div>
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg">search</span>
+<input class="w-full bg-white border border-outline-variant rounded-xl pl-10 pr-4 py-2.5 text-body-md focus:border-primary-container focus:ring-0 transition-all outline-none" placeholder="Rechercher un élève..." type="text"/>
+</div>
+</section>
+<!-- Attendance List -->
+<section class="space-y-sm">
+<!-- Item: Present -->
+<div class="flex items-center justify-between p-md bg-white rounded-xl shadow-sm border border-outline-variant/10 row-present transition-all">
+<div class="flex items-center gap-md">
+<img class="w-10 h-10 rounded-full object-cover bg-surface-dim" data-alt="A professional headshot of a young African American woman with a warm, friendly smile, set against a soft, blurred modern architectural background with cool daylight. The lighting is crisp and clean, reflecting a corporate yet approachable aesthetic consistent with a high-end productivity application. The colors are natural with high contrast and sharp focus on her features." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0c6j-j1_oZ9Cyrf2dcbLrMYpiKqEblRIuRZV-x1C1qcaEqAMReGHgcrVN1OBDttLTJpa-uXbrojF6KSVoPYqz8D-3OebdLz9LDerykLz1YZZ7y-Aeul5TRiXEYkJrFXbCQI4MtSesIzdKQNJDwJlVw79RSmLgqXg8Y9Ai_Tv1Ov9j0BHHSIxzKTqVGHkaowfi0XQscSj7dYnT0yQVCTIYGuF5A55cKdgMlIAJ71hTptv34UZrHc1bQKXpbt1-QiW85pXeaJ26ngw"/>
+<div>
+<p class="font-headline-md text-body-lg text-on-surface">Amara Okafor</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Groupe des Ados</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="status-btn active-present w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 transition-all">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+<button class="status-btn w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 text-outline transition-all">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+<button class="status-btn w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 text-outline transition-all">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+</button>
+<button class="status-btn w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 text-outline transition-all">
+<span class="material-symbols-outlined text-[18px]">bookmark</span>
+</button>
+</div>
+</div>
+<!-- Item: Absent -->
+<div class="flex items-center justify-between p-md bg-white rounded-xl shadow-sm border border-outline-variant/10 row-absent transition-all">
+<div class="flex items-center gap-md">
+<img class="w-10 h-10 rounded-full object-cover bg-surface-dim" data-alt="Close-up portrait of a young man with curly hair looking directly into the camera with a calm expression. He is wearing a simple white shirt, and the background is a minimalist studio setting with soft neutral tones. The lighting is diffused and professional, creating a clean light-mode visual style suitable for a modern church administration app's user profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUhY54gF_pjIBII3DY4xUV8v_SRqAosDBh4S0HLEPCqyy-47KkUicAfJK0EAqhmCyJLZsgIF8m7QXE3EuDsNsHpNhwZPtXKnP0xAuaAj30mBpA9kIAt2bBYIySmCIKjPQfDrHF0iAy-lsIhN2-e-tkqfm-dlRmG_XjW2EZhqHVHgAiLMllWGsFM-T_hxN4B0vERGgEGhpX9D2-uIwlFONBNTOXg6-Yn0JiLhKL-jOBzS8Di3sy3lK4Jek38gr3jmDKZ8r7cT8WBmo"/>
+<div>
+<p class="font-headline-md text-body-lg text-on-surface">Gabriel Durand</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Groupe des Ados</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="status-btn w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 text-outline transition-all">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+<button class="status-btn active-absent w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 transition-all">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+<button class="status-btn w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 text-outline transition-all">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+</button>
+<button class="status-btn w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 text-outline transition-all">
+<span class="material-symbols-outlined text-[18px]">bookmark</span>
+</button>
+</div>
+</div>
+<!-- Item: Late -->
+<div class="flex items-center justify-between p-md bg-white rounded-xl shadow-sm border border-outline-variant/10 row-late transition-all">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-bold">LM</div>
+<div>
+<p class="font-headline-md text-body-lg text-on-surface">Léa Morel</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Groupe des Ados</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="status-btn w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 text-outline transition-all">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+<button class="status-btn w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 text-outline transition-all">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+<button class="status-btn active-late w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 transition-all">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+</button>
+<button class="status-btn w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 text-outline transition-all">
+<span class="material-symbols-outlined text-[18px]">bookmark</span>
+</button>
+</div>
+</div>
+<!-- Item: Excused -->
+<div class="flex items-center justify-between p-md bg-white rounded-xl shadow-sm border border-outline-variant/10 row-excused transition-all">
+<div class="flex items-center gap-md">
+<img class="w-10 h-10 rounded-full object-cover bg-surface-dim" data-alt="Close up of a thoughtful woman in her mid-20s with short dark hair, wearing a navy blue blazer. The image has a very professional and clean aesthetic, lit with soft daylight from a window, creating subtle shadows and highlights. The overall mood is modern, focused, and high-quality, fitting perfectly within the minimalist design system of a corporate church application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyEBdrGm8l2F-tBhAi21vl36NOYOEeve7nozmi31Sg-Y_jkWs2PIyXTKDsdEPgCruY04H0I9N_EuWMvmZ5oVDT6TVEZ5ogatb7JYi60OZQKK9y1z3sn8b0VKiwcbKqKH4J6Ay9Vg993l0kzZVwu6JBpjIiVq4VsTDJNK5BnJlXxLOm_jgRRU6KWduouqRcekYCoW_kNpYbWZ52pHrioycwJvqM940xydZeKd7XuGZ4WKa9DG6hWOqNEQwX6KwFSse5tocUDl7sEjk"/>
+<div>
+<p class="font-headline-md text-body-lg text-on-surface">Chloé Petit</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Groupe des Ados</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="status-btn w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 text-outline transition-all">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+<button class="status-btn w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 text-outline transition-all">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+<button class="status-btn w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 text-outline transition-all">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+</button>
+<button class="status-btn active-excused w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 transition-all">
+<span class="material-symbols-outlined text-[18px]">bookmark</span>
+</button>
+</div>
+</div>
+<!-- Untouched items -->
+<div class="flex items-center justify-between p-md bg-white rounded-xl shadow-sm border border-outline-variant/10 transition-all">
+<div class="flex items-center gap-md">
+<img class="w-10 h-10 rounded-full object-cover bg-surface-dim" data-alt="Headshot of a smiling young man with dark hair and a light beard, dressed in a grey sweater. The photography is sharp with a shallow depth of field, blurring out a bright, airy office space in the background. The aesthetic is clean, professional, and optimistic, utilizing a bright color palette that aligns with a premium app interface for church management." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzhXTf4UXU9KWsz3muUOM0KjjAYtufWSlCbFuienDcQ-U1Q54kG6JeeVX64wdQWC3gHPOwyvkKxTe466R0HxktkNqIJnEQYVAJMnouWVM9kF6CoQ5MctqsFkGm2wiYYE4vdG__Vmkci9PD9cOshrV4D0yyQYm5UzkUlKSEJVEcNaSzkMQOWo5_BKayfSOk4k8twQWJdFCXdJNh_afeRCPNySTd_NB7_5aCYaz4-eaSsgQ5gnNsPLiSRZ-_LIX9cEFBOn1AfStmDbQ"/>
+<div>
+<p class="font-headline-md text-body-lg text-on-surface">Mathieu Martin</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Groupe des Ados</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="status-btn w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 text-outline hover:border-primary-container transition-all">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+<button class="status-btn w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 text-outline hover:border-error transition-all">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+<button class="status-btn w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 text-outline hover:border-secondary transition-all">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+</button>
+<button class="status-btn w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 text-outline hover:border-tertiary transition-all">
+<span class="material-symbols-outlined text-[18px]">bookmark</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between p-md bg-white rounded-xl shadow-sm border border-outline-variant/10 transition-all">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold">SR</div>
+<div>
+<p class="font-headline-md text-body-lg text-on-surface">Sarah Roche</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Groupe des Ados</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="status-btn w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 text-outline transition-all">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+<button class="status-btn w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 text-outline transition-all">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+<button class="status-btn w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 text-outline transition-all">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+</button>
+<button class="status-btn w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 text-outline transition-all">
+<span class="material-symbols-outlined text-[18px]">bookmark</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Action Bar -->
+<footer class="fixed bottom-0 left-0 right-0 z-50 bg-surface shadow-[0_-4px_12px_rgba(0,0,0,0.05)] px-margin-mobile py-4 rounded-t-2xl">
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between px-1">
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<span class="text-xs font-bold text-on-secondary-container">24</span>
+<span class="text-[10px] text-outline uppercase tracking-wider">Prés.</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="text-xs font-bold text-error">5</span>
+<span class="text-[10px] text-outline uppercase tracking-wider">Abs.</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="text-xs font-bold text-secondary">2</span>
+<span class="text-[10px] text-outline uppercase tracking-wider">Ret.</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="text-xs font-bold text-tertiary">1</span>
+<span class="text-[10px] text-outline uppercase tracking-wider">Exc.</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md text-on-surface-variant">Reste : 15</span>
+</div>
+</div>
+<button class="w-full h-12 bg-primary-container text-white rounded-xl font-headline-md text-headline-md shadow-md flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined">how_to_reg</span>
+                Enregistrer l'appel
+            </button>
+</div>
+</footer>
+<script>
+        // Micro-interaction: visual feedback on status button click
+        document.querySelectorAll('.status-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const row = this.closest('div.flex.items-center.justify-between');
+                const parent = this.parentElement;
+                
+                // Remove all active states from siblings
+                parent.querySelectorAll('.status-btn').forEach(b => {
+                    b.classList.remove('active-present', 'active-absent', 'active-late', 'active-excused');
+                    b.classList.add('text-outline');
+                });
+                
+                // Remove all row color classes
+                row.classList.remove('row-present', 'row-absent', 'row-late', 'row-excused');
+
+                // Determine which status was clicked and apply classes
+                const icon = this.querySelector('span').innerText;
+                if (icon === 'check') {
+                    this.classList.add('active-present');
+                    this.classList.remove('text-outline');
+                    row.classList.add('row-present');
+                } else if (icon === 'close') {
+                    this.classList.add('active-absent');
+                    this.classList.remove('text-outline');
+                    row.classList.add('row-absent');
+                } else if (icon === 'schedule') {
+                    this.classList.add('active-late');
+                    this.classList.remove('text-outline');
+                    row.classList.add('row-late');
+                } else if (icon === 'bookmark') {
+                    this.classList.add('active-excused');
+                    this.classList.remove('text-outline');
+                    row.classList.add('row-excused');
+                }
+            });
+        });
+    </script>
+</body></html>

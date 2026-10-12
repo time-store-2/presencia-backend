@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .settings-card {
+            box-shadow: 0 4px 12px rgba(122, 99, 88, 0.08);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed": "#ffdbd0",
+                      "on-background": "#221a16",
+                      "on-primary-fixed-variant": "#842600",
+                      "on-tertiary-fixed": "#25005a",
+                      "tertiary-container": "#8262c6",
+                      "on-secondary-fixed": "#281800",
+                      "secondary": "#805600",
+                      "on-secondary-container": "#704b00",
+                      "on-primary-fixed": "#390b00",
+                      "tertiary-fixed": "#eaddff",
+                      "on-error-container": "#93000a",
+                      "surface-container": "#fceae3",
+                      "secondary-fixed": "#ffddaf",
+                      "inverse-primary": "#ffb59d",
+                      "on-primary": "#ffffff",
+                      "surface-dim": "#e7d7d0",
+                      "tertiary": "#6949ab",
+                      "secondary-fixed-dim": "#fdba49",
+                      "secondary-container": "#fdba49",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "surface-tint": "#a43c17",
+                      "on-surface": "#221a16",
+                      "surface-variant": "#f0dfd8",
+                      "outline-variant": "#dec0b7",
+                      "on-secondary": "#ffffff",
+                      "surface-container-low": "#fff1eb",
+                      "on-tertiary-fixed-variant": "#533294",
+                      "error-container": "#ffdad6",
+                      "surface-container-high": "#f6e5de",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed-variant": "#614000",
+                      "inverse-on-surface": "#ffede6",
+                      "primary": "#a13a15",
+                      "primary-container": "#c2522b",
+                      "surface-bright": "#fff8f6",
+                      "surface": "#fff8f6",
+                      "background": "#fff8f6",
+                      "on-tertiary-container": "#fffcff",
+                      "surface-container-highest": "#f0dfd8",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed-dim": "#d2bcff",
+                      "on-surface-variant": "#57423b",
+                      "on-primary-container": "#fffcff",
+                      "inverse-surface": "#382e2a",
+                      "outline": "#8b716a",
+                      "primary-fixed-dim": "#ffb59d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "32px",
+                      "md": "16px",
+                      "lg": "24px",
+                      "container-margin": "20px",
+                      "unit": "4px",
+                      "sm": "8px",
+                      "xs": "4px",
+                      "gutter": "12px"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-md": ["Inter"]
+              },
+              "fontSize": {
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                      "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center px-container-margin py-md w-full sticky top-0 z-40 bg-surface/80 glass-effect">
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-low transition-colors p-xs rounded-full">menu</button>
+<h1 class="text-headline-lg font-headline-lg font-bold text-primary">Presencia</h1>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed">
+<img alt="Profile" data-alt="A professional headshot of a smiling young adult male youth leader in a modern setting. He is wearing a simple casual shirt. The lighting is warm and natural, suggesting a welcoming and inclusive community environment. The background is softly blurred with warm earthy tones that match a terracotta and cream brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzI5oDvoR9ctESg-X1SCJWInj6hxeul9EuASSNRJkK9BfC0jL0ScSSeJM0U7_KtY5DWf90tuKjoqqC1-YDaO95Kcg7Gvzm6jIIde03WwuCbouexwHBibs9B4EJj8KyPby9VJmkQsZUtzq1aM55Z1nyxaQwQp2uuJWBWCoDY40duL0JWM2spIFV90rneeynmB6-dlX7nL9PUxDv9_4LxXw3AqZ-oTYVq2FQXsuXeZtbPPF4XO3R28buXNH_U-vwHSM4vrSYn2uX9A"/>
+</div>
+</header>
+<main class="max-w-3xl mx-auto px-container-margin py-lg space-y-lg">
+<!-- Page Title -->
+<div class="mb-xl">
+<h2 class="font-headline-md text-headline-md text-on-surface">Paramètres</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Gérez votre église et vos préférences</p>
+</div>
+<!-- Section Église -->
+<section class="space-y-sm">
+<h3 class="font-label-md text-label-md text-outline uppercase tracking-wider ml-sm">Église</h3>
+<div class="bg-surface rounded-xl settings-card p-md border border-surface-variant flex items-center gap-md">
+<div class="w-16 h-16 rounded-xl bg-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">church</span>
+</div>
+<div class="flex-1">
+<p class="font-body-lg text-body-lg font-semibold text-on-surface">Église de la Cité</p>
+<p class="font-body-md text-body-md text-on-surface-variant">123 Rue de la Paix, 75000 Paris</p>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low p-xs rounded-lg transition-colors">edit</button>
+</div>
+</section>
+<!-- Section Apparence -->
+<section class="space-y-sm">
+<h3 class="font-label-md text-label-md text-outline uppercase tracking-wider ml-sm">Apparence</h3>
+<div class="bg-surface rounded-xl settings-card border border-surface-variant overflow-hidden">
+<div class="flex items-center justify-between p-md border-b border-surface-variant">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">light_mode</span>
+<p class="font-body-lg text-body-lg text-on-surface">Mode Clair</p>
+</div>
+<div class="w-12 h-6 bg-primary rounded-full relative shadow-inner">
+<div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full shadow-sm"></div>
+</div>
+</div>
+<div class="flex items-center justify-between p-md opacity-50 bg-surface-container-low cursor-not-allowed">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant">dark_mode</span>
+<div>
+<p class="font-body-lg text-body-lg text-on-surface">Mode Sombre</p>
+<p class="font-label-sm text-label-sm text-primary font-bold">PROCHAINEMENT</p>
+</div>
+</div>
+<div class="w-12 h-6 bg-outline-variant rounded-full relative">
+<div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section Données -->
+<section class="space-y-sm">
+<h3 class="font-label-md text-label-md text-outline uppercase tracking-wider ml-sm">Données</h3>
+<div class="bg-surface rounded-xl settings-card border border-surface-variant p-md grid grid-cols-1 md:grid-cols-2 gap-md">
+<button class="flex items-center justify-center gap-sm bg-primary-fixed hover:bg-primary-fixed-dim transition-all text-on-primary-fixed-variant font-semibold py-md px-lg rounded-xl">
+<span class="material-symbols-outlined">download</span>
+<span class="font-label-md text-label-md">Exporter (CSV/Excel)</span>
+</button>
+<button class="flex items-center justify-center gap-sm bg-surface-container hover:bg-surface-container-high transition-all text-on-surface font-semibold py-md px-lg rounded-xl border border-outline-variant">
+<span class="material-symbols-outlined">upload</span>
+<span class="font-label-md text-label-md">Importer des données</span>
+</button>
+</div>
+</section>
+<!-- Section Compte -->
+<section class="space-y-sm">
+<h3 class="font-label-md text-label-md text-outline uppercase tracking-wider ml-sm">Compte</h3>
+<div class="bg-surface rounded-xl settings-card border border-surface-variant divide-y divide-surface-variant">
+<div class="flex items-center justify-between p-md">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">person</span>
+<div>
+<p class="font-body-lg text-body-lg text-on-surface">Jean Dupont</p>
+<p class="font-body-md text-body-md text-on-surface-variant">jean.dupont@presencia.org</p>
+</div>
+</div>
+</div>
+<button class="w-full flex items-center gap-md p-md hover:bg-error-container/10 transition-colors group" onclick="handleLogout()">
+<span class="material-symbols-outlined text-error group-hover:scale-110 transition-transform">logout</span>
+<span class="font-body-lg text-body-lg text-error font-medium">Déconnexion</span>
+</button>
+</div>
+</section>
+<!-- Support & Version -->
+<section class="text-center py-xl space-y-md">
+<div class="flex justify-center gap-xl">
+<a class="font-label-md text-label-md text-primary hover:underline" href="#">Aide &amp; Support</a>
+<a class="font-label-md text-label-md text-primary hover:underline" href="#">Confidentialité</a>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-60">Version 1.2.0 (Build 452) • Presencia Team</p>
+</section>
+</main>
+<!-- Bottom Nav Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-sm pb-safe pt-sm bg-surface/80 backdrop-blur-md shadow-[0_-4px_12px_rgba(122,99,88,0.08)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-sm py-xs" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm font-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-sm py-xs" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-sm font-label-sm">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-sm py-xs" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="text-label-sm font-label-sm">Appel</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-sm py-xs" href="#">
+<span class="material-symbols-outlined">hub</span>
+<span class="text-label-sm font-label-sm">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-sm py-xs scale-90 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined filled-icon">settings</span>
+<span class="text-label-sm font-label-sm">Paramètres</span>
+</a>
+</nav>
+<script>
+        function handleLogout() {
+            if(confirm("Êtes-vous sûr de vouloir vous déconnecter ?")) {
+                console.log("Déconnexion en cours...");
+                // Add logout logic here
+            }
+        }
+
+        // Add subtle interaction for setting cards
+        document.querySelectorAll('.settings-card').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.classList.add('scale-[0.98]', 'shadow-sm');
+                card.style.transition = 'all 0.15s ease';
+            });
+            card.addEventListener('mouseup', () => {
+                card.classList.remove('scale-[0.98]', 'shadow-sm');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('scale-[0.98]', 'shadow-sm');
+            });
+        });
+    </script>
+</body></html>

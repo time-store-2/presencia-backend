@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#3323cc",
+                        "primary-container": "#4f46e5",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#c0c1ff",
+                        "outline": "#777587",
+                        "primary-fixed": "#e2dfff",
+                        "on-secondary-fixed": "#07006c",
+                        "tertiary": "#005338",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#dad7ff",
+                        "inverse-surface": "#2e3132",
+                        "on-primary-fixed": "#0f0069",
+                        "surface-container-highest": "#e1e3e4",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#6063ee",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#e1e3e4",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "on-tertiary-fixed": "#002113",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f8f9fa",
+                        "secondary": "#4648d4",
+                        "on-surface-variant": "#464555",
+                        "background": "#f8f9fa",
+                        "surface-dim": "#d9dadb",
+                        "surface": "#f8f9fa",
+                        "tertiary-fixed": "#6ffbbe",
+                        "tertiary-container": "#006e4b",
+                        "surface-tint": "#4d44e3",
+                        "surface-container": "#edeeef",
+                        "on-tertiary-container": "#67f4b7",
+                        "outline-variant": "#c7c4d8",
+                        "on-surface": "#191c1d",
+                        "inverse-on-surface": "#f0f1f2",
+                        "primary": "#3525cd",
+                        "on-secondary-fixed-variant": "#2f2ebe",
+                        "surface-container-high": "#e7e8e9",
+                        "on-secondary-container": "#fffbff",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#191c1d",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "inverse-primary": "#c3c0ff",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#f3f4f5",
+                        "secondary-fixed": "#e1e0ff",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "container-padding": "16px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "unit": "4px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "label-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "title-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "500"}],
+                        "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="bg-surface shadow-sm sticky top-0 z-40 px-container-padding h-16 flex justify-between items-center w-full">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high p-2 rounded-full transition-colors" data-icon="menu">menu</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-black text-primary">Presencia</h1>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold overflow-hidden">
+<img alt="Admin" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a young administrator in a modern office setting. The lighting is soft and bright, following a light-mode aesthetic with clean white backgrounds. The style is professional and friendly, using a palette of soft indigos and greys to convey trust and modern administrative efficiency. High-quality digital photography with a shallow depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHKN6o1zNhlRJmofqL4aCWNAJK0nvWC9cpe3Oopd4SVTl-RqkbdjOsnFatNr_OGJT8rneo_tvSIb5qqGigrwhmFIxI27YIeTk9eD2uwG79CzhXReOm0YZXSXC8tRq11CRidy02VlGv2-tis_VFWYMS9yKv5eD3NVemwp8KXXRNvac6-DeLV1FTp4lWyc4XyuypnKCOWS1tlen00TGgyys2uC8NeZsr9yiWJ5yzOQWkRWttxExpcG82Q3FxAOS9VhGaT-gBygEeSRI"/>
+</div>
+</div>
+</header>
+<main class="max-w-md mx-auto px-container-padding pt-6 space-y-6">
+<!-- Header Section -->
+<section class="flex justify-between items-end">
+<div class="space-y-1">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Groupes</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">4 groupes actifs</p>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-xl font-label-lg text-label-lg flex items-center gap-2 shadow-sm hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                Créer
+            </button>
+</section>
+<!-- Global Summary Card -->
+<section class="bg-surface shadow-sm border border-outline-variant rounded-xl p-md flex justify-between items-center">
+<div class="flex-1 text-center border-r border-outline-variant/30">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Jeunes</p>
+<p class="font-title-lg text-title-lg text-primary">47</p>
+</div>
+<div class="flex-1 text-center border-r border-outline-variant/30">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Groupes</p>
+<p class="font-title-lg text-title-lg text-primary">4</p>
+</div>
+<div class="flex-1 text-center">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Présence</p>
+<p class="font-title-lg text-title-lg text-tertiary">68%</p>
+</div>
+</section>
+<!-- Group Cards Grid -->
+<section class="space-y-4">
+<!-- Card: Sunday School -->
+<div class="bg-surface border border-outline-variant rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="p-md space-y-4">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]" data-icon="auto_stories">auto_stories</span>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface">Sunday School</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">18 membres</p>
+</div>
+</div>
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-3 py-1 rounded-full font-label-md text-label-md">Hebdo</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between font-label-md text-label-md">
+<span class="text-on-surface-variant">Présence moyenne</span>
+<span class="text-on-surface font-bold">82%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 82%"></div>
+</div>
+</div>
+<div class="flex gap-3 pt-2">
+<button class="flex-1 bg-primary text-on-primary py-2.5 rounded-lg font-label-lg text-label-lg hover:opacity-90 transition-opacity">Faire l'appel</button>
+<button class="flex-1 bg-surface-container-high text-on-surface py-2.5 rounded-lg font-label-lg text-label-lg hover:bg-surface-variant transition-colors">Voir les jeunes</button>
+</div>
+</div>
+</div>
+<!-- Card: Choirs -->
+<div class="bg-surface border border-outline-variant rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="p-md space-y-4">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-orange-100 flex items-center justify-center text-orange-600">
+<span class="material-symbols-outlined text-[28px]" data-icon="music_note">music_note</span>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface">Chorale Jeunes</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">12 membres</p>
+</div>
+</div>
+<span class="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full font-label-md text-label-md">Mardi</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between font-label-md text-label-md">
+<span class="text-on-surface-variant">Présence moyenne</span>
+<span class="text-on-surface font-bold">54%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-orange-500 rounded-full" style="width: 54%"></div>
+</div>
+</div>
+<div class="flex gap-3 pt-2">
+<button class="flex-1 bg-primary text-on-primary py-2.5 rounded-lg font-label-lg text-label-lg hover:opacity-90 transition-opacity">Faire l'appel</button>
+<button class="flex-1 bg-surface-container-high text-on-surface py-2.5 rounded-lg font-label-lg text-label-lg hover:bg-surface-variant transition-colors">Voir les jeunes</button>
+</div>
+</div>
+</div>
+<!-- Card: Sport & Loisirs -->
+<div class="bg-surface border border-outline-variant rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="p-md space-y-4">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-emerald-100 flex items-center justify-center text-emerald-600">
+<span class="material-symbols-outlined text-[28px]" data-icon="sports_soccer">sports_soccer</span>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface">Club Sport</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">10 membres</p>
+</div>
+</div>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full font-label-md text-label-md">Samedi</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between font-label-md text-label-md">
+<span class="text-on-surface-variant">Présence moyenne</span>
+<span class="text-on-surface font-bold">91%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary rounded-full" style="width: 91%"></div>
+</div>
+</div>
+<div class="flex gap-3 pt-2">
+<button class="flex-1 bg-primary text-on-primary py-2.5 rounded-lg font-label-lg text-label-lg hover:opacity-90 transition-opacity">Faire l'appel</button>
+<button class="flex-1 bg-surface-container-high text-on-surface py-2.5 rounded-lg font-label-lg text-label-lg hover:bg-surface-variant transition-colors">Voir les jeunes</button>
+</div>
+</div>
+</div>
+<!-- Card: Study Group -->
+<div class="bg-surface border border-outline-variant rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="p-md space-y-4">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600">
+<span class="material-symbols-outlined text-[28px]" data-icon="menu_book">menu_book</span>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface">Soutien Scolaire</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">7 membres</p>
+</div>
+</div>
+<span class="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full font-label-md text-label-md">Quotidien</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between font-label-md text-label-md">
+<span class="text-on-surface-variant">Présence moyenne</span>
+<span class="text-on-surface font-bold">45%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-error rounded-full" style="width: 45%"></div>
+</div>
+</div>
+<div class="flex gap-3 pt-2">
+<button class="flex-1 bg-primary text-on-primary py-2.5 rounded-lg font-label-lg text-label-lg hover:opacity-90 transition-opacity">Faire l'appel</button>
+<button class="flex-1 bg-surface-container-high text-on-surface py-2.5 rounded-lg font-label-lg text-label-lg hover:bg-surface-variant transition-colors">Voir les jeunes</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-surface border-t border-outline-variant shadow-lg rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Accueil</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+<span class="font-label-md text-label-md">Appel</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 scale-110 duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span class="font-label-md text-label-md">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Paramètres</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.classList.add('opacity-80', 'scale-95');
+                setTimeout(() => {
+                    this.classList.remove('opacity-80', 'scale-95');
+                }, 150);
+            });
+        });
+
+        // Simple scroll reveal effect
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-4');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section > div').forEach(card => {
+            card.classList.add('transition-all', 'duration-500', 'opacity-0', 'translate-y-4');
+            observer.observe(card);
+        });
+    </script>
+</body></html>

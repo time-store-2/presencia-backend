@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Confirmation d'enregistrement - ChurchPresence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#e2dfff",
+                        "inverse-surface": "#2a313d",
+                        "secondary-fixed-dim": "#4edea3",
+                        "surface-dim": "#d3daea",
+                        "tertiary": "#571ac0",
+                        "surface": "#f9f9ff",
+                        "on-tertiary-fixed-variant": "#5516be",
+                        "surface-container-high": "#e2e8f8",
+                        "surface-tint": "#4d44e3",
+                        "tertiary-fixed-dim": "#d0bcff",
+                        "on-surface": "#151c27",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface-container-highest": "#dce2f3",
+                        "on-tertiary-fixed": "#23005c",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#c3c0ff",
+                        "error-container": "#ffdad6",
+                        "secondary": "#006c49",
+                        "on-tertiary-container": "#e3d5ff",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#6f3dd9",
+                        "background": "#f9f9ff",
+                        "on-secondary-container": "#00714d",
+                        "outline": "#777587",
+                        "inverse-on-surface": "#ebf1ff",
+                        "primary": "#3525cd",
+                        "tertiary-fixed": "#e9ddff",
+                        "on-primary-fixed": "#0f0069",
+                        "on-background": "#151c27",
+                        "on-surface-variant": "#464555",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f0f3ff",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "primary-container": "#4f46e5",
+                        "on-secondary-fixed": "#002113",
+                        "surface-bright": "#f9f9ff",
+                        "surface-variant": "#dce2f3",
+                        "on-primary-container": "#dad7ff",
+                        "surface-container": "#e7eefe",
+                        "secondary-container": "#6cf8bb",
+                        "outline-variant": "#c7c4d8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "xl": "32px",
+                        "margin-tablet": "32px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "base": "4px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "display": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-low text-on-surface flex items-center justify-center min-h-screen p-0 m-0 overflow-hidden">
+<!-- Modal Container -->
+<div class="relative w-full max-w-lg h-screen md:h-auto md:max-h-[795px] bg-surface-container-lowest md:rounded-xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in zoom-in duration-300">
+<!-- Decoration / Background -->
+<div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-secondary-container/20 to-transparent pointer-events-none"></div>
+<!-- Success Header -->
+<div class="relative flex flex-col items-center pt-xl pb-lg px-margin-mobile text-center">
+<div class="w-20 h-20 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center mb-md shadow-md animate-bounce">
+<span class="material-symbols-outlined text-[48px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h1 class="font-display text-display text-on-surface mb-xs">Appel enregistré !</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Dimanche 15 juin · École du dimanche</p>
+</div>
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto px-margin-mobile pb-xl space-y-lg">
+<!-- Summary Grid (Bento Style) -->
+<div class="grid grid-cols-2 gap-md">
+<!-- Presents -->
+<div class="bg-secondary-fixed/10 p-md rounded-xl border border-secondary-fixed/20 flex flex-col items-center">
+<span class="font-label-md text-label-md text-secondary mb-xs uppercase tracking-wider">Présents</span>
+<span class="font-display text-display text-secondary">32</span>
+</div>
+<!-- Absents -->
+<div class="bg-error-container/10 p-md rounded-xl border border-error-container/20 flex flex-col items-center">
+<span class="font-label-md text-label-md text-error mb-xs uppercase tracking-wider">Absents</span>
+<span class="font-display text-display text-error">10</span>
+</div>
+<!-- Late -->
+<div class="bg-amber-100 p-md rounded-xl border border-amber-200 flex flex-col items-center">
+<span class="font-label-md text-label-md text-amber-800 mb-xs uppercase tracking-wider">Retards</span>
+<span class="font-display text-display text-amber-800">3</span>
+</div>
+<!-- Excused -->
+<div class="bg-tertiary-fixed/10 p-md rounded-xl border border-tertiary-fixed/20 flex flex-col items-center">
+<span class="font-label-md text-label-md text-tertiary mb-xs uppercase tracking-wider">Excusés</span>
+<span class="font-display text-display text-tertiary">2</span>
+</div>
+</div>
+<!-- Attendance Rate Card -->
+<div class="bg-surface-container-low p-lg rounded-xl border border-outline-variant/30 shadow-sm">
+<div class="flex justify-between items-center mb-md">
+<span class="font-headline-md text-headline-md text-on-surface">Taux de présence</span>
+<span class="font-display text-display text-primary">68%</span>
+</div>
+<div class="w-full h-3 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-1000 ease-out" style="width: 68%"></div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-sm">Une légère hausse par rapport à la semaine dernière (+5%).</p>
+</div>
+<!-- Absents Section -->
+<div class="space-y-md">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md text-on-surface">Absents aujourd'hui</h3>
+<span class="font-label-md text-label-md text-primary bg-primary-container/10 px-2 py-1 rounded">10 membres</span>
+</div>
+<div class="flex space-x-md overflow-x-auto pb-sm scrollbar-hide">
+<!-- Avatar List -->
+<div class="flex flex-col items-center flex-shrink-0 space-y-xs group">
+<div class="w-14 h-14 rounded-full p-0.5 border-2 border-error border-dashed">
+<img alt="Avatar" class="w-full h-full rounded-full object-cover grayscale" data-alt="A close-up portrait of a young man with a friendly expression, set against a blurred urban background with soft natural lighting. The image uses a clean, corporate photography style with a muted color palette that feels professional and approachable." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2GmKb9pC4ZXL-PCGi6jLGUuiES4UzMqYqnFv0Xft00xVqz1Azq4enYGkArowVzuCV4HjW2e7c024oT595aeOwV92HkTF__DiAWerJao2HOvU_bXZaAFDb0xjsAidCwbDEJR2QydQXhY6ui0S8yT1eQ-80-mdwrI8T0esJwVEtJKGWRNsaj3vEndHEdkQpE0PEOWK4s83ua0fBLfdlLddb-3QKC0O0M-NIPVlTR_FlkIZbx_8rf2YE6PXVhyXdJVOzAufXAlUEuio"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Lucas</span>
+</div>
+<div class="flex flex-col items-center flex-shrink-0 space-y-xs group">
+<div class="w-14 h-14 rounded-full p-0.5 border-2 border-error border-dashed">
+<img alt="Avatar" class="w-full h-full rounded-full object-cover grayscale" data-alt="A portrait of a smiling woman with long brown hair, lit by warm golden-hour light. The background is a soft-focus garden setting. The overall aesthetic is vibrant yet sophisticated, aligning with a high-end modern UI design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnNKPCUGG8cN_HvshSe4LVS1oFUWNntbb80gXGYRTG3LSZksS4HiGtMYySseRWn2m_C6GMQJRQ7eu7_istw5iVAsbtbnnlZR8GwZ-Exjih9xh8MV8OBEWbG0vvnRsTTF_AVdPrAPwdQjc_Z1W-FvYE3lkS6n_XdQsjA8Lqj1ajrU5lwtCMB2c5tnJ_5mCnGR299G4SwLg91K7gHdAYukdKJaYmNMNQTtYHVexg3uG_iroVtG8YE447t3uJfPjOAg8wIsbrx8KaC5c"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Marie</span>
+</div>
+<div class="flex flex-col items-center flex-shrink-0 space-y-xs group">
+<div class="w-14 h-14 rounded-full p-0.5 border-2 border-error border-dashed">
+<img alt="Avatar" class="w-full h-full rounded-full object-cover grayscale" data-alt="A professional headshot of a middle-aged man with a neat beard and glasses, looking directly at the camera. The lighting is soft and even, highlighting a clean and modern corporate look. The color palette features neutral tones to match a clean user interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuColRI8OqmWfkT6r9pNGu4YlrCuiS8qXOBG9WoG0bdwAWqMkAgJDK7FnZyXRuCNRjejiPVD_KcAf59eugjpUvAYOx51PIB2-B7XqV5-u0wDWttgQWqcy-akQ08PEmLQcWAUVEV0fHiOPsAyaxVA_hUx95MG2nx9BgXt6B7GnquhpBqP09jb_4MjipNJ_6lgg06uJ0AhDNmvzSveU31pkId3v_DbpnQh9-sKFmeUJw1Ys24JIMnJ_Hat0NZ0AJwYQnDkzh7Rqm9EbVU"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Thomas</span>
+</div>
+<div class="flex flex-col items-center flex-shrink-0 space-y-xs group">
+<div class="w-14 h-14 rounded-full p-0.5 border-2 border-error border-dashed">
+<img alt="Avatar" class="w-full h-full rounded-full object-cover grayscale" data-alt="A bright and airy portrait of a young girl with a cheerful smile, captured in a minimalist studio environment. The lighting is high-key and clean, emphasizing a modern and friendly app atmosphere. The composition is centered and focuses on clarity and warmth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1d5K5fMq6mew_XpX6W05UBewzNciKn0w60nVyWBHIsDQK4tuYziulD9PXS_oxf9VRJtF_ErBbngTtmAUnS-iEFIJycq62QE8094YbymvPxoimBF9ix9IzzxxOuGKbypETk4qJ3onMP1wvqscrcrP3U4i9XEVCnv21qmNoifNxSCZcxJxaB0wnDZG1vcHHhWFQ-G1y1rQYBryt-QV9zZoQFScKAmsjDSAL8iAS8ZrZTE76v1NLoiLy75gqDICc5CuRrZL4cFrKOUo"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Sophie</span>
+</div>
+<div class="flex flex-col items-center flex-shrink-0 space-y-xs group">
+<div class="w-14 h-14 rounded-full p-0.5 border-2 border-error border-dashed">
+<img alt="Avatar" class="w-full h-full rounded-full object-cover grayscale" data-alt="A portrait of a young woman with a calm and confident gaze, set against a neutral, slightly textured gray background. The lighting is artistic yet professional, creating soft shadows that add depth. The overall visual style is elegant and modern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzKg9xBKw3DosCObZjz60X5LD4cPjUZ6NdxfmWC1fx-kHMqhB4BuUHtGruJu96aBfTVW-Vg3B7cWoAn9AZJgjWp6oH2MlQsNDb0W6Pw9OH0ILG95qEz7bzMyO-9OZb8odF31nX95mR8lGJq8xXgdIPPM7bF4qD5EvA6qzzSNp83yXiYNew3zCNVtLURL3vLBJjcDiC8RBAaYD9rwl9clYszRFM3HMuJ1Zvh8jeBjv_d4EHtnY8Eb6LECLk6Sb8SotHhaOeP3p5DaY"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Chloé</span>
+</div>
+<div class="flex flex-col items-center flex-shrink-0 space-y-xs group">
+<div class="w-14 h-14 rounded-full flex items-center justify-center bg-surface-variant text-on-surface-variant font-bold text-headline-md">
+                            +5
+                        </div>
+<span class="font-label-md text-label-md text-on-surface">Autres</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Fixed Footer Actions -->
+<div class="p-margin-mobile bg-surface-container-lowest border-t border-outline-variant/30 flex flex-col space-y-sm">
+<button class="w-full bg-primary text-on-primary py-3.5 rounded-xl font-headline-md shadow-lg transition-all hover:brightness-110 active:scale-95">
+                Retour à l'accueil
+            </button>
+<div class="grid grid-cols-2 gap-sm">
+<button class="flex items-center justify-center border border-outline text-on-surface-variant py-3 rounded-xl font-body-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined mr-2">visibility</span>
+                    Voir le détail
+                </button>
+<button class="flex items-center justify-center text-primary py-3 rounded-xl font-body-lg hover:bg-primary-fixed/30 transition-colors">
+<span class="material-symbols-outlined mr-2">picture_as_pdf</span>
+                    Exporter en PDF
+                </button>
+</div>
+</div>
+</div>
+<!-- Micro-interaction Canvas -->
+<canvas class="confetti-canvas" id="confetti"></canvas>
+<script>
+        // Simple confetti effect for the success screen
+        const canvas = document.getElementById('confetti');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const pieces = [];
+        const numberOfPieces = 100;
+        const colors = ['#4F46E5', '#6FFBBE', '#EEF2FF', '#006C49'];
+
+        class Piece {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height - canvas.height;
+                this.rotation = Math.random() * 360;
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.size = Math.random() * 10 + 5;
+                this.speed = Math.random() * 3 + 2;
+                this.rSpeed = Math.random() * 4 - 2;
+            }
+            update() {
+                this.y += this.speed;
+                this.rotation += this.rSpeed;
+                if (this.y > canvas.height) {
+                    this.y = -20;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation * Math.PI / 180);
+                ctx.fillStyle = this.color;
+                ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+                ctx.restore();
+            }
+        }
+
+        for (let i = 0; i < numberOfPieces; i++) {
+            pieces.push(new Piece());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            pieces.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        // Only run confetti for 3 seconds
+        let animationActive = true;
+        const startTime = Date.now();
+        
+        function loop() {
+            if (Date.now() - startTime < 3000) {
+                animate();
+            } else {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+        }
+        
+        // Initial animation trigger
+        animate();
+        setTimeout(() => {
+            animationActive = false;
+        }, 4000);
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body></html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Ajouter un adolescent - Presencia</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#221a16",
+                        "inverse-surface": "#382e2a",
+                        "on-tertiary-container": "#fffcff",
+                        "surface-variant": "#f0dfd8",
+                        "surface-bright": "#fff8f6",
+                        "secondary-fixed": "#ffddaf",
+                        "secondary": "#805600",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#25005a",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#614000",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#a43c17",
+                        "tertiary-fixed-dim": "#d2bcff",
+                        "secondary-container": "#fdba49",
+                        "tertiary": "#6949ab",
+                        "primary": "#a13a15",
+                        "background": "#fff8f6",
+                        "primary-container": "#c2522b",
+                        "on-primary-container": "#fffcff",
+                        "inverse-on-surface": "#ffede6",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#f0dfd8",
+                        "on-secondary-container": "#704b00",
+                        "surface-container": "#fceae3",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#ffb59d",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#ffdbd0",
+                        "on-primary-fixed-variant": "#842600",
+                        "on-surface-variant": "#57423b",
+                        "error": "#ba1a1a",
+                        "surface-container-high": "#f6e5de",
+                        "on-tertiary-fixed-variant": "#533294",
+                        "on-secondary-fixed": "#281800",
+                        "tertiary-fixed": "#eaddff",
+                        "surface-dim": "#e7d7d0",
+                        "outline-variant": "#dec0b7",
+                        "surface-container-low": "#fff1eb",
+                        "surface": "#fff8f6",
+                        "secondary-fixed-dim": "#fdba49",
+                        "on-surface": "#221a16",
+                        "tertiary-container": "#8262c6",
+                        "outline": "#8b716a",
+                        "on-primary-fixed": "#390b00",
+                        "primary-fixed-dim": "#ffb59d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "12px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "unit": "4px",
+                        "container-margin": "20px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .shadow-warm {
+            box-shadow: 0 4px 12px rgba(122, 99, 88, 0.08);
+        }
+        .active-pill {
+            background-color: #c2522b;
+            color: #ffffff;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="bg-surface sticky top-0 z-40 flex justify-between items-center px-container-margin py-md w-full">
+<button aria-label="Retour" class="text-on-surface-variant hover:bg-surface-container-low transition-colors p-sm rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="text-headline-md font-headline-md text-on-surface">Ajouter un adolescent</h1>
+<div class="w-10"></div> <!-- Spacer for centering -->
+</header>
+<main class="px-container-margin pb-xl">
+<form class="space-y-lg max-w-lg mx-auto" id="add-youth-form">
+<!-- Profile Photo Section -->
+<section class="flex flex-col items-center justify-center py-lg">
+<div class="relative group">
+<div class="w-32 h-32 rounded-full bg-surface-container-high border-2 border-dashed border-outline-variant flex items-center justify-center overflow-hidden transition-all group-hover:bg-surface-container-highest cursor-pointer">
+<span class="material-symbols-outlined text-outline text-[48px]" data-icon="person">person</span>
+<!-- Overlay/Preview would go here -->
+</div>
+<button class="absolute bottom-0 right-0 bg-primary-container text-on-primary-container p-sm rounded-full shadow-lg active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined" data-icon="photo_camera" style="font-variation-settings: 'FILL' 1;">photo_camera</span>
+</button>
+</div>
+<p class="text-label-md font-label-md text-outline mt-md">Photo de profil</p>
+</section>
+<!-- Personal Information -->
+<div class="space-y-md">
+<h2 class="text-label-md font-label-md text-primary uppercase tracking-wider">Informations personnelles</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Prenom -->
+<div class="space-y-xs">
+<label class="block text-label-md font-label-md text-on-surface-variant ml-xs" for="first_name">Prénom</label>
+<input class="w-full bg-surface border-outline-variant border-[1.5pt] rounded-xl px-md py-sm focus:border-primary focus:ring-0 text-body-md transition-all" id="first_name" name="first_name" placeholder="Ex: Jean" type="text"/>
+</div>
+<!-- Nom -->
+<div class="space-y-xs">
+<label class="block text-label-md font-label-md text-on-surface-variant ml-xs" for="last_name">Nom</label>
+<input class="w-full bg-surface border-outline-variant border-[1.5pt] rounded-xl px-md py-sm focus:border-primary focus:ring-0 text-body-md transition-all" id="last_name" name="last_name" placeholder="Ex: Dupont" type="text"/>
+</div>
+</div>
+<!-- Sexe Selection -->
+<div class="space-y-xs">
+<label class="block text-label-md font-label-md text-on-surface-variant ml-xs">Sexe</label>
+<div class="flex gap-sm">
+<button class="flex-1 py-sm rounded-xl border-[1.5pt] border-outline-variant bg-surface text-body-md font-medium text-on-surface-variant hover:bg-surface-container-low transition-all" data-gender="M" onclick="selectGender(this)" type="button">Masculin</button>
+<button class="flex-1 py-sm rounded-xl border-[1.5pt] border-outline-variant bg-surface text-body-md font-medium text-on-surface-variant hover:bg-surface-container-low transition-all" data-gender="F" onclick="selectGender(this)" type="button">Féminin</button>
+</div>
+</div>
+<!-- Date de naissance -->
+<div class="space-y-xs">
+<label class="block text-label-md font-label-md text-on-surface-variant ml-xs" for="birth_date">Date de naissance</label>
+<div class="relative">
+<input class="w-full bg-surface border-outline-variant border-[1.5pt] rounded-xl px-md py-sm focus:border-primary focus:ring-0 text-body-md transition-all" id="birth_date" name="birth_date" type="date"/>
+</div>
+</div>
+<!-- Groupe -->
+<div class="space-y-xs">
+<label class="block text-label-md font-label-md text-on-surface-variant ml-xs" for="group">Groupe</label>
+<select class="w-full bg-surface border-outline-variant border-[1.5pt] rounded-xl px-md py-sm focus:border-primary focus:ring-0 text-body-md transition-all appearance-none" id="group" name="group">
+<option disabled="" selected="" value="">Choisir un groupe</option>
+<option value="juniors">Juniors (12-14 ans)</option>
+<option value="teens">Ados (15-17 ans)</option>
+<option value="young_adults">Jeunes Adultes (18+)</option>
+</select>
+</div>
+</div>
+<!-- Parents Information -->
+<div class="space-y-md pt-md">
+<h2 class="text-label-md font-label-md text-primary uppercase tracking-wider">Informations Parents</h2>
+<div class="bg-surface-container-low p-md rounded-2xl space-y-md border border-outline-variant/30">
+<!-- Nom Parent -->
+<div class="space-y-xs">
+<label class="block text-label-md font-label-md text-on-surface-variant ml-xs" for="parent_name">Nom complet du parent</label>
+<input class="w-full bg-surface border-outline-variant border-[1.5pt] rounded-xl px-md py-sm focus:border-primary focus:ring-0 text-body-md transition-all" id="parent_name" name="parent_name" placeholder="Ex: Marie Dupont" type="text"/>
+</div>
+<!-- Téléphone Parent -->
+<div class="space-y-xs">
+<label class="block text-label-md font-label-md text-on-surface-variant ml-xs" for="parent_phone">Téléphone</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-md text-on-surface-variant text-[20px]" data-icon="call">call</span>
+<input class="w-full bg-surface border-outline-variant border-[1.5pt] rounded-xl pl-11 pr-md py-sm focus:border-primary focus:ring-0 text-body-md transition-all" id="parent_phone" name="parent_phone" placeholder="06 00 00 00 00" type="tel"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Submit Button -->
+<div class="pt-xl sticky bottom-0 bg-gradient-to-t from-surface via-surface to-transparent pb-md">
+<button class="w-full bg-primary-container text-on-primary-container py-md px-lg rounded-xl font-bold text-body-lg shadow-warm active:scale-[0.98] active:opacity-90 transition-all" type="submit">
+                    Enregistrer l'adolescent
+                </button>
+</div>
+</form>
+</main>
+<!-- Bottom Navigation Bar (Hidden on this focused task screen as per "Suppression" rule) -->
+<script>
+        function selectGender(button) {
+            // Reset all buttons in the same container
+            const container = button.parentElement;
+            const buttons = container.querySelectorAll('button');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-primary-container', 'text-on-primary-container', 'border-primary-container');
+                btn.classList.add('bg-surface', 'text-on-surface-variant', 'border-outline-variant');
+            });
+
+            // Select clicked button
+            button.classList.remove('bg-surface', 'text-on-surface-variant', 'border-outline-variant');
+            button.classList.add('bg-primary-container', 'text-on-primary-container', 'border-primary-container');
+        }
+
+        // Form Submission Interaction
+        document.getElementById('add-youth-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+            
+            btn.innerHTML = '<span class="flex items-center justify-center gap-sm"><span class="material-symbols-outlined animate-spin" data-icon="sync">sync</span>Enregistrement...</span>';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.innerHTML = '<span class="flex items-center justify-center gap-sm"><span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>Enregistré avec succès !</span>';
+                btn.classList.replace('bg-primary-container', 'bg-emerald-600');
+                
+                setTimeout(() => {
+                    // Reset or Redirect logic here
+                    btn.innerText = originalText;
+                    btn.classList.replace('bg-emerald-600', 'bg-primary-container');
+                    btn.disabled = false;
+                    e.target.reset();
+                    // Reset gender buttons
+                    const genderBtns = document.querySelectorAll('[data-gender]');
+                    genderBtns.forEach(b => b.classList.remove('bg-primary-container', 'text-on-primary-container', 'border-primary-container'));
+                }, 2000);
+            }, 1500);
+        });
+    </script>
+</body></html>

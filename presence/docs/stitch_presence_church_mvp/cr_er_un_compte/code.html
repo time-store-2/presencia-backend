@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Créer un compte | Kindred Path</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#ffdbd2",
+                    "surface-variant": "#dfe0ff",
+                    "surface-bright": "#fbf8ff",
+                    "on-tertiary-container": "#dddbc8",
+                    "on-background": "#161a32",
+                    "inverse-surface": "#2b2e48",
+                    "on-error": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#7c2e19",
+                    "on-tertiary-fixed": "#1c1c11",
+                    "secondary": "#9a442d",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#49483b",
+                    "primary": "#0f5238",
+                    "tertiary-fixed-dim": "#c9c7b5",
+                    "secondary-container": "#fc9174",
+                    "surface-tint": "#2c694e",
+                    "on-secondary-container": "#742814",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#dfe0ff",
+                    "primary-container": "#2d6a4f",
+                    "on-primary-container": "#a8e7c5",
+                    "inverse-on-surface": "#f1efff",
+                    "background": "#fbf8ff",
+                    "primary-fixed": "#b1f0ce",
+                    "on-primary-fixed-variant": "#0e5138",
+                    "error-container": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#95d4b3",
+                    "surface-container": "#edecff",
+                    "surface-container-high": "#e6e6ff",
+                    "on-tertiary-fixed-variant": "#48473a",
+                    "on-secondary-fixed": "#3c0800",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#404943",
+                    "surface": "#fbf8ff",
+                    "secondary-fixed-dim": "#ffb4a1",
+                    "on-surface": "#161a32",
+                    "surface-container-low": "#f4f2ff",
+                    "tertiary-fixed": "#e6e3d0",
+                    "surface-dim": "#d6d8f9",
+                    "outline-variant": "#bfc9c1",
+                    "primary-fixed-dim": "#95d4b3",
+                    "tertiary-container": "#616051",
+                    "outline": "#707973",
+                    "on-primary-fixed": "#002114"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "8px",
+                    "xl": "80px",
+                    "md": "24px",
+                    "lg": "48px",
+                    "xs": "4px",
+                    "sm": "12px",
+                    "gutter": "24px",
+                    "container-max": "1200px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .password-segment { height: 4px; border-radius: 2px; flex: 1; background-color: #E2E8F0; transition: all 0.3s ease; }
+        .password-segment.active-weak { background-color: #EF4444; }
+        .password-segment.active-fair { background-color: #F59E0B; }
+        .password-segment.active-good { background-color: #10B981; }
+        .password-segment.active-strong { background-color: #059669; }
+        
+        .role-radio:checked + label {
+            border-color: #2D6A4F;
+            background-color: rgba(45, 106, 79, 0.05);
+        }
+        
+        /* Glassmorphism subtle effect for card */
+        .auth-card {
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#FAFAF8] dark:bg-surface-dim min-h-screen flex items-center justify-center p-gutter">
+<!-- Top Navigation Suppressed for Login/Signup per instructions -->
+<main class="w-full max-w-[440px] animate-in fade-in slide-in-from-bottom-4 duration-700">
+<!-- Logo Section -->
+<div class="flex flex-col items-center mb-8">
+<div class="w-16 h-16 bg-[#2D6A4F] rounded-2xl flex items-center justify-center shadow-lg mb-6 transform hover:rotate-6 transition-transform">
+<span class="material-symbols-outlined text-white text-4xl" data-icon="fact_check" style="font-variation-settings: 'FILL' 1;">fact_check</span>
+</div>
+<h1 class="font-headline-md text-[26px] font-extrabold text-[#1A1A1A] dark:text-on-primary-fixed mb-2">Créer un compte</h1>
+<p class="font-body-md text-on-surface-variant dark:text-tertiary-fixed-dim">Sauvegardez vos données partout</p>
+</div>
+<!-- Registration Form -->
+<div class="bg-white dark:bg-surface-container-low p-8 rounded-[20px] shadow-sm auth-card">
+<form action="#" class="space-y-5" method="POST" onsubmit="return false;">
+<!-- Full Name -->
+<div class="space-y-1.5">
+<label class="font-label-md text-on-surface-variant dark:text-tertiary-fixed-dim" for="fullname">Nom complet</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-outline" data-icon="person">person</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-low dark:bg-surface-dim border-none rounded-xl focus:ring-2 focus:ring-primary transition-all text-on-surface outline-none" id="fullname" name="fullname" placeholder="Jean Dupont" type="text"/>
+</div>
+</div>
+<!-- Email -->
+<div class="space-y-1.5">
+<label class="font-label-md text-on-surface-variant dark:text-tertiary-fixed-dim" for="email">Email</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-outline" data-icon="mail">mail</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-low dark:bg-surface-dim border-none rounded-xl focus:ring-2 focus:ring-primary transition-all text-on-surface outline-none" id="email" name="email" placeholder="nom@exemple.fr" type="email"/>
+</div>
+</div>
+<!-- Password -->
+<div class="space-y-1.5">
+<label class="font-label-md text-on-surface-variant dark:text-tertiary-fixed-dim" for="password">Mot de passe</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-outline" data-icon="lock">lock</span>
+<input class="w-full pl-12 pr-12 py-3 bg-surface-container-low dark:bg-surface-dim border-none rounded-xl focus:ring-2 focus:ring-primary transition-all text-on-surface outline-none" id="password" name="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 text-outline hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</div>
+<!-- Password Strength Indicator -->
+<div class="flex gap-1.5 mt-2 px-1">
+<div class="password-segment active-weak"></div>
+<div class="password-segment active-fair"></div>
+<div class="password-segment active-good"></div>
+<div class="password-segment"></div>
+</div>
+</div>
+<!-- Confirm Password -->
+<div class="space-y-1.5">
+<label class="font-label-md text-on-surface-variant dark:text-tertiary-fixed-dim" for="confirm-password">Confirmer le mot de passe</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-outline" data-icon="lock">lock</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-low dark:bg-surface-dim border-none rounded-xl focus:ring-2 focus:ring-primary transition-all text-on-surface outline-none" id="confirm-password" name="confirm-password" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<!-- Role Selection -->
+<div class="space-y-3 pt-2">
+<p class="font-label-md text-on-surface-variant dark:text-tertiary-fixed-dim">Votre rôle</p>
+<div class="grid grid-cols-2 gap-4">
+<div class="relative">
+<input checked="" class="role-radio hidden" id="role-moniteur" name="role" type="radio"/>
+<label class="flex flex-col items-center justify-center p-4 border-2 border-outline-variant rounded-xl cursor-pointer hover:border-primary transition-all text-center" for="role-moniteur">
+<span class="material-symbols-outlined text-primary mb-2" data-icon="menu_book">menu_book</span>
+<span class="font-label-md text-on-surface">Moniteur</span>
+</label>
+</div>
+<div class="relative">
+<input class="role-radio hidden" id="role-admin" name="role" type="radio"/>
+<label class="flex flex-col items-center justify-center p-4 border-2 border-outline-variant rounded-xl cursor-pointer hover:border-primary transition-all text-center" for="role-admin">
+<span class="material-symbols-outlined text-primary mb-2" data-icon="shield">shield</span>
+<span class="font-label-md text-on-surface">Administrateur</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Terms -->
+<div class="flex items-start gap-3 py-2">
+<input class="mt-1 w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary" id="terms" type="checkbox"/>
+<label class="font-label-sm text-on-surface-variant dark:text-tertiary-fixed-dim leading-tight" for="terms">
+                        J'accepte les <a class="text-primary-container dark:text-primary-fixed-dim font-semibold hover:underline" href="#">Conditions d'utilisation</a> et la <a class="text-primary-container dark:text-primary-fixed-dim font-semibold hover:underline" href="#">Politique de confidentialité</a>.
+                    </label>
+</div>
+<!-- Submit Button -->
+<button class="w-full bg-[#2D6A4F] hover:bg-primary-fixed-dim active:scale-[0.98] transition-all py-4 rounded-xl text-white font-label-md shadow-md shadow-primary/20" type="submit">
+                    Créer mon compte
+                </button>
+<!-- Separator -->
+<div class="relative flex items-center py-4">
+<div class="flex-grow border-t border-outline-variant"></div>
+<span class="flex-shrink mx-4 font-label-sm text-outline">ou</span>
+<div class="flex-grow border-t border-outline-variant"></div>
+</div>
+<!-- Social Buttons -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 border border-outline-variant hover:bg-surface-container transition-colors py-3 rounded-xl bg-white" type="button">
+<img alt="Google" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhg1ZW9WBxRzcUVn63xR_8Cw6iKmL83F4R_O0vnwnLgMmTLyvDX0R_CSCY4IC2gphB_pQVilF3978Pus7XPhymCA6hGTL1aCPe9B4zrGQHhz7TjRGr1Gcyl6wjpyom6iBivNHOZc7kOLE9mCOiYm7nEp9-wA7KmX11uiMahhr-WV2x6YwKoEWIIB6ylWUpZwOmaTzwAHZZUqfegAQva41DobOnxK4BEuZmfJGCV5GS1oO1aZka-ssKKUWBw-IUCzbVu1jhn4oQ"/>
+<span class="font-label-sm text-on-surface">Google</span>
+</button>
+<button class="flex items-center justify-center gap-2 bg-black hover:bg-neutral-800 transition-colors py-3 rounded-xl text-white" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="apple" style="font-variation-settings: 'FILL' 1;">apps</span>
+<span class="font-label-sm">Apple</span>
+</button>
+</div>
+</form>
+</div>
+<!-- Footer Link -->
+<p class="text-center mt-8 font-body-md text-on-surface-variant dark:text-tertiary-fixed-dim">
+            Déjà un compte ? <a class="text-primary-container dark:text-primary-fixed-dim font-bold hover:underline" href="/auth/connexion">Se connecter</a>
+</p>
+</main>
+<!-- Background Decorative Elements -->
+<div class="fixed top-[-10%] right-[-10%] w-[40%] h-[40%] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="fixed bottom-[-10%] left-[-10%] w-[30%] h-[30%] bg-secondary/5 rounded-full blur-[100px] pointer-events-none"></div>
+<script>
+        // Simple Interaction Logic
+        document.querySelectorAll('.role-radio').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                // Potential feedback or UI state changes
+            });
+        });
+
+        // Toggle Password Visibility
+        const togglePass = document.querySelector('button .material-symbols-outlined[data-icon="visibility"]');
+        if (togglePass) {
+            togglePass.parentElement.addEventListener('click', () => {
+                const input = document.getElementById('password');
+                const isPass = input.type === 'password';
+                input.type = isPass ? 'text' : 'password';
+                togglePass.textContent = isPass ? 'visibility_off' : 'visibility';
+            });
+        }
+    </script>
+</body></html>

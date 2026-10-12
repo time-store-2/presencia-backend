@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#614000",
+                    "on-error": "#ffffff",
+                    "secondary": "#805600",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed": "#25005a",
+                    "surface-variant": "#f0dfd8",
+                    "surface-bright": "#fff8f6",
+                    "secondary-fixed": "#ffddaf",
+                    "on-background": "#221a16",
+                    "inverse-surface": "#382e2a",
+                    "on-tertiary-container": "#fffcff",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#f0dfd8",
+                    "on-secondary-container": "#704b00",
+                    "background": "#fff8f6",
+                    "primary-container": "#c2522b",
+                    "on-primary-container": "#fffcff",
+                    "inverse-on-surface": "#ffede6",
+                    "tertiary-fixed-dim": "#d2bcff",
+                    "secondary-container": "#fdba49",
+                    "tertiary": "#6949ab",
+                    "primary": "#a13a15",
+                    "surface-tint": "#a43c17",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#f6e5de",
+                    "on-tertiary-fixed-variant": "#533294",
+                    "on-secondary-fixed": "#281800",
+                    "on-surface-variant": "#57423b",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#ffdbd0",
+                    "on-primary-fixed-variant": "#842600",
+                    "surface-container": "#fceae3",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#ffb59d",
+                    "tertiary-container": "#8262c6",
+                    "outline": "#8b716a",
+                    "on-primary-fixed": "#390b00",
+                    "primary-fixed-dim": "#ffb59d",
+                    "surface": "#fff8f6",
+                    "secondary-fixed-dim": "#fdba49",
+                    "on-surface": "#221a16",
+                    "tertiary-fixed": "#eaddff",
+                    "surface-dim": "#e7d7d0",
+                    "outline-variant": "#dec0b7",
+                    "surface-container-low": "#fff1eb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "gutter": "12px",
+                    "unit": "4px",
+                    "container-margin": "20px",
+                    "xs": "4px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-inner-glow {
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md text-body-md overflow-hidden">
+<!-- Main Canvas -->
+<main class="flex-1 flex flex-col relative px-container-margin pt-xl pb-container-margin">
+<!-- Illustration Area (Top half) -->
+<div class="flex-1 flex flex-col justify-center items-center relative space-y-lg">
+<!-- Background Decorative Shape -->
+<div class="absolute w-64 h-64 bg-primary-fixed/20 rounded-full blur-3xl -z-10 animate-pulse"></div>
+<!-- Graphic Illustration (Bento-like composition) -->
+<div class="w-full grid grid-cols-6 grid-rows-6 gap-sm h-80 max-w-sm mx-auto">
+<!-- Large Chart Card -->
+<div class="col-span-4 row-span-4 bg-surface rounded-xl shadow-[0_4px_12px_rgba(122,99,88,0.08)] p-md flex flex-col border border-outline-variant/30 animate-float">
+<div class="flex justify-between items-center mb-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Croissance</span>
+<span class="material-symbols-outlined text-primary text-body-lg">trending_up</span>
+</div>
+<div class="flex-1 flex items-end space-x-unit">
+<div class="flex-1 bg-primary/20 rounded-t-sm h-1/3"></div>
+<div class="flex-1 bg-primary/40 rounded-t-sm h-1/2"></div>
+<div class="flex-1 bg-primary/60 rounded-t-sm h-2/3"></div>
+<div class="flex-1 bg-primary rounded-t-sm h-full"></div>
+</div>
+</div>
+<!-- Notification Alert Card -->
+<div class="col-span-2 row-span-3 bg-secondary-container rounded-xl shadow-[0_4px_12px_rgba(122,99,88,0.08)] p-sm flex flex-col items-center justify-center space-y-xs animate-float" style="animation-delay: 0.5s;">
+<div class="w-10 h-10 rounded-full bg-on-secondary/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+</div>
+<div class="h-1.5 w-8 bg-on-secondary-container/20 rounded-full"></div>
+</div>
+<!-- Stats Bubble -->
+<div class="col-span-2 row-span-2 bg-tertiary-container rounded-xl shadow-[0_4px_12px_rgba(122,99,88,0.08)] p-sm flex items-center justify-center animate-float" style="animation-delay: 1s;">
+<div class="text-on-tertiary font-bold text-headline-md">+15%</div>
+</div>
+<!-- Icon Badge -->
+<div class="col-span-2 row-span-3 bg-surface-container-high rounded-xl flex items-center justify-center animate-float" style="animation-delay: 0.2s;">
+<span class="material-symbols-outlined text-outline text-display-lg">insights</span>
+</div>
+<!-- Small Floating Pill -->
+<div class="col-span-2 row-span-1 bg-inverse-surface rounded-full flex items-center px-sm py-unit space-x-xs self-end mb-sm animate-float" style="animation-delay: 1.5s;">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="h-1 w-10 bg-surface/30 rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Content Area (Bottom half) -->
+<div class="mt-xl space-y-md text-center max-w-sm mx-auto">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Analysez l'engagement</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant px-sm">
+                Suivez la croissance de votre communauté grâce à des graphiques et recevez des alertes pour ne perdre aucun jeune.
+            </p>
+</div>
+<!-- Footer Actions -->
+<div class="mt-auto pt-xl flex flex-col items-center space-y-lg">
+<!-- Pagination Dots -->
+<div class="flex space-x-sm">
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+<div class="w-6 h-2 rounded-full bg-primary transition-all"></div>
+</div>
+<!-- CTA Button -->
+<button class="w-full max-w-sm bg-primary text-on-primary py-md rounded-xl font-headline-md text-headline-md shadow-[0_4px_12px_rgba(161,58,21,0.25)] active:scale-95 transition-transform duration-150 flex items-center justify-center space-x-sm">
+<span>Commencer l'aventure</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<span class="font-label-md text-label-md text-on-surface-variant pb-md">Étape 3 sur 3</span>
+</div>
+</main>
+<!-- Overlay Micro-interaction logic -->
+<script>
+        document.querySelector('button').addEventListener('click', function() {
+            // Success ripple or transition could go here
+            this.classList.add('opacity-90');
+            setTimeout(() => {
+                this.classList.remove('opacity-90');
+            }, 200);
+        });
+    </script>
+</body></html>

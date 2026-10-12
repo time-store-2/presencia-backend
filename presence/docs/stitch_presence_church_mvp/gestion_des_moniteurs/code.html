@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .bottom-sheet-overlay {
+            background: rgba(0, 0, 0, 0.6);
+            transition: opacity 0.3s ease;
+        }
+        .bottom-sheet {
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+        }
+        .bottom-sheet.open {
+            transform: translateY(0);
+        }
+        @keyframes pulse-dot {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(15, 82, 56, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(15, 82, 56, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(15, 82, 56, 0); }
+        }
+        .status-dot {
+            animation: pulse-dot 2s infinite;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#ffdbd2",
+                        "surface-variant": "#dfe0ff",
+                        "surface-bright": "#fbf8ff",
+                        "on-tertiary-container": "#dddbc8",
+                        "on-background": "#161a32",
+                        "inverse-surface": "#2b2e48",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#7c2e19",
+                        "on-tertiary-fixed": "#1c1c11",
+                        "secondary": "#9a442d",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#49483b",
+                        "primary": "#0f5238",
+                        "tertiary-fixed-dim": "#c9c7b5",
+                        "secondary-container": "#fc9174",
+                        "surface-tint": "#2c694e",
+                        "on-secondary-container": "#742814",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#dfe0ff",
+                        "primary-container": "#2d6a4f",
+                        "on-primary-container": "#a8e7c5",
+                        "inverse-on-surface": "#f1efff",
+                        "background": "#fbf8ff",
+                        "primary-fixed": "#b1f0ce",
+                        "on-primary-fixed-variant": "#0e5138",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#95d4b3",
+                        "surface-container": "#edecff",
+                        "surface-container-high": "#e6e6ff",
+                        "on-tertiary-fixed-variant": "#48473a",
+                        "on-secondary-fixed": "#3c0800",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#404943",
+                        "surface": "#fbf8ff",
+                        "secondary-fixed-dim": "#ffb4a1",
+                        "on-surface": "#161a32",
+                        "surface-container-low": "#f4f2ff",
+                        "tertiary-fixed": "#e6e3d0",
+                        "surface-dim": "#d6d8f9",
+                        "outline-variant": "#bfc9c1",
+                        "primary-fixed-dim": "#95d4b3",
+                        "tertiary-container": "#616051",
+                        "outline": "#707973",
+                        "on-primary-fixed": "#002114"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "xl": "80px",
+                        "md": "24px",
+                        "lg": "48px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "gutter": "24px",
+                        "container-max": "1200px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-dim text-on-surface transition-colors duration-300 pb-24 md:pb-0">
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 w-full z-50 bg-surface-dim shadow-sm flex justify-between items-center px-gutter h-16">
+<div class="flex items-center gap-3">
+<h1 class="font-headline-md text-headline-md text-primary-fixed-dim">Moniteurs</h1>
+<span class="bg-primary-container text-on-primary-container px-3 py-0.5 rounded-full text-label-sm font-label-sm">5 membres</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-primary text-on-primary px-5 py-2 rounded-full font-label-md text-label-md flex items-center gap-2 hover:bg-primary-container transition-colors active:scale-95" onclick="toggleSheet()">
+<span class="material-symbols-outlined text-[20px]">person_add</span>
+                Inviter
+            </button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="User" data-alt="A professional headshot of a team manager in a creative office setting, soft natural lighting, high-end photography, focused and friendly expression, minimalist corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6ZmtSyqwuj4FGAoQtoRGHZ61rrpmcmjlYtx2kIG0RrQ4pvdUV0weZSVPuzk5aE003VjBuQ9FURjixSuqwspkO2aiX6GzyDP-U4eTW9y8dtZQbxK4SrZY7u-faabstnIkXkMyElxB_TjZpsgQ7ilfe5JJdwTKmrIN8TnK5rPuWNJ1Al2fi1Xo8vvIRNe0gMTMUqhf-GyQ5JgPB-Rl2zUicJI21a2pDJWgQqfXxd81ja6VM00Xsow6GrScSSGHQIcGJVpegT-rO"/>
+</div>
+</div>
+</header>
+<main class="pt-24 px-gutter max-w-container-max mx-auto space-y-8 pb-12">
+<!-- Role Info Banner -->
+<div class="bg-primary-container text-on-primary-container p-6 rounded-[24px] flex gap-4 items-start shadow-lg">
+<span class="material-symbols-outlined text-on-primary-container">info</span>
+<div class="space-y-1">
+<p class="font-label-md text-label-md">
+<span class="font-bold">Admins :</span> accès complet à la plateforme.
+                </p>
+<p class="font-label-md text-label-md">
+<span class="font-bold">Moniteurs :</span> accès limité aux appels et groupes assignés uniquement.
+                </p>
+</div>
+</div>
+<!-- Pending Invitations Section -->
+<section class="space-y-4">
+<h2 class="font-headline-md text-headline-md text-on-surface opacity-80 px-2">Invitations en attente</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<div class="bg-tertiary-fixed text-on-tertiary-fixed p-5 rounded-[24px] flex justify-between items-center border border-tertiary-fixed-dim/30">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary-container">mail</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold">lucas.bernard@email.com</p>
+<p class="text-xs opacity-70">Envoyé il y a 2 jours</p>
+</div>
+</div>
+<button class="text-error hover:bg-error-container/20 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">cancel</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Active Members List -->
+<section class="space-y-4">
+<h2 class="font-headline-md text-headline-md text-on-surface opacity-80 px-2">Membres actifs</h2>
+<div class="space-y-3">
+<!-- Member Row 1 -->
+<div class="glass-card p-4 rounded-[24px] flex flex-col md:flex-row md:items-center justify-between gap-4 hover:shadow-md transition-all group">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img alt="Sophie" class="w-12 h-12 rounded-full object-cover border border-white/10" data-alt="Close up portrait of a smiling professional woman, natural outdoor lighting, warm tones, high quality digital photography, background blurred organic greenery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2tGw2trhTAMmNc8qFFm9ZF575FhtGa_ZD_JwWBt7GKb_QcZuWYOjQkiHjNzQ9PzCGHiXhn7O0ctu7pPVb-eSH3IaP_YE2IEqC2oPpZ-cnNIEuqWaqiJYandUwmv_5NLGSRzagsG9vm4B-ICJkbIz4tbTUDmb6y9ChZUIehr2cHHtX0ClKW97pmtDvj60fJDtGmcARRPvHc0uuJ7hgXOc896cKtzj0R7j4TuYmNqqd1bo39eNWQ822afx-Jaa0k5Koj2JqtTDo"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-primary rounded-full border-2 border-surface-dim status-dot"></div>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface font-bold">Sophie Martin</h3>
+<p class="text-on-surface-variant text-sm">sophie.m@kindred.fr</p>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-3">
+<span class="bg-secondary-container/20 text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold border border-secondary-container/30 uppercase tracking-wider">Admin</span>
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-[10px] text-on-primary-container border-2 border-surface-dim" title="Tous les groupes">
+<span class="material-symbols-outlined text-sm">all_inclusive</span>
+</div>
+</div>
+<div class="hidden md:flex items-center gap-2 text-primary ml-4">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="text-xs font-bold">Actif</span>
+</div>
+</div>
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-high rounded-full"><span class="material-symbols-outlined text-on-surface-variant">edit</span></button>
+<button class="p-2 hover:bg-error-container/20 text-error rounded-full"><span class="material-symbols-outlined">delete</span></button>
+</div>
+</div>
+<!-- Member Row 2 -->
+<div class="glass-card p-4 rounded-[24px] flex flex-col md:flex-row md:items-center justify-between gap-4 hover:shadow-md transition-all group">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img alt="Thomas" class="w-12 h-12 rounded-full object-cover border border-white/10" data-alt="A portrait of a male monitor in his 30s, looking friendly and capable, minimalist warm office lighting, professional aesthetic, soft shadows, high definition detail." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUiP79A74XLGHKb2aCICv1Q3VybNyEuiGHIWt54xIJjQDn7OM1Kn3xmM6YNbcnvqfk99Fg3LbJ5FHJdDhvD_kLJ27St1Xyfo0ILHXmalFx5iGw1_zgAS2lcMS0D2R15aG-FeIxKMuOOnIEN1OsX0ujELHXq59DOzsaS_qvAOC7R9xoIXM0GMKqxWl_WtEgDHTx1MrnbcaYU8tnKxVz-CLJ8vwalBmI30qd7HOIfLJ3-hFhREVhQsyGqreNQkt7LMQWxuJ8BRJi"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-primary rounded-full border-2 border-surface-dim status-dot"></div>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface font-bold">Thomas Leroy</h3>
+<p class="text-on-surface-variant text-sm">t.leroy@kindred.fr</p>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-3">
+<span class="bg-tertiary-container/20 text-on-tertiary-container px-3 py-1 rounded-full text-xs font-bold border border-tertiary-container/30 uppercase tracking-wider">Moniteur</span>
+<div class="flex items-center gap-1">
+<span class="text-xs text-on-surface-variant">Groupes :</span>
+<span class="bg-surface-container px-2 py-0.5 rounded text-[10px] text-on-surface">Explorateurs</span>
+<span class="bg-surface-container px-2 py-0.5 rounded text-[10px] text-on-surface">Artistes</span>
+</div>
+<div class="hidden md:flex items-center gap-2 text-primary ml-4">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="text-xs font-bold">Actif</span>
+</div>
+</div>
+<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-high rounded-full"><span class="material-symbols-outlined text-on-surface-variant">edit</span></button>
+<button class="p-2 hover:bg-error-container/20 text-error rounded-full"><span class="material-symbols-outlined">delete</span></button>
+</div>
+</div>
+<!-- More rows as needed... -->
+</div>
+</section>
+</main>
+<!-- Bottom Sheet (Invitation) -->
+<div class="fixed inset-0 bottom-sheet-overlay opacity-0 pointer-events-none z-[60]" id="overlay" onclick="toggleSheet()"></div>
+<div class="fixed bottom-0 left-0 right-0 bg-surface-container-low z-[70] bottom-sheet rounded-t-[32px] max-h-[795px] overflow-y-auto" id="sheet">
+<div class="w-12 h-1.5 bg-outline-variant/30 mx-auto mt-4 rounded-full"></div>
+<div class="p-8 space-y-8 max-w-lg mx-auto">
+<header class="text-center">
+<h2 class="font-headline-md text-headline-md text-primary-fixed-dim">Nouvelle Invitation</h2>
+<p class="text-on-surface-variant">Invitez un nouveau membre dans l'équipe</p>
+</header>
+<div class="space-y-6">
+<!-- Email Field -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md ml-1">Adresse email</label>
+<input class="w-full bg-surface-container-high border-2 border-transparent focus:border-primary-container focus:ring-0 rounded-2xl p-4 text-on-surface transition-all" placeholder="moniteur@email.com" type="email"/>
+</div>
+<!-- Role Selection -->
+<div class="space-y-3">
+<label class="font-label-md text-label-md ml-1">Rôle</label>
+<div class="grid grid-cols-2 gap-4">
+<label class="cursor-pointer">
+<input checked="" class="hidden peer" name="role" type="radio"/>
+<div class="p-4 rounded-2xl border-2 border-surface-container-highest peer-checked:border-primary-container peer-checked:bg-primary-container/10 transition-all text-center">
+<span class="font-label-md text-label-md block">Moniteur</span>
+<span class="text-[10px] opacity-60">Accès restreint</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="hidden peer" name="role" type="radio"/>
+<div class="p-4 rounded-2xl border-2 border-surface-container-highest peer-checked:border-secondary-container peer-checked:bg-secondary-container/10 transition-all text-center">
+<span class="font-label-md text-label-md block">Admin</span>
+<span class="text-[10px] opacity-60">Gestion complète</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Group Checkboxes -->
+<div class="space-y-3">
+<label class="font-label-md text-label-md ml-1">Assigner des groupes</label>
+<div class="space-y-2 max-h-40 overflow-y-auto pr-2 custom-scrollbar">
+<label class="flex items-center justify-between p-3 rounded-xl bg-surface-container hover:bg-surface-container-high transition-colors cursor-pointer">
+<span class="text-sm font-medium">Groupe Explorateurs</span>
+<input class="rounded text-primary focus:ring-primary" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-3 rounded-xl bg-surface-container hover:bg-surface-container-high transition-colors cursor-pointer">
+<span class="text-sm font-medium">Groupe Artistes</span>
+<input class="rounded text-primary focus:ring-primary" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-3 rounded-xl bg-surface-container hover:bg-surface-container-high transition-colors cursor-pointer">
+<span class="text-sm font-medium">Groupe Sportifs</span>
+<input class="rounded text-primary focus:ring-primary" type="checkbox"/>
+</label>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 rounded-2xl font-headline-md text-headline-md active:scale-[0.98] transition-all shadow-xl">
+                    Envoyer l'invitation
+                </button>
+</div>
+</div>
+</div>
+<!-- Bottom Nav Shell (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-surface-container dark:bg-surface-container-low rounded-t-xl shadow-[0_-4px_20px_0_rgba(15,82,56,0.15)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-tertiary-fixed-dim hover:bg-surface-container-highest transition-all p-2 rounded-full" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Accueil</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-tertiary-fixed-dim hover:bg-surface-container-highest transition-all p-2 rounded-full" href="#">
+<span class="material-symbols-outlined" data-icon="person_celebrate">person_celebrate</span>
+<span class="font-label-sm text-label-sm">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-tertiary-fixed-dim hover:bg-surface-container-highest transition-all p-2 rounded-full" href="#">
+<span class="material-symbols-outlined" data-icon="fact_check">fact_check</span>
+<span class="font-label-sm text-label-sm">Appel</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container dark:bg-primary-fixed-dim dark:text-on-primary-fixed rounded-full px-4 py-1 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-sm text-label-sm">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-tertiary-fixed-dim hover:bg-surface-container-highest transition-all p-2 rounded-full" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-sm text-label-sm">Paramètres</span>
+</a>
+</nav>
+<script>
+        function toggleSheet() {
+            const sheet = document.getElementById('sheet');
+            const overlay = document.getElementById('overlay');
+            
+            if (sheet.classList.contains('open')) {
+                sheet.classList.remove('open');
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+                overlay.classList.remove('opacity-100', 'pointer-events-auto');
+            } else {
+                sheet.classList.add('open');
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+                overlay.classList.add('opacity-100', 'pointer-events-auto');
+            }
+        }
+
+        // Close sheet on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const sheet = document.getElementById('sheet');
+                if (sheet.classList.contains('open')) toggleSheet();
+            }
+        });
+    </script>
+</body></html>

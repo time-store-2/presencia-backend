@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Presencia - Séances</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#221a16",
+                    "inverse-surface": "#382e2a",
+                    "on-tertiary-container": "#fffcff",
+                    "surface-variant": "#f0dfd8",
+                    "surface-bright": "#fff8f6",
+                    "secondary-fixed": "#ffddaf",
+                    "secondary": "#805600",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed": "#25005a",
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#614000",
+                    "on-error": "#ffffff",
+                    "surface-tint": "#a43c17",
+                    "tertiary-fixed-dim": "#d2bcff",
+                    "secondary-container": "#fdba49",
+                    "tertiary": "#6949ab",
+                    "primary": "#a13a15",
+                    "background": "#fff8f6",
+                    "primary-container": "#c2522b",
+                    "on-primary-container": "#fffcff",
+                    "inverse-on-surface": "#ffede6",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#f0dfd8",
+                    "on-secondary-container": "#704b00",
+                    "surface-container": "#fceae3",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#ffb59d",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#ffdbd0",
+                    "on-primary-fixed-variant": "#842600",
+                    "on-surface-variant": "#57423b",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#f6e5de",
+                    "on-tertiary-fixed-variant": "#533294",
+                    "on-secondary-fixed": "#281800",
+                    "tertiary-fixed": "#eaddff",
+                    "surface-dim": "#e7d7d0",
+                    "outline-variant": "#dec0b7",
+                    "surface-container-low": "#fff1eb",
+                    "surface": "#fff8f6",
+                    "secondary-fixed-dim": "#fdba49",
+                    "on-surface": "#221a16",
+                    "tertiary-container": "#8262c6",
+                    "outline": "#8b716a",
+                    "on-primary-fixed": "#390b00",
+                    "primary-fixed-dim": "#ffb59d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "12px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "unit": "4px",
+                    "container-margin": "20px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #FAF7F5;
+            font-family: 'Inter', sans-serif;
+            color: #221a16;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .student-card-shadow {
+            shadow-color: #7A6358;
+            box-shadow: 0 4px 12px rgba(122, 99, 88, 0.08);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #EDE3DE;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-on-background flex justify-between items-center px-container-margin py-md w-full sticky top-0 z-40">
+<div class="flex items-center gap-md">
+<button class="text-primary dark:text-primary-fixed-dim hover:bg-surface-container-low transition-colors p-xs rounded-full">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="text-headline-lg font-headline-lg font-bold text-primary dark:text-primary-fixed-dim">Presencia</h1>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="A professional portrait of a young male youth leader with a warm, welcoming smile. He is in a brightly lit modern office space with soft daylight and natural wood accents, reflecting a sense of radical hospitality and leadership. The style is contemporary and tactile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJlXSXw_K8j-_FkXINgfJcVYoW74Ru-roWrVzXc9LUqZhP-s4q96AfNmCxOlGvj2AAFBQ8GD4Ax45NTldkMu5HKxjSuqKoJC_vzxlOelPig9NXEo0ItoTmOEDIvx-cOktWBXwTaZIllXCKWpc_3gFQu4wCMIWUJu_mDKweH01xgDSLSrgVfElmSjRMUeB_Gm1YCeb3yw1VeKbKBFPGwTEv5pkjvm5ZmcAJt449sVgzluAKoKM85SGQvTyUAxO5sMNP4PmxUO94Rg"/>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow px-container-margin pb-32 pt-lg">
+<div class="max-w-screen-md mx-auto">
+<!-- Header Section -->
+<div class="mb-lg flex justify-between items-end">
+<div>
+<h2 class="text-headline-md font-headline-md text-on-background mb-xs">Historique des Séances</h2>
+<p class="text-body-md text-on-surface-variant">Retrouvez les appels passés par groupe.</p>
+</div>
+</div>
+<!-- Summary Card (Tonal Layering) -->
+<div class="bg-[#FDF0EB] rounded-xl p-md mb-xl flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="bg-primary/10 p-sm rounded-lg">
+<span class="material-symbols-outlined text-primary">calendar_month</span>
+</div>
+<div>
+<p class="text-label-md font-label-md text-primary">Ce mois-ci</p>
+<p class="text-headline-md font-headline-md">12 séances réalisées</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">trending_up</span>
+</div>
+<!-- Search/Filter Bar -->
+<div class="relative mb-lg">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-xl pr-md py-sm bg-white border border-[#EDE3DE] rounded-xl text-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="Rechercher une séance..." type="text"/>
+</div>
+<!-- Chronological List -->
+<div class="space-y-md">
+<!-- Group Header -->
+<p class="text-label-md font-label-md text-outline uppercase tracking-wider mt-xl mb-sm">Juin 2024</p>
+<!-- Séance Card 1 -->
+<div class="bg-white rounded-xl p-md student-card-shadow flex items-center justify-between border border-transparent hover:border-primary-container/20 transition-all cursor-pointer group">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-surface-container-low rounded-lg flex flex-col items-center justify-center text-primary border border-surface-variant">
+<span class="text-label-sm font-label-sm">15</span>
+<span class="text-label-md font-label-md font-bold">Juin</span>
+</div>
+<div>
+<h3 class="text-body-lg font-bold text-on-background group-hover:text-primary transition-colors">École du dimanche</h3>
+<p class="text-body-md text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">groups</span>
+                                Jeunes - Groupe A
+                            </p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-xs">
+<span class="bg-[#EAF5EF] text-[#2D7A56] px-sm py-xs rounded-full text-label-sm font-bold">32/47 Présents</span>
+<span class="text-label-sm text-outline">9:30 - 11:00</span>
+</div>
+</div>
+<!-- Séance Card 2 -->
+<div class="bg-white rounded-xl p-md student-card-shadow flex items-center justify-between border border-transparent hover:border-primary-container/20 transition-all cursor-pointer group">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-surface-container-low rounded-lg flex flex-col items-center justify-center text-primary border border-surface-variant">
+<span class="text-label-sm font-label-sm">12</span>
+<span class="text-label-md font-label-md font-bold">Juin</span>
+</div>
+<div>
+<h3 class="text-body-lg font-bold text-on-background group-hover:text-primary transition-colors">Réunion de prière</h3>
+<p class="text-body-md text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">groups</span>
+                                Leader Team
+                            </p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-xs">
+<span class="bg-[#EAF5EF] text-[#2D7A56] px-sm py-xs rounded-full text-label-sm font-bold">12/12 Présents</span>
+<span class="text-label-sm text-outline">19:00 - 20:30</span>
+</div>
+</div>
+<!-- Group Header -->
+<p class="text-label-md font-label-md text-outline uppercase tracking-wider mt-xl mb-sm">Mai 2024</p>
+<!-- Séance Card 3 -->
+<div class="bg-white rounded-xl p-md student-card-shadow flex items-center justify-between border border-transparent hover:border-primary-container/20 transition-all cursor-pointer group">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-surface-container-low rounded-lg flex flex-col items-center justify-center text-primary border border-surface-variant">
+<span class="text-label-sm font-label-sm">29</span>
+<span class="text-label-md font-label-md font-bold">Mai</span>
+</div>
+<div>
+<h3 class="text-body-lg font-bold text-on-background group-hover:text-primary transition-colors">Atelier Musique</h3>
+<p class="text-body-md text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">groups</span>
+                                Chorale Jeunes
+                            </p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-xs">
+<span class="bg-[#FEF3C7] text-[#D97706] px-sm py-xs rounded-full text-label-sm font-bold">18/25 Présents</span>
+<span class="text-label-sm text-outline">14:00 - 16:00</span>
+</div>
+</div>
+<!-- Séance Card 4 -->
+<div class="bg-white rounded-xl p-md student-card-shadow flex items-center justify-between border border-transparent hover:border-primary-container/20 transition-all cursor-pointer group">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-surface-container-low rounded-lg flex flex-col items-center justify-center text-primary border border-surface-variant">
+<span class="text-label-sm font-label-sm">22</span>
+<span class="text-label-md font-label-md font-bold">Mai</span>
+</div>
+<div>
+<h3 class="text-body-lg font-bold text-on-background group-hover:text-primary transition-colors">Soirée Louange</h3>
+<p class="text-body-md text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">groups</span>
+                                Tous Groupes
+                            </p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-xs">
+<span class="bg-[#EAF5EF] text-[#2D7A56] px-sm py-xs rounded-full text-label-sm font-bold">88/95 Présents</span>
+<span class="text-label-sm text-outline">18:30 - 21:00</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-md bg-primary text-on-primary w-14 h-14 rounded-2xl shadow-lg flex items-center justify-center hover:scale-105 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined text-[32px]">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-sm pb-safe pt-sm bg-surface/80 dark:bg-on-background/80 backdrop-blur-md shadow-[0_-4px_12px_rgba(122,99,88,0.08)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-sm py-xs" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm font-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-sm py-xs" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-sm font-label-sm">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-sm py-xs scale-90 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">how_to_reg</span>
+<span class="text-label-sm font-label-sm">Appel</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-sm py-xs" href="#">
+<span class="material-symbols-outlined">hub</span>
+<span class="text-label-sm font-label-sm">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-sm py-xs" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-sm font-label-sm">Paramètres</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.style.transform = 'scale(0.98)';
+                card.style.boxShadow = '0 2px 4px rgba(122, 99, 88, 0.04)';
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.transform = 'scale(1)';
+                card.style.boxShadow = '0 4px 12px rgba(122, 99, 88, 0.08)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'scale(1)';
+                card.style.boxShadow = '0 4px 12px rgba(122, 99, 88, 0.08)';
+            });
+        });
+    </script>
+</body></html>

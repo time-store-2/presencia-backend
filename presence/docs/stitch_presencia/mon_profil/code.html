@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profil Moniteur - Presencia</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#fff8f6",
+                        "inverse-surface": "#382e2a",
+                        "surface-container": "#fceae3",
+                        "surface": "#fff8f6",
+                        "on-primary-fixed": "#390b00",
+                        "inverse-on-surface": "#ffede6",
+                        "on-tertiary-fixed": "#25005a",
+                        "surface-container-high": "#f6e5de",
+                        "on-primary-container": "#fffcff",
+                        "on-surface-variant": "#57423b",
+                        "inverse-primary": "#ffb59d",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "outline": "#8b716a",
+                        "on-tertiary-fixed-variant": "#533294",
+                        "on-background": "#221a16",
+                        "on-secondary-container": "#704b00",
+                        "surface-container-highest": "#f0dfd8",
+                        "surface-variant": "#f0dfd8",
+                        "on-primary-fixed-variant": "#842600",
+                        "surface-container-low": "#fff1eb",
+                        "tertiary-fixed-dim": "#d2bcff",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#e7d7d0",
+                        "on-secondary-fixed-variant": "#614000",
+                        "tertiary-container": "#8262c6",
+                        "on-tertiary-container": "#fffcff",
+                        "primary-fixed-dim": "#ffb59d",
+                        "outline-variant": "#dec0b7",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#281800",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#ffdbd0",
+                        "secondary-fixed-dim": "#fdba49",
+                        "secondary-container": "#fdba49",
+                        "secondary": "#805600",
+                        "on-surface": "#221a16",
+                        "tertiary-fixed": "#eaddff",
+                        "surface-tint": "#a43c17",
+                        "primary": "#a13a15",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#ffddaf",
+                        "primary-container": "#c2522b",
+                        "tertiary": "#6949ab",
+                        "error-container": "#ffdad6",
+                        "background": "#fff8f6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "container-margin": "20px",
+                        "unit": "4px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #FAF7F5; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav-item {
+            @apply bg-primary-container text-on-primary-container rounded-xl;
+        }
+        .surface-card {
+            background-color: #FFFFFF;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(122, 99, 88, 0.08);
+        }
+        .custom-input {
+            border: 1.5px solid #EDE3DE;
+            border-radius: 12px;
+            transition: border-color 0.2s ease;
+        }
+        .custom-input:focus {
+            border-color: #a13a15;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(161, 58, 21, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="bg-surface flex justify-between items-center px-container-margin py-md w-full sticky top-0 z-40">
+<div class="flex items-center gap-md">
+<button class="text-primary hover:bg-surface-container-low p-sm rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="text-headline-lg font-headline-lg font-bold text-primary">Presencia</h1>
+</div>
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="A professional and friendly portrait of a young male youth leader with a warm smile, wearing a casual linen shirt. The lighting is soft and natural, reflecting a bright and welcoming atmosphere consistent with a modern community center or church. The background is slightly blurred with soft warm tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkYwEkmHoB6lc1Y_7ClskM7MSVE0eGmtyQcWH1dSw7B-6tqtfie7LgVQV6zjAT9G-DDJaLBJ073sY6MzJsDgiPeEh5A635lGqm0BpPAqXcfH6fetZsrLE9rx5jx0B_a6T5m5wo4HArX3stWwtHFylHTOSEcXUeBRMKndEhZ7xfi9Uf_-idmEilcCjEEvnMbNf7Hm1P7JB7dKW55q6Vbzyuisj8rjszU0ohQ38nRTG7uY_evY3MJiwOkuT5Sle57BxyWs8B0KHz7Q"/>
+</div>
+</div>
+</header>
+<main class="max-w-2xl mx-auto px-container-margin py-lg space-y-lg">
+<!-- Profile Header & Photo Selection -->
+<section class="flex flex-col items-center py-xl">
+<div class="relative group">
+<div class="w-32 h-32 rounded-full overflow-hidden ring-4 ring-white shadow-lg">
+<img alt="Large Profile" class="w-full h-full object-cover" data-alt="Close-up portrait of a young leader, looking confident and approachable. The style is warm and earthy with high-key lighting. The skin tones are natural, and the overall aesthetic is professional yet inviting, fitting the 'Radical Hospitality' brand identity. Soft terracotta and cream tones dominate the color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWRLUFJLLCBl8uK3qc6Pi3h1MRjG994FXhNVhTpLz0Z83ENGx1TILRCT7gXXKcyyMrpZ5mnj5Udv4PwEq6rRDBHFYotfjyKlJmGU_sO4sspJXSkrwqpusPP2lR-gZCqsGXNY3mJtNp0bTfTomeGYX1VID7dWg_UFHhz3PWjE5KLobN06FkjPbm3z2eaaNvPnGcPgd7uOiBB7F34Q7KqIM8OAD4KR5MDwt6bU4C6MmXlXeNgk2FyL6LoNSi7pyux5eZdwEt71e0YQ"/>
+</div>
+<button class="absolute bottom-1 right-1 bg-primary text-on-primary p-2 rounded-full shadow-lg hover:bg-primary-container transition-all active:scale-90">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+</div>
+<h2 class="mt-md text-headline-md font-headline-md text-on-background">Jean Dupont</h2>
+<p class="text-on-surface-variant text-body-md">Leader Jeunesse • Église de l'Espoir</p>
+</section>
+<!-- Personal Information Card -->
+<div class="surface-card p-lg space-y-lg">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="person">person</span>
+<h3 class="text-headline-md font-headline-md text-on-background">Informations Personnelles</h3>
+</div>
+<form class="space-y-md">
+<div class="space-y-unit">
+<label class="text-label-md font-label-md text-on-surface-variant ml-unit">Nom complet</label>
+<input class="custom-input w-full p-md text-body-md bg-surface-container-lowest" placeholder="Votre nom" type="text" value="Jean Dupont"/>
+</div>
+<div class="space-y-unit">
+<label class="text-label-md font-label-md text-on-surface-variant ml-unit">Adresse email</label>
+<input class="custom-input w-full p-md text-body-md bg-surface-container-lowest" placeholder="votre@email.com" type="email" value="jean.dupont@eglise.fr"/>
+</div>
+<div class="space-y-unit">
+<label class="text-label-md font-label-md text-on-surface-variant ml-unit">Église locale</label>
+<input class="custom-input w-full p-md text-body-md bg-surface-container-lowest" placeholder="Nom de l'église" type="text" value="Église de l'Espoir, Paris"/>
+</div>
+<button class="w-full bg-primary text-on-primary py-md rounded-xl font-semibold shadow-md hover:opacity-90 active:scale-95 transition-all mt-md" type="submit">
+                    Enregistrer les modifications
+                </button>
+</form>
+</div>
+<!-- Security Section -->
+<div class="surface-card p-lg space-y-lg">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="lock">lock</span>
+<h3 class="text-headline-md font-headline-md text-on-background">Sécurité</h3>
+</div>
+<button class="w-full flex items-center justify-between p-md bg-surface-container-low rounded-xl hover:bg-surface-container-high transition-colors group">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="password">password</span>
+<span class="text-body-md font-medium">Changer le mot de passe</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<!-- Account Actions -->
+<div class="space-y-md pt-md">
+<button class="w-full flex items-center justify-center gap-sm py-md text-error font-semibold hover:bg-error-container/20 rounded-xl transition-colors border-2 border-transparent hover:border-error-container">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Se déconnecter
+            </button>
+<p class="text-center text-label-sm text-on-surface-variant opacity-60">
+                Presencia v2.4.0 • Développé avec ❤️ pour l'Église
+            </p>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-sm pb-6 pt-sm bg-surface/80 backdrop-blur-md shadow-[0_-4px_12px_rgba(122,99,88,0.08)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-sm py-xs hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-sm font-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-sm py-xs hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-label-sm font-label-sm mt-1">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-sm py-xs hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="how_to_reg">how_to_reg</span>
+<span class="text-label-sm font-label-sm mt-1">Appel</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-sm py-xs hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span class="text-label-sm font-label-sm mt-1">Groupes</span>
+</a>
+<!-- Active Tab: Paramètres -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-md py-xs scale-95 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="text-label-sm font-label-sm mt-1">Paramètres</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for input fields
+        document.querySelectorAll('.custom-input').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.querySelector('label').classList.add('text-primary');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.querySelector('label').classList.remove('text-primary');
+            });
+        });
+
+        // Form submission prevention for demo
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = 'Enregistrement...';
+            btn.classList.add('opacity-80');
+            
+            setTimeout(() => {
+                btn.innerHTML = 'Succès !';
+                btn.classList.replace('bg-primary', 'bg-emerald-600');
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.replace('bg-emerald-600', 'bg-primary');
+                    btn.classList.remove('opacity-80');
+                }, 2000);
+            }, 1000);
+        });
+    </script>
+</body></html>

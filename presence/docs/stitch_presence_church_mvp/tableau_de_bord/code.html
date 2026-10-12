@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard - Youth Management</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#cfe9d8",
+                    "outline": "#707973",
+                    "primary-fixed-dim": "#95d4b3",
+                    "on-error-container": "#93000a",
+                    "tertiary-container": "#8d4d4e",
+                    "surface-container": "#eceeea",
+                    "surface-container-highest": "#e1e3df",
+                    "error-container": "#ffdad6",
+                    "background": "#f8faf6",
+                    "on-primary-fixed-variant": "#0e5138",
+                    "on-tertiary-fixed": "#390b0e",
+                    "on-tertiary-fixed-variant": "#6f3537",
+                    "inverse-on-surface": "#eff1ed",
+                    "surface-variant": "#e1e3df",
+                    "surface-container-low": "#f2f4f0",
+                    "inverse-surface": "#2e312f",
+                    "inverse-primary": "#95d4b3",
+                    "on-primary-fixed": "#002114",
+                    "secondary-container": "#cfe9d8",
+                    "surface": "#f8faf6",
+                    "on-secondary": "#ffffff",
+                    "surface-bright": "#f8faf6",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#a8e7c5",
+                    "on-primary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-background": "#191c1a",
+                    "on-surface-variant": "#404943",
+                    "secondary-fixed-dim": "#b3ccbd",
+                    "surface-container-high": "#e7e9e5",
+                    "on-secondary-fixed": "#092016",
+                    "secondary": "#4c6357",
+                    "tertiary-fixed": "#ffdad9",
+                    "outline-variant": "#bfc9c1",
+                    "on-surface": "#191c1a",
+                    "on-tertiary-container": "#ffcfce",
+                    "surface-dim": "#d8dbd7",
+                    "primary-fixed": "#b1f0ce",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed-variant": "#354c3f",
+                    "on-secondary-container": "#526a5c",
+                    "primary": "#0f5238",
+                    "tertiary": "#713638",
+                    "surface-tint": "#2c694e",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb3b3",
+                    "primary-container": "#2d6a4f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "margin-mobile": "20px",
+                    "xl": "32px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "md": "16px",
+                    "gutter": "16px",
+                    "unit": "4px",
+                    "margin-desktop": "40px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "display": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "label-bold": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-lg": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "display": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "headline-md": ["20px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                    "label-bold": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["22px", {"lineHeight": "1.3", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f8faf6;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid #E8E8E4;
+        }
+        .presence-card-shadow {
+            box-shadow: 0 10px 30px -10px rgba(15, 82, 56, 0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="pb-32">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-surface dark:bg-surface">
+<div class="flex items-center justify-between px-margin-mobile py-md w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/10">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a young adult youth leader with a friendly and welcoming expression. The portrait is captured with soft, natural lighting in a modern, brightly lit office environment that conveys a sense of community and warmth. The overall aesthetic is clean, minimalist, and trustworthy, matching a professional church management platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEuVyVZTEK4zxxOIQciE1tKGGpMYg0J0NO8MdD6iaOXdtYY5I2DLVyJm_AkvlgZa__52mD34uNAcQvDtDvtiwYPtpGKmtmbTGCKSCz5NymRYxanUzZCMBHPoSE3p783C9ytU-7xTR_H6W5b6imi-RGTlM2fGGnL4Rsl5ISPLaadpOcJj6qGERaQkAsRIFnhT9nvGgQ1_l0TUYeB_4dj6zKhNX69Zw3n6DKg1k9AXVdTq2fkGeGbuZBMqfEsgypTZTwPMLfBD0L"/>
+</div>
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-outline">Bonjour 👋</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<main class="px-margin-mobile max-w-7xl mx-auto">
+<!-- Title & Date Section -->
+<section class="mt-4 mb-xl">
+<h1 class="font-headline-lg text-headline-lg text-on-background">Tableau de bord</h1>
+<p class="font-body-md text-body-md text-outline mt-1">Dimanche 15 juin 2025</p>
+</section>
+<!-- Large Feature Card: Presence -->
+<section class="mb-xl">
+<div class="bg-primary p-lg rounded-[20px] text-white presence-card-shadow relative overflow-hidden">
+<!-- Decorative background elements -->
+<div class="absolute -right-8 -top-8 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+<div class="relative z-10">
+<span class="font-label-bold text-label-bold uppercase tracking-wider opacity-80">Présence du jour</span>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="text-5xl font-extrabold tracking-tight">68%</span>
+<span class="font-body-md opacity-90">en hausse</span>
+</div>
+<p class="font-body-md text-body-md mt-sm opacity-90">32 présents sur 47 adolescents</p>
+<div class="mt-lg">
+<div class="w-full h-2 bg-white/20 rounded-full overflow-hidden">
+<div class="h-full bg-white rounded-full transition-all duration-1000" style="width: 68%;"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Small Stats Grid -->
+<section class="grid grid-cols-3 gap-sm mb-xl">
+<div class="bg-[#D8F3DC] p-md rounded-xl flex flex-col items-center justify-center text-center">
+<span class="font-headline-md text-headline-md text-primary">32</span>
+<span class="font-label-md text-label-md text-primary/80">Présents</span>
+</div>
+<div class="bg-[#FDECEA] p-md rounded-xl flex flex-col items-center justify-center text-center">
+<span class="font-headline-md text-headline-md text-[#C0392B]">10</span>
+<span class="font-label-md text-label-md text-[#C0392B]/80">Absents</span>
+</div>
+<div class="bg-[#F5EDE4] p-md rounded-xl flex flex-col items-center justify-center text-center">
+<span class="font-headline-md text-headline-md text-[#B5835A]">5</span>
+<span class="font-label-md text-label-md text-[#B5835A]/80">Retards</span>
+</div>
+</section>
+<!-- Quick Actions -->
+<section class="mb-xl">
+<h2 class="font-headline-md text-headline-md mb-md">Actions rapides</h2>
+<div class="grid grid-cols-2 gap-md">
+<button class="bg-primary text-white p-lg rounded-xl flex flex-col items-center gap-sm active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined" data-icon="clipboard_check">calendar_check</span>
+<span class="font-label-bold text-label-bold">Faire l'appel</span>
+</button>
+<button class="bg-surface-container-lowest border border-outline-variant p-lg rounded-xl flex flex-col items-center gap-sm active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-primary" data-icon="person_add">person_add</span>
+<span class="font-label-bold text-label-bold text-primary">Ajouter</span>
+</button>
+</div>
+</section>
+<!-- Recent Sessions -->
+<section class="mb-xl">
+<div class="flex items-center justify-between mb-md">
+<h2 class="font-headline-md text-headline-md">Séances récentes</h2>
+<button class="text-primary font-label-bold text-label-bold">Voir tout</button>
+</div>
+<div class="space-y-sm">
+<!-- Session Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-[20px] flex items-center justify-between hover:bg-surface-container-low transition-colors duration-200">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-secondary-container rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="church">church</span>
+</div>
+<div>
+<h3 class="font-body-lg font-bold text-on-background">École du dimanche</h3>
+<p class="font-label-md text-outline">Dimanche 15 juin</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-body-md font-bold text-primary">32 / 47</span>
+<div class="flex gap-1 mt-1 justify-end">
+<div class="w-1 h-1 rounded-full bg-primary"></div>
+<div class="w-1 h-1 rounded-full bg-primary"></div>
+<div class="w-1 h-1 rounded-full bg-outline-variant"></div>
+</div>
+</div>
+</div>
+<!-- Session Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-[20px] flex items-center justify-between hover:bg-surface-container-low transition-colors duration-200 opacity-80">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-secondary-container rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+</div>
+<div>
+<h3 class="font-body-lg font-bold text-on-background">Réunion de groupe</h3>
+<p class="font-label-md text-outline">Mercredi 11 juin</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-body-md font-bold text-primary">28 / 30</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-2 py-sm pb-safe bg-surface dark:bg-surface-dim border-t border-surface-variant dark:border-outline-variant z-50">
+<!-- Accueil (Active) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim bg-secondary-container dark:bg-secondary-fixed-dim rounded-full px-4 py-1 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-md text-label-md">Accueil</span>
+</a>
+<!-- Jeunes -->
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:opacity-80 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md">Jeunes</span>
+</a>
+<!-- Appel (FAB Style In Nav) -->
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:opacity-80 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-primary scale-125" data-icon="add_circle">add_circle</span>
+<span class="font-label-md text-label-md">Appel</span>
+</a>
+<!-- Groupes -->
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:opacity-80 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Groupes</span>
+</a>
+<!-- Paramètres -->
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:opacity-80 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Paramètres</span>
+</a>
+</nav>
+<script>
+        // Simple Micro-interaction for Stats Cards
+        document.querySelectorAll('.active\\:scale-95').forEach(el => {
+            el.addEventListener('click', () => {
+                // Potential ripple effect or navigation logic
+            });
+        });
+
+        // Dynamic greeting based on time
+        const hour = new Date().getHours();
+        const greetingText = document.querySelector('.text-headline-lg-mobile.text-outline');
+        if(hour >= 18) greetingText.innerText = "Bonsoir 👋";
+        else if(hour < 5) greetingText.innerText = "Bonne nuit 👋";
+    </script>
+</body></html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ecclesia Flow V2-10 | Comparaison de Périodes</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #151c27; /* on-surface used as background in dark */
+        }
+        .chart-gradient-1 {
+            background: linear-gradient(180deg, rgba(79, 70, 229, 0.2) 0%, rgba(79, 70, 229, 0) 100%);
+        }
+        .glass-card {
+            background: rgba(42, 49, 61, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(199, 196, 216, 0.1);
+        }
+        .delta-up { color: #4edea3; }
+        .delta-down { color: #ba1a1a; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="text-on-background min-h-screen pb-24">
+<!-- Tailwind Config Injection -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#4edea3",
+                        "surface-dim": "#d3daea",
+                        "primary-fixed": "#e2dfff",
+                        "inverse-surface": "#2a313d",
+                        "on-surface": "#151c27",
+                        "tertiary-fixed-dim": "#d0bcff",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface-container-high": "#e2e8f8",
+                        "tertiary": "#571ac0",
+                        "surface": "#f9f9ff",
+                        "on-tertiary-fixed-variant": "#5516be",
+                        "surface-tint": "#4d44e3",
+                        "secondary": "#006c49",
+                        "inverse-primary": "#c3c0ff",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#e3d5ff",
+                        "surface-container-highest": "#dce2f3",
+                        "on-tertiary-fixed": "#23005c",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#ebf1ff",
+                        "outline": "#777587",
+                        "tertiary-container": "#6f3dd9",
+                        "background": "#f9f9ff",
+                        "on-secondary-container": "#00714d",
+                        "on-background": "#151c27",
+                        "on-surface-variant": "#464555",
+                        "error": "#ba1a1a",
+                        "primary": "#3525cd",
+                        "on-primary-fixed": "#0f0069",
+                        "tertiary-fixed": "#e9ddff",
+                        "primary-container": "#4f46e5",
+                        "surface-container-low": "#f0f3ff",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "surface-variant": "#dce2f3",
+                        "on-primary-container": "#dad7ff",
+                        "surface-bright": "#f9f9ff",
+                        "on-secondary-fixed": "#002113",
+                        "surface-container": "#e7eefe",
+                        "secondary-container": "#6cf8bb",
+                        "outline-variant": "#c7c4d8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "xs": "4px",
+                        "base": "4px",
+                        "md": "16px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "margin-tablet": "32px",
+                        "lg": "24px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "display": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<!-- Header Navigation -->
+<header class="bg-on-surface shadow-sm docked full-width top-0 z-50 flex justify-between items-center px-margin-mobile h-16 w-full sticky">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-fixed" style="font-variation-settings: 'FILL' 1;">church</span>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary-fixed">ChurchPresence</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="transition-all duration-200 active:scale-95 text-outline-variant hover:bg-inverse-surface p-2 rounded-full">
+<span class="material-symbols-outlined">search</span>
+</button>
+<span class="material-symbols-outlined text-primary-fixed cursor-pointer">account_circle</span>
+</div>
+</header>
+<main class="px-margin-mobile pt-lg max-w-5xl mx-auto space-y-lg">
+<!-- Period Comparison Header -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<p class="text-primary-fixed font-label-md text-label-md uppercase tracking-widest mb-1">Analyses Comparatives</p>
+<h2 class="font-display text-display text-surface-bright">Vue d'ensemble 2024</h2>
+</div>
+<div class="flex items-center gap-sm bg-inverse-surface p-1 rounded-xl">
+<button class="px-4 py-2 bg-primary text-on-primary rounded-lg text-label-md font-label-md transition-all">Mois</button>
+<button class="px-4 py-2 text-outline-variant hover:text-surface-bright text-label-md font-label-md transition-all">Trimestre</button>
+<button class="px-4 py-2 text-outline-variant hover:text-surface-bright text-label-md font-label-md transition-all">Année</button>
+</div>
+</section>
+<!-- Main Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Comparison Card 1: Attendance -->
+<div class="md:col-span-2 glass-card rounded-xl p-md flex flex-col gap-md relative overflow-hidden">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-headline-md text-surface-bright">Engagement Fidèles</h3>
+<p class="text-outline-variant text-body-md font-body-md">Comparaison Sept vs Oct 2024</p>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-xs delta-up">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="font-bold text-lg">+12.4%</span>
+</div>
+<span class="text-label-sm text-outline-variant">vs période précédente</span>
+</div>
+</div>
+<!-- Custom SVG Chart (Side by Side comparison) -->
+<div class="h-64 w-full mt-base relative">
+<svg class="w-full h-full" viewbox="0 0 800 240">
+<!-- Grid Lines -->
+<line stroke="rgba(119, 117, 135, 0.1)" x1="0" x2="800" y1="40" y2="40"></line>
+<line stroke="rgba(119, 117, 135, 0.1)" x1="0" x2="800" y1="100" y2="100"></line>
+<line stroke="rgba(119, 117, 135, 0.1)" x1="0" x2="800" y1="160" y2="160"></line>
+<line stroke="rgba(119, 117, 135, 0.1)" x1="0" x2="800" y1="220" y2="220"></line>
+<!-- Area 1 (Past Period - Outline) -->
+<path d="M0 200 Q 100 180, 200 190 T 400 140 T 600 160 T 800 130 V 240 H 0 Z" fill="rgba(199, 196, 216, 0.05)" stroke="rgba(199, 196, 216, 0.3)" stroke-dasharray="4" stroke-width="2"></path>
+<!-- Area 2 (Current Period - Solid Gradient) -->
+<defs>
+<lineargradient id="currentGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#4f46e5" stop-opacity="0.4"></stop>
+<stop offset="100%" stop-color="#4f46e5" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0 180 Q 100 150, 200 140 T 400 90 T 600 110 T 800 60 V 240 H 0 Z" fill="url(#currentGrad)" stroke="#4f46e5" stroke-width="3"></path>
+<!-- Data Points -->
+<circle cx="400" cy="90" fill="#4f46e5" r="4"></circle>
+<circle cx="800" cy="60" fill="#4f46e5" r="4"></circle>
+</svg>
+<!-- Tooltip overlay -->
+<div class="absolute top-10 left-1/2 -translate-x-1/2 bg-surface shadow-lg rounded-lg p-2 flex flex-col items-center border border-primary-container pointer-events-none">
+<span class="text-on-surface text-[10px] font-bold uppercase">Semaine 3</span>
+<span class="text-primary font-bold text-body-lg">842</span>
+<span class="text-error font-bold text-[10px]">-4% local</span>
+</div>
+</div>
+<div class="flex justify-between text-outline-variant font-label-sm text-label-sm pt-sm">
+<span>Semaine 1</span>
+<span>Semaine 2</span>
+<span>Semaine 3</span>
+<span>Semaine 4</span>
+</div>
+</div>
+<!-- Side Card: Conversion / Appel -->
+<div class="glass-card rounded-xl p-md flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-sm mb-md">
+<div class="p-2 bg-secondary-container rounded-lg">
+<span class="material-symbols-outlined text-on-secondary-container">how_to_reg</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-surface-bright">Appels</h3>
+</div>
+<div class="space-y-md">
+<div class="flex flex-col gap-xs">
+<div class="flex justify-between items-end">
+<span class="text-outline-variant font-label-md">Engagement total</span>
+<span class="text-surface-bright font-bold">128</span>
+</div>
+<div class="w-full bg-inverse-surface h-2 rounded-full overflow-hidden">
+<div class="bg-secondary-fixed-dim h-full w-[75%] transition-all duration-1000"></div>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<div class="flex justify-between items-end">
+<span class="text-outline-variant font-label-md">Réponses favorables</span>
+<span class="text-surface-bright font-bold">42</span>
+</div>
+<div class="w-full bg-inverse-surface h-2 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full w-[33%] transition-all duration-1000"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-xl pt-md border-t border-outline-variant/10">
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<img alt="Profil utilisateur" class="w-8 h-8 rounded-full border-2 border-on-surface" data-alt="A portrait of a young professional smiling warmly, captured with soft shallow depth of field in a modern church community center. The lighting is bright and natural, reflecting a clean corporate aesthetic with warm indigo undertones. High quality photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVzxXGamKlNCoHytyNk15s9bh9_SV2NCzHmrOcNNYORod3F3cbS2lWuyG35DWKvp1JmvpuWSdT9k6JbXDHNH8-njzGLmRPIdgj3jGYmNY9xKIs6tLjKiJy4_chegawXkFfbC4HFLYSSjCgOxx3BmrhOX6HFvhlGVbuWa6Y0vzspgrUiTUpoeHc0hhoOQ2xjrOYxj-sZ6kyjI50tda4LV6lCt4yQGZskFe0aeicxZwtQ2DKNVC0nBbntRfvpVpmk2ldFyEZC-Zhs7s"/>
+<img alt="Profil utilisateur" class="w-8 h-8 rounded-full border-2 border-on-surface" data-alt="A diverse young woman in her twenties with a kind expression, standing in a brightly lit architectural space with minimalist glass and wood elements. The atmosphere is professional yet welcoming, with a cool-toned color palette dominated by whites and soft blues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaibmXj37aHSPFlVAXOVs4aMNrve-Pq_6acYr83JsYZN-iQWpUMqpnvTZQs4L68NPd5-roZYGe5G51pPaF3zVOeDU_n5SK0j4TN_-YKGXXfdqq0-oiMzFRT4gZUenY8EI6-nuL59E9DcNlji374hXf5p2fg4TwFO-4uyxyKSN6Ii5Gv3CopeY758a40nth1AWEMQljKH29RFlnj1bav1MSrdJggngobBe9RKFuDnXhFpM36RNFw6q3xVvvO9pZPXnqmybq3LgwETM"/>
+<div class="w-8 h-8 rounded-full bg-tertiary flex items-center justify-center border-2 border-on-surface text-[10px] font-bold text-on-tertiary">+8</div>
+</div>
+<button class="text-primary-fixed font-label-md flex items-center gap-xs hover:underline">
+                            Voir détails
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Row 2: Secondary Comparisons -->
+<div class="md:col-span-1 glass-card rounded-xl p-md">
+<h4 class="font-headline-md text-headline-md text-surface-bright mb-xs">Offrandes</h4>
+<div class="flex items-center gap-sm mt-xs">
+<span class="font-display text-2xl text-surface-bright">4,280 €</span>
+<span class="text-xs font-bold px-2 py-0.5 bg-error-container text-on-error-container rounded-full">-2.4%</span>
+</div>
+<div class="mt-md space-y-sm">
+<div class="flex items-center justify-between text-label-sm">
+<span class="text-outline-variant">Période Actuelle</span>
+<span class="text-surface-bright">4,280 €</span>
+</div>
+<div class="flex items-center justify-between text-label-sm">
+<span class="text-outline-variant">Période Précédente</span>
+<span class="text-surface-bright">4,385 €</span>
+</div>
+</div>
+<!-- Mini sparkline -->
+<div class="h-16 w-full mt-md">
+<svg class="w-full h-full" viewbox="0 0 200 60">
+<path d="M0 40 L40 35 L80 45 L120 30 L160 50 L200 42" fill="none" stroke="#ba1a1a" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<div class="md:col-span-1 glass-card rounded-xl p-md">
+<h4 class="font-headline-md text-headline-md text-surface-bright mb-xs">Nouveaux Membres</h4>
+<div class="flex items-center gap-sm mt-xs">
+<span class="font-display text-2xl text-surface-bright">18</span>
+<span class="text-xs font-bold px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded-full">+15%</span>
+</div>
+<div class="mt-md flex flex-col gap-sm">
+<div class="h-1.5 w-full bg-inverse-surface rounded-full flex overflow-hidden">
+<div class="bg-primary h-full w-[60%]"></div>
+<div class="bg-secondary-fixed-dim h-full w-[40%]"></div>
+</div>
+<div class="flex justify-between text-[10px] text-outline-variant font-bold uppercase tracking-tighter">
+<span>Adultes (11)</span>
+<span>Jeunes (7)</span>
+</div>
+</div>
+</div>
+<div class="md:col-span-1 glass-card rounded-xl p-md relative overflow-hidden group cursor-pointer">
+
+<div class="relative z-10">
+<h4 class="font-headline-md text-headline-md text-surface-bright mb-xs">Prévisions Nov</h4>
+<p class="text-body-md text-outline-variant">Basé sur les tendances actuelles d'engagement.</p>
+<div class="mt-md flex items-baseline gap-xs">
+<span class="font-display text-3xl text-primary-fixed">+8%</span>
+<span class="text-label-sm text-outline-variant">croissance estimée</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Comparative List / Detailed Comparison -->
+<section class="mt-xl">
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-headline-lg text-headline-lg text-surface-bright">Répartition des Groupes</h3>
+<button class="flex items-center gap-xs text-primary-fixed font-label-md">
+                    Export PDF
+                    <span class="material-symbols-outlined">download</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-separate border-spacing-y-2">
+<thead>
+<tr class="text-outline-variant font-label-sm text-label-sm uppercase tracking-widest">
+<th class="px-md pb-xs">Nom du Groupe</th>
+<th class="px-md pb-xs">Septembre</th>
+<th class="px-md pb-xs">Octobre</th>
+<th class="px-md pb-xs">Variation</th>
+<th class="px-md pb-xs text-right">Statut</th>
+</tr>
+</thead>
+<tbody>
+<!-- Row 1 -->
+<tr class="glass-card hover:bg-inverse-surface transition-colors">
+<td class="px-md py-md rounded-l-xl">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center text-primary-fixed">
+<span class="material-symbols-outlined">diversity_3</span>
+</div>
+<span class="font-bold text-surface-bright">Chorale Adultes</span>
+</div>
+</td>
+<td class="px-md py-md text-surface-dim font-body-md">45 pers.</td>
+<td class="px-md py-md text-surface-bright font-bold">52 pers.</td>
+<td class="px-md py-md">
+<span class="delta-up font-bold">+15.5%</span>
+</td>
+<td class="px-md py-md rounded-r-xl text-right">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-full uppercase">Stable</span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="glass-card hover:bg-inverse-surface transition-colors">
+<td class="px-md py-md rounded-l-xl">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-lg bg-tertiary/20 flex items-center justify-center text-tertiary-fixed">
+<span class="material-symbols-outlined">school</span>
+</div>
+<span class="font-bold text-surface-bright">Études Bibliques</span>
+</div>
+</td>
+<td class="px-md py-md text-surface-dim font-body-md">112 pers.</td>
+<td class="px-md py-md text-surface-bright font-bold">98 pers.</td>
+<td class="px-md py-md">
+<span class="delta-down font-bold">-12.5%</span>
+</td>
+<td class="px-md py-md rounded-r-xl text-right">
+<span class="px-3 py-1 bg-error-container text-on-error-container text-[10px] font-bold rounded-full uppercase">Action Requise</span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="glass-card hover:bg-inverse-surface transition-colors">
+<td class="px-md py-md rounded-l-xl">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-lg bg-secondary/20 flex items-center justify-center text-secondary-fixed">
+<span class="material-symbols-outlined">volunteer_activism</span>
+</div>
+<span class="font-bold text-surface-bright">Service Accueil</span>
+</div>
+</td>
+<td class="px-md py-md text-surface-dim font-body-md">24 pers.</td>
+<td class="px-md py-md text-surface-bright font-bold">28 pers.</td>
+<td class="px-md py-md">
+<span class="delta-up font-bold">+16.6%</span>
+</td>
+<td class="px-md py-md rounded-r-xl text-right">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-full uppercase">Croissance</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface dark:bg-inverse-surface shadow-lg rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-outline-variant hover:text-primary transition-transform active:scale-90 px-3 py-1" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Accueil</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline-variant hover:text-primary transition-transform active:scale-90 px-3 py-1" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-xl px-4 py-2 transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-label-md text-label-md">Analyses</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline-variant hover:text-primary transition-transform active:scale-90 px-3 py-1" href="#">
+<span class="material-symbols-outlined">diversity_3</span>
+<span class="font-label-md text-label-md">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline-variant hover:text-primary transition-transform active:scale-90 px-3 py-1" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Paramètres</span>
+</a>
+</nav>
+<!-- Interactive Logic -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animate progress bars on load
+            const bars = document.querySelectorAll('.bg-secondary-fixed-dim, .bg-primary-container');
+            bars.forEach(bar => {
+                const finalWidth = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.transition = 'width 1.5s cubic-bezier(0.65, 0, 0.35, 1)';
+                    bar.style.width = finalWidth;
+                }, 200);
+            });
+
+            // Tab switching effect
+            const buttons = document.querySelectorAll('.bg-inverse-surface button');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    buttons.forEach(b => {
+                        b.classList.remove('bg-primary', 'text-on-primary');
+                        b.classList.add('text-outline-variant');
+                    });
+                    btn.classList.remove('text-outline-variant');
+                    btn.classList.add('bg-primary', 'text-on-primary');
+                });
+            });
+        });
+    </script>
+</body></html>

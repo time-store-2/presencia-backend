@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#ffdbd0",
+                    "on-background": "#221a16",
+                    "on-primary-fixed-variant": "#842600",
+                    "on-tertiary-fixed": "#25005a",
+                    "tertiary-container": "#8262c6",
+                    "on-secondary-fixed": "#281800",
+                    "secondary": "#805600",
+                    "on-secondary-container": "#704b00",
+                    "on-primary-fixed": "#390b00",
+                    "tertiary-fixed": "#eaddff",
+                    "on-error-container": "#93000a",
+                    "surface-container": "#fceae3",
+                    "secondary-fixed": "#ffddaf",
+                    "inverse-primary": "#ffb59d",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#e7d7d0",
+                    "tertiary": "#6949ab",
+                    "secondary-fixed-dim": "#fdba49",
+                    "secondary-container": "#fdba49",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#a43c17",
+                    "on-surface": "#221a16",
+                    "surface-variant": "#f0dfd8",
+                    "outline-variant": "#dec0b7",
+                    "on-secondary": "#ffffff",
+                    "surface-container-low": "#fff1eb",
+                    "on-tertiary-fixed-variant": "#533294",
+                    "error-container": "#ffdad6",
+                    "surface-container-high": "#f6e5de",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed-variant": "#614000",
+                    "inverse-on-surface": "#ffede6",
+                    "primary": "#a13a15",
+                    "primary-container": "#c2522b",
+                    "surface-bright": "#fff8f6",
+                    "surface": "#fff8f6",
+                    "background": "#fff8f6",
+                    "on-tertiary-container": "#fffcff",
+                    "surface-container-highest": "#f0dfd8",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed-dim": "#d2bcff",
+                    "on-surface-variant": "#57423b",
+                    "on-primary-container": "#fffcff",
+                    "inverse-surface": "#382e2a",
+                    "outline": "#8b716a",
+                    "primary-fixed-dim": "#ffb59d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "container-margin": "20px",
+                    "unit": "4px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "gutter": "12px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #FAF7F5;
+            color: #221a16;
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-shadow {
+            box-shadow: 0 4px 12px rgba(122, 99, 88, 0.08);
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #a13a15 !important;
+            box-shadow: 0 0 0 2px rgba(161, 58, 21, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col pb-xl">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-container-margin py-md w-full sticky top-0 z-40 bg-surface dark:bg-on-background">
+<div class="flex items-center gap-md">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors active:scale-95">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="text-headline-md font-headline-md text-primary dark:text-primary-fixed-dim">Modifier le Groupe</h1>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container-highest">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="A warm and professional portrait of a youth leader, high-key soft lighting, set against a blurred background of a modern community space. The leader looks approachable and friendly, reflecting the radical hospitality and warmth of the Presencia brand, using a natural earthy color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxt0XKQrlHbG9t961ahv2Iloo1HH-1LQTEvJDXNIuxsrMOD0GamPez_eGFsFi2VehBhvqdCgJE3-m0t6jqksRVXDEnjzKRlXkVfNUt6JqLfR83Zpl4Iivxr27lZ1G-PyEzMqc_2-c8CF6LoegrkvnGIqrwBN-Uu_Igei4bQefLKDyQLzjkJg2pLK8Dn1b8PFFjqdgol0BTqhuxF1U_bzISid-1KQxohc6BdwUG8p-RABkVKpYC-Wl4czpxSvHQoMX3BlR6C19NtA"/>
+</div>
+</header>
+<main class="flex-1 px-container-margin mt-md">
+<!-- Form Container -->
+<div class="space-y-lg">
+<!-- Hero Card Context -->
+<div class="bg-surface-container-low p-lg rounded-xl flex items-center gap-md border border-outline-variant/30">
+<div class="w-16 h-16 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm transition-all duration-300" id="preview-icon-bg">
+<span class="material-symbols-outlined text-[32px]" data-icon="group" id="preview-icon">group</span>
+</div>
+<div>
+<h2 class="text-headline-md font-headline-md text-on-background" id="preview-name">Nouveau Groupe</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Personnalisez l'identité du groupe</p>
+</div>
+</div>
+<form class="space-y-xl">
+<!-- Group Name -->
+<div class="space-y-sm">
+<label class="block text-label-md font-label-md text-on-surface-variant px-unit" for="group-name">Nom du groupe</label>
+<input class="w-full h-12 px-md bg-surface border border-outline-variant rounded-xl text-body-lg font-body-lg placeholder:text-on-surface-variant/50 transition-all" id="group-name" oninput="document.getElementById('preview-name').innerText = this.value || 'Nouveau Groupe'" placeholder="Ex: Groupe d'étude biblique" type="text"/>
+</div>
+<!-- Description -->
+<div class="space-y-sm">
+<label class="block text-label-md font-label-md text-on-surface-variant px-unit" for="group-desc">Description</label>
+<textarea class="w-full p-md bg-surface border border-outline-variant rounded-xl text-body-lg font-body-lg placeholder:text-on-surface-variant/50 transition-all resize-none" id="group-desc" placeholder="Décrivez l'objectif ou les membres de ce groupe..." rows="4"></textarea>
+</div>
+<!-- Icon Selection -->
+<div class="space-y-md">
+<label class="block text-label-md font-label-md text-on-surface-variant px-unit">Icône représentative</label>
+<div class="grid grid-cols-5 gap-gutter">
+<button class="icon-selector w-full aspect-square rounded-xl border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-all active:scale-90" data-active="true" onclick="updateIcon('group')" type="button">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="group">group</span>
+</button>
+<button class="icon-selector w-full aspect-square rounded-xl border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-all active:scale-90" onclick="updateIcon('church')" type="button">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="church">church</span>
+</button>
+<button class="icon-selector w-full aspect-square rounded-xl border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-all active:scale-90" onclick="updateIcon('volunteer_activism')" type="button">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="volunteer_activism">volunteer_activism</span>
+</button>
+<button class="icon-selector w-full aspect-square rounded-xl border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-all active:scale-90" onclick="updateIcon('school')" type="button">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="school">school</span>
+</button>
+<button class="icon-selector w-full aspect-square rounded-xl border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-all active:scale-90" onclick="updateIcon('celebration')" type="button">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="celebration">celebration</span>
+</button>
+</div>
+</div>
+<!-- Color Selection -->
+<div class="space-y-md">
+<label class="block text-label-md font-label-md text-on-surface-variant px-unit">Couleur du groupe</label>
+<div class="flex flex-wrap gap-md justify-between">
+<button class="w-10 h-10 rounded-full bg-primary border-4 border-white custom-shadow active:scale-90 transition-transform" onclick="updateColor('bg-primary')" type="button"></button>
+<button class="w-10 h-10 rounded-full bg-[#6949ab] border-4 border-white custom-shadow active:scale-90 transition-transform" onclick="updateColor('bg-[#6949ab]')" type="button"></button>
+<button class="w-10 h-10 rounded-full bg-[#805600] border-4 border-white custom-shadow active:scale-90 transition-transform" onclick="updateColor('bg-[#805600]')" type="button"></button>
+<button class="w-10 h-10 rounded-full bg-[#2D7A56] border-4 border-white custom-shadow active:scale-90 transition-transform" onclick="updateColor('bg-[#2D7A56]')" type="button"></button>
+<button class="w-10 h-10 rounded-full bg-[#C0392B] border-4 border-white custom-shadow active:scale-90 transition-transform" onclick="updateColor('bg-[#C0392B]')" type="button"></button>
+<button class="w-10 h-10 rounded-full bg-[#614000] border-4 border-white custom-shadow active:scale-90 transition-transform" onclick="updateColor('bg-[#614000]')" type="button"></button>
+</div>
+</div>
+</form>
+</div>
+</main>
+<!-- Bottom Actions Container (Floating logic) -->
+<footer class="mt-auto px-container-margin pt-lg">
+<button class="w-full h-14 bg-primary text-on-primary rounded-xl font-label-md text-label-md flex items-center justify-center gap-sm custom-shadow active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="save">save</span>
+            Enregistrer le groupe
+        </button>
+<button class="w-full h-12 mt-md text-on-surface-variant font-label-md text-label-md underline active:opacity-60 transition-opacity">
+            Annuler les modifications
+        </button>
+</footer>
+<!-- Interactive Logic -->
+<script>
+        function updateIcon(iconName) {
+            const previewIcon = document.getElementById('preview-icon');
+            previewIcon.innerText = iconName;
+            
+            // Highlight selected icon button
+            document.querySelectorAll('.icon-selector').forEach(btn => {
+                const iconInBtn = btn.querySelector('.material-symbols-outlined').innerText;
+                if(iconInBtn === iconName) {
+                    btn.classList.add('border-primary', 'bg-primary-container/10');
+                    btn.classList.remove('border-outline-variant');
+                } else {
+                    btn.classList.remove('border-primary', 'bg-primary-container/10');
+                    btn.classList.add('border-outline-variant');
+                }
+            });
+        }
+
+        function updateColor(colorClass) {
+            const previewBg = document.getElementById('preview-icon-bg');
+            
+            // Handle hex colors and tailwind classes
+            if (colorClass.startsWith('bg-[')) {
+                const hex = colorClass.match(/\[(.*?)\]/)[1];
+                previewBg.style.backgroundColor = hex;
+            } else {
+                // Remove existing bg tailwind classes
+                previewBg.className = previewBg.className.replace(/\bbg-\S+/g, '');
+                previewBg.classList.add(colorClass);
+                previewBg.style.backgroundColor = ''; // Clear inline if any
+            }
+        }
+
+        // Initialize state
+        window.onload = () => {
+            updateIcon('group');
+        };
+    </script>
+</body></html>

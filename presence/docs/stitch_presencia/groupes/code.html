@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#221a16",
+                    "inverse-surface": "#382e2a",
+                    "on-tertiary-container": "#fffcff",
+                    "surface-variant": "#f0dfd8",
+                    "surface-bright": "#fff8f6",
+                    "secondary-fixed": "#ffddaf",
+                    "secondary": "#805600",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed": "#25005a",
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#614000",
+                    "on-error": "#ffffff",
+                    "surface-tint": "#a43c17",
+                    "tertiary-fixed-dim": "#d2bcff",
+                    "secondary-container": "#fdba49",
+                    "tertiary": "#6949ab",
+                    "primary": "#a13a15",
+                    "background": "#fff8f6",
+                    "primary-container": "#c2522b",
+                    "on-primary-container": "#fffcff",
+                    "inverse-on-surface": "#ffede6",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#f0dfd8",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#f6e5de",
+                    "on-tertiary-fixed-variant": "#533294",
+                    "on-secondary-fixed": "#281800",
+                    "tertiary-fixed": "#eaddff",
+                    "surface-dim": "#e7d7d0",
+                    "outline-variant": "#dec0b7",
+                    "surface-container-low": "#fff1eb",
+                    "surface": "#fff8f6",
+                    "secondary-fixed-dim": "#fdba49",
+                    "on-surface": "#221a16",
+                    "tertiary-container": "#8262c6",
+                    "outline": "#8b716a",
+                    "on-primary-fixed": "#390b00",
+                    "primary-fixed-dim": "#ffb59d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "12px",
+                    "2xl": "16px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "12px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "unit": "4px",
+                    "container-margin": "20px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #FAF7F5; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .student-card-shadow {
+            box-shadow: 0 4px 12px rgba(122, 99, 88, 0.08);
+        }
+        .active-nav-item {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .blur-header {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface antialiased pb-32">
+<!-- Top Navigation Bar -->
+<header class="bg-surface/90 blur-header sticky top-0 z-40 w-full flex justify-between items-center px-container-margin py-md">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary" data-icon="menu">menu</span>
+<h1 class="text-headline-lg font-headline-lg font-bold text-primary">Presencia</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="bg-primary text-white flex items-center gap-xs px-md py-sm rounded-xl text-label-md transition-all active:scale-95 shadow-md">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                Ajouter un groupe
+            </button>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center border-2 border-primary-fixed overflow-hidden">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="A close-up professional portrait of a smiling young African-American youth leader with a friendly expression. He is wearing a simple white polo shirt, set against a soft-focus warm terracotta background that reflects a welcoming church community atmosphere. The lighting is soft and natural, emphasizing a high-end corporate modern yet tactile aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4B4GTBp6YUL24snTxMOQSlGPGBvWxGHR1Z-zxbrJn1Vcxh5F37YCHNgvBZtXmMA1JaAoBenYb3y4_Ap22FiUCsZHN80mqaKHM6ttEQ7_qy_CfswaaiSd3uSPrvbxaYKkWmsCfc8VxnDsD7Cz-1bWtpsmwRkPhOe8PZqsNVUraxLq1fRd9panx690Wyh33ZsEuPR5rUiQpYRxWKdTWk6MoON3Q9wouw1pjXuBbuGVRV-6KVKG21l7T3vWvfsJ7_PNiCAw8d02m1g"/>
+</div>
+</div>
+</header>
+<main class="px-container-margin mt-lg max-w-4xl mx-auto">
+<!-- Hero Search & Title -->
+<section class="mb-xl">
+<h2 class="text-display-lg font-display-lg text-on-background mb-sm">Groupes de l'Église</h2>
+<p class="text-body-lg text-on-surface-variant mb-lg">Gérez vos communautés et suivez l'engagement des membres.</p>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full bg-white border border-outline-variant rounded-xl py-md pl-xl pr-md focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-outline" placeholder="Rechercher un groupe..." type="text"/>
+</div>
+</section>
+<!-- Stats Overview (Asymmetric Layout) -->
+<div class="grid grid-cols-2 md:grid-cols-3 gap-md mb-xl">
+<div class="col-span-2 md:col-span-1 bg-[#FDF0EB] p-lg rounded-2xl flex flex-col justify-between">
+<span class="text-label-md text-primary uppercase tracking-wider">Total Membres</span>
+<div class="flex items-baseline gap-xs mt-sm">
+<span class="text-display-lg font-display-lg text-primary">248</span>
+<span class="text-label-sm text-on-primary-fixed-variant">+12% ce mois</span>
+</div>
+</div>
+<div class="bg-white p-lg rounded-2xl student-card-shadow border border-surface-variant">
+<span class="material-symbols-outlined text-secondary mb-sm" data-icon="diversity_3">diversity_3</span>
+<div class="text-headline-md font-headline-md text-on-surface">12</div>
+<div class="text-label-sm text-on-surface-variant">Groupes actifs</div>
+</div>
+<div class="bg-white p-lg rounded-2xl student-card-shadow border border-surface-variant">
+<span class="material-symbols-outlined text-tertiary mb-sm" data-icon="event_available">event_available</span>
+<div class="text-headline-md font-headline-md text-on-surface">94%</div>
+<div class="text-label-sm text-on-surface-variant">Assiduité moyenne</div>
+</div>
+</div>
+<!-- Groups Grid (Bento Pattern) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Group Card: École du dimanche -->
+<div class="bg-white p-lg rounded-2xl student-card-shadow border border-surface-variant group hover:border-primary/30 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-lg">
+<div class="w-14 h-14 bg-secondary-container/20 rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[32px]" data-icon="child_care">child_care</span>
+</div>
+<span class="bg-[#EAF5EF] text-[#2D7A56] px-sm py-xs rounded-full text-label-sm font-bold">Actif</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-background mb-xs">École du dimanche</h3>
+<div class="flex items-center gap-sm text-on-surface-variant mb-md">
+<span class="material-symbols-outlined text-[18px]" data-icon="group">group</span>
+<span class="text-body-md">42 enfants inscrits</span>
+</div>
+<div class="flex -space-x-3 overflow-hidden mb-lg">
+<img alt="Member" class="inline-block h-8 w-8 rounded-full ring-2 ring-white" data-alt="A small circular avatar of a cheerful young child with curly hair and a bright smile, representing a member of a sunday school group. The child is lit by warm, golden sunlight in a soft outdoor church playground setting, maintaining the earthy terracotta and amber color theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7XuIjJN1nH3E2wQVTvY5gixyjcPMjbOko-QpNBfCcCG5vr4N7RoPJqK0idvRaJJ_i9jQyY9rJgd5LfVAZQLTnDje6ftkxChdznwLiaRngJXXirEDMgh6i1meoFVIE4fNXTa10a8_xRLhd00dsO_Fsn9IdjA0VZwv3dEFNxkSJhmIFnZ5_V69RgCKEDZ3cxSRgrjYHH91ZxaKUEi3gNAxb_rOa2dRVAUpopjHd8EhquKCxh5kPztdVFHspD2n5v5LkljGsX4XSZA"/>
+<img alt="Member" class="inline-block h-8 w-8 rounded-full ring-2 ring-white" data-alt="A small circular avatar of a young smiling girl with braided hair, dressed in a colorful floral shirt. She is set against a soft blurred background of a modern classroom with warm wood tones and amber lighting, consistent with the church community aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4M-kQE6cKdeoms8cunGk6bR2LlLHHiEySYFWO6q6m9p_ljVzb6dI1Wws7vUCGShgKbdmND09MQZHKK4A6fzPvOSOXnsdX0X_xN4mqFnavQrAAs0urzbAOIegZ0F5maxioTUr7p7-msdZHnp85VQzuOyMUwjwg9d33zsRIPzFpS4PvZ9Qxx0JVs87ohbK125NXS3uM23Z8UJqr1OjJgz5AnHJOD1-JrCEYdzbID17ZTvMZDtoEPWoVeDvaGuBMMDEBVacyLWIN2A"/>
+<img alt="Member" class="inline-block h-8 w-8 rounded-full ring-2 ring-white" data-alt="A small circular avatar of a happy young boy wearing a bright yellow t-shirt. The background is a clean, minimal white interior with warm brown accents, perfectly fitting the tactile corporate modern style of the youth church application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYcITTWirdSW4JjptplamOAio1q8ysYgtVZre1Ra5BCczkPISRmNNxcgsG4OaHFHRrHhrhgYPFLupJIYbWaLzrIJnCX5GABECtLzV0F0tcJZB-IQmtXSwBDwy3vhRG9-tP8c-YU-n5beYb9use95xSCCgyMhwqFayY6giVKCrI-CD1PXFoDuYN_S_1Kgt3ChDmp6-_NYTf290lAeFqXSKdhnzDZZF_DrmqBLIypCye8WK57zPP2gUNf-e5Ue30bkKFoakYiP4dSw"/>
+<div class="flex items-center justify-center h-8 w-8 rounded-full bg-surface-container-high ring-2 ring-white text-[10px] font-bold text-on-surface-variant">+39</div>
+</div>
+<button class="w-full bg-surface-container-low text-primary font-bold py-md rounded-xl text-label-md group-hover:bg-primary-fixed transition-colors">
+                    Voir les détails
+                </button>
+</div>
+<!-- Group Card: Chorale des Jeunes -->
+<div class="bg-white p-lg rounded-2xl student-card-shadow border border-surface-variant group hover:border-primary/30 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-lg">
+<div class="w-14 h-14 bg-primary-fixed/30 rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[32px]" data-icon="music_note">music_note</span>
+</div>
+<span class="bg-[#FEF3C7] text-[#D97706] px-sm py-xs rounded-full text-label-sm font-bold">Répétition</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-background mb-xs">Chorale des Jeunes</h3>
+<div class="flex items-center gap-sm text-on-surface-variant mb-md">
+<span class="material-symbols-outlined text-[18px]" data-icon="group">group</span>
+<span class="text-body-md">28 choristes</span>
+</div>
+<div class="flex -space-x-3 overflow-hidden mb-lg">
+<img alt="Member" class="inline-block h-8 w-8 rounded-full ring-2 ring-white" data-alt="A vibrant avatar of a teenage boy singing with passion, wearing a modern terracotta-colored hoodie. The lighting is dramatic but soft, highlighting the communal and artistic spirit of a youth choir within a contemporary church setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbEYCvALpoGtZxHU8mmbTXg_R-Xt2mMTRMNhKxSLudNH3W19BFL8gqhfStrg7a0eb_AQ0GSKIp08-7s5VA0dXqVs58qt6Ps_0nXM-mymgC67Esej9eZ276kaYrdayVbWpOqGIqtsy2pS-dLMDNCeSxzgLhk362elURKGZyJGCAOIMiTUoeD4pJ7Or8bqux7ZtwkccWiKc2O91BB6vjQbtw76AyjNo1Nw9aaaIEQNr57dgWDgLeBQm2FWZiI4efAYeqy1MMs4xYWg"/>
+<img alt="Member" class="inline-block h-8 w-8 rounded-full ring-2 ring-white" data-alt="A portrait of a young female choir member with glasses, smiling radiantly. She is positioned in a modern chapel with warm ambient lighting and soft-textured walls, emphasizing the radical hospitality and warmth of the brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBV5AtHxtEQR1vbCOen9fsNvIWm6HxUYv_Qi_XtQ2YMfX41xMA0hiy3RZj6VczbESKIGLQYzZnerTv_jgjM5htAOs3mUlXc4xuLGIGTqaNTZFIG4g279jB3tozDmXVzz4NOQgXI0NPmstFMIumJBRuJKOt17FrdVAYAnLpazmeqeOGSTc4z88UbvfeAZ7DtsISdwqISX1YwR3d-xNxNbxQxfTCQMBl0m87i6b53IAP31c2CnxP_VekbNUKAhyocFQsMXE0uTVrpw"/>
+<img alt="Member" class="inline-block h-8 w-8 rounded-full ring-2 ring-white" data-alt="A cheerful young man with a musical background, shown in a close-up avatar. He has a friendly, welcoming expression, set against a background of organic earthy tones and professional yet warm church administrative design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAF3pNx7k5L2yWoFz-u2SfIbQgdRByCsQlEu4Efr8-28DFweCo_PZ3Fd-n6BjFJKTNdYcpsKZBwvwFQjFzZfCj_P6G-MaX4N5OAezLMymtzOwKVWgJ7BFJ74ZqiNnI8K0OuWC_OEPCHR-qISkqlPpncXpel-7gKU-aGR_6KrhEkcqWd_O7GdY3Y4RwoxXt8dDF0eo9kRiGqjHGGx9y_jFX8Q4dvSVrobSe6qm3TReHYHUUa6uS0YAAtdlPoOYI3Aj-IHMaDRWCfEA"/>
+<div class="flex items-center justify-center h-8 w-8 rounded-full bg-surface-container-high ring-2 ring-white text-[10px] font-bold text-on-surface-variant">+25</div>
+</div>
+<button class="w-full bg-surface-container-low text-primary font-bold py-md rounded-xl text-label-md group-hover:bg-primary-fixed transition-colors">
+                    Voir les détails
+                </button>
+</div>
+<!-- Group Card: Jeunes Leaders -->
+<div class="bg-white p-lg rounded-2xl student-card-shadow border border-surface-variant group hover:border-primary/30 transition-all cursor-pointer md:col-span-2">
+<div class="flex flex-col md:flex-row md:items-center gap-lg">
+<div class="w-20 h-20 bg-tertiary-container/20 rounded-3xl flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-tertiary text-[40px]" data-icon="psychology">psychology</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-headline-lg font-headline-lg text-on-background mb-xs">Jeunes Leaders</h3>
+<div class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="verified">verified</span>
+<span class="text-body-md">Formation au leadership • 15 membres</span>
+</div>
+</div>
+<span class="bg-[#F0EBF8] text-[#6B4CAE] px-md py-sm rounded-full text-label-sm font-bold">Élite</span>
+</div>
+</div>
+<div class="flex md:flex-col gap-sm">
+<button class="flex-1 md:flex-none bg-primary text-white font-bold px-lg py-md rounded-xl text-label-md transition-all active:scale-95 shadow-sm">
+                            Suivre l'Appel
+                        </button>
+<button class="flex-1 md:flex-none bg-surface-container-high text-on-surface-variant font-bold px-lg py-md rounded-xl text-label-md hover:bg-surface-variant transition-colors">
+                            Paramètres
+                        </button>
+</div>
+</div>
+</div>
+<!-- Empty State / Add Suggestion -->
+<div class="border-2 border-dashed border-outline-variant rounded-2xl p-xl flex flex-col items-center justify-center text-center group hover:bg-surface-container-low transition-all cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-outline" data-icon="add_circle">add_circle</span>
+</div>
+<h4 class="text-headline-md font-headline-md text-outline">Nouveau Groupe</h4>
+<p class="text-label-sm text-outline mt-xs">Créez un nouvel espace pour votre communauté</p>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-sm pb-safe pt-sm bg-surface/80 backdrop-blur-md shadow-[0_-4px_12px_rgba(122,99,88,0.08)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-sm py-xs hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-sm font-label-sm mt-xs">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-sm py-xs hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-label-sm font-label-sm mt-xs">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-sm py-xs hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="how_to_reg">how_to_reg</span>
+<span class="text-label-sm font-label-sm mt-xs">Appel</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-sm py-xs scale-90 duration-150 ease-in-out active-nav-item" href="#">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span class="text-label-sm font-label-sm mt-xs">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-sm py-xs hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-label-sm font-label-sm mt-xs">Paramètres</span>
+</a>
+</nav>
+<!-- Contextual FAB (Adding a group action) -->
+<button class="fixed right-container-margin bottom-28 bg-primary text-white w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg active:scale-90 transition-all md:hidden">
+<span class="material-symbols-outlined" data-icon="group_add">group_add</span>
+</button>
+<script>
+        // Simple micro-interaction for active card state
+        document.querySelectorAll('.student-card-shadow').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.classList.add('scale-[0.98]', 'opacity-90');
+            });
+            card.addEventListener('mouseup', () => {
+                card.classList.remove('scale-[0.98]', 'opacity-90');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('scale-[0.98]', 'opacity-90');
+            });
+        });
+    </script>
+</body></html>

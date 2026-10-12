@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#c7c4d8",
+                        "on-primary-container": "#dad7ff",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#ebf1ff",
+                        "outline": "#777587",
+                        "on-surface-variant": "#464555",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "secondary": "#006c49",
+                        "primary-fixed": "#e2dfff",
+                        "background": "#f9f9ff",
+                        "surface-container-low": "#f0f3ff",
+                        "secondary-fixed": "#6ffbbe",
+                        "primary-container": "#4f46e5",
+                        "surface-tint": "#4d44e3",
+                        "tertiary-fixed-dim": "#d0bcff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#002113",
+                        "surface-variant": "#dce2f3",
+                        "on-tertiary-fixed-variant": "#5516be",
+                        "inverse-primary": "#c3c0ff",
+                        "secondary-container": "#6cf8bb",
+                        "primary": "#3525cd",
+                        "on-error": "#ffffff",
+                        "on-background": "#151c27",
+                        "surface-container-high": "#e2e8f8",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#23005c",
+                        "surface-container-highest": "#dce2f3",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#005236",
+                        "inverse-surface": "#2a313d",
+                        "tertiary-fixed": "#e9ddff",
+                        "on-surface": "#151c27",
+                        "tertiary-container": "#6f3dd9",
+                        "on-secondary-container": "#00714d",
+                        "on-tertiary-container": "#e3d5ff",
+                        "on-primary-fixed": "#0f0069",
+                        "tertiary": "#571ac0",
+                        "surface": "#f9f9ff",
+                        "secondary-fixed-dim": "#4edea3",
+                        "surface-container": "#e7eefe",
+                        "surface-dim": "#d3daea",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f9f9ff",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-tablet": "32px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "base": "4px",
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "md": "16px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "display": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #4F46E5;
+        }
+        .toggle-checkbox:checked + .toggle-label .toggle-dot {
+            transform: translateX(100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+        body {
+            background-color: #F9FAFB;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface antialiased">
+<!-- Header Section (TopAppBar Context) -->
+<header class="fixed top-0 w-full z-40 bg-surface shadow-sm px-margin-mobile h-16 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<button class="transition-all duration-200 active:scale-95 text-primary">
+<span class="material-symbols-outlined text-[28px]">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-on-surface">Notifications</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">tune</span>
+</div>
+</header>
+<main class="pt-20 pb-24 px-margin-mobile max-w-2xl mx-auto">
+<!-- Activation Banner -->
+<div class="mb-lg p-md rounded-xl bg-gradient-to-br from-primary-fixed to-surface-container-low shadow-sm flex flex-col gap-md">
+<div class="flex items-start gap-md">
+<div class="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+</div>
+<div>
+<h2 class="font-headline-md text-primary-container">Activez les notifications</h2>
+<p class="font-body-md text-on-surface-variant mt-xs">Ne manquez aucune mise à jour importante de votre communauté paroissiale.</p>
+</div>
+</div>
+<button class="w-full bg-primary-container text-white py-3 rounded-xl font-body-lg font-semibold shadow-sm transition-all duration-200 hover:brightness-110 active:scale-[0.98]">
+                Activer les notifications
+            </button>
+</div>
+<!-- Section: SÉANCES -->
+<div class="mb-lg">
+<h3 class="font-label-md text-label-md text-outline uppercase tracking-wider mb-sm px-1">Séances</h3>
+<div class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100">
+<!-- Rappel avant séance -->
+<div class="flex items-center justify-between p-md border-b border-gray-50 active:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex flex-col">
+<span class="font-body-lg font-medium text-on-surface">Rappel avant séance</span>
+<span class="font-label-sm text-outline">1 heure avant</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+<!-- Nouvelle séance créée -->
+<div class="flex items-center justify-between p-md border-b border-gray-50">
+<span class="font-body-lg font-medium text-on-surface">Nouvelle séance créée</span>
+<div class="relative inline-block w-12 mr-2 align-middle select-none">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer transition-transform duration-200 ease-in-out top-0 left-0" id="new_session" name="new_session" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer transition-colors duration-200" for="new_session"></label>
+<style>
+                            .toggle-dot { transform: translateX(0); }
+                            #new_session:checked { transform: translateX(100%); border-color: #4F46E5; }
+                        </style>
+</div>
+</div>
+<!-- Appel enregistré -->
+<div class="flex items-center justify-between p-md">
+<span class="font-body-lg font-medium text-on-surface">Appel enregistré</span>
+<div class="relative inline-block w-12 mr-2 align-middle select-none">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer transition-transform duration-200 ease-in-out top-0 left-0" id="call_logged" name="call_logged" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer transition-colors duration-200" for="call_logged"></label>
+<style>
+                            #call_logged:checked { transform: translateX(100%); border-color: #4F46E5; }
+                        </style>
+</div>
+</div>
+</div>
+</div>
+<!-- Section: ABSENCES -->
+<div class="mb-lg">
+<h3 class="font-label-md text-label-md text-outline uppercase tracking-wider mb-sm px-1">Absences</h3>
+<div class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100">
+<!-- Absences répétées -->
+<div class="flex items-center justify-between p-md border-b border-gray-50 active:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex flex-col">
+<span class="font-body-lg font-medium text-on-surface">Absences répétées</span>
+<span class="font-label-sm text-outline">Après 2 absences</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+<!-- Absent non justifié -->
+<div class="flex items-center justify-between p-md border-b border-gray-50">
+<span class="font-body-lg font-medium text-on-surface">Absent non justifié</span>
+<div class="relative inline-block w-12 mr-2 align-middle select-none">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer transition-transform duration-200 ease-in-out top-0 left-0" id="unjustified" name="unjustified" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer transition-colors duration-200" for="unjustified"></label>
+<style>
+                            #unjustified:checked { transform: translateX(100%); border-color: #4F46E5; }
+                        </style>
+</div>
+</div>
+<!-- Résumé hebdomadaire -->
+<div class="flex items-center justify-between p-md">
+<span class="font-body-lg font-medium text-on-surface">Résumé hebdomadaire</span>
+<div class="relative inline-block w-12 mr-2 align-middle select-none">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer transition-transform duration-200 ease-in-out top-0 left-0" id="weekly_summary" name="weekly_summary" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer transition-colors duration-200" for="weekly_summary"></label>
+</div>
+</div>
+</div>
+</div>
+<!-- Section: GÉNÉRAL -->
+<div class="mb-lg">
+<h3 class="font-label-md text-label-md text-outline uppercase tracking-wider mb-sm px-1">Général</h3>
+<div class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100">
+<!-- Son -->
+<div class="flex items-center justify-between p-md border-b border-gray-50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline">volume_up</span>
+<span class="font-body-lg font-medium text-on-surface">Son</span>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer transition-transform duration-200 ease-in-out top-0 left-0" id="sound" name="sound" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer transition-colors duration-200" for="sound"></label>
+<style>
+                            #sound:checked { transform: translateX(100%); border-color: #4F46E5; }
+                        </style>
+</div>
+</div>
+<!-- Vibration -->
+<div class="flex items-center justify-between p-md border-b border-gray-50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline">vibration</span>
+<span class="font-body-lg font-medium text-on-surface">Vibration</span>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer transition-transform duration-200 ease-in-out top-0 left-0" id="vibration" name="vibration" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer transition-colors duration-200" for="vibration"></label>
+<style>
+                            #vibration:checked { transform: translateX(100%); border-color: #4F46E5; }
+                        </style>
+</div>
+</div>
+<!-- Ne pas déranger -->
+<div class="flex items-center justify-between p-md active:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline">do_not_disturb_on</span>
+<span class="font-body-lg font-medium text-on-surface">Ne pas déranger</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Decor Image -->
+<div class="mt-xl rounded-2xl overflow-hidden h-40 relative group">
+<img class="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105" data-alt="A clean and serene architectural shot of a modern church interior with soft natural light streaming through minimalist windows, reflecting on polished stone floors. The color palette is composed of muted grays and crisp whites, echoing the ChurchPresence UI aesthetic. The atmosphere is quiet, professional, and spiritual, embodying organized community management." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFhq2PRmdbX4790QjpEAdw2TvMnDBUzXcwO1MCyoY8FtHziOT-SBdNft3-PbiBba9RtXA3ldqJivRr1WiC58w0cM2FNoMHCgfXZY3Oxb-YguykHBts91KMZWeOB8KqMhYqtJ045sk1uO4a2SSxm-PUGbUJAkzf9lQXlmmXEv0QgAJwcVAEk_HF5k6xQqbyyUUihTZ-AUlJUwr0KYsfWiFrxuUmRRinvyCW-pgwE2XHebYffOAjbTy8OYcgFkFF_FxMZqLMvOtLQtg"/>
+<div class="absolute inset-0 bg-primary-container/10"></div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Shared Component Context) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface shadow-[0_-1px_2px_0_rgba(0,0,0,0.05)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Accueil</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="font-label-md text-label-md">Appel</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined">diversity_3</span>
+<span class="font-label-md text-label-md">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1 transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-md text-label-md">Paramètres</span>
+</a>
+</nav>
+<script>
+        // Simple Interaction logic
+        document.querySelectorAll('.active\\:bg-surface-container-low').forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.add('bg-surface-container-low');
+                setTimeout(() => this.classList.remove('bg-surface-container-low'), 150);
+            });
+        });
+
+        // Toggle micro-interaction logic
+        document.querySelectorAll('.toggle-checkbox').forEach(toggle => {
+            toggle.addEventListener('change', function() {
+                // Potential for haptic feedback triggers or API calls
+                console.log(`${this.id} is now ${this.checked ? 'Active' : 'Inactive'}`);
+            });
+        });
+    </script>
+</body></html>

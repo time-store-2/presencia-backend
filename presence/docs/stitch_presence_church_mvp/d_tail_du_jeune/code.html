@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Détail de l'Adolescent - David Koffi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 10px;
+    }
+    /* Material Badge Styles */
+    .badge-present { background-color: #cfe9d8; color: #0f5238; }
+    .badge-absent { background-color: #ffdad6; color: #ba1a1a; }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "secondary-fixed": "#cfe9d8",
+                  "outline": "#707973",
+                  "primary-fixed-dim": "#95d4b3",
+                  "on-error-container": "#93000a",
+                  "tertiary-container": "#8d4d4e",
+                  "surface-container": "#eceeea",
+                  "surface-container-highest": "#e1e3df",
+                  "error-container": "#ffdad6",
+                  "background": "#f8faf6",
+                  "on-primary-fixed-variant": "#0e5138",
+                  "on-tertiary-fixed": "#390b0e",
+                  "on-tertiary-fixed-variant": "#6f3537",
+                  "inverse-on-surface": "#eff1ed",
+                  "surface-variant": "#e1e3df",
+                  "surface-container-low": "#f2f4f0",
+                  "inverse-surface": "#2e312f",
+                  "inverse-primary": "#95d4b3",
+                  "on-primary-fixed": "#002114",
+                  "secondary-container": "#cfe9d8",
+                  "surface": "#f8faf6",
+                  "on-secondary": "#ffffff",
+                  "surface-bright": "#f8faf6",
+                  "on-tertiary": "#ffffff",
+                  "on-primary-container": "#a8e7c5",
+                  "on-primary": "#ffffff",
+                  "on-error": "#ffffff",
+                  "on-background": "#191c1a",
+                  "on-surface-variant": "#404943",
+                  "secondary-fixed-dim": "#b3ccbd",
+                  "surface-container-high": "#e7e9e5",
+                  "on-secondary-fixed": "#092016",
+                  "secondary": "#4c6357",
+                  "tertiary-fixed": "#ffdad9",
+                  "outline-variant": "#bfc9c1",
+                  "on-surface": "#191c1a",
+                  "on-tertiary-container": "#ffcfce",
+                  "surface-dim": "#d8dbd7",
+                  "primary-fixed": "#b1f0ce",
+                  "error": "#ba1a1a",
+                  "on-secondary-fixed-variant": "#354c3f",
+                  "on-secondary-container": "#526a5c",
+                  "primary": "#0f5238",
+                  "tertiary": "#713638",
+                  "surface-tint": "#2c694e",
+                  "surface-container-lowest": "#ffffff",
+                  "tertiary-fixed-dim": "#ffb3b3",
+                  "primary-container": "#2d6a4f"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "sm": "8px",
+                  "margin-mobile": "20px",
+                  "xl": "32px",
+                  "lg": "24px",
+                  "xs": "4px",
+                  "md": "16px",
+                  "gutter": "16px",
+                  "unit": "4px",
+                  "margin-desktop": "40px"
+          },
+          "fontFamily": {
+                  "headline-lg": ["Plus Jakarta Sans"],
+                  "body-md": ["Plus Jakarta Sans"],
+                  "display": ["Plus Jakarta Sans"],
+                  "body-lg": ["Plus Jakarta Sans"],
+                  "label-md": ["Plus Jakarta Sans"],
+                  "headline-md": ["Plus Jakarta Sans"],
+                  "label-bold": ["Plus Jakarta Sans"],
+                  "headline-lg-mobile": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+                  "headline-lg": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                  "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                  "display": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                  "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                  "label-md": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                  "headline-md": ["20px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                  "label-bold": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                  "headline-lg-mobile": ["22px", {"lineHeight": "1.3", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen pb-32">
+<!-- Transparent Header -->
+<header class="fixed top-0 left-0 w-full z-40 transition-all duration-300">
+<div class="flex items-center justify-between px-margin-mobile py-md">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="relative bg-primary-container h-80 flex flex-col items-center justify-center pt-10 text-white overflow-hidden">
+<!-- Decorative background element -->
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-white/5 rounded-full blur-2xl"></div>
+<div class="absolute -bottom-20 -left-10 w-60 h-60 bg-white/5 rounded-full blur-3xl"></div>
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-white/30 overflow-hidden mb-4 shadow-lg">
+<img alt="Portrait of David Koffi" class="w-full h-full object-cover" data-alt="A close-up high-quality portrait of a young African boy named David Koffi, with a warm and friendly smile. He is set against a soft-focus outdoor natural greenery background. The lighting is warm and golden, reflecting a modern, community-oriented aesthetic. The image uses professional depth of field to keep the subject sharp and the background creamy and welcoming." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlxtGuRkCxuxg0N8AYHsmGJaqrtA-DJ9pqpodovonhWlOPBpHLZIzS_1U-CPwxTLq4vh3x6d80ZCej0SDfoJ0E5i9hqIhpSuMbMF1TPJ78F0i2r_DH6Zt6Hr3yutUgVXXexRpeqIv_6GiY00ndFvCI4bqp4lI3goY8r8K7LrviAqpYXEyPlpitMTkBB5pFMqxLB5nEXgRNRQZLRLW6SdlZReS_8kZR84YxrVOy-jG29jVNYWw3tC3XvfjLyWyThvHl4GuxKYGX"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg">David Koffi</h1>
+<p class="font-label-md text-label-md opacity-90 uppercase tracking-widest mt-1">École du dimanche</p>
+</div>
+</section>
+<!-- Content Canvas -->
+<main class="px-margin-mobile -mt-10 relative z-20">
+<!-- Stats Card -->
+<div class="bg-surface-container-lowest rounded-[20px] p-lg shadow-[0_1px_3px_rgba(0,0,0,0.05)] border border-surface-variant flex justify-between items-center">
+<div class="flex flex-col items-center flex-1">
+<span class="text-primary font-headline-md text-headline-md">28</span>
+<span class="text-outline font-label-bold text-label-bold">PRÉSENCES</span>
+</div>
+<div class="w-[1px] h-10 bg-outline-variant"></div>
+<div class="flex flex-col items-center flex-1">
+<span class="text-error font-headline-md text-headline-md">5</span>
+<span class="text-outline font-label-bold text-label-bold">ABSENCES</span>
+</div>
+<div class="w-[1px] h-10 bg-outline-variant"></div>
+<div class="flex flex-col items-center flex-1">
+<span class="text-secondary font-headline-md text-headline-md">3</span>
+<span class="text-outline font-label-bold text-label-bold">RETARDS</span>
+</div>
+</div>
+<!-- Parent Section -->
+<section class="mt-xl">
+<h2 class="text-outline font-label-bold text-label-bold mb-md uppercase tracking-wider">Parents &amp; Tuteurs</h2>
+<div class="bg-surface-container-lowest rounded-[20px] border border-surface-variant p-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md leading-tight">Jean Koffi</p>
+<p class="text-outline font-body-md text-body-md">+225 07 00 00 00 00</p>
+</div>
+</div>
+<div class="flex gap-sm">
+<button class="w-12 h-12 rounded-full bg-surface-container-high text-primary hover:bg-primary-container hover:text-white transition-all flex items-center justify-center">
+<span class="material-symbols-outlined">call</span>
+</button>
+<button class="w-12 h-12 rounded-full bg-surface-container-high text-primary hover:bg-primary-container hover:text-white transition-all flex items-center justify-center">
+<span class="material-symbols-outlined">chat_bubble</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- History Section -->
+<section class="mt-xl">
+<h2 class="text-outline font-label-bold text-label-bold mb-md uppercase tracking-wider">Historique des présences</h2>
+<div class="bg-surface-container-lowest rounded-[20px] border border-surface-variant overflow-hidden">
+<!-- History Item -->
+<div class="p-md flex items-center justify-between border-b border-surface-variant last:border-b-0">
+<div>
+<p class="font-body-lg text-body-lg text-on-surface">Culte Jeunesse - Session Matin</p>
+<p class="text-outline font-label-md text-label-md">Dimanche, 12 Mai 2024</p>
+</div>
+<span class="badge-present px-3 py-1 rounded-lg font-label-bold text-label-bold uppercase">Présent</span>
+</div>
+<!-- History Item -->
+<div class="p-md flex items-center justify-between border-b border-surface-variant last:border-b-0">
+<div>
+<p class="font-body-lg text-body-lg text-on-surface">Étude Biblique</p>
+<p class="text-outline font-label-md text-label-md">Mercredi, 08 Mai 2024</p>
+</div>
+<span class="badge-absent px-3 py-1 rounded-lg font-label-bold text-label-bold uppercase">Absent</span>
+</div>
+<!-- History Item -->
+<div class="p-md flex items-center justify-between border-b border-surface-variant last:border-b-0">
+<div>
+<p class="font-body-lg text-body-lg text-on-surface">Culte Jeunesse - Session Matin</p>
+<p class="text-outline font-label-md text-label-md">Dimanche, 05 Mai 2024</p>
+</div>
+<span class="badge-present px-3 py-1 rounded-lg font-label-bold text-label-bold uppercase">Présent</span>
+</div>
+<!-- History Item -->
+<div class="p-md flex items-center justify-between border-b border-surface-variant last:border-b-0">
+<div>
+<p class="font-body-lg text-body-lg text-on-surface">Répétition Chorale</p>
+<p class="text-outline font-label-md text-label-md">Samedi, 04 Mai 2024</p>
+</div>
+<span class="badge-present px-3 py-1 rounded-lg font-label-bold text-label-bold uppercase">Présent</span>
+</div>
+</div>
+<button class="w-full py-md text-primary font-label-bold text-label-bold text-center hover:bg-primary/5 transition-colors mt-sm">VOIR TOUT L'HISTORIQUE</button>
+</section>
+</main>
+<!-- Quick Actions Footer -->
+<div class="fixed bottom-[72px] left-0 w-full px-margin-mobile pb-md bg-transparent pointer-events-none">
+<div class="flex gap-md w-full max-w-7xl mx-auto pointer-events-auto">
+<button class="flex-1 h-14 bg-primary text-white font-headline-md text-headline-md rounded-xl shadow-lg flex items-center justify-center gap-sm active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">check_circle</span>
+<span>Marquer présent</span>
+</button>
+<button class="flex-1 h-14 bg-white border-2 border-primary text-primary font-headline-md text-headline-md rounded-xl shadow-sm flex items-center justify-center gap-sm active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">send</span>
+<span>Envoyer rapport</span>
+</button>
+</div>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-2 py-sm pb-safe bg-surface border-t border-surface-variant z-50">
+<!-- Accueil -->
+<a class="flex flex-col items-center justify-center text-outline transition-transform duration-150 active:scale-95 hover:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Accueil</span>
+</a>
+<!-- Jeunes (Active) -->
+<a class="flex flex-col items-center justify-center text-primary bg-secondary-container rounded-full px-4 py-1 transition-transform duration-150 active:scale-95 hover:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md">Jeunes</span>
+</a>
+<!-- Appel -->
+<a class="flex flex-col items-center justify-center text-outline transition-transform duration-150 active:scale-95 hover:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="font-label-md text-label-md">Appel</span>
+</a>
+<!-- Groupes -->
+<a class="flex flex-col items-center justify-center text-outline transition-transform duration-150 active:scale-95 hover:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Groupes</span>
+</a>
+<!-- Paramètres -->
+<a class="flex flex-col items-center justify-center text-outline transition-transform duration-150 active:scale-95 hover:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Paramètres</span>
+</a>
+</nav>
+<script>
+    // Header background transition on scroll
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('bg-primary-container/90', 'backdrop-blur-lg');
+      } else {
+        header.classList.remove('bg-primary-container/90', 'backdrop-blur-lg');
+      }
+    });
+
+    // Simple interaction for buttons
+    document.querySelectorAll('button').forEach(button => {
+      button.addEventListener('click', function() {
+        this.classList.add('scale-95');
+        setTimeout(() => this.classList.remove('scale-95'), 100);
+      });
+    });
+  </script>
+</body></html>

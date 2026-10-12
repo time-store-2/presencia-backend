@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Range slider styling */
+        input[type='range']::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            background: #0f5238;
+            border: 4px solid #ffffff;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        .bottom-sheet-transition {
+            transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#ffdbd2",
+                        "surface-variant": "#dfe0ff",
+                        "surface-bright": "#fbf8ff",
+                        "on-tertiary-container": "#dddbc8",
+                        "on-background": "#161a32",
+                        "inverse-surface": "#2b2e48",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#7c2e19",
+                        "on-tertiary-fixed": "#1c1c11",
+                        "secondary": "#9a442d",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#49483b",
+                        "primary": "#0f5238",
+                        "tertiary-fixed-dim": "#c9c7b5",
+                        "secondary-container": "#fc9174",
+                        "surface-tint": "#2c694e",
+                        "on-secondary-container": "#742814",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#dfe0ff",
+                        "primary-container": "#2d6a4f",
+                        "on-primary-container": "#a8e7c5",
+                        "inverse-on-surface": "#f1efff",
+                        "background": "#fbf8ff",
+                        "primary-fixed": "#b1f0ce",
+                        "on-primary-fixed-variant": "#0e5138",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#95d4b3",
+                        "surface-container": "#edecff",
+                        "surface-container-high": "#e6e6ff",
+                        "on-tertiary-fixed-variant": "#48473a",
+                        "on-secondary-fixed": "#3c0800",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#404943",
+                        "surface": "#fbf8ff",
+                        "secondary-fixed-dim": "#ffb4a1",
+                        "on-surface": "#161a32",
+                        "surface-container-low": "#f4f2ff",
+                        "tertiary-fixed": "#e6e3d0",
+                        "surface-dim": "#d6d8f9",
+                        "outline-variant": "#bfc9c1",
+                        "primary-fixed-dim": "#95d4b3",
+                        "tertiary-container": "#616051",
+                        "outline": "#707973",
+                        "on-primary-fixed": "#002114"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "xl": "80px",
+                        "md": "24px",
+                        "lg": "48px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "gutter": "24px",
+                        "container-max": "1200px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-dim dark:bg-on-background font-body-md text-on-surface overflow-hidden">
+<!-- Background Content Mockup -->
+<div class="fixed inset-0 opacity-40 pointer-events-none p-gutter">
+<div class="flex flex-col gap-6">
+<div class="h-16 w-full bg-surface-container rounded-xl"></div>
+<div class="grid grid-cols-2 gap-4">
+<div class="h-40 bg-surface-container rounded-xl"></div>
+<div class="h-40 bg-surface-container rounded-xl"></div>
+</div>
+<div class="h-64 bg-surface-container rounded-xl"></div>
+</div>
+</div>
+<!-- Overlay Dark Background -->
+<div class="fixed inset-0 bg-on-background/60 backdrop-blur-sm z-[60] transition-opacity duration-300 opacity-100" id="overlay"></div>
+<!-- Bottom Sheet Filters -->
+<div class="fixed bottom-0 left-0 right-0 h-[75%] bg-surface dark:bg-on-tertiary-container rounded-t-[32px] z-[70] flex flex-col bottom-sheet-transition translate-y-0 shadow-2xl" id="bottomSheet">
+<!-- Handle -->
+<div class="w-full flex justify-center py-4">
+<div class="w-12 h-1.5 bg-outline-variant rounded-full"></div>
+</div>
+<!-- Header -->
+<header class="px-gutter flex items-center justify-between pb-4">
+<h1 class="font-headline-md text-headline-md text-on-surface">Filtres</h1>
+<button class="text-error font-label-md hover:bg-error/10 px-3 py-2 rounded-lg transition-colors">
+                Réinitialiser
+            </button>
+</header>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto px-gutter py-2 space-y-8 pb-32 hide-scrollbar">
+<!-- Section: GROUPE -->
+<section class="space-y-3">
+<h2 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Groupe</h2>
+<div class="flex gap-2 overflow-x-auto hide-scrollbar -mx-gutter px-gutter">
+<button class="shrink-0 px-4 py-2 rounded-full bg-primary text-on-primary font-label-md">Tous</button>
+<button class="shrink-0 px-4 py-2 rounded-full border border-outline text-on-surface-variant font-label-md hover:bg-surface-container transition-colors">U11-Espoirs</button>
+<button class="shrink-0 px-4 py-2 rounded-full border border-outline text-on-surface-variant font-label-md hover:bg-surface-container transition-colors">U13-A</button>
+<button class="shrink-0 px-4 py-2 rounded-full border border-outline text-on-surface-variant font-label-md hover:bg-surface-container transition-colors">Séniors B</button>
+<button class="shrink-0 px-4 py-2 rounded-full border border-outline text-on-surface-variant font-label-md hover:bg-surface-container transition-colors">Féminines</button>
+</div>
+</section>
+<!-- Section: STATUT DE PRÉSENCE -->
+<section class="space-y-3">
+<h2 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Statut de présence</h2>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex items-center gap-3 p-3 rounded-xl border border-outline hover:border-primary group transition-all">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+<span class="font-label-md">Présent</span>
+</button>
+<button class="flex items-center gap-3 p-3 rounded-xl border border-outline hover:border-primary group transition-all">
+<span class="material-symbols-outlined text-error" data-icon="cancel">cancel</span>
+<span class="font-label-md">Absent</span>
+</button>
+<button class="flex items-center gap-3 p-3 rounded-xl border border-outline hover:border-primary group transition-all">
+<span class="material-symbols-outlined text-secondary" data-icon="schedule">schedule</span>
+<span class="font-label-md">Retard</span>
+</button>
+<button class="flex items-center gap-3 p-3 rounded-xl border border-outline hover:border-primary group transition-all">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="history_edu">history_edu</span>
+<span class="font-label-md">Excusé</span>
+</button>
+</div>
+</section>
+<!-- Section: PÉRIODE -->
+<section class="space-y-3">
+<h2 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Période</h2>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-full border border-outline text-on-surface-variant font-label-md hover:bg-surface-container transition-colors">Aujourd'hui</button>
+<button class="px-4 py-2 rounded-full border border-outline text-on-surface-variant font-label-md hover:bg-surface-container transition-colors">7 derniers jours</button>
+<button class="px-4 py-2 rounded-full border-2 border-primary bg-primary/5 text-primary font-label-md flex items-center gap-2" onclick="document.getElementById('customDates').classList.toggle('hidden')">
+                        Personnalisée
+                        <span class="material-symbols-outlined text-[18px]" data-icon="calendar_today">calendar_today</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-2" id="customDates">
+<div class="space-y-1">
+<label class="text-[10px] text-on-surface-variant uppercase ml-2">Du</label>
+<input class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-2 text-label-md focus:ring-2 focus:ring-primary" type="date"/>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] text-on-surface-variant uppercase ml-2">Au</label>
+<input class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-2 text-label-md focus:ring-2 focus:ring-primary" type="date"/>
+</div>
+</div>
+</section>
+<!-- Section: TRANCHE D'ÂGE -->
+<section class="space-y-4">
+<div class="flex justify-between items-center">
+<h2 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Tranche d'âge</h2>
+<span class="text-primary font-bold">10 - 18 ans</span>
+</div>
+<div class="relative pt-6 pb-2">
+<div class="absolute top-0 w-full h-2 bg-surface-container-high rounded-full"></div>
+<div class="absolute top-0 left-[10%] right-[20%] h-2 bg-primary rounded-full"></div>
+<input class="absolute top-0 w-full h-2 bg-transparent appearance-none cursor-pointer" max="30" min="5" type="range" value="10"/>
+<input class="absolute top-0 w-full h-2 bg-transparent appearance-none cursor-pointer" max="30" min="5" type="range" value="18"/>
+</div>
+</section>
+<!-- Section: TRIER PAR -->
+<section class="space-y-3">
+<h2 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Trier par</h2>
+<div class="space-y-1">
+<label class="flex items-center justify-between p-3 rounded-xl hover:bg-surface-container transition-colors cursor-pointer group">
+<span class="text-body-md">Nom</span>
+<input checked="" class="w-5 h-5 text-primary border-outline focus:ring-primary" name="sort" type="radio"/>
+</label>
+<label class="flex items-center justify-between p-3 rounded-xl hover:bg-surface-container transition-colors cursor-pointer group">
+<span class="text-body-md">Taux de présence</span>
+<input class="w-5 h-5 text-primary border-outline focus:ring-primary" name="sort" type="radio"/>
+</label>
+<label class="flex items-center justify-between p-3 rounded-xl hover:bg-surface-container transition-colors cursor-pointer group">
+<span class="text-body-md">Date d'inscription</span>
+<input class="w-5 h-5 text-primary border-outline focus:ring-primary" name="sort" type="radio"/>
+</label>
+</div>
+</section>
+</div>
+<!-- Fixed Bottom Action Bar -->
+<div class="absolute bottom-0 left-0 right-0 p-gutter bg-surface dark:bg-on-tertiary-container border-t border-outline-variant flex flex-col gap-4">
+<p class="text-center text-on-surface-variant text-label-sm">
+<span class="font-bold text-primary">3 filtres</span> actifs actuellement
+            </p>
+<button class="w-full bg-primary text-on-primary py-4 rounded-2xl font-headline-md flex items-center justify-center gap-3 active:scale-95 transition-transform">
+                Appliquer les filtres
+                <span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+</div>
+<!-- Micro-interaction Scripts -->
+<script>
+        const bottomSheet = document.getElementById('bottomSheet');
+        const overlay = document.getElementById('overlay');
+        
+        let startY = 0;
+        let currentY = 0;
+
+        bottomSheet.addEventListener('touchstart', (e) => {
+            startY = e.touches[0].clientY;
+        });
+
+        bottomSheet.addEventListener('touchmove', (e) => {
+            currentY = e.touches[0].clientY;
+            const diff = currentY - startY;
+            if (diff > 0) {
+                bottomSheet.style.transform = `translateY(${diff}px)`;
+                overlay.style.opacity = Math.max(0, 1 - diff/400);
+            }
+        });
+
+        bottomSheet.addEventListener('touchend', (e) => {
+            const diff = currentY - startY;
+            if (diff > 150) {
+                // Dismiss sheet (simulation)
+                bottomSheet.style.transform = `translateY(100%)`;
+                overlay.style.opacity = '0';
+                setTimeout(() => {
+                    bottomSheet.style.display = 'none';
+                    overlay.style.display = 'none';
+                }, 400);
+            } else {
+                bottomSheet.style.transform = `translateY(0)`;
+                overlay.style.opacity = '1';
+            }
+        });
+
+        // Click overlay to close
+        overlay.addEventListener('click', () => {
+            bottomSheet.style.transform = `translateY(100%)`;
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                bottomSheet.style.display = 'none';
+                overlay.style.display = 'none';
+            }, 400);
+        });
+    </script>
+</body></html>

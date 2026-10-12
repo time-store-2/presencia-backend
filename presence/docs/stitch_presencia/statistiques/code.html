@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Presencia - Statistiques Globales</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#ffdbd0",
+                    "on-background": "#221a16",
+                    "on-primary-fixed-variant": "#842600",
+                    "on-tertiary-fixed": "#25005a",
+                    "tertiary-container": "#8262c6",
+                    "on-secondary-fixed": "#281800",
+                    "secondary": "#805600",
+                    "on-secondary-container": "#704b00",
+                    "on-primary-fixed": "#390b00",
+                    "tertiary-fixed": "#eaddff",
+                    "on-error-container": "#93000a",
+                    "surface-container": "#fceae3",
+                    "secondary-fixed": "#ffddaf",
+                    "inverse-primary": "#ffb59d",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#e7d7d0",
+                    "tertiary": "#6949ab",
+                    "secondary-fixed-dim": "#fdba49",
+                    "secondary-container": "#fdba49",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#a43c17",
+                    "on-surface": "#221a16",
+                    "surface-variant": "#f0dfd8",
+                    "outline-variant": "#dec0b7",
+                    "on-secondary": "#ffffff",
+                    "surface-container-low": "#fff1eb",
+                    "on-tertiary-fixed-variant": "#533294",
+                    "error-container": "#ffdad6",
+                    "surface-container-high": "#f6e5de",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed-variant": "#614000",
+                    "inverse-on-surface": "#ffede6",
+                    "primary": "#a13a15",
+                    "primary-container": "#c2522b",
+                    "surface-bright": "#fff8f6",
+                    "surface": "#fff8f6",
+                    "background": "#fff8f6",
+                    "on-tertiary-container": "#fffcff",
+                    "surface-container-highest": "#f0dfd8",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed-dim": "#d2bcff",
+                    "on-surface-variant": "#57423b",
+                    "on-primary-container": "#fffcff",
+                    "inverse-surface": "#382e2a",
+                    "outline": "#8b716a",
+                    "primary-fixed-dim": "#ffb59d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "container-margin": "20px",
+                    "unit": "4px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "gutter": "12px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #FAF7F5;
+            color: #221a16;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .card-shadow {
+            box-shadow: 0 4px 12px rgba(122, 99, 88, 0.08);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #dec0b7;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="bg-surface sticky top-0 z-40 flex justify-between items-center px-container-margin py-md w-full">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<h1 class="text-headline-lg font-headline-lg font-bold text-primary">Presencia</h1>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed">
+<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrrFcYJNFtw-0WHggFMbypnAn281P8g_G2ZXDJg9c4vaGSMw4aoD5-SMD1vSAPWhBZjrG5yuCsIAD5fo0dEe3RffbLnTuzRwyZK5Mt6UHwZdgvCobl9y_bgGnkd4fsrYHtEU3fq4tXbcGTrC2uqOkNcW6QIpOtMSZKFazEo35GzyKCmvO3D8CxAK6RAUEigFgJ0R7G5mWvFuR6qPlEWh1GO2DR-AdnB7Nf1pGrAkgUCvpR-QQ2AFAkOuEadGrNOXYQQntnIqPrPA"/>
+</div>
+</header>
+<main class="px-container-margin mt-md space-y-lg">
+<!-- Title & Filters Section -->
+<section class="space-y-md">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="text-headline-md font-headline-md text-on-background">Statistiques Globales</h2>
+<p class="text-label-md font-label-md text-on-surface-variant">Vue d'ensemble de l'engagement</p>
+</div>
+<button class="bg-surface-container-high p-sm rounded-xl text-primary flex items-center gap-xs">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+<span class="text-label-md font-label-md">Filtres</span>
+</button>
+</div>
+<!-- Chips Filters -->
+<div class="flex gap-sm overflow-x-auto pb-xs custom-scrollbar">
+<button class="whitespace-nowrap px-md py-xs rounded-full bg-primary text-on-primary text-label-md font-label-md">Ce mois</button>
+<button class="whitespace-nowrap px-md py-xs rounded-full bg-surface-container text-on-surface-variant text-label-md font-label-md">Semaine</button>
+<button class="whitespace-nowrap px-md py-xs rounded-full bg-surface-container text-on-surface-variant text-label-md font-label-md">Année</button>
+<button class="whitespace-nowrap px-md py-xs rounded-full bg-surface-container text-on-surface-variant text-label-md font-label-md">Groupe: Jeunesse</button>
+</div>
+</section>
+<!-- Main Stats Grid -->
+<section class="grid grid-cols-2 gap-md">
+<!-- Total Adolescents -->
+<div class="bg-surface card-shadow rounded-xl p-md flex flex-col justify-between aspect-square border border-surface-variant/50">
+<span class="material-symbols-outlined text-secondary-container text-display-lg" style="font-variation-settings: 'FILL' 1;">group</span>
+<div>
+<p class="text-display-lg font-display-lg text-on-background">142</p>
+<p class="text-label-md font-label-md text-on-surface-variant">Adolescents</p>
+</div>
+</div>
+<!-- Total Sessions -->
+<div class="bg-surface card-shadow rounded-xl p-md flex flex-col justify-between aspect-square border border-surface-variant/50">
+<span class="material-symbols-outlined text-primary-container text-display-lg" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+<div>
+<p class="text-display-lg font-display-lg text-on-background">24</p>
+<p class="text-label-md font-label-md text-on-surface-variant">Séances</p>
+</div>
+</div>
+</section>
+<!-- Attendance Rate Card -->
+<section class="bg-surface-container-low rounded-2xl p-lg flex flex-col items-center text-center space-y-md border border-outline-variant/30">
+<h3 class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Taux de Présence Global</h3>
+<div class="relative flex items-center justify-center">
+<!-- Simple circular progress representation with SVG -->
+<svg class="w-32 h-32 transform -rotate-90">
+<circle class="text-surface-variant" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-dasharray="364.4" stroke-dashoffset="80" stroke-linecap="round" stroke-width="10"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-display-lg font-display-lg text-primary">78%</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant text-[#2D7A56]">+4% vs m-1</span>
+</div>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant px-md">
+                Engagement en hausse constante grâce aux activités de groupe du samedi.
+            </p>
+</section>
+<!-- Leaderboards / Rankings Section -->
+<section class="space-y-lg">
+<!-- Top 5 Most Attendant -->
+<div class="space-y-md">
+<div class="flex justify-between items-center">
+<h3 class="text-headline-md font-headline-md text-on-background">Top 5 Assidus</h3>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div class="space-y-sm">
+<!-- Item 1 -->
+<div class="bg-surface rounded-xl p-sm flex items-center gap-md border border-surface-variant/30 card-shadow">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold">1</div>
+<img alt="Student" class="w-10 h-10 rounded-full bg-surface-container" data-alt="Close up portrait of a smiling teenage boy with curly hair and glasses, warm lighting, natural skin tones, soft focused background, high quality photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKeAY_qu0OOze0AAr72ti3TLx7hWMkDlXHKvvJQuUT0zBFmYowDuTiC8DJ2v7vrZNKcsA2rXpwhiX8T1NNBUFpuGSx2rfXG1bzgKHpoQGU7UVHY8eQcxQdTNLq6O0N3ncvGHwYZhu1UWmrp7hczKDkhNhGVeuD5g1EvzJwZNypKjCDJup2HZJLNRy3EA2Jm6unrHZdI9tCRbeVfXwUAorknZCOETpaUbf1CtxrC2GyDgskGy-YjhOCBdawhg3aezPj7HYQLNy-_A"/>
+<div class="flex-1">
+<p class="text-body-lg font-body-lg font-semibold">Mateo Dupont</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">100% de présence (24/24)</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface rounded-xl p-sm flex items-center gap-md border border-surface-variant/30 card-shadow">
+<div class="w-10 h-10 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center font-bold">2</div>
+<img alt="Student" class="w-10 h-10 rounded-full bg-surface-container" data-alt="Portrait of a teenage girl with braids, wearing a bright orange hoodie, laughing, vibrant colors, soft morning sunlight, outdoor setting blurred behind." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgVDP8-g95x4831rSRo3viBLX-kq-hJAws7glqOBzRMfwjc406ifXvfpx_nAdfxTg6OcMh15rhs3jxVN5CoFdkaW3Hm5ue9ehdUIAzT-rw4ZekdEYL4bB9eNOojdxXciuOvc5URL_20y7TtfUQnRHAsSUuWjI--JXRgV76c6A0L0qnFu3auzg_b8UixhpxQz6_sj3beilm-eZsxDPZ6XjGaqjN9K4ymxGCwoICAEWqCFi6OxRZMvqAkd7wTLLVaswejk-rNkGXcw"/>
+<div class="flex-1">
+<p class="text-body-lg font-body-lg font-semibold">Chloé Mercier</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">96% de présence (23/24)</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="bg-surface rounded-xl p-sm flex items-center gap-md border border-surface-variant/30 card-shadow">
+<div class="w-10 h-10 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center font-bold">3</div>
+<img alt="Student" class="w-10 h-10 rounded-full bg-surface-container" data-alt="Portrait of a young man with a friendly expression, short dark hair, wearing a casual polo shirt, soft indoor studio lighting, neutral warm background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDjiJC1bZIESFLxL5iZijs632zLA38G9nkVxDDoOtXbTvWySFkVF0NmuklgrD-oIfpDqD0XfmNFq5c6DsW06f7prO3kXIr7oknQnygIfgFU7wOziGwXsawWwIBbe9WevGIA17wAzTRpMsRM-DUfWxL5d-mXWA90-2nEBlLtefXlAbEiywLYj49qGbV4haVa43B1_nOsjfx7bCEyvUhtKW5ONv_WgVLv9Rr_wdN0DvHzQ_fttoygK2lvxxwlf52YfQ-BlC2epsFzQ"/>
+<div class="flex-1">
+<p class="text-body-lg font-body-lg font-semibold">Lucas Bernard</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">92% de présence (22/24)</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Absent List / To Contact -->
+<div class="space-y-md">
+<div class="flex justify-between items-center">
+<h3 class="text-headline-md font-headline-md text-on-background">À contacter (Absents)</h3>
+<span class="px-sm py-xs bg-error-container text-on-error-container rounded-full text-label-sm font-label-sm">4 Profils critiques</span>
+</div>
+<div class="space-y-sm">
+<div class="bg-surface rounded-xl p-md flex items-center justify-between border-l-4 border-error card-shadow">
+<div class="flex items-center gap-md">
+<img alt="Student" class="w-12 h-12 rounded-full bg-surface-container" data-alt="Portrait of a teenager with a pensive look, wearing a denim jacket, urban background softly blurred, overcast lighting, detailed textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD33pGaaYEeqBYkJTLoycmK6oxLaL0uBGk2p_szD8BCKOTrzRIykdBxIPBXWCRJTii4Qr16yOiz_VJOUTasukqXTP4RvS0-RmzxrJwIVtD34vfTV4rp4NI7lSMGRPeMd3mMrdFQA-Covmz0CEUX6461hFzmaLSU8BKvUFpXLBuXYsHDGwe9pGxn67uCh-B631FAKvZ8YcxY0blO8tVspiDaILsW9lTyIqXZrlO6gCAk4-Jj3uzi82bu4I_QDdSulXhv5vEsbDoIrw"/>
+<div>
+<p class="text-body-lg font-body-lg font-bold">Kevin Lefebvre</p>
+<p class="text-label-sm font-label-sm text-error font-semibold">Absent 3 fois de suite</p>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-primary-fixed text-primary flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-symbols-outlined">call</span>
+</button>
+</div>
+<div class="bg-surface rounded-xl p-md flex items-center justify-between border-l-4 border-error card-shadow">
+<div class="flex items-center gap-md">
+<img alt="Student" class="w-12 h-12 rounded-full bg-surface-container" data-alt="Close up of a young girl with curly hair looking away thoughtfully, soft focus on her face, warm golden hour light, high artistic quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc_ElIFd4WJYTvIP-rchiUkbhDc57cbdbXwsT7XhSKVkM-yFVP5S3LXCgsCptrFuPiuYSCHZqZd7cyysaemNqvr4R6BNUOG0OzAhAUIaXkvaGF51FhE2-Dvhp0B78skIHN-TenQHLtmsfCBydN4rC0NCrSPOR2m7-Go_KghSf-OTLicfd-GqkIsXlY-joJWMcFK6-Yeynmhi9u8KbJtzBQ4OsII7DoJBb-ztiWNkwVoETj0qZRKQgVMY8TCFuSEdeSIsvrX3f_xw"/>
+<div>
+<p class="text-body-lg font-body-lg font-bold">Sara Fontaine</p>
+<p class="text-label-sm font-label-sm text-error font-semibold">Taux de présence: 20%</p>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-primary-fixed text-primary flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-symbols-outlined">call</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Summary Insights Card -->
+<section class="bg-secondary-container/20 rounded-2xl p-md border border-secondary-fixed/50">
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<div>
+<h4 class="text-label-md font-label-md text-on-secondary-container">Analyse du mois</h4>
+<p class="text-body-md font-body-md text-on-surface-variant mt-xs">
+                        Le groupe "Jeunesse" montre le meilleur engagement. Envisagez de contacter les 4 absents critiques avant la prochaine session de samedi pour maintenir le lien communautaire.
+                    </p>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-sm pb-safe pt-sm bg-surface/80 backdrop-blur-md shadow-[0_-4px_12px_rgba(122,99,88,0.08)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-sm py-xs" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-sm font-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-sm py-xs" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-label-sm font-label-sm">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-sm py-xs" href="#">
+<span class="material-symbols-outlined" data-icon="how_to_reg">how_to_reg</span>
+<span class="text-label-sm font-label-sm">Appel</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-sm py-xs active:scale-90 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="hub" style="font-variation-settings: 'FILL' 1;">hub</span>
+<span class="text-label-sm font-label-sm">Statistiques</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all px-sm py-xs" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-label-sm font-label-sm">Paramètres</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions and simple state management
+        document.querySelectorAll('nav a, button').forEach(el => {
+            el.addEventListener('touchstart', function() {
+                this.classList.add('opacity-80', 'scale-95');
+            });
+            el.addEventListener('touchend', function() {
+                this.classList.remove('opacity-80', 'scale-95');
+            });
+        });
+
+        // Simplified interaction for filters
+        const filterButtons = document.querySelectorAll('.overflow-x-auto button');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => {
+                    b.classList.remove('bg-primary', 'text-on-primary');
+                    b.classList.add('bg-surface-container', 'text-on-surface-variant');
+                });
+                btn.classList.add('bg-primary', 'text-on-primary');
+                btn.classList.remove('bg-surface-container', 'text-on-surface-variant');
+            });
+        });
+    </script>
+</body></html>

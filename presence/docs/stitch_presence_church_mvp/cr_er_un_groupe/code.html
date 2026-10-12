@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Créer un Groupe - Gestion Jeunesse</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#cfe9d8",
+                        "outline": "#707973",
+                        "primary-fixed-dim": "#95d4b3",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#8d4d4e",
+                        "surface-container": "#eceeea",
+                        "surface-container-highest": "#e1e3df",
+                        "error-container": "#ffdad6",
+                        "background": "#f8faf6",
+                        "on-primary-fixed-variant": "#0e5138",
+                        "on-tertiary-fixed": "#390b0e",
+                        "on-tertiary-fixed-variant": "#6f3537",
+                        "inverse-on-surface": "#eff1ed",
+                        "surface-variant": "#e1e3df",
+                        "surface-container-low": "#f2f4f0",
+                        "inverse-surface": "#2e312f",
+                        "inverse-primary": "#95d4b3",
+                        "on-primary-fixed": "#002114",
+                        "secondary-container": "#cfe9d8",
+                        "surface": "#f8faf6",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#f8faf6",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#a8e7c5",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-background": "#191c1a",
+                        "on-surface-variant": "#404943",
+                        "secondary-fixed-dim": "#b3ccbd",
+                        "surface-container-high": "#e7e9e5",
+                        "on-secondary-fixed": "#092016",
+                        "secondary": "#4c6357",
+                        "tertiary-fixed": "#ffdad9",
+                        "outline-variant": "#bfc9c1",
+                        "on-surface": "#191c1a",
+                        "on-tertiary-container": "#ffcfce",
+                        "surface-dim": "#d8dbd7",
+                        "primary-fixed": "#b1f0ce",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#354c3f",
+                        "on-secondary-container": "#526a5c",
+                        "primary": "#0f5238",
+                        "tertiary": "#713638",
+                        "surface-tint": "#2c694e",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb3b3",
+                        "primary-container": "#2d6a4f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "margin-mobile": "20px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "margin-desktop": "40px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-bold": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "headline-md": ["20px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                        "label-bold": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["22px", {"lineHeight": "1.3", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #f8faf6;
+            color: #191c1a;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .form-input-focus:focus {
+            outline: none;
+            border: 2px solid #0f5238;
+            background-color: #ffffff;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md antialiased">
+<!-- Header (TopAppBar Variant) -->
+<header class="sticky top-0 z-40 bg-surface/80 backdrop-blur-md">
+<div class="flex items-center justify-between px-margin-mobile py-md w-full max-w-7xl mx-auto">
+<button aria-label="Retour" class="p-xs -ml-2 rounded-full hover:bg-surface-container-low transition-colors duration-200">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<h1 class="text-[17px] font-bold text-on-surface leading-none">Nouveau groupe</h1>
+<div class="w-8"></div> <!-- Spacer for centering -->
+</div>
+</header>
+<main class="pb-32 max-w-2xl mx-auto px-margin-mobile pt-sm">
+<!-- Preview Section -->
+<section class="flex flex-col items-center justify-center mb-xl">
+<div class="w-24 h-24 bg-primary rounded-[20px] flex items-center justify-center shadow-sm transition-all duration-300" id="group-icon-preview">
+<span class="material-symbols-outlined text-white text-[48px]" style="font-variation-settings: 'FILL' 1;">group</span>
+</div>
+<button class="mt-md px-lg py-sm text-primary font-label-bold text-label-md hover:bg-primary/5 rounded-full transition-colors">
+                Personnaliser
+            </button>
+</section>
+<!-- Color Picker -->
+<section class="mb-xl">
+<label class="font-label-bold text-label-bold text-on-surface-variant uppercase mb-sm block">Couleur thématique</label>
+<div class="flex gap-md overflow-x-auto hide-scrollbar py-sm">
+<!-- Color Dots -->
+<button class="flex-shrink-0 w-10 h-10 rounded-full border-2 border-primary ring-2 ring-offset-2 ring-primary bg-[#0f5238] transition-all" onclick="updatePreview('#0f5238')"></button>
+<button class="flex-shrink-0 w-10 h-10 rounded-full bg-[#713638] hover:scale-110 transition-all" onclick="updatePreview('#713638')"></button>
+<button class="flex-shrink-0 w-10 h-10 rounded-full bg-[#2D6A4F] hover:scale-110 transition-all" onclick="updatePreview('#2D6A4F')"></button>
+<button class="flex-shrink-0 w-10 h-10 rounded-full bg-[#ba1a1a] hover:scale-110 transition-all" onclick="updatePreview('#ba1a1a')"></button>
+<button class="flex-shrink-0 w-10 h-10 rounded-full bg-[#4c6357] hover:scale-110 transition-all" onclick="updatePreview('#4c6357')"></button>
+<button class="flex-shrink-0 w-10 h-10 rounded-full bg-[#a37e2c] hover:scale-110 transition-all" onclick="updatePreview('#a37e2c')"></button>
+<button class="flex-shrink-0 w-10 h-10 rounded-full bg-[#354c3f] hover:scale-110 transition-all" onclick="updatePreview('#354c3f')"></button>
+</div>
+</section>
+<!-- Informations Section -->
+<section class="mb-xl space-y-lg">
+<h2 class="font-label-bold text-label-bold text-on-surface-variant uppercase">INFORMATIONS</h2>
+<div class="space-y-md">
+<div class="space-y-xs">
+<label class="font-label-bold text-label-bold text-secondary">Nom du groupe</label>
+<input class="w-full h-12 bg-[#F7F7F5] border-none rounded-xl px-md font-body-md form-input-focus transition-all" placeholder="Ex: Groupe d'étude biblique" type="text"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-bold text-label-bold text-secondary">Description</label>
+<textarea class="w-full bg-[#F7F7F5] border-none rounded-xl px-md py-sm font-body-md form-input-focus transition-all" placeholder="Décrivez l'objectif du groupe..." rows="3"></textarea>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="space-y-xs">
+<label class="font-label-bold text-label-bold text-secondary">Tranche d'âge</label>
+<select class="w-full h-12 bg-[#F7F7F5] border-none rounded-xl px-md font-body-md form-input-focus transition-all">
+<option>12-15 ans</option>
+<option>15-18 ans</option>
+<option>18-25 ans</option>
+</select>
+</div>
+<div class="space-y-xs">
+<label class="font-label-bold text-label-bold text-secondary">Responsable</label>
+<input class="w-full h-12 bg-[#F7F7F5] border-none rounded-xl px-md font-body-md form-input-focus transition-all" placeholder="Nom du leader" type="text"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Séances Section -->
+<section class="mb-xl space-y-lg">
+<h2 class="font-label-bold text-label-bold text-on-surface-variant uppercase">SÉANCES</h2>
+<div class="space-y-md">
+<div class="space-y-sm">
+<label class="font-label-bold text-label-bold text-secondary">Jours de rencontre</label>
+<div class="flex flex-wrap gap-sm">
+<button class="px-md py-xs rounded-full border border-outline-variant text-on-surface-variant font-label-md bg-surface hover:border-primary transition-all active:scale-95">Lundi</button>
+<button class="px-md py-xs rounded-full border border-outline-variant text-on-surface-variant font-label-md bg-surface hover:border-primary transition-all active:scale-95">Mardi</button>
+<button class="px-md py-xs rounded-full bg-secondary-container text-primary font-label-md border border-primary transition-all active:scale-95">Mercredi</button>
+<button class="px-md py-xs rounded-full border border-outline-variant text-on-surface-variant font-label-md bg-surface hover:border-primary transition-all active:scale-95">Jeudi</button>
+<button class="px-md py-xs rounded-full border border-outline-variant text-on-surface-variant font-label-md bg-surface hover:border-primary transition-all active:scale-95">Vendredi</button>
+<button class="px-md py-xs rounded-full border border-outline-variant text-on-surface-variant font-label-md bg-surface hover:border-primary transition-all active:scale-95">Samedi</button>
+<button class="px-md py-xs rounded-full border border-outline-variant text-on-surface-variant font-label-md bg-surface hover:border-primary transition-all active:scale-95">Dimanche</button>
+</div>
+</div>
+<div class="space-y-xs w-full max-w-xs">
+<label class="font-label-bold text-label-bold text-secondary">Heure de début</label>
+<div class="relative">
+<input class="w-full h-12 bg-[#F7F7F5] border-none rounded-xl px-md font-body-md form-input-focus transition-all" type="time" value="18:30"/>
+<span class="material-symbols-outlined absolute right-4 top-3 text-outline-variant pointer-events-none">schedule</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Illustration Space (Atmospheric) -->
+<section class="mt-lg">
+<div class="rounded-3xl overflow-hidden h-40 bg-surface-container relative group">
+<img alt="Community illustration" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" data-alt="A warm and inviting photograph of a diverse group of young people laughing and talking together in a modern, sunlit community space. The lighting is soft and golden, emphasizing a welcoming church youth atmosphere. The colors are natural and earthy, with subtle forest green accents in the background foliage, maintaining a professional yet friendly aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5ot66tAItaSk7LoqppgRJpEw9QdEDg6IAhMcTOC9Tgrh0n7nqRPwVtlYnnOFti9jctGMbAY3xUqJOXGUL9O7iDBFFu8M7buqS6G9UeCYaHknm9ZREGDfrD31a8-siJq7TyzBnaZeIyyAVN0915DJtmY4iy4LGkZ5-vdw2IoGMFEvCX-Y-1-Xml_NH7DEEED3bOg2SBahOqMGVMLzWV7Zboi9ZW_uKgZJjtO9MVdq8AvewbfG_B-PtQ8toVYYWJFwD797gi5Nd"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-40"></div>
+</div>
+</section>
+</main>
+<!-- Footer Action -->
+<footer class="fixed bottom-0 left-0 w-full p-margin-mobile bg-surface/90 backdrop-blur-md border-t border-surface-variant z-50">
+<div class="max-w-2xl mx-auto">
+<button class="w-full h-14 bg-[#2D6A4F] text-white font-headline-md rounded-xl flex items-center justify-center gap-sm active:scale-[0.98] transition-transform duration-150 shadow-md">
+<span class="material-symbols-outlined">add_circle</span>
+                Créer le groupe
+            </button>
+</div>
+</footer>
+<script>
+        function updatePreview(color) {
+            const preview = document.getElementById('group-icon-preview');
+            preview.style.backgroundColor = color;
+            
+            // Remove previous active rings
+            const buttons = document.querySelectorAll('.Color-Picker button');
+            // Logic for visual selection state
+            const target = event.currentTarget;
+            const parent = target.parentElement;
+            parent.querySelectorAll('button').forEach(btn => {
+                btn.classList.remove('border-2', 'border-primary', 'ring-2', 'ring-offset-2', 'ring-primary');
+                btn.classList.add('hover:scale-110');
+            });
+            target.classList.add('border-2', 'border-primary', 'ring-2', 'ring-offset-2', 'ring-primary');
+            target.classList.remove('hover:scale-110');
+        }
+
+        // Handle day selection toggles
+        document.querySelectorAll('section:nth-of-type(4) button').forEach(button => {
+            button.addEventListener('click', () => {
+                if(button.classList.contains('bg-secondary-container')) {
+                    button.classList.remove('bg-secondary-container', 'text-primary', 'border-primary');
+                    button.classList.add('border-outline-variant', 'text-on-surface-variant', 'bg-surface');
+                } else {
+                    button.classList.add('bg-secondary-container', 'text-primary', 'border-primary');
+                    button.classList.remove('border-outline-variant', 'text-on-surface-variant', 'bg-surface');
+                }
+            });
+        });
+    </script>
+</body></html>

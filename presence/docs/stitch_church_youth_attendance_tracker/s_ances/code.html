@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChurchPresence - Séances</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#777587",
+                    "inverse-on-surface": "#ebf1ff",
+                    "on-secondary-container": "#00714d",
+                    "tertiary-container": "#6f3dd9",
+                    "background": "#f9f9ff",
+                    "on-tertiary-container": "#e3d5ff",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#c3c0ff",
+                    "error-container": "#ffdad6",
+                    "secondary": "#006c49",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#dce2f3",
+                    "on-tertiary-fixed": "#23005c",
+                    "on-secondary-fixed-variant": "#005236",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed": "#6ffbbe",
+                    "tertiary-fixed-dim": "#d0bcff",
+                    "on-surface": "#151c27",
+                    "surface-tint": "#4d44e3",
+                    "tertiary": "#571ac0",
+                    "surface": "#f9f9ff",
+                    "on-tertiary-fixed-variant": "#5516be",
+                    "surface-container-high": "#e2e8f8",
+                    "surface-dim": "#d3daea",
+                    "secondary-fixed-dim": "#4edea3",
+                    "inverse-surface": "#2a313d",
+                    "primary-fixed": "#e2dfff",
+                    "secondary-container": "#6cf8bb",
+                    "outline-variant": "#c7c4d8",
+                    "surface-container": "#e7eefe",
+                    "on-primary-container": "#dad7ff",
+                    "surface-variant": "#dce2f3",
+                    "on-secondary-fixed": "#002113",
+                    "surface-bright": "#f9f9ff",
+                    "primary-container": "#4f46e5",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "surface-container-low": "#f0f3ff",
+                    "on-surface-variant": "#464555",
+                    "error": "#ba1a1a",
+                    "on-background": "#151c27",
+                    "tertiary-fixed": "#e9ddff",
+                    "on-primary-fixed": "#0f0069",
+                    "primary": "#3525cd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "xs": "4px",
+                    "base": "4px",
+                    "md": "16px",
+                    "margin-mobile": "16px",
+                    "gutter": "16px",
+                    "margin-tablet": "32px",
+                    "lg": "24px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "display": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #F9FAFB; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pulse-dot {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .4; }
+        }
+        .scroll-hide::-webkit-scrollbar { display: none; }
+        .scroll-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface pb-24">
+<!-- Top AppBar Strategy -->
+<header class="bg-surface shadow-sm sticky top-0 z-40 px-margin-mobile h-auto py-4 w-full">
+<div class="flex justify-between items-center mb-1">
+<div class="flex flex-col">
+<h1 class="text-[22px] font-bold leading-tight text-on-surface">Séances</h1>
+<p class="font-body-md text-label-md text-on-surface-variant">12 séances ce mois</p>
+</div>
+<button class="bg-primary-container text-white px-lg py-sm rounded-xl font-semibold shadow-sm active:scale-95 transition-all text-body-md">
+                Nouvelle
+            </button>
+</div>
+</header>
+<main class="px-margin-mobile pt-lg space-y-lg">
+<!-- Month Filter -->
+<div class="flex items-center justify-between bg-white p-sm rounded-xl shadow-sm">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">chevron_left</span>
+</button>
+<span class="font-headline-md text-headline-md text-on-surface">Juin 2025</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</button>
+</div>
+<!-- Horizontal Mini Calendar -->
+<div class="flex justify-between overflow-x-auto scroll-hide space-x-sm pb-xs">
+<div class="flex flex-col items-center justify-center min-w-[48px] h-20 rounded-xl bg-white shadow-sm border border-transparent">
+<span class="text-label-md text-on-surface-variant mb-1">LUN</span>
+<span class="text-body-lg font-bold">09</span>
+</div>
+<div class="flex flex-col items-center justify-center min-w-[48px] h-20 rounded-xl bg-white shadow-sm border border-transparent">
+<span class="text-label-md text-on-surface-variant mb-1">MAR</span>
+<span class="text-body-lg font-bold">10</span>
+</div>
+<div class="flex flex-col items-center justify-center min-w-[48px] h-20 rounded-xl bg-primary-container text-white shadow-md">
+<span class="text-label-md opacity-80 mb-1">MER</span>
+<span class="text-body-lg font-bold">11</span>
+</div>
+<div class="flex flex-col items-center justify-center min-w-[48px] h-20 rounded-xl bg-white shadow-sm border border-transparent">
+<span class="text-label-md text-on-surface-variant mb-1">JEU</span>
+<span class="text-body-lg font-bold">12</span>
+</div>
+<div class="flex flex-col items-center justify-center min-w-[48px] h-20 rounded-xl bg-white shadow-sm border border-transparent">
+<span class="text-label-md text-on-surface-variant mb-1">VEN</span>
+<span class="text-body-lg font-bold">13</span>
+</div>
+<div class="flex flex-col items-center justify-center min-w-[48px] h-20 rounded-xl bg-white shadow-sm border border-transparent">
+<span class="text-label-md text-on-surface-variant mb-1">SAM</span>
+<span class="text-body-lg font-bold">14</span>
+</div>
+<div class="flex flex-col items-center justify-center min-w-[48px] h-20 rounded-xl bg-white shadow-sm border border-transparent">
+<span class="text-label-md text-on-surface-variant mb-1">DIM</span>
+<span class="text-body-lg font-bold">15</span>
+</div>
+</div>
+<!-- Session List -->
+<div class="space-y-md">
+<!-- Session Card 1: En Cours -->
+<div class="bg-white rounded-xl shadow-sm p-md flex items-center space-x-md transition-transform active:scale-[0.98]">
+<div class="w-14 h-14 bg-primary-container text-white rounded-lg flex flex-col items-center justify-center shrink-0">
+<span class="text-label-sm font-bold uppercase tracking-tighter">MER</span>
+<span class="text-headline-md leading-none">11</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-on-surface truncate">Groupe de Louange</h3>
+<div class="flex items-center px-2 py-0.5 bg-[#D1FAE5] text-[#065F46] rounded-full text-label-sm font-semibold">
+<span class="w-2 h-2 bg-[#059669] rounded-full mr-1.5 pulse-dot"></span>
+                            En cours
+                        </div>
+</div>
+<div class="flex items-center text-on-surface-variant mt-1 space-x-md">
+<div class="flex items-center space-x-1">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="text-body-md">10h00 - 12h00</span>
+</div>
+<div class="flex items-center space-x-1">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span class="text-body-md">32/47</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Session Card 2: À Venir -->
+<div class="bg-white rounded-xl shadow-sm p-md flex items-center space-x-md opacity-90">
+<div class="w-14 h-14 bg-primary text-white rounded-lg flex flex-col items-center justify-center shrink-0">
+<span class="text-label-sm font-bold uppercase tracking-tighter">VEN</span>
+<span class="text-headline-md leading-none">13</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-on-surface truncate">Étude Biblique Jeunes</h3>
+<div class="px-2 py-0.5 bg-primary-fixed text-primary rounded-full text-label-sm font-semibold">
+                            À venir
+                        </div>
+</div>
+<div class="flex items-center text-on-surface-variant mt-1 space-x-md">
+<div class="flex items-center space-x-1">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="text-body-md">18h30 - 20h00</span>
+</div>
+<div class="flex items-center space-x-1">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span class="text-body-md">12/25</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Session Card 3: Terminée -->
+<div class="bg-white rounded-xl shadow-sm p-md flex items-center space-x-md">
+<div class="w-14 h-14 bg-surface-container-high text-on-surface-variant rounded-lg flex flex-col items-center justify-center shrink-0">
+<span class="text-label-sm font-bold uppercase tracking-tighter">LUN</span>
+<span class="text-headline-md leading-none">09</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-on-surface truncate">Réunion de Prière</h3>
+<div class="px-2 py-0.5 bg-surface-variant text-on-surface-variant rounded-full text-label-sm font-semibold">
+                            Terminée
+                        </div>
+</div>
+<div class="flex items-center text-on-surface-variant mt-1 space-x-md">
+<div class="flex items-center space-x-1">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="text-body-md">08h00 - 09h00</span>
+</div>
+<div class="flex items-center space-x-1">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span class="text-body-md">24/30</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Session Card 4: Terminée -->
+<div class="bg-white rounded-xl shadow-sm p-md flex items-center space-x-md">
+<div class="w-14 h-14 bg-surface-container-high text-on-surface-variant rounded-lg flex flex-col items-center justify-center shrink-0">
+<span class="text-label-sm font-bold uppercase tracking-tighter">DIM</span>
+<span class="text-headline-md leading-none">08</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-on-surface truncate">Culte Dominical</h3>
+<div class="px-2 py-0.5 bg-surface-variant text-on-surface-variant rounded-full text-label-sm font-semibold">
+                            Terminée
+                        </div>
+</div>
+<div class="flex items-center text-on-surface-variant mt-1 space-x-md">
+<div class="flex items-center space-x-1">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="text-body-md">10h00 - 12h30</span>
+</div>
+<div class="flex items-center space-x-1">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span class="text-body-md">142/150</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-[#4F46E5] text-white rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-transform z-50">
+<span class="material-symbols-outlined text-[28px]">add</span>
+</button>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface shadow-[0_-1px_2px_0_rgba(0,0,0,0.05)] rounded-t-xl">
+<!-- Home (Accueil) Active based on prompt request -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-white rounded-xl px-3 py-1 transition-transform duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-md text-label-md">Accueil</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 transition-transform duration-200 active:scale-90 hover:text-primary" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 transition-transform duration-200 active:scale-90 hover:text-primary" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="font-label-md text-label-md">Appel</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 transition-transform duration-200 active:scale-90 hover:text-primary" href="#">
+<span class="material-symbols-outlined">diversity_3</span>
+<span class="font-label-md text-label-md">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 transition-transform duration-200 active:scale-90 hover:text-primary" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Paramètres</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions and simple state handling
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // If this wasn't just a layout demo, we'd handle navigation
+                // For now, just a visual feedback
+            });
+        });
+
+        // Horizontal calendar scroll snapping if needed
+        const scrollContainer = document.querySelector('.scroll-hide');
+        if(scrollContainer) {
+            scrollContainer.addEventListener('wheel', (evt) => {
+                evt.preventDefault();
+                scrollContainer.scrollLeft += evt.deltaY;
+            });
+        }
+    </script>
+</body></html>

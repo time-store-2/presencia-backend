@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChurchPresence - Tableau de Bord</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#2a313d",
+                    "primary-fixed": "#e2dfff",
+                    "surface-dim": "#d3daea",
+                    "secondary-fixed-dim": "#4edea3",
+                    "surface-tint": "#4d44e3",
+                    "on-tertiary-fixed-variant": "#5516be",
+                    "tertiary": "#571ac0",
+                    "surface": "#f9f9ff",
+                    "surface-container-high": "#e2e8f8",
+                    "secondary-fixed": "#6ffbbe",
+                    "tertiary-fixed-dim": "#d0bcff",
+                    "on-surface": "#151c27",
+                    "on-error": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#23005c",
+                    "on-secondary-fixed-variant": "#005236",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#dce2f3",
+                    "on-tertiary-container": "#e3d5ff",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#c3c0ff",
+                    "error-container": "#ffdad6",
+                    "secondary": "#006c49",
+                    "on-secondary-container": "#00714d",
+                    "tertiary-container": "#6f3dd9",
+                    "background": "#f9f9ff",
+                    "outline": "#777587",
+                    "inverse-on-surface": "#ebf1ff",
+                    "tertiary-fixed": "#e9ddff",
+                    "on-primary-fixed": "#001a69",
+                    "primary": "#3525cd",
+                    "on-surface-variant": "#464555",
+                    "error": "#ba1a1a",
+                    "on-background": "#151c27",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "surface-container-low": "#f0f3ff",
+                    "primary-container": "#4f46e5",
+                    "on-secondary-fixed": "#002113",
+                    "surface-bright": "#f9f9ff",
+                    "on-primary-container": "#dad7ff",
+                    "surface-variant": "#dce2f3",
+                    "secondary-container": "#6cf8bb",
+                    "outline-variant": "#c7c4d8",
+                    "surface-container": "#e7eefe"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "xs": "4px",
+                    "base": "4px",
+                    "md": "16px",
+                    "margin-mobile": "16px",
+                    "gutter": "16px",
+                    "margin-tablet": "32px",
+                    "lg": "24px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "display": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #F9FAFB;
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .safe-area-inset-bottom {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="text-on-surface mb-24">
+<!-- TopAppBar -->
+<header class="bg-surface sticky top-0 z-40 px-margin-mobile h-auto py-5 shadow-sm transition-all duration-200">
+<div class="flex justify-between items-center mb-1">
+<div class="flex flex-col">
+<span class="text-on-surface-variant font-body-md text-body-md">Bonjour, 👋</span>
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-surface">Tableau de bord</h1>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+</div>
+<p class="text-on-surface-variant font-label-md text-label-md opacity-70">Dimanche 15 juin 2025</p>
+</header>
+<main class="px-margin-mobile mt-lg space-y-lg">
+<!-- Stats Cards Section -->
+<section class="bento-grid">
+<!-- Total -->
+<div class="bg-white p-md rounded-xl shadow-sm border border-surface-container-high flex flex-col space-y-2">
+<div class="w-10 h-10 rounded-lg bg-[#EEF2FF] flex items-center justify-center">
+<span class="material-symbols-outlined text-[#4F46E5]">groups</span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-md text-label-md">Total</p>
+<p class="font-headline-md text-headline-md text-on-surface">47 Ados</p>
+</div>
+</div>
+<!-- Présents -->
+<div class="bg-white p-md rounded-xl shadow-sm border border-surface-container-high flex flex-col space-y-2">
+<div class="w-10 h-10 rounded-lg bg-[#D1FAE5] flex items-center justify-center">
+<span class="material-symbols-outlined text-[#10B981]">how_to_reg</span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-md text-label-md">Présents</p>
+<p class="font-headline-md text-headline-md text-on-surface">32 Présents</p>
+</div>
+</div>
+<!-- Absents -->
+<div class="bg-white p-md rounded-xl shadow-sm border border-surface-container-high flex flex-col space-y-2">
+<div class="w-10 h-10 rounded-lg bg-[#FEE2E2] flex items-center justify-center">
+<span class="material-symbols-outlined text-[#EF4444]">person_off</span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-md text-label-md">Absents</p>
+<p class="font-headline-md text-headline-md text-on-surface">15 Absents</p>
+</div>
+</div>
+<!-- Taux -->
+<div class="bg-white p-md rounded-xl shadow-sm border border-surface-container-high flex flex-col space-y-2">
+<div class="w-10 h-10 rounded-lg bg-[#FEF3C7] flex items-center justify-center">
+<span class="material-symbols-outlined text-[#F59E0B]">analytics</span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-md text-label-md">Taux du jour</p>
+<p class="font-headline-md text-headline-md text-on-surface">68%</p>
+</div>
+</div>
+</section>
+<!-- Quick Actions -->
+<section class="space-y-md">
+<h2 class="font-headline-md text-headline-md text-on-surface">Actions rapides</h2>
+<div class="grid grid-cols-1 gap-sm">
+<button class="flex items-center justify-center space-x-2 bg-primary-container text-white py-4 rounded-xl font-medium shadow-md active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assignment_turned_in</span>
+<span class="font-body-lg text-body-lg">Faire l'appel</span>
+</button>
+<button class="flex items-center justify-center space-x-2 bg-white border border-outline-variant text-on-surface py-4 rounded-xl font-medium active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined text-primary">person_add</span>
+<span class="font-body-lg text-body-lg">Ajouter un jeune</span>
+</button>
+</div>
+</section>
+<!-- Latest Sessions -->
+<section class="space-y-md">
+<div class="flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md text-on-surface">Dernières Séances</h2>
+<button class="text-primary font-label-md text-label-md uppercase tracking-wider">Voir tout</button>
+</div>
+<div class="space-y-sm">
+<!-- Card 1 -->
+<div class="bg-white p-md rounded-xl shadow-sm border border-surface-container-high flex items-center justify-between">
+<div class="flex items-center space-x-md">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">calendar_month</span>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg font-semibold text-on-surface">École du dimanche</h3>
+<p class="text-on-surface-variant font-body-md text-body-md">15 Juin 2025</p>
+</div>
+</div>
+<div class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-md text-label-md">
+                        32/47
+                    </div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white p-md rounded-xl shadow-sm border border-surface-container-high flex items-center justify-between">
+<div class="flex items-center space-x-md">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">calendar_month</span>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg font-semibold text-on-surface">Réunion de Jeunesse</h3>
+<p class="text-on-surface-variant font-body-md text-body-md">08 Juin 2025</p>
+</div>
+</div>
+<div class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-md text-label-md">
+                        40/47
+                    </div>
+</div>
+</div>
+</section>
+<!-- Illustration / Background element (Atmospheric) -->
+<div class="relative w-full h-40 rounded-2xl overflow-hidden mt-8 opacity-90">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-container to-tertiary-container"></div>
+
+<div class="absolute inset-0 flex items-center p-md">
+<div class="text-white max-w-[60%]">
+<p class="font-headline-md text-headline-md font-bold mb-1">Impact Spirituel</p>
+<p class="font-body-md text-body-md opacity-80">Suivez la croissance et l'engagement de votre communauté.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-white shadow-[0_-2px_10px_rgba(0,0,0,0.05)] safe-area-inset-bottom">
+<div class="flex justify-around items-center h-20 px-4">
+<!-- Accueil (Active) -->
+<a class="flex flex-col items-center justify-center text-primary-container" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm mt-1">Accueil</span>
+</a>
+<!-- Jeunes -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-sm text-label-sm mt-1">Jeunes</span>
+</a>
+<!-- Appel (Large Center Button) -->
+<div class="relative -mt-10">
+<button class="w-16 h-16 bg-primary-container rounded-full shadow-xl flex items-center justify-center text-white active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-3xl">how_to_reg</span>
+</button>
+<div class="text-center mt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Appel</span>
+</div>
+</div>
+<!-- Groupes -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">diversity_3</span>
+<span class="font-label-sm text-label-sm mt-1">Groupes</span>
+</a>
+<!-- Paramètres -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm mt-1">Paramètres</span>
+</a>
+</div>
+</nav>
+<script>
+        // Micro-interactions and soft ripple effect simulation
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mousedown', function() {
+                this.classList.add('opacity-70');
+            });
+            el.addEventListener('mouseup', function() {
+                this.classList.remove('opacity-70');
+            });
+            el.addEventListener('mouseleave', function() {
+                this.classList.remove('opacity-70');
+            });
+        });
+
+        // Simple visibility effect on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('bg-white/90', 'backdrop-blur-md');
+            } else {
+                header.classList.remove('bg-white/90', 'backdrop-blur-md');
+            }
+        });
+    </script>
+</body></html>

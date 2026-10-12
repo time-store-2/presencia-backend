@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>QR Code Personnel - Kindred Path</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#ffdad2",
+                        "on-surface": "#191d0e",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#ffb4a2",
+                        "inverse-primary": "#95d4b3",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#ffdcc2",
+                        "surface-container-low": "#f2f6dd",
+                        "on-secondary-fixed-variant": "#83260e",
+                        "tertiary-fixed-dim": "#f4bb8e",
+                        "primary-container": "#2d6a4f",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#a8e7c5",
+                        "surface-variant": "#e0e5cc",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#404943",
+                        "surface-tint": "#2c694e",
+                        "on-tertiary": "#ffffff",
+                        "outline-variant": "#bfc9c1",
+                        "outline": "#707973",
+                        "secondary": "#a33d23",
+                        "on-tertiary-fixed-variant": "#653e1b",
+                        "surface": "#f7fce3",
+                        "on-secondary-container": "#731a04",
+                        "inverse-on-surface": "#eff3da",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#95d4b3",
+                        "surface-bright": "#f7fce3",
+                        "primary-fixed": "#b1f0ce",
+                        "secondary-container": "#ff8162",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#191d0e",
+                        "on-tertiary-container": "#ffd0ad",
+                        "tertiary": "#653e1b",
+                        "background": "#f7fce3",
+                        "on-primary-fixed-variant": "#0e5138",
+                        "on-secondary-fixed": "#3c0700",
+                        "surface-container": "#ecf0d8",
+                        "on-tertiary-fixed": "#2e1500",
+                        "surface-dim": "#d8dcc4",
+                        "surface-container-highest": "#e0e5cc",
+                        "tertiary-container": "#805530",
+                        "surface-container-high": "#e6ebd2",
+                        "inverse-surface": "#2e3222",
+                        "error-container": "#ffdad6",
+                        "primary": "#0f5238",
+                        "on-primary-fixed": "#002114"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "48px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "margin-desktop": "40px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "xl": "80px",
+                        "margin-mobile": "16px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "60px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #FAFAF8;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .sanctuary-shadow {
+            box-shadow: 0px 4px 20px rgba(45, 106, 79, 0.05);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- Top AppBar (Mobile Focused) -->
+<header class="w-full top-0 sticky z-30 bg-background/80 backdrop-blur-md">
+<div class="flex items-center justify-between px-margin-mobile py-4 w-full">
+<button aria-label="Retour" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm-mobile text-primary font-bold">QR Code</h1>
+<button aria-label="Partager" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-on-surface">share</span>
+</button>
+</div>
+</header>
+<main class="px-margin-mobile pb-24 pt-4">
+<!-- Main QR Card -->
+<section class="bg-white rounded-2xl p-7 sanctuary-shadow border border-[#E8E8E4]/20 flex flex-col items-center">
+<!-- User Profile Info -->
+<div class="flex flex-col items-center mb-8">
+<div class="w-16 h-16 rounded-full overflow-hidden mb-3 border-2 border-primary-fixed">
+<img alt="David Koffi" class="w-full h-full object-cover" data-alt="A warm and professional portrait of a young West African man named David Koffi, smiling gently at the camera. He is wearing a clean, structured casual shirt in a soft neutral tone. The background is a soft-focus interior of a modern, brightly lit community space with hints of green foliage, maintaining a serene and welcoming atmosphere consistent with the sanctuary aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQsoUNntyA3F8-ni2o8jZXrU4LdZ6JjYhOhhQGsZ31TfU9wQUzOth85le8Bh5XXZDBEX7yQ7mIC88NKDmfMKrKF4znEg15bSWj6RwlKIkLMT8B7eNCFxqVOel7rn7kblT2MSVawR46hkzIH1Xm0IAEYXhXVFgGm77W-FPl4pvxU8TfIxwihAJ0-7qlXdH7syGQz4RVQXHY-2aUobMeHssYFWsiKyz67_JWNbHuPFKHYpKvqlPardyeQ0fi5Wzi5S0gzZ0CgkUg"/>
+</div>
+<h2 class="font-headline-sm text-on-surface mb-1">David Koffi</h2>
+<div class="bg-surface-container-low px-3 py-1 rounded-full">
+<span class="font-label-sm text-on-surface-variant">École du dimanche</span>
+</div>
+</div>
+<!-- QR Code Section -->
+<div class="relative group cursor-pointer active:scale-95 transition-transform duration-300 mb-6">
+<div class="absolute -inset-4 bg-primary-fixed/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="relative bg-white p-4 rounded-xl border border-outline-variant/30">
+<img alt="Personal QR Code" class="w-64 h-64 md:w-72 md:h-72 object-contain" src="data:image/png;base64,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"/>
+</div>
+</div>
+<p class="font-body-md text-on-surface-variant text-center mb-8 max-w-[200px]">
+                Scannez pour enregistrer la présence
+            </p>
+<div class="w-full border-t border-dashed border-outline-variant/50 pt-6 flex flex-col items-center">
+<span class="font-label-md text-outline tracking-widest uppercase">#DK-2025-047</span>
+</div>
+</section>
+<!-- Action Buttons -->
+<div class="mt-8 space-y-4">
+<button class="w-full bg-primary-container text-on-primary-container h-14 rounded-xl font-label-md flex items-center justify-center gap-3 hover:opacity-90 active:scale-95 transition-all shadow-md">
+<span class="material-symbols-outlined">download</span>
+                Télécharger le QR
+            </button>
+<button class="w-full bg-white text-on-surface border border-outline-variant h-14 rounded-xl font-label-md flex items-center justify-center gap-3 hover:bg-surface-container-low active:scale-95 transition-all sanctuary-shadow">
+<span class="material-symbols-outlined">share</span>
+                Partager
+            </button>
+</div>
+<!-- Info Box -->
+<div class="mt-8 bg-[#F0FAF3] border border-[#2D6A4F]/10 p-5 rounded-xl flex gap-4">
+<div class="mt-0.5">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">info</span>
+</div>
+<p class="font-body-sm text-on-surface-variant leading-relaxed">
+                Ce code QR est unique. Il permet l'enregistrement automatique de la présence lors des activités de l'église.
+            </p>
+</div>
+</main>
+<!-- Bottom Nav Shell (Filtered for relevance check: Youth section context) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 pb-safe px-2 bg-surface dark:bg-surface-dim z-50 rounded-t-xl shadow-[0px_-4px_20px_rgba(45,106,79,0.05)] md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">child_care</span>
+<span class="font-label-sm text-label-sm mt-1">Youth</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+<span class="font-label-sm text-label-sm mt-1">Appel/QR</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-sm text-label-sm mt-1">Groups</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm mt-1">Settings</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for the download button
+        document.querySelector('button.bg-primary-container').addEventListener('click', function() {
+            const btn = this;
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> En cours...';
+            btn.style.opacity = '0.7';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Terminé';
+                btn.classList.replace('bg-primary-container', 'bg-green-600');
+                btn.classList.replace('text-on-primary-container', 'text-white');
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalContent;
+                    btn.classList.replace('bg-green-600', 'bg-primary-container');
+                    btn.classList.replace('text-white', 'text-on-primary-container');
+                    btn.style.opacity = '1';
+                    btn.disabled = false;
+                }, 2000);
+            }, 1500);
+        });
+    </script>
+</body></html>

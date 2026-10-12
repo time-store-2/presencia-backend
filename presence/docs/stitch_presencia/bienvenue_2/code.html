@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bienvenue sur Presencia</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FAF7F5; /* Base Layer from Style Guidance */
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .slide-up {
+            animation: slideUp 0.6s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .onboarding-step {
+            display: none;
+        }
+        .onboarding-step.active {
+            display: flex;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#fff8f6",
+                        "inverse-surface": "#382e2a",
+                        "surface-container": "#fceae3",
+                        "surface": "#fff8f6",
+                        "on-primary-fixed": "#390b00",
+                        "inverse-on-surface": "#ffede6",
+                        "on-tertiary-fixed": "#25005a",
+                        "surface-container-high": "#f6e5de",
+                        "on-primary-container": "#fffcff",
+                        "on-surface-variant": "#57423b",
+                        "inverse-primary": "#ffb59d",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "outline": "#8b716a",
+                        "on-tertiary-fixed-variant": "#533294",
+                        "on-background": "#221a16",
+                        "on-secondary-container": "#704b00",
+                        "surface-container-highest": "#f0dfd8",
+                        "surface-variant": "#f0dfd8",
+                        "on-primary-fixed-variant": "#842600",
+                        "surface-container-low": "#fff1eb",
+                        "tertiary-fixed-dim": "#d2bcff",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#e7d7d0",
+                        "on-secondary-fixed-variant": "#614000",
+                        "tertiary-container": "#8262c6",
+                        "on-tertiary-container": "#fffcff",
+                        "primary-fixed-dim": "#ffb59d",
+                        "outline-variant": "#dec0b7",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#281800",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#ffdbd0",
+                        "secondary-fixed-dim": "#fdba49",
+                        "secondary-container": "#fdba49",
+                        "secondary": "#805600",
+                        "on-surface": "#221a16",
+                        "tertiary-fixed": "#eaddff",
+                        "surface-tint": "#a43c17",
+                        "primary": "#a13a15",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#ffddaf",
+                        "primary-container": "#c2522b",
+                        "tertiary": "#6949ab",
+                        "error-container": "#ffdad6",
+                        "background": "#fff8f6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "container-margin": "20px",
+                        "unit": "4px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center justify-between overflow-hidden">
+<!-- Top Navigation Placeholder (Hidden for transactional onboarding) -->
+<main class="flex-1 w-full max-w-md mx-auto px-container-margin flex flex-col justify-center items-center relative">
+<!-- Onboarding Step 1: Rapidité -->
+<section class="onboarding-step active flex-col items-center text-center fade-in" id="step-1">
+<div class="relative w-72 h-72 mb-lg rounded-full bg-surface-container-low flex items-center justify-center overflow-hidden">
+<img alt="Rapidité d'appel" class="w-full h-full object-cover" data-alt="A warm and inviting digital illustration of a diverse group of joyful youth leaders in a bright, modern church community space. The lighting is soft and golden, creating a sense of 'Radical Hospitality' and home. A subtle UI element floats in the background showing a fast attendance checkmark. The style is professional corporate modern with tactile textures and earthy terracotta tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMcjTvn2LIun-LHWXdh-GbpHO5PxLmFevWPgBktQ4oBmH3EWyYHK7WpqUVPAJe3leYqVKMKPtehzAOJN4t6SN9_VbqHPK7KCRr-vRcuVdHtTU3oOYvBlZOR0cSGeXfNSBTlPbIcXp5Qn-lLB6C6T68cHx8QJFVZIb74JQDA6icufQF1kjSUkV0676eO65iQ2iq1hthpR7Z632JCk9t5WUrhO5CHXgCSQywnv-akxZIF1YaQtSceE8G6KCNNzBK2pN6WdKvxrmorA"/>
+</div>
+<h1 class="text-display-lg font-display-lg text-on-surface mb-md">Rapidité de l'appel</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-xl px-sm">
+                Gagnez du temps précieux chaque semaine. Marquez les présences en quelques gestes simples et intuitifs.
+            </p>
+</section>
+<!-- Onboarding Step 2: Historique -->
+<section class="onboarding-step flex-col items-center text-center fade-in" id="step-2">
+<div class="relative w-72 h-72 mb-lg rounded-full bg-surface-container-low flex items-center justify-center overflow-hidden">
+<img alt="Historique complet" class="w-full h-full object-cover" data-alt="A clean, sophisticated digital illustration showing a bird's eye view of a community calendar and progress chart with soft warm colors like terracotta and pale brown. The atmosphere is professional yet welcoming, representing a 'Radical Hospitality' approach to church administration. Soft ambient lighting illuminates the scene, emphasizing clarity and organizational growth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoszKwhBdnRNNGEVISb9fYtCzpEyoFHKmYIPHiB7qlq70si0Q03PwpCmjKKWcYdYQC_Snf5cHaqk-YoRgKqU1H_eg2VIGt8jh_itCid4jnvjtqRPXdLq4LY3v52ZKNYIYeCxCAL4gbQblqk8FZGEOPRdm2M4Roaih4_SHSWaHJq-nWFRl3G5ony5Kby6Mt8dgyJdPz16zMinPEfe3AsMczz05kqu0MsSH5f-ivp_dR44sqK1UM6gvqRKYhhCLoOfZ37WN_D-om8A"/>
+</div>
+<h1 class="text-display-lg font-display-lg text-on-surface mb-md">Historique Complet</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-xl px-sm">
+                Visualisez la croissance de vos groupes. Suivez l'engagement des jeunes sur le long terme avec des rapports clairs.
+            </p>
+</section>
+<!-- Onboarding Step 3: Contact Parents -->
+<section class="onboarding-step flex-col items-center text-center fade-in" id="step-3">
+<div class="relative w-72 h-72 mb-lg rounded-full bg-surface-container-low flex items-center justify-center overflow-hidden">
+<img alt="Contact direct" class="w-full h-full object-cover" data-alt="A heartwarming digital illustration of a youth leader warmly greeting a parent in a modern, sun-drenched church foyer. The lighting is high-key and inviting. The color palette features deep terracotta and cream accents. The style is modern yet deeply communal, illustrating a seamless and supportive connection between leaders and families." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDq1C0dumomP1WCXFfJ_E66EwI0jiIvy0uWMgH_IwaJwO07MFF0cHWj9zUUbSJyonUBJgU2HKIMoSAbPshkukQuEYJ0azK4gz_rMHDGWWPqYFidYNTm5XH7ALdSmt0aOq1JdXN58nLOVWntFo0qk2fGkJYp2DEPmQM3STcyDovwrWVnVrEupcgAZchxuvXpdeevfHJgv8wmy-KfGo1r6yfIr0T96mDpSDMcsA45NjZY2U8Uf-lSJCHn5AMwlF2Shk_F4dhSxBHX7g"/>
+</div>
+<h1 class="text-display-lg font-display-lg text-on-surface mb-md">Lien Direct</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-xl px-sm">
+                Accédez instantanément aux contacts des parents en cas de besoin. La sécurité et la communication au cœur de Presencia.
+            </p>
+</section>
+<!-- Step Indicator -->
+<div class="flex gap-sm mb-xl">
+<div class="w-2.5 h-2.5 rounded-full bg-primary transition-all duration-300" id="dot-1"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-outline-variant transition-all duration-300" id="dot-2"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-outline-variant transition-all duration-300" id="dot-3"></div>
+</div>
+</main>
+<!-- Bottom Action Area -->
+<footer class="w-full max-w-md mx-auto px-container-margin pb-xl pt-lg slide-up">
+<button class="w-full bg-primary text-on-primary py-md px-lg rounded-xl font-headline-md text-headline-md shadow-lg active:scale-95 transition-all mb-md" id="next-btn">
+            Continuer
+        </button>
+<button class="w-full bg-transparent text-on-surface-variant py-sm font-label-md text-label-md hover:bg-surface-container-low transition-colors rounded-lg" id="skip-btn">
+            Passer l'introduction
+        </button>
+</footer>
+<script>
+        let currentStep = 1;
+        const totalSteps = 3;
+
+        const nextBtn = document.getElementById('next-btn');
+        const skipBtn = document.getElementById('skip-btn');
+        const steps = [
+            document.getElementById('step-1'),
+            document.getElementById('step-2'),
+            document.getElementById('step-3')
+        ];
+        const dots = [
+            document.getElementById('dot-1'),
+            document.getElementById('dot-2'),
+            document.getElementById('dot-3')
+        ];
+
+        function updateOnboarding() {
+            steps.forEach((step, index) => {
+                if (index === currentStep - 1) {
+                    step.classList.add('active');
+                    step.classList.remove('hidden');
+                } else {
+                    step.classList.remove('active');
+                    step.classList.add('hidden');
+                }
+            });
+
+            dots.forEach((dot, index) => {
+                if (index === currentStep - 1) {
+                    dot.classList.add('bg-primary', 'w-6');
+                    dot.classList.remove('bg-outline-variant', 'w-2.5');
+                } else {
+                    dot.classList.remove('bg-primary', 'w-6');
+                    dot.classList.add('bg-outline-variant', 'w-2.5');
+                }
+            });
+
+            if (currentStep === totalSteps) {
+                nextBtn.innerText = 'Commencer';
+            } else {
+                nextBtn.innerText = 'Continuer';
+            }
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateOnboarding();
+            } else {
+                // Final Action: Redirect or Start app
+                console.log('Onboarding Complete');
+                nextBtn.classList.add('opacity-50', 'pointer-events-none');
+                nextBtn.innerText = 'Chargement...';
+                setTimeout(() => {
+                    alert('Bienvenue sur Presencia !');
+                }, 500);
+            }
+        });
+
+        skipBtn.addEventListener('click', () => {
+            currentStep = totalSteps;
+            updateOnboarding();
+        });
+
+        // Initial setup for animation classes if needed
+        document.addEventListener('DOMContentLoaded', () => {
+            updateOnboarding();
+        });
+    </script>
+</body></html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-pill {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        /* Custom scrollbar suppression for filter chips */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#3323cc",
+                    "primary-container": "#4f46e5",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#c0c1ff",
+                    "outline": "#777587",
+                    "primary-fixed": "#e2dfff",
+                    "on-secondary-fixed": "#07006c",
+                    "tertiary": "#005338",
+                    "error-container": "#ffdad6",
+                    "on-primary-container": "#dad7ff",
+                    "inverse-surface": "#2e3132",
+                    "on-primary-fixed": "#0f0069",
+                    "surface-container-highest": "#e1e3e4",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "error": "#ba1a1a",
+                    "secondary-container": "#6063ee",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-variant": "#e1e3e4",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "on-tertiary-fixed": "#002113",
+                    "on-error-container": "#93000a",
+                    "surface-bright": "#f8f9fa",
+                    "secondary": "#4648d4",
+                    "on-surface-variant": "#464555",
+                    "background": "#f8f9fa",
+                    "surface-dim": "#d9dadb",
+                    "surface": "#f8f9fa",
+                    "tertiary-fixed": "#6ffbbe",
+                    "tertiary-container": "#006e4b",
+                    "surface-tint": "#4d44e3",
+                    "surface-container": "#edeeef",
+                    "on-tertiary-container": "#67f4b7",
+                    "outline-variant": "#c7c4d8",
+                    "on-surface": "#191c1d",
+                    "inverse-on-surface": "#f0f1f2",
+                    "primary": "#3525cd",
+                    "on-secondary-fixed-variant": "#2f2ebe",
+                    "surface-container-high": "#e7e8e9",
+                    "on-secondary-container": "#fffbff",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#191c1d",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "inverse-primary": "#c3c0ff",
+                    "on-primary": "#ffffff",
+                    "surface-container-low": "#f3f4f5",
+                    "secondary-fixed": "#e1e0ff",
+                    "on-secondary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "container-padding": "16px",
+                    "xl": "32px",
+                    "lg": "24px",
+                    "unit": "4px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "gutter": "12px"
+            },
+            "fontFamily": {
+                    "label-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "title-md": ["Inter"],
+                    "title-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display": ["Inter"],
+                    "label-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "500"}],
+                    "title-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-24">
+<!-- Top AppBar (from Shared Components) -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface shadow-sm px-container-padding h-16 flex justify-between items-center">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container-high transition-colors rounded-full text-on-surface">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-black text-primary">Presencia</h1>
+</div>
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-title-md overflow-hidden border border-outline-variant">
+<img alt="User" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvC0HjjpFLxJKnaXg2Q2nBO4wp3Saqu0Yr7RL21PKyiemx4u_aecvRoZNlmmEUVQINOcyCQl7jBSczubigSJgwUCFWdjtaBsWpZG9xLZcS963KIVBzSvMiCkrgwI4VAHql2147WmwC7eRsN3LvvFlBMcEKMMQlX795yBmgCJXP_bBvEiE2Qamq0KPTcrCrxTLlw2ezCdpgKE_HNrdAZntMDk0heEPNVptn205t7mSphLqPNV619Gngpxf1Q_UpcgFFOWkVFRvNS2g"/>
+</div>
+</header>
+<main class="pt-20 px-container-padding space-y-6 max-w-2xl mx-auto">
+<!-- Page Header -->
+<div class="flex justify-between items-end pt-2">
+<div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Jeunes</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">47 adolescents</p>
+</div>
+<button class="bg-primary text-on-primary px-4 py-2.5 rounded-xl font-label-lg flex items-center gap-2 shadow-md hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="person_add">person_add</span>
+                Ajouter
+            </button>
+</div>
+<!-- Material 3 Search Bar -->
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+</div>
+<input class="block w-full bg-surface-container-low border-none focus:ring-2 focus:ring-primary h-14 pl-12 pr-4 rounded-full font-body-lg text-on-surface placeholder:text-on-surface-variant transition-all" placeholder="Rechercher un adolescent..." type="text"/>
+</div>
+<!-- Filter Chips (Horizontal Scroll) -->
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-2 -mx-container-padding px-container-padding">
+<button class="bg-primary-container text-on-primary-container px-5 py-2 rounded-full font-label-lg whitespace-nowrap active:scale-95 transition-transform">
+                Tous
+            </button>
+<button class="bg-surface-container-high text-on-surface px-5 py-2 rounded-full font-label-lg whitespace-nowrap border border-outline-variant hover:bg-surface-container-highest transition-colors active:scale-95">
+                École du dimanche
+            </button>
+<button class="bg-surface-container-high text-on-surface px-5 py-2 rounded-full font-label-lg whitespace-nowrap border border-outline-variant hover:bg-surface-container-highest transition-colors active:scale-95">
+                Chorales
+            </button>
+<button class="bg-surface-container-high text-on-surface px-5 py-2 rounded-full font-label-lg whitespace-nowrap border border-outline-variant hover:bg-surface-container-highest transition-colors active:scale-95">
+                Jeunes leaders
+            </button>
+</div>
+<!-- List of Adolescent Cards -->
+<div class="space-y-3">
+<!-- David Koffi Card -->
+<div class="flex items-center gap-4 bg-surface-container-lowest p-4 rounded-xl border border-outline-variant shadow-sm hover:border-primary/30 transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A portrait of a smiling teenage boy with short black hair wearing a simple modern indigo polo shirt. He has a warm, friendly expression and is positioned against a clean, softly lit interior studio background with professional lighting and a contemporary material-design aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOxrTeRKAExbFMko2v2UR60hPeW1RTDA0aOunrPRbm1MWo_6Ry6f_xd0eKbHs4rKd7XIPDHQntsUwbYinYOijz5UgNJ76ewdaRVe9Z5fAcpFk_2a_zZLTmMjmTvD8_Noe2eQ7nw27gX58LdQNLwFgyxn06W67xAWfSap1cWytSfOSd5L_4zexPXUHEpHuDGNgrkXlMK-F3ub7cUJdXqOjVpjPDy9P1lInKwqyA_GvzpTkY_QJ4lhLmlrKmiX3D4ByxzatsazQiHRo"/>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-title-md text-title-md text-on-surface truncate">David Koffi</h3>
+<p class="font-label-md text-label-md text-on-surface-variant truncate">École du dimanche</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full font-label-md">Présent</span>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- More Mock Data Items -->
+<div class="flex items-center gap-4 bg-surface-container-lowest p-4 rounded-xl border border-outline-variant shadow-sm hover:border-primary/30 transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded-full bg-secondary-container/20 flex items-center justify-center overflow-hidden border border-secondary-container/30">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a teenage girl with a confident and kind look. She has braided hair and wears a stylish casual jacket in soft neutral tones. The background is a blurred modern youth center with bright, airy daylighting and high-end photographic depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2lhMTbvhAdcrlShp2HUQRkigC9VWB6P1nlDtYf0zplQw-V3hfRwJLZ5z15mXNN30KWBq-HG_y2Ui2BX9pLA_ZcYN4_-R4Fn0O6q9e1LEKI38ynhBXCY4erZXrH54Cx6cfTwiPCR4xttQnlbGZNR47oEP5RIJKCkHKGMTFANp8LAWEvdsxc6wpih1oovYxIRfBp2kmvrZNQhYRK29fdwIDJ96BYb_nHuEBbFM0jl-wiSDOpWRoIx-A4pZlKYNzQZMod_-2k6gqE9Y"/>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-title-md text-title-md text-on-surface truncate">Sarah Mensah</h3>
+<p class="font-label-md text-label-md text-on-surface-variant truncate">Chorales</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="bg-error-container text-on-error-container px-3 py-1 rounded-full font-label-md">Absent</span>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-lowest p-4 rounded-xl border border-outline-variant shadow-sm hover:border-primary/30 transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-primary/20">
+<img class="w-full h-full object-cover" data-alt="Close-up of a stylish young man with short textured hair and a modern minimalist aesthetic. He is wearing a simple indigo sweatshirt and has a calm, thoughtful expression. The lighting is soft and flattering, emphasizing a clean, contemporary corporate art style with vibrant pops of color." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdC4xO-SsMAgcCwE4ZgI38FHGuQN-gPDWHrGwWbRAsplhHLLOyY2ygCB656jzTEK9s8Xk7EgzIG4l38akRY3jCaRRTYEZGFi0zwAGigJNcfx56iAZ8CQAuYFBlf8cCz2VGshFfycrfbgkuvNIeguy-mEd2Crn2deU9Vio0REoq34kXhkP7VVZfUSDyUf2I_NQ5cwDboVI3W9B7bdJt--fVBnamdxh60k-S1KczM6FKkTKpqKWUocnsxGsKnqXhkCsrbikbUoM-h30"/>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-title-md text-title-md text-on-surface truncate">Isaac Touré</h3>
+<p class="font-label-md text-label-md text-on-surface-variant truncate">Jeunes leaders</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full font-label-md">Retard</span>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-lowest p-4 rounded-xl border border-outline-variant shadow-sm hover:border-primary/30 transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded-full bg-secondary-container/20 flex items-center justify-center overflow-hidden border border-secondary-container/30 text-secondary-fixed-dim font-bold">
+                    MN
+                </div>
+<div class="flex-1 min-w-0">
+<h3 class="font-title-md text-title-md text-on-surface truncate">Marie N'guessan</h3>
+<p class="font-label-md text-label-md text-on-surface-variant truncate">École du dimanche</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full font-label-md">Présent</span>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-lowest p-4 rounded-xl border border-outline-variant shadow-sm hover:border-primary/30 transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A portrait of a young adolescent boy with a friendly smile, short curly hair, and wearing a bright blue t-shirt. He is set against a vibrant, out-of-focus park setting with natural sunlight creating a warm and energetic mood. The image maintains a high-end corporate digital art style with balanced saturation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrQqVruYUsvzNFTbLH33vS8ZknHF02PSqtJMfQvTVIMqyt9FdweM2-mAOWNaCbmYKCw-kQ_5JwlLiVu1K1QzHcNlPtp2RqsDkm8taxDxVWDd2b5VPHLwvKj4f1U7-WNJlZ5qrPGwbXEJE_30o2EmYKyGmY6Tw7M1mT0VLhMo_gOvXOZrH8ExtO6z2w2yZnOup6mp-7Y07qGFHVCHjkO0TMqcDwVkunh6VToaX65otgqUaVaQ0980ooJ2np5fexe3xtLLoErzhwJ_E"/>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-title-md text-title-md text-on-surface truncate">Jean Bakary</h3>
+<p class="font-label-md text-label-md text-on-surface-variant truncate">Chorales</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full font-label-md">Présent</span>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (from Shared Components) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-surface border-t border-outline-variant rounded-t-xl shadow-lg">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container transition-colors rounded-full" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Accueil</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-110 duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="group" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-md text-label-md">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container transition-colors rounded-full" href="#">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+<span class="font-label-md text-label-md">Appel</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container transition-colors rounded-full" href="#">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span class="font-label-md text-label-md">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container transition-colors rounded-full" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Paramètres</span>
+</a>
+</nav>
+<script>
+        // Simple Micro-interaction for filter chips
+        const filterButtons = document.querySelectorAll('.flex.gap-2.overflow-x-auto button');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => {
+                    b.classList.remove('bg-primary-container', 'text-on-primary-container');
+                    b.classList.add('bg-surface-container-high', 'text-on-surface', 'border', 'border-outline-variant');
+                });
+                btn.classList.add('bg-primary-container', 'text-on-primary-container');
+                btn.classList.remove('bg-surface-container-high', 'text-on-surface', 'border', 'border-outline-variant');
+            });
+        });
+
+        // Add visual feedback to list items on tap
+        const listItems = document.querySelectorAll('main .space-y-3 > div');
+        listItems.forEach(item => {
+            item.addEventListener('touchstart', () => {
+                item.style.transform = 'scale(0.98)';
+                item.style.backgroundColor = 'var(--surface-container-high)';
+            });
+            item.addEventListener('touchend', () => {
+                item.style.transform = 'scale(1)';
+                item.style.backgroundColor = 'var(--surface-container-lowest)';
+            });
+        });
+    </script>
+</body></html>

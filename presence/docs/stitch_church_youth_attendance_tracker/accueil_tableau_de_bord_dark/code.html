@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ecclesia Flow - Accueil</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "tertiary": "#571ac0",
+                  "tertiary-container": "#6f3dd9",
+                  "tertiary-fixed": "#e9ddff",
+                  "on-secondary-container": "#00714d",
+                  "surface-container-low": "#1e293b", /* Adjusted for dark theme blue-marine */
+                  "on-background": "#f1f5f9",
+                  "primary-fixed-dim": "#c3c0ff",
+                  "surface-tint": "#4d44e3",
+                  "secondary": "#006c49",
+                  "on-tertiary-container": "#e3d5ff",
+                  "surface-container": "#1e293b",
+                  "outline": "#334155", /* Lighter border */
+                  "on-tertiary-fixed-variant": "#5516be",
+                  "tertiary-fixed-dim": "#d0bcff",
+                  "on-primary-fixed": "#0f0069",
+                  "on-error-container": "#93000a",
+                  "on-secondary": "#ffffff",
+                  "surface": "#0f172a", /* Bleu nuit très sombre */
+                  "surface-bright": "#1e293b",
+                  "surface-variant": "#334155",
+                  "on-tertiary-fixed": "#23005c",
+                  "surface-container-lowest": "#0f172a",
+                  "on-surface": "#f1f5f9",
+                  "inverse-primary": "#c3c0ff",
+                  "secondary-fixed": "#6ffbbe",
+                  "on-secondary-fixed-variant": "#005236",
+                  "error": "#ba1a1a",
+                  "on-primary": "#ffffff",
+                  "on-secondary-fixed": "#002113",
+                  "on-primary-container": "#dad7ff",
+                  "inverse-surface": "#f1f5f9",
+                  "primary": "#4f46e5",
+                  "outline-variant": "#334155",
+                  "on-surface-variant": "#94a3b8",
+                  "background": "#0f172a",
+                  "on-error": "#ffffff",
+                  "primary-fixed": "#e2dfff",
+                  "surface-container-highest": "#334155",
+                  "secondary-container": "#6cf8bb",
+                  "secondary-fixed-dim": "#4edea3",
+                  "primary-container": "#4f46e5",
+                  "on-tertiary": "#ffffff",
+                  "error-container": "#ffdad6",
+                  "surface-dim": "#0f172a",
+                  "inverse-on-surface": "#0f172a",
+                  "on-primary-fixed-variant": "#3323cc"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "xl": "32px",
+                  "lg": "24px",
+                  "base": "4px",
+                  "margin-tablet": "32px",
+                  "md": "16px",
+                  "sm": "8px",
+                  "gutter": "16px",
+                  "xs": "4px",
+                  "margin-mobile": "16px"
+          },
+          "fontFamily": {
+                  "headline-md": ["Inter"],
+                  "label-sm": ["Inter"],
+                  "display": ["Inter"],
+                  "label-md": ["Inter"],
+                  "body-lg": ["Inter"],
+                  "headline-lg": ["Inter"],
+                  "body-md": ["Inter"]
+          },
+          "fontSize": {
+                  "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                  "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                  "display": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                  "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                  "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                  "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #0f172a;
+      color: #f1f5f9;
+      font-family: 'Inter', sans-serif;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .glass-card {
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(51, 65, 85, 0.5);
+    }
+    .attendance-chart-bar {
+      transition: height 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-surface dark:bg-surface-dim shadow-sm flex items-center justify-between px-margin-mobile py-sm">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A high-quality professional headshot of a young man with a friendly expression, captured with soft studio lighting that emphasizes his features. The background is a clean, neutral gradient of deep navy blues, perfectly matching a sophisticated dark-mode UI design. The image is circular, framed by a subtle glowing indigo ring to signify an active user state in a modern productivity application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx3mtotPsTB6L6zMmZEjepbJSv5WBm-e2T1i75o7kPH0jj1z3K_PeegtegpINKS6E9H-ZjSFO8MUyt4gZDND4tkxdnjDuKUt3oaZbhzwsTmWTU0k-p99y__RQ71mlGNL8pWOuAs04KLrIYSnhTy7VunJGYVjv7ptcXbuLazfbUWyeNprTQL0a-iOEJZBen0FtAkPhckCJBZYH5aWnS28Yl44azvxdlwFLTj75cHUCvRnUC57c6GAIKd-Vu1pPkQtgv1FK4ygrLodk"/>
+</div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed-dim">Ecclesia Flow</h1>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">notifications</span>
+</button>
+</div>
+</header>
+<main class="px-margin-mobile pt-lg max-w-5xl mx-auto">
+<!-- Hero Greeting & Stats -->
+<section class="mb-xl">
+<div class="flex flex-col gap-xs mb-lg">
+<h2 class="font-display text-display">Bonjour, Matthieu</h2>
+<p class="font-body-md text-on-surface-variant">Voici le résumé de l'activité de votre paroisse aujourd'hui.</p>
+</div>
+<!-- Stats Grid (Bento) -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<!-- Stat Card -->
+<div class="glass-card p-md rounded-xl flex flex-col gap-sm">
+<span class="text-on-surface-variant font-label-md">Présents</span>
+<div class="flex items-baseline gap-xs">
+<span class="text-headline-lg font-bold text-emerald-400">124</span>
+<span class="text-label-sm text-emerald-500/80">+12%</span>
+</div>
+<div class="w-full bg-surface-variant h-1 rounded-full overflow-hidden">
+<div class="bg-emerald-400 h-full w-[85%]"></div>
+</div>
+</div>
+<!-- Stat Card -->
+<div class="glass-card p-md rounded-xl flex flex-col gap-sm">
+<span class="text-on-surface-variant font-label-md">Absents</span>
+<div class="flex items-baseline gap-xs">
+<span class="text-headline-lg font-bold text-red-400">12</span>
+<span class="text-label-sm text-red-500/80">-2%</span>
+</div>
+<div class="w-full bg-surface-variant h-1 rounded-full overflow-hidden">
+<div class="bg-red-400 h-full w-[10%]"></div>
+</div>
+</div>
+<!-- Stat Card -->
+<div class="glass-card p-md rounded-xl flex flex-col gap-sm">
+<span class="text-on-surface-variant font-label-md">Retards</span>
+<div class="flex items-baseline gap-xs">
+<span class="text-headline-lg font-bold text-orange-400">8</span>
+<span class="text-label-sm text-orange-500/80">+1%</span>
+</div>
+<div class="w-full bg-surface-variant h-1 rounded-full overflow-hidden">
+<div class="bg-orange-400 h-full w-[15%]"></div>
+</div>
+</div>
+<!-- Stat Card -->
+<div class="glass-card p-md rounded-xl flex flex-col gap-sm bg-primary/10 border-primary/30">
+<span class="text-primary-fixed-dim font-label-md">Engagement</span>
+<div class="flex items-baseline gap-xs">
+<span class="text-headline-lg font-bold text-primary-fixed-dim">94%</span>
+</div>
+<div class="w-full bg-surface-variant h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[94%]"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Content Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- Charts Section (Left Col) -->
+<section class="md:col-span-2 space-y-lg">
+<div class="glass-card p-lg rounded-xl">
+<div class="flex items-center justify-between mb-lg">
+<h3 class="font-headline-md text-headline-md">Fréquentation Hebdomadaire</h3>
+<button class="text-primary-fixed-dim font-label-md flex items-center gap-xs">
+              Détails <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+<div class="h-48 flex items-end justify-between gap-sm px-sm">
+<!-- Simple Mock Chart -->
+<div class="flex flex-col items-center gap-sm flex-1">
+<div class="attendance-chart-bar w-full bg-surface-variant rounded-t-lg" style="height: 60%"></div>
+<span class="text-label-sm text-on-surface-variant">Lun</span>
+</div>
+<div class="flex flex-col items-center gap-sm flex-1">
+<div class="attendance-chart-bar w-full bg-surface-variant rounded-t-lg" style="height: 75%"></div>
+<span class="text-label-sm text-on-surface-variant">Mar</span>
+</div>
+<div class="flex flex-col items-center gap-sm flex-1">
+<div class="attendance-chart-bar w-full bg-primary-container rounded-t-lg shadow-lg shadow-primary/20" style="height: 90%"></div>
+<span class="text-label-sm text-primary-fixed-dim">Mer</span>
+</div>
+<div class="flex flex-col items-center gap-sm flex-1">
+<div class="attendance-chart-bar w-full bg-surface-variant rounded-t-lg" style="height: 65%"></div>
+<span class="text-label-sm text-on-surface-variant">Jeu</span>
+</div>
+<div class="flex flex-col items-center gap-sm flex-1">
+<div class="attendance-chart-bar w-full bg-surface-variant rounded-t-lg" style="height: 80%"></div>
+<span class="text-label-sm text-on-surface-variant">Ven</span>
+</div>
+<div class="flex flex-col items-center gap-sm flex-1">
+<div class="attendance-chart-bar w-full bg-surface-variant rounded-t-lg" style="height: 40%"></div>
+<span class="text-label-sm text-on-surface-variant">Sam</span>
+</div>
+<div class="flex flex-col items-center gap-sm flex-1">
+<div class="attendance-chart-bar w-full bg-surface-variant rounded-t-lg" style="height: 95%"></div>
+<span class="text-label-sm text-on-surface-variant">Dim</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-gutter">
+<div class="glass-card p-md rounded-xl">
+<h4 class="font-label-md text-on-surface-variant mb-md uppercase tracking-widest">Événements Proches</h4>
+<div class="space-y-md">
+<div class="flex gap-md items-center group cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-tertiary-container/30 flex items-center justify-center text-tertiary-fixed">
+<span class="material-symbols-outlined">event</span>
+</div>
+<div>
+<p class="font-body-md font-semibold text-on-surface">Réunion de Louange</p>
+<p class="text-label-sm text-on-surface-variant">Demain • 19:00</p>
+</div>
+</div>
+<div class="flex gap-md items-center group cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-secondary-container/20 flex items-center justify-center text-secondary-fixed-dim">
+<span class="material-symbols-outlined">volunteer_activism</span>
+</div>
+<div>
+<p class="font-body-md font-semibold text-on-surface">Banquet Solidaire</p>
+<p class="text-label-sm text-on-surface-variant">Samedi • 12:00</p>
+</div>
+</div>
+</div>
+</div>
+<div class="glass-card p-md rounded-xl relative overflow-hidden">
+
+<div class="relative z-10">
+<h4 class="font-label-md text-on-surface-variant mb-md uppercase tracking-widest">Nouveaux Appels</h4>
+<div class="flex -space-x-3 mb-md">
+<img class="w-8 h-8 rounded-full border-2 border-surface" data-alt="Close up portrait of a smiling young adult with expressive eyes, framed by soft professional lighting. The aesthetic is clean and modern, set against a dark architectural background with subtle indigo highlights, suitable for a professional user profile in a high-end application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6dx5NTBpgGKddZ8pyxNvIXt4ENXK3TdHzdQaFLongZoCRSGP9amsCoKZjTh4eCQXDdkNTyMTa7s3WaHbZoUR_o7iA3FxtlO7fUgaVmf1MPUQ0hIizZ6PNS9cSMeq6ejuQCohp2orVQpSp68GmAHvslUoAhy-koNIE0q3jLM_XtznUPgd37HISoigJkgS9mNeX67orFtVSrVxSm4MGP0iY8JGh6LAN1WYOuGuHes1BOApAhRYgxVjRz20uXay5HoXoLkjnarqlsMc"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface" data-alt="A portrait of a cheerful young woman with a warm, authentic smile, captured in a minimalist studio setting. The lighting is low-key with sophisticated blue-marine tones in the shadows, reflecting a premium dark-themed UI style. The image highlights clarity and human connection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGIqKFK3q2tcGcXgayOttapf7G9lWD8eCHLJ0U39npJrUtkPGHi2vQhF-yeBicDnbDW0cmnepZ-hbxPxcz6swQYqPvJmN6FfAaupl2_zMrBwbaIroLNq_dBgHjSEFlaxhHEUVzmt6DpDZ0KfheNYS9CyNnKE7_U2j6DF2aDbAAhpXgMfMsr-5rnyScViAe0SfAtOWGhuw4TL-t7DJI_X_7vsDvRbFolf8fJauNmFbUKkShxb3yoJD2OSnF2eCtFwflUm7Y48GQuKY"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface" data-alt="A clean, professional portrait of a person with a serene expression, illuminated by soft directional light. The background is a dark, textured surface that complements a navy and indigo color palette. This high-resolution image is designed for a modern digital dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiWxBkPfIBBhLjbDo-O6JWA4g9AngtUhVV9T-4tR5Hep_fJl8TItCV2OGgawh2yIy-hncnHxkSoZqcGXD0LRhF3R_P1dYOUqjErwsDMpzdtJhGq6urKz9LoeOg2Sjxtq2HPJD9X0Izh8mfVlVQPiL7F4m0Ioy4YTOBQ_Pjs8GPyW7KU58T4wlRuvXnnf20FdOyHF0_UmfKKkG7SQ0BEGY3v2cUrx5tjss7QKx4c1NJlAMfZYv20yauPJdSvzg9zHln4zzTktuokDQ"/>
+<div class="w-8 h-8 rounded-full bg-primary-container border-2 border-surface flex items-center justify-center text-[10px] font-bold">+5</div>
+</div>
+<button class="w-full bg-primary text-white py-sm rounded-lg font-label-md active:scale-95 transition-transform">Consulter les profils</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Sidebar (Right Col) -->
+<aside class="space-y-lg">
+<div class="glass-card p-md rounded-xl">
+<h4 class="font-headline-md text-headline-md mb-md">Actions Rapides</h4>
+<div class="grid grid-cols-1 gap-sm">
+<button class="flex items-center justify-between p-md rounded-xl bg-surface-container-high hover:bg-surface-variant transition-colors border border-outline/20">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">person_add</span>
+<span class="font-body-md">Inscrire un Jeune</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">chevron_right</span>
+</button>
+<button class="flex items-center justify-between p-md rounded-xl bg-surface-container-high hover:bg-surface-variant transition-colors border border-outline/20">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">analytics</span>
+<span class="font-body-md">Rapport Mensuel</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">chevron_right</span>
+</button>
+<button class="flex items-center justify-between p-md rounded-xl bg-surface-container-high hover:bg-surface-variant transition-colors border border-outline/20">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">mail</span>
+<span class="font-body-md">Envoyer Annonce</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="bg-gradient-to-br from-tertiary-container to-primary p-lg rounded-xl text-white shadow-xl">
+<h4 class="font-headline-md text-headline-md mb-sm">Objectif Appel</h4>
+<p class="font-body-md mb-lg opacity-90">Nous sommes à 85% de notre objectif de mobilisation pour la rentrée.</p>
+<div class="relative w-24 h-24 mx-auto">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<path class="text-white/20" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="100, 100" stroke-width="3"></path>
+<path class="text-white" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="85, 100" stroke-linecap="round" stroke-width="3"></path>
+<text class="fill-white font-bold text-[8px]" text-anchor="middle" x="18" y="20.35">85%</text>
+</svg>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- FAB -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-white rounded-2xl shadow-2xl flex items-center justify-center active:scale-90 transition-transform z-50">
+<span class="material-symbols-outlined">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 border-t border-outline bg-surface-container-lowest dark:bg-surface-container-low rounded-t-xl">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Accueil</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Jeunes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="font-label-md text-label-md">Appel</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">hub</span>
+<span class="font-label-md text-label-md">Groupes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Paramètres</span>
+</a>
+</nav>
+<script>
+    // Micro-interactions for chart bars
+    document.addEventListener('DOMContentLoaded', () => {
+      const bars = document.querySelectorAll('.attendance-chart-bar');
+      bars.forEach(bar => {
+        const height = bar.style.height;
+        bar.style.height = '0%';
+        setTimeout(() => {
+          bar.style.height = height;
+        }, 300);
+      });
+    });
+  </script>
+</body></html>

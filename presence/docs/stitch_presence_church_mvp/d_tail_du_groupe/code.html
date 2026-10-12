@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Détail du Groupe - École du Dimanche</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8faf6;
+        }
+        .safe-bottom {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#cfe9d8",
+                        "outline": "#707973",
+                        "primary-fixed-dim": "#95d4b3",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#8d4d4e",
+                        "surface-container": "#eceeea",
+                        "surface-container-highest": "#e1e3df",
+                        "error-container": "#ffdad6",
+                        "background": "#f8faf6",
+                        "on-primary-fixed-variant": "#0e5138",
+                        "on-tertiary-fixed": "#390b0e",
+                        "on-tertiary-fixed-variant": "#6f3537",
+                        "inverse-on-surface": "#eff1ed",
+                        "surface-variant": "#e1e3df",
+                        "surface-container-low": "#f2f4f0",
+                        "inverse-surface": "#2e312f",
+                        "inverse-primary": "#95d4b3",
+                        "on-primary-fixed": "#002114",
+                        "secondary-container": "#cfe9d8",
+                        "surface": "#f8faf6",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#f8faf6",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#a8e7c5",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-background": "#191c1a",
+                        "on-surface-variant": "#404943",
+                        "secondary-fixed-dim": "#b3ccbd",
+                        "surface-container-high": "#e7e9e5",
+                        "on-secondary-fixed": "#092016",
+                        "secondary": "#4c6357",
+                        "tertiary-fixed": "#ffdad9",
+                        "outline-variant": "#bfc9c1",
+                        "on-surface": "#191c1a",
+                        "on-tertiary-container": "#ffcfce",
+                        "surface-dim": "#d8dbd7",
+                        "primary-fixed": "#b1f0ce",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#354c3f",
+                        "on-secondary-container": "#526a5c",
+                        "primary": "#0f5238",
+                        "tertiary": "#713638",
+                        "surface-tint": "#2c694e",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb3b3",
+                        "primary-container": "#2d6a4f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "margin-mobile": "20px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "margin-desktop": "40px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-bold": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "headline-md": ["20px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                        "label-bold": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["22px", {"lineHeight": "1.3", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface">
+<!-- Top App Bar (Transparent Header Over Hero) -->
+<header class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+<div class="flex items-center justify-between px-margin-mobile py-md w-full max-w-7xl mx-auto">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-black/10 text-white backdrop-blur-md active:scale-95 transition-transform">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-black/10 text-white backdrop-blur-md active:scale-95 transition-transform">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pb-32">
+<!-- Hero Section -->
+<section class="bg-primary-container text-white pt-24 pb-12 px-margin-mobile rounded-b-[40px] relative overflow-hidden">
+<!-- Decorative Subtle Pattern -->
+<div class="absolute top-0 right-0 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[200px]" style="font-variation-settings: 'FILL' 1;">group</span>
+</div>
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="w-24 h-24 bg-white/20 backdrop-blur-xl rounded-[28px] flex items-center justify-center mb-6 shadow-xl">
+<span class="material-symbols-outlined text-[48px]" style="font-variation-settings: 'FILL' 1;">church</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile mb-2">École du dimanche</h1>
+<p class="font-body-md text-body-md opacity-90 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">group</span> 18 adolescents
+                    <span class="mx-1">•</span>
+<span class="material-symbols-outlined text-[18px]">schedule</span> Dimanche 10h00
+                </p>
+</div>
+</section>
+<!-- Stats Bento-ish Grid -->
+<section class="px-margin-mobile -mt-8 relative z-20">
+<div class="bg-surface-container-lowest rounded-[24px] p-md shadow-sm border border-outline-variant/30 grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="flex flex-col items-center p-3 rounded-xl bg-surface">
+<span class="font-headline-md text-headline-md text-primary">18</span>
+<span class="font-label-md text-label-md text-outline">Jeunes</span>
+</div>
+<div class="flex flex-col items-center p-3 rounded-xl bg-surface">
+<span class="font-headline-md text-headline-md text-primary">72%</span>
+<span class="font-label-md text-label-md text-outline">Présence</span>
+</div>
+<div class="flex flex-col items-center p-3 rounded-xl bg-surface">
+<span class="font-headline-md text-headline-md text-primary">12</span>
+<span class="font-label-md text-label-md text-outline">Séances</span>
+</div>
+<div class="flex flex-col items-center p-3 rounded-xl bg-surface">
+<span class="font-headline-md text-headline-md text-tertiary">3</span>
+<span class="font-label-md text-label-md text-outline text-center">Absents rég.</span>
+</div>
+</div>
+</section>
+<!-- Tabbed Navigation -->
+<nav class="mt-8 px-margin-mobile border-b border-surface-variant flex gap-8 sticky top-0 bg-background/80 backdrop-blur-md z-30">
+<button class="pb-3 border-b-2 border-primary text-primary font-label-bold">Adolescents</button>
+<button class="pb-3 text-outline font-label-bold">Séances</button>
+<button class="pb-3 text-outline font-label-bold">Statistiques</button>
+</nav>
+<!-- Content Area -->
+<div class="px-margin-mobile mt-6">
+<!-- Add Member Header -->
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-headline-md text-headline-md text-on-surface">Membres</h2>
+<button class="flex items-center gap-2 px-4 py-2 bg-secondary-container text-on-secondary-container rounded-full font-label-bold active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    Ajouter
+                </button>
+</div>
+<!-- Members List -->
+<div class="space-y-3">
+<!-- Member 1 -->
+<div class="bg-surface-container-lowest p-md rounded-[20px] border border-outline-variant/30 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-secondary-fixed">
+<img alt="Lucas Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDn6ErOeoDkzO32vnFtYlmgDN7nowopRS2umoBN-l9nysX7WqKOE0yUYsnaOoqCT4otg1p0ov8nf3rDSWty0eWchgXe8aQLTjv8eMMQK6QoSPq8VxSQusvezqRCbcGhbkOjXR4JeCn9UUR7rZRNkkI0HX28uH5h4iJ152oNHqegIpFOUXmcQ7s6yz6RfoFbZGvJz4mLOBlcwG12top0Mu4ivfyPYz1bOgMMymyJgo-7wYSnhdDq8umjOfg3SNdtnkQ7yg2T_rDp"/>
+</div>
+<div>
+<p class="font-body-lg text-body-lg font-bold">Lucas Bernard</p>
+<p class="font-label-md text-label-md text-outline">Dernière séance : Présent</p>
+</div>
+</div>
+<div class="px-3 py-1 bg-primary/10 text-primary rounded-lg font-label-bold text-[10px]">PRÉSENT</div>
+</div>
+<!-- Member 2 -->
+<div class="bg-surface-container-lowest p-md rounded-[20px] border border-outline-variant/30 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-secondary-fixed">
+<img alt="Emma Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxUCTfeXWUu1bDa47YlkEIyVFwBehWjQ326pCSCgr1R64Xt4kQ4kDBF6Wzgrc3RWJMMHqUm2PULrfjAEgLoKHhuaiZRWokkSyWb4vqiImwTfXkaSlwkiPG7LM4WvZrqa72K5_EW0VH2DqfqCXZHnpQbRIDG_9f3cBbwJI5qxrmEzTCfajnC2T3QfUA1oQYQf77aALQMUz1XcZhI7L8b7KS6ld1_Y7JFqcbmrLL8i7MXT_wcY53rMrR3-AxDDcMDStVHWgHQdc2"/>
+</div>
+<div>
+<p class="font-body-lg text-body-lg font-bold">Emma Petit</p>
+<p class="font-label-md text-label-md text-outline">Dernière séance : Absente</p>
+</div>
+</div>
+<div class="px-3 py-1 bg-error/10 text-error rounded-lg font-label-bold text-[10px]">ABSENT</div>
+</div>
+<!-- Member 3 -->
+<div class="bg-surface-container-lowest p-md rounded-[20px] border border-outline-variant/30 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-secondary-fixed">
+<img alt="Hugo Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQc5ZU2VorUTCM9cfBC6R5mbYBfxtxRZ4Ykk4AJ2SAlfF26l9nxMYN3tzTm474wzUUZ1oCrRsJ9D8EThVsku9FvcLf2Z1TwhUP6KGF4599PsMbub2igsHe1Ljy4R0TNVRucItm0VwEQcQmB7Tg8G_w_pYwM8KQEQHKQFYk12fq46TPWntiE3nE6GE42EO_F-2athZzztjj5NdL4_BYIhv2NrxGJqSsK-szgWorbE7gYrFyE61iP4lxyJa5Q5SrDHcmAaoNI_u_"/>
+</div>
+<div>
+<p class="font-body-lg text-body-lg font-bold">Hugo Martin</p>
+<p class="font-label-md text-label-md text-outline">Dernière séance : Retard</p>
+</div>
+</div>
+<div class="px-3 py-1 bg-tertiary/10 text-tertiary rounded-lg font-label-bold text-[10px]">RETARD</div>
+</div>
+<!-- Member 4 -->
+<div class="bg-surface-container-lowest p-md rounded-[20px] border border-outline-variant/30 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-secondary-fixed">
+<img alt="Chloe Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABOvCcCbLvCLwnV15Q2Qjd33aIAR9KgQLUAS-5TrvnjEw0XiPLdY_zS2YLTS9shvmQOPUbDdgIn_UnEWXH4QmULtidxZlWLdlI6TS8JOcbixSTuDgmGp5b_yxxt6Jd-fP6i5bjBHMRBypjkfxjU9ZHYozORzv-pDVE5jde2UJ-3UKJk_ycNONgrxux2JExCgQYCANBPvROq2xVz_6r6Gjtf4RJDxWwFlVIFicLxjofZ3idOwRWmrcjSOmEsyW0Iigcb-Gz0nse"/>
+</div>
+<div>
+<p class="font-body-lg text-body-lg font-bold">Chloé Dubois</p>
+<p class="font-label-md text-label-md text-outline">Dernière séance : Présente</p>
+</div>
+</div>
+<div class="px-3 py-1 bg-primary/10 text-primary rounded-lg font-label-bold text-[10px]">PRÉSENT</div>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB -->
+<button class="fixed bottom-24 right-6 bg-tertiary text-on-tertiary flex items-center gap-3 px-6 py-4 rounded-[20px] shadow-lg active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assignment_turned_in</span>
+<span class="font-label-bold">Faire l'appel</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-2 py-sm pb-safe bg-surface dark:bg-surface-dim border-t border-surface-variant z-50">
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:opacity-80 active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Accueil</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:opacity-80 active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">Jeunes</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:opacity-80 active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="font-label-md text-label-md">Appel</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim bg-secondary-container dark:bg-secondary-fixed-dim rounded-full px-4 py-1 hover:opacity-80 active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-md text-label-md">Groupes</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant hover:opacity-80 active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Paramètres</span>
+</button>
+</nav>
+<script>
+        // Simple header scroll interaction
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+                header.querySelector('div').classList.remove('py-md');
+                header.querySelector('div').classList.add('py-sm');
+                header.querySelectorAll('button').forEach(btn => {
+                    btn.classList.remove('bg-black/10', 'text-white');
+                    btn.classList.add('bg-surface-container', 'text-on-surface');
+                });
+            } else {
+                header.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+                header.querySelector('div').classList.remove('py-sm');
+                header.querySelector('div').classList.add('py-md');
+                header.querySelectorAll('button').forEach(btn => {
+                    btn.classList.add('bg-black/10', 'text-white');
+                    btn.classList.remove('bg-surface-container', 'text-on-surface');
+                });
+            }
+        });
+    </script>
+</body></html>

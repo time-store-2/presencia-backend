@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Confirmation - Appel enregistré</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8faf6;
+            color: #191c1a;
+        }
+        .success-circle-anim {
+            animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        @keyframes scaleIn {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#cfe9d8",
+                        "outline": "#707973",
+                        "primary-fixed-dim": "#95d4b3",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#8d4d4e",
+                        "surface-container": "#eceeea",
+                        "surface-container-highest": "#e1e3df",
+                        "error-container": "#ffdad6",
+                        "background": "#f8faf6",
+                        "on-primary-fixed-variant": "#0e5138",
+                        "on-tertiary-fixed": "#390b0e",
+                        "on-tertiary-fixed-variant": "#6f3537",
+                        "inverse-on-surface": "#eff1ed",
+                        "surface-variant": "#e1e3df",
+                        "surface-container-low": "#f2f4f0",
+                        "inverse-surface": "#2e312f",
+                        "inverse-primary": "#95d4b3",
+                        "on-primary-fixed": "#002114",
+                        "secondary-container": "#cfe9d8",
+                        "surface": "#f8faf6",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#f8faf6",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-container": "#a8e7c5",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-background": "#191c1a",
+                        "on-surface-variant": "#404943",
+                        "secondary-fixed-dim": "#b3ccbd",
+                        "surface-container-high": "#e7e9e5",
+                        "on-secondary-fixed": "#092016",
+                        "secondary": "#4c6357",
+                        "tertiary-fixed": "#ffdad9",
+                        "outline-variant": "#bfc9c1",
+                        "on-surface": "#191c1a",
+                        "on-tertiary-container": "#ffcfce",
+                        "surface-dim": "#d8dbd7",
+                        "primary-fixed": "#b1f0ce",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#354c3f",
+                        "on-secondary-container": "#526a5c",
+                        "primary": "#0f5238",
+                        "tertiary": "#713638",
+                        "surface-tint": "#2c694e",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb3b3",
+                        "primary-container": "#2d6a4f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "12px",
+                        "2xl": "20px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "margin-mobile": "20px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "margin-desktop": "40px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-bold": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "headline-md": ["20px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                        "label-bold": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["22px", {"lineHeight": "1.3", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen flex flex-col">
+<main class="flex-grow flex flex-col items-center px-margin-mobile pt-xl pb-10 max-w-lg mx-auto w-full">
+<!-- Centered Success View -->
+<div class="flex flex-col items-center text-center mb-xl">
+<div class="success-circle-anim w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-primary text-[64px] fill-icon">check_circle</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-xs">Appel enregistré !</h1>
+<p class="font-body-md text-body-md text-outline">Dimanche 15 juin · École du dimanche</p>
+</div>
+<!-- Summary Card -->
+<section class="w-full bg-surface-container-lowest rounded-2xl border border-surface-variant p-lg shadow-sm mb-lg">
+<h2 class="font-label-bold text-label-bold text-outline uppercase tracking-wider mb-md">Résumé de la séance</h2>
+<div class="grid grid-cols-2 gap-4 mb-lg">
+<!-- Status Row -->
+<div class="flex items-center gap-sm">
+<div class="w-2 h-8 bg-primary rounded-full"></div>
+<div>
+<p class="font-label-md text-label-md text-outline">Présents</p>
+<p class="font-headline-md text-headline-md text-on-surface">32</p>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<div class="w-2 h-8 bg-error rounded-full"></div>
+<div>
+<p class="font-label-md text-label-md text-outline">Absents</p>
+<p class="font-headline-md text-headline-md text-on-surface">10</p>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<div class="w-2 h-8 bg-secondary rounded-full"></div>
+<div>
+<p class="font-label-md text-label-md text-outline">Retards</p>
+<p class="font-headline-md text-headline-md text-on-surface">3</p>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<div class="w-2 h-8 bg-outline rounded-full"></div>
+<div>
+<p class="font-label-md text-label-md text-outline">Excusés</p>
+<p class="font-headline-md text-headline-md text-on-surface">2</p>
+</div>
+</div>
+</div>
+<!-- Taux Section -->
+<div class="pt-lg border-t border-surface-variant">
+<div class="flex justify-between items-end mb-sm">
+<p class="font-body-md text-body-md font-bold text-on-surface">Taux de présence</p>
+<p class="font-headline-md text-headline-md text-primary">68%</p>
+</div>
+<div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 68%"></div>
+</div>
+</div>
+</section>
+<!-- Absents Section -->
+<section class="w-full mb-xl">
+<h2 class="font-label-bold text-label-bold text-outline uppercase tracking-wider mb-md px-1">Absents aujourd'hui</h2>
+<div class="flex gap-md overflow-x-auto pb-sm no-scrollbar">
+<!-- Avatar items -->
+<div class="flex flex-col items-center gap-xs min-w-[64px]">
+<div class="w-14 h-14 rounded-full border-2 border-surface-variant overflow-hidden">
+<img alt="Student Avatar" class="w-full h-full object-cover" data-alt="A portrait of a smiling teenage boy with short brown hair, wearing a casual denim jacket. The photo is set against a soft, sunlit park background with warm, natural lighting. The overall style is clean, professional, and community-focused with a bright, welcoming atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbnBdL_FXqgOG8chJEbtFwzYS1V1Cz5uYq3LbBMbUQuqpit9SB1TRm6B7DnkEony6z3-p1aBG3ksqhZMSD4pvDvvSW1CnKr2jTj179v1quCU4irpjUlsz--8opna1cuqGHa3ACJ6rr6RcI1AS6npvfZ0SD67T-JSjDsgf4IuJluM-zkRkAMRCLDyNM2JHlTl-FlZ4lOdoyhx0-lfmLj5vvubAf92voCsNTz02zJl_XUfifGV_lFDTuXh4eULoljiy1PqkKZrZt"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Léo. M</span>
+</div>
+<div class="flex flex-col items-center gap-xs min-w-[64px]">
+<div class="w-14 h-14 rounded-full border-2 border-surface-variant overflow-hidden">
+<img alt="Student Avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a teenage girl with curly black hair and glasses, smiling warmly. She is wearing a soft cream-colored sweater. The background is a gently blurred interior of a modern community space with soft lighting and neutral earth tones, reflecting a peaceful and friendly mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuByQmsZUcOy1JphK54H7Nraw0SVQy7e8o6_CvFoCaWQsYLTTo-4ku21xUAk-nHBZnqm94rqrKxwmtHeT7CIqnm9vjdYHbAb82PvDlGbq8vrm7P6SRjcNgeFLLVLQKvDsxGgtHOxt7l69bpIv3ZA_EFOCg939uiYwHrKYsKBsolzRu6wTwa8qE-Dji3du87UJCoG_9YTXWIpYxLejdoMzAim0pp9--ot_ftF69WhyPZHQpxpmoeb7BWEHB9Wj9Sz_6sKKoLnrZyu"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Clara. D</span>
+</div>
+<div class="flex flex-col items-center gap-xs min-w-[64px]">
+<div class="w-14 h-14 rounded-full border-2 border-surface-variant overflow-hidden">
+<img alt="Student Avatar" class="w-full h-full object-cover" data-alt="A bright portrait of a young man with a friendly expression, wearing a simple olive green t-shirt. He has short blonde hair and is standing in a brightly lit room with large windows. The lighting is high-key and soft, maintaining the minimalist and airy aesthetic of the church management application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARAn4UsEiOe-3WhyhxYr4lngHrNQ1Hzzv8wRzBIlNT_C-rIW0TgKFNhw3gtb6z3ppXcYYtC1yA6GzAPrvf4gXpR_UySTOQ09yawEzj23vyD4uquIt3kIZiEXUXk_yjAdL6NMcuyAWLSgi30q1i0NJne_av-Wz6whmxAZDgltRyMDBYAkoEkkVof6X9abVBmH7d2tOWxyemJO1tj1bWUiAmeg904MVMWCC9m1Mi30xcmi_pE3twFwLOVSEdXBHZnhKoMm-ls3Rs"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Hugo. B</span>
+</div>
+<div class="flex flex-col items-center gap-xs min-w-[64px]">
+<div class="w-14 h-14 rounded-full border-2 border-surface-variant overflow-hidden">
+<img alt="Student Avatar" class="w-full h-full object-cover" data-alt="A joyful portrait of a teenage girl with long braided hair, wearing a light-colored cardigan. She is smiling in a bright, modern community hall with subtle green plants in the background. The visual style is crisp and clean, using a palette of natural forest greens and warm neutrals." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcmJHMMest5hn9cvQHYRy14qrG-wRRFC7mpbA_lJCtS29qbj12HJB_nPpUE6mS34-v74BN1ic5Bg_uqBRLvrH5WGa-H1mXaa-lCUxwqH4BXYZ9HhyNtulpgBmEZecwNe-mcwya89uVCsW4dMGMC-nBt9HlHiwg3n0KvgkjMv3S7lr3UI1DSW9TzInG-t_bMm5fsLDHgetc36KVlG-uULDcx6psijH7cm1Vyd40dmFU0LysRcqHldcZdtYnTQ2sGffQEAGjrhyS"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Inès. W</span>
+</div>
+<div class="flex flex-col items-center gap-xs min-w-[64px]">
+<div class="w-14 h-14 rounded-full border-2 border-surface-variant overflow-hidden">
+<img alt="Student Avatar" class="w-full h-full object-cover" data-alt="A close-up portrait of a young student with a gentle smile and dark hair, wearing a simple white polo shirt. The background is a clean, minimalist wall with soft shadows. The lighting is bright and even, highlighting a professional yet deeply approachable community atmosphere in line with the brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGNarPwJeEz-4aemFvDJWDRTlERK_W47nByUaf3qKf8fPvgkil2zwYwHLAJHlo2XjoSN9HSQeMN2FR9jLSdLn_GSxjuN7churJF0YLItXr2G2fQzdbVQDik_sNY7rtb9kNK7i82PumWamPk6HGiRZLRfrxnVAJy8beCJmFRfYDq7bq7LzaQARZbhRA0kjWODAsKobLwWF2398FLpFt1iS1soe0EScAA-eJ3o9cDzn5kN_n825Bns_Z-PJfD2_r6_Y9rtndUHnT"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Tom. L</span>
+</div>
+</div>
+</section>
+<!-- Footer Actions -->
+<footer class="w-full mt-auto space-y-md">
+<button class="w-full h-[56px] bg-primary-container text-on-primary font-label-bold text-body-lg rounded-2xl shadow-sm hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined">home</span>
+                Retour à l'accueil
+            </button>
+<button class="w-full h-[56px] bg-surface-container-lowest text-primary border border-primary-container font-label-bold text-body-lg rounded-2xl hover:bg-surface-container-low active:scale-[0.98] transition-all flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined">list_alt</span>
+                Voir le détail
+            </button>
+<div class="flex justify-center pt-sm">
+<a class="flex items-center gap-xs text-outline font-label-md text-label-md hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+                    Exporter en PDF
+                </a>
+</div>
+</footer>
+</main>
+<!-- Success micro-interaction -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Simple logic to handle button feedback
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const ripple = document.createElement('span');
+                    ripple.className = 'absolute inset-0 bg-white/20 rounded-2xl pointer-events-none opacity-0 transition-opacity duration-300';
+                    this.classList.add('relative');
+                    this.appendChild(ripple);
+                    setTimeout(() => ripple.classList.add('opacity-100'), 0);
+                    setTimeout(() => ripple.classList.remove('opacity-100'), 200);
+                    setTimeout(() => ripple.remove(), 500);
+                });
+            });
+        });
+    </script>
+</body></html>

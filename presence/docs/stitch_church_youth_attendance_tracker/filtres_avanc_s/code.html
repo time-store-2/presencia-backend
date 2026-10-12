@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ecclesia Flow - Filtres Avancés</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#c3c0ff",
+                    "surface-container-high": "#e2e8f8",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#23005c",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#dce2f3",
+                    "tertiary-fixed": "#e9ddff",
+                    "on-secondary-fixed-variant": "#005236",
+                    "inverse-surface": "#2a313d",
+                    "tertiary-container": "#6f3dd9",
+                    "on-surface": "#151c27",
+                    "on-tertiary-container": "#e3d5ff",
+                    "on-secondary-container": "#00714d",
+                    "on-primary-fixed": "#0f0069",
+                    "surface": "#f9f9ff",
+                    "secondary-fixed-dim": "#4edea3",
+                    "tertiary": "#571ac0",
+                    "surface-container": "#e7eefe",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#d3daea",
+                    "surface-bright": "#f9f9ff",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#c7c4d8",
+                    "on-primary-container": "#dad7ff",
+                    "inverse-on-surface": "#ebf1ff",
+                    "error": "#ba1a1a",
+                    "outline": "#777587",
+                    "on-surface-variant": "#464555",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "secondary": "#006c49",
+                    "primary-fixed": "#e2dfff",
+                    "background": "#f9f9ff",
+                    "secondary-fixed": "#6ffbbe",
+                    "primary-container": "#4f46e5",
+                    "surface-container-low": "#f0f3ff",
+                    "surface-tint": "#4d44e3",
+                    "tertiary-fixed-dim": "#d0bcff",
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed": "#002113",
+                    "surface-variant": "#dce2f3",
+                    "secondary-container": "#6cf8bb",
+                    "on-tertiary-fixed-variant": "#5516be",
+                    "inverse-primary": "#c3c0ff",
+                    "primary": "#3525cd",
+                    "on-error": "#ffffff",
+                    "on-background": "#151c27"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "base": "4px",
+                    "margin-mobile": "16px",
+                    "md": "16px",
+                    "gutter": "16px",
+                    "sm": "8px",
+                    "xl": "32px",
+                    "margin-tablet": "32px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "display": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .bottom-sheet-overlay {
+        background-color: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(4px);
+      }
+      
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+
+      .range-slider-thumb {
+        appearance: none;
+        width: 24px;
+        height: 24px;
+        background: #4F46E5;
+        border: 4px solid white;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        z-index: 10;
+        position: relative;
+      }
+
+      ::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface min-h-screen">
+<!-- Mock Background Page to provide context -->
+<div class="px-margin-mobile pt-8 opacity-40 select-none pointer-events-none">
+<header class="flex justify-between items-center mb-lg">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-primary">Tableau de bord</h1>
+<p class="font-body-md text-on-surface-variant">Bienvenue, Admin</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest"></div>
+</header>
+<div class="grid grid-cols-2 gap-gutter mb-lg">
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm h-32"></div>
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm h-32"></div>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm h-64"></div>
+</div>
+<!-- Bottom Sheet Component -->
+<div class="fixed inset-0 z-50 flex flex-col justify-end bottom-sheet-overlay">
+<!-- Main Sheet Container -->
+<div class="bg-surface-container-lowest w-full max-w-2xl mx-auto rounded-t-3xl h-[663px] flex flex-col shadow-2xl overflow-hidden animate-slide-up">
+<!-- Handle -->
+<div class="flex justify-center py-sm">
+<div class="w-12 h-1.5 bg-outline-variant rounded-full"></div>
+</div>
+<!-- Header -->
+<div class="flex justify-between items-center px-margin-mobile py-md border-b border-surface-variant">
+<h2 class="font-headline-md text-headline-md text-on-surface">Filtres</h2>
+<button class="text-error font-label-md hover:bg-error-container/20 px-3 py-1.5 rounded-lg transition-colors">
+                    Réinitialiser
+                </button>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto px-margin-mobile py-lg space-y-xl">
+<!-- Section GROUPE -->
+<section>
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase mb-md tracking-wider">Groupe</h3>
+<div class="flex gap-sm overflow-x-auto pb-xs">
+<button class="whitespace-nowrap px-lg py-sm rounded-full bg-primary-container text-on-primary font-label-md shadow-sm transition-all active:scale-95">Tous</button>
+<button class="whitespace-nowrap px-lg py-sm rounded-full bg-surface-container-high text-on-surface-variant font-label-md hover:bg-surface-variant transition-all active:scale-95">École du dimanche</button>
+<button class="whitespace-nowrap px-lg py-sm rounded-full bg-surface-container-high text-on-surface-variant font-label-md hover:bg-surface-variant transition-all active:scale-95">Chorales</button>
+<button class="whitespace-nowrap px-lg py-sm rounded-full bg-surface-container-high text-on-surface-variant font-label-md hover:bg-surface-variant transition-all active:scale-95">Étude biblique</button>
+</div>
+</section>
+<!-- Section STATUT -->
+<section>
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase mb-md tracking-wider">Statut de présence</h3>
+<div class="grid grid-cols-2 gap-sm">
+<button class="flex items-center gap-sm p-md rounded-xl bg-green-50 border border-green-100 text-[#065F46] font-label-md transition-all active:scale-95">
+<span class="material-symbols-outlined text-green-700">check_circle</span>
+                            Présent
+                        </button>
+<button class="flex items-center gap-sm p-md rounded-xl bg-red-50 border border-red-100 text-[#991B1B] font-label-md transition-all active:scale-95">
+<span class="material-symbols-outlined text-red-700">cancel</span>
+                            Absent
+                        </button>
+<button class="flex items-center gap-sm p-md rounded-xl bg-amber-50 border border-amber-100 text-[#92400E] font-label-md transition-all active:scale-95">
+<span class="material-symbols-outlined text-amber-700">schedule</span>
+                            Retard
+                        </button>
+<button class="flex items-center gap-sm p-md rounded-xl bg-surface-container-low border border-surface-variant text-on-surface-variant font-label-md transition-all active:scale-95">
+<span class="material-symbols-outlined">info</span>
+                            Excusé
+                        </button>
+</div>
+</section>
+<!-- Section PÉRIODE -->
+<section>
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase mb-md tracking-wider">Période</h3>
+<div class="flex flex-wrap gap-sm">
+<button class="flex-1 min-w-[100px] py-md rounded-xl border-2 border-primary-container bg-primary-container/5 text-primary font-label-md">Aujourd'hui</button>
+<button class="flex-1 min-w-[100px] py-md rounded-xl border border-surface-variant bg-surface-container-lowest text-on-surface-variant font-label-md">Ce mois</button>
+<button class="flex-1 min-w-[100px] py-md rounded-xl border border-surface-variant bg-surface-container-lowest text-on-surface-variant font-label-md">Personnalisée</button>
+</div>
+</section>
+<!-- Section ÂGE -->
+<section>
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Âge</h3>
+<span class="font-body-md text-primary font-bold">10 - 18 ans</span>
+</div>
+<div class="relative w-full h-8 flex items-center px-2">
+<div class="absolute left-2 right-2 h-1.5 bg-surface-container-highest rounded-full"></div>
+<div class="absolute left-[15%] right-[25%] h-1.5 bg-primary-container rounded-full"></div>
+<div class="absolute left-[15%] -ml-3 w-6 h-6 rounded-full bg-white border-[3px] border-primary-container shadow-sm cursor-pointer"></div>
+<div class="absolute right-[25%] -mr-3 w-6 h-6 rounded-full bg-white border-[3px] border-primary-container shadow-sm cursor-pointer"></div>
+</div>
+</section>
+<!-- Section TRI -->
+<section>
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase mb-md tracking-wider">Trier par</h3>
+<div class="space-y-sm bg-surface-container-low rounded-xl p-md">
+<label class="flex items-center justify-between p-md bg-surface-container-lowest rounded-lg cursor-pointer">
+<span class="font-body-md text-on-surface">Nom A-Z</span>
+<input checked="" class="w-5 h-5 text-primary focus:ring-primary border-outline rounded-full" name="sort" type="radio"/>
+</label>
+<label class="flex items-center justify-between p-md bg-surface-container-lowest rounded-lg cursor-pointer">
+<span class="font-body-md text-on-surface">Taux de présence</span>
+<input class="w-5 h-5 text-primary focus:ring-primary border-outline rounded-full" name="sort" type="radio"/>
+</label>
+<label class="flex items-center justify-between p-md bg-surface-container-lowest rounded-lg cursor-pointer">
+<span class="font-body-md text-on-surface">Dernière activité</span>
+<input class="w-5 h-5 text-primary focus:ring-primary border-outline rounded-full" name="sort" type="radio"/>
+</label>
+</div>
+</section>
+</div>
+<!-- Footer -->
+<div class="p-margin-mobile bg-surface-container-lowest border-t border-surface-variant flex items-center justify-between gap-lg">
+<div class="flex flex-col">
+<span class="font-headline-md text-primary">3</span>
+<span class="font-label-sm text-on-surface-variant">filtres actifs</span>
+</div>
+<button class="flex-1 bg-primary-container text-on-primary py-lg rounded-xl font-label-md shadow-lg shadow-primary-container/20 hover:brightness-110 transition-all active:scale-95 flex items-center justify-center gap-sm">
+                    Appliquer les filtres
+                </button>
+</div>
+</div>
+</div>
+<!-- Hidden Scripts for basic interactions -->
+<script>
+        // Simple logic to simulate chip selection
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if(this.classList.contains('bg-surface-container-high')) {
+                    this.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
+                    this.classList.add('bg-primary-container', 'text-on-primary');
+                } else if (this.classList.contains('bg-primary-container') && !this.closest('div').classList.contains('p-margin-mobile')) {
+                    this.classList.add('bg-surface-container-high', 'text-on-surface-variant');
+                    this.classList.remove('bg-primary-container', 'text-on-primary');
+                }
+            });
+        });
+    </script>
+<style>
+        @keyframes slide-up {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+        .animate-slide-up {
+            animation: slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+    </style>
+</body></html>

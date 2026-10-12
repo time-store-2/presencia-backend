@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Récompenses - David Koffi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#ffdad2",
+                    "on-surface": "#191d0e",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#ffb4a2",
+                    "inverse-primary": "#95d4b3",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#ffdcc2",
+                    "surface-container-low": "#f2f6dd",
+                    "on-secondary-fixed-variant": "#83260e",
+                    "tertiary-fixed-dim": "#f4bb8e",
+                    "primary-container": "#2d6a4f",
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#a8e7c5",
+                    "surface-variant": "#e0e5cc",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#404943",
+                    "surface-tint": "#2c694e",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#bfc9c1",
+                    "outline": "#707973",
+                    "secondary": "#a33d23",
+                    "on-tertiary-fixed-variant": "#653e1b",
+                    "surface": "#f7fce3",
+                    "on-secondary-container": "#731a04",
+                    "inverse-on-surface": "#eff3da",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#95d4b3",
+                    "surface-bright": "#f7fce3",
+                    "primary-fixed": "#b1f0ce",
+                    "secondary-container": "#ff8162",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#191d0e",
+                    "on-tertiary-container": "#ffd0ad",
+                    "tertiary": "#653e1b",
+                    "background": "#f7fce3",
+                    "on-primary-fixed-variant": "#0e5138",
+                    "on-secondary-fixed": "#3c0700",
+                    "surface-container": "#ecf0d8",
+                    "on-tertiary-fixed": "#2e1500",
+                    "surface-dim": "#d8dcc4",
+                    "surface-container-highest": "#e0e5cc",
+                    "tertiary-container": "#805530",
+                    "surface-container-high": "#e6ebd2",
+                    "inverse-surface": "#2e3222",
+                    "error-container": "#ffdad6",
+                    "primary": "#0f5238",
+                    "on-primary-fixed": "#002114"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "48px",
+                    "gutter": "24px",
+                    "xs": "4px",
+                    "margin-desktop": "40px",
+                    "sm": "12px",
+                    "base": "8px",
+                    "xl": "80px",
+                    "margin-mobile": "16px",
+                    "md": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-sm": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "display-lg-mobile": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-sm": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "60px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #FAFAF8;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .sanctuary-shadow {
+            box-shadow: 0px 4px 20px rgba(45, 106, 79, 0.05);
+        }
+        .progress-bar-fill {
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab {
+            transform: scale(0.9);
+            transition: transform 0.2s;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: slideIn 0.5s ease-out forwards;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="bg-background dark:bg-background w-full top-0 sticky z-40 transition-opacity">
+<div class="flex items-center justify-between px-margin-mobile md:px-margin-desktop py-4 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/10">
+<img alt="Member profile photo" class="w-full h-auto" data-alt="A professional and friendly portrait of David Koffi, a young man with a warm smile, set against a soft, natural blurred background. The image is captured in bright, natural daylight, emphasizing clarity and human connection. The photography style is modern and clean, consistent with a high-end community platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOzsvqi9CNa94Q4VUtODj3mpKIl2Ygn91LRGQbbW7wclrLJwCF4HVS3Y9UmDORzC8AhGf6CW_x5S2xe6c9PGfWt1A_2ToFg5wlwV4HnujY7Y-ck9DbLae3DDLKtLiKjbuaWQavf2VBvnU52b_w3Ny2wi6F2OdcCrfqpwBYMJaqDQO8Ojrx7GfvAcxCVGgpdBb1VN04J3DrjNRKErotI4vJQ2_OUi-LiBJqZbzRcLwd_ZC46FMayF_lHuzNbhEDTWk087DIv6NR"/>
+</div>
+<h1 class="font-headline-sm text-headline-sm-mobile md:text-headline-sm text-primary dark:text-primary-fixed-dim">Récompenses</h1>
+</div>
+<button class="text-on-surface-variant dark:text-outline-variant hover:opacity-80 transition-opacity active:scale-95">
+<span class="material-symbols-outlined text-2xl">notifications</span>
+</button>
+</div>
+</header>
+<main class="px-margin-mobile space-y-6 pt-2">
+<!-- Hero Card -->
+<section class="animate-fade-in" style="animation-delay: 0.1s;">
+<div class="bg-primary-container text-on-primary-container p-6 rounded-[20px] sanctuary-shadow relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-12 -mt-12 blur-2xl"></div>
+<div class="flex items-start justify-between relative z-10">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-2xl overflow-hidden border-2 border-white/20">
+<img alt="David Koffi" class="w-full h-full object-cover" data-alt="Close-up portrait of David Koffi, a smiling young man, showing his character and friendly personality for a community membership card. The lighting is soft and golden, creating a sense of warmth and belonging. The visual style is premium and focuses on human presence within a church community app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtq25coCKq9BawwrP9Fazl-si7DkEPn2QuwXQSG75kXzjfDQ5Y0KHHBr4EUrGFzSLSvv5nKOYSplOiOKJ4Oyf2W2-PCv7WK9hwaZIFLK212FnJY5id2qS712LCkCIQYLxh_DQYx2moSIFaFdnKEhzwjA0ndbFDzMJX6JzhWYpCOlcJCDYiHaT_ioW8B29yiOPUWSvE3PqJQMtTEwaSyycUpTnyaFI2czDePTw2OS1YLAu--lNawPe3FIIXwqaa5AirjdkWfdvP"/>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-white">David Koffi</h2>
+<p class="font-label-md text-label-md text-on-primary-container/80">Groupe des Explorateurs</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-1 bg-white/20 px-3 py-1 rounded-full">
+<span class="material-symbols-outlined text-yellow-300 text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-headline-sm text-headline-sm-mobile text-white">248 pts</span>
+</div>
+</div>
+</div>
+<!-- Level Progress -->
+<div class="mt-8 space-y-2 relative z-10">
+<div class="flex justify-between items-end">
+<p class="font-label-md text-label-md text-white">Niveau 3 — Fidèle</p>
+<p class="font-label-sm text-label-sm text-white/70">248 / 400 pts</p>
+</div>
+<div class="h-3 w-full bg-white/20 rounded-full overflow-hidden">
+<div class="h-full bg-white progress-bar-fill" style="width: 65%;"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Badges Obtenus -->
+<section class="space-y-4 animate-fade-in" style="animation-delay: 0.2s;">
+<h3 class="font-headline-sm text-headline-sm-mobile text-on-surface">Badges obtenus</h3>
+<div class="grid grid-cols-3 gap-4">
+<!-- Badge 1 -->
+<div class="flex flex-col items-center gap-2 p-3 bg-white rounded-[20px] sanctuary-shadow border border-[#E0E5CC]/20 text-center">
+<div class="w-14 h-14 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">emoji_events</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface leading-tight">1 mois parfait</span>
+</div>
+<!-- Badge 2 -->
+<div class="flex flex-col items-center gap-2 p-3 bg-white rounded-[20px] sanctuary-shadow border border-[#E0E5CC]/20 text-center">
+<div class="w-14 h-14 rounded-full bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface leading-tight">Assidu</span>
+</div>
+<!-- Badge 3 -->
+<div class="flex flex-col items-center gap-2 p-3 bg-white rounded-[20px] sanctuary-shadow border border-[#E0E5CC]/20 text-center">
+<div class="w-14 h-14 rounded-full bg-orange-100 flex items-center justify-center text-orange-600">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface leading-tight">Série de 5</span>
+</div>
+</div>
+</section>
+<!-- À débloquer -->
+<section class="space-y-4 animate-fade-in" style="animation-delay: 0.3s;">
+<h3 class="font-headline-sm text-headline-sm-mobile text-on-surface">À débloquer</h3>
+<div class="space-y-3">
+<div class="flex items-center gap-4 p-4 bg-white/50 border border-outline-variant/30 rounded-xl grayscale opacity-70">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center rounded-full">
+<span class="material-symbols-outlined text-outline">lock</span>
+</div>
+<div class="flex-1 space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface">Meneur de groupe</span>
+<span class="font-label-sm text-label-sm text-outline">3/5 présences</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-outline rounded-full" style="width: 60%;"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 p-4 bg-white/50 border border-outline-variant/30 rounded-xl grayscale opacity-70">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center rounded-full">
+<span class="material-symbols-outlined text-outline">lock</span>
+</div>
+<div class="flex-1 space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface">Donateur matinal</span>
+<span class="font-label-sm text-label-sm text-outline">1/3 fois</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-outline rounded-full" style="width: 33%;"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Classement du groupe -->
+<section class="space-y-4 animate-fade-in" style="animation-delay: 0.4s;">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm-mobile text-on-surface">Classement du groupe</h3>
+<button class="text-primary font-label-md text-label-md">Voir tout</button>
+</div>
+<div class="bg-white rounded-[20px] sanctuary-shadow overflow-hidden">
+<!-- Rank 1 -->
+<div class="flex items-center gap-4 p-4 border-b border-[#E0E5CC]/20">
+<span class="text-xl">🥇</span>
+<div class="w-10 h-10 rounded-full overflow-hidden">
+<img alt="Rank 1" class="w-full h-full object-cover" data-alt="A portrait of a focused and friendly young woman in a casual setting, suitable for a leaderboard avatar. The lighting is soft and consistent with the platform's professional yet warm aesthetic. The background is a clean, neutral color that makes the subject stand out." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA17LxhYH7la3J2DVdpzP5CPRIrSpNVIhtQHZk8M3ff8XPPbWMtB6Pu7iDElME-wDQ1GpXhImN3XmR508A68-RrSkIpH9taRYKNLgceE_ZhgZINDA6FaqkvF5McF3qI3es_IzIhjpm8OLzn5GdxBXnsqMx_nJaKaoAd5N3iYgK4tSxI_5MNcV7FSjo5avnJqMsdDoBLI5cJuZauXUwFTdGkiw0nOo-K47hn6gEr1zROggYBL-DOAx7cVQoM8d7kA7gs0Ub4_cj4"/>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-on-surface">Sarah Dupont</p>
+</div>
+<span class="font-label-md text-label-md text-primary">312 pts</span>
+</div>
+<!-- Rank 2 -->
+<div class="flex items-center gap-4 p-4 border-b border-[#E0E5CC]/20">
+<span class="text-xl">🥈</span>
+<div class="w-10 h-10 rounded-full overflow-hidden">
+<img alt="Rank 2" class="w-full h-full object-cover" data-alt="A smiling young man with a creative look, representing an active community member. The photo is high quality with a shallow depth of field, set in an indoor modern environment. The color tones are natural and warm." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUZqi1VhukQnOfXFNJuT3anVcjnhPAJcDasEPgc2nh_Abz8ppAy_rjv2UAlgq4TqFwOsEJpIGRKYnW_waiLkNLICaaYTkl2yeLruOYaB2qACqwieR1dh_svstqt_CFBjHrji695CbU0-AAhavemqlr92-r7GxxvZjjcd-ZYRpF13OKFo-Akc_EuxW1HaTZVTgMqsF-P7U2GDt3T-xtVAzriGkhsq_jwZSWWowXynLpq67HQb6Q2dFKxRfDp37OT_EO7lZgZh21"/>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-on-surface">Lucas Martin</p>
+</div>
+<span class="font-label-md text-label-md text-primary">285 pts</span>
+</div>
+<!-- Current User Rank 3 Highlighted -->
+<div class="flex items-center gap-4 p-4 bg-primary-container/10 border-l-4 border-primary">
+<span class="text-xl">🥉</span>
+<div class="w-10 h-10 rounded-full overflow-hidden ring-2 ring-primary/20">
+<img alt="David Koffi" class="w-full h-full object-cover" data-alt="Profile photo of David Koffi, used here in the group leaderboard context. The image maintains visual consistency with his hero card portrait, reinforcing his identity within the application's ranking system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOlKhwk1MoOA2_NRQ8-vq_lNfYlXkhVP781LuRH2mu-pjxf_KIF5Yu0djC2K5NKe_F6wHvHCi5Wq712l7XQZnWeawQWxN7XZvO9fbbTdo99C8IlgKlzCR6x0157Lbp-SCEAqrlgDYL4zojgwk2Isf55gexQBBevdVhdtjAYN89f1yYM1fSC-wRkCauqqBoh6rxmlESuyp7WFdGl_8aoMph0u4_3JNvYtStygUsBLGzA6XcIudD2Oqh1F7eC6VXIICTLWhWGGfF"/>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-primary font-bold">David Koffi (Vous)</p>
+</div>
+<span class="font-label-md text-label-md text-primary font-bold">248 pts</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 pb-safe px-2 bg-surface dark:bg-surface-dim z-50 rounded-t-xl shadow-[0px_-4px_20px_rgba(45,106,79,0.05)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">child_care</span>
+<span class="font-label-sm text-label-sm mt-1">Youth</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+<span class="font-label-sm text-label-sm mt-1">Appel/QR</span>
+</a>
+<!-- Active Tab: Groups (Contains rewards/leaderboard) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-sm text-label-sm mt-1">Groups</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm mt-1">Settings</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for tabs and cards
+        document.querySelectorAll('a, button, section > div').forEach(el => {
+            el.addEventListener('touchstart', () => {
+                el.style.opacity = '0.7';
+            });
+            el.addEventListener('touchend', () => {
+                el.style.opacity = '1';
+            });
+        });
+
+        // Dynamic progress bar animation on load
+        window.addEventListener('load', () => {
+            const bar = document.querySelector('.progress-bar-fill');
+            if (bar) {
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = '65%';
+                }, 100);
+            }
+        });
+    </script>
+</body></html>

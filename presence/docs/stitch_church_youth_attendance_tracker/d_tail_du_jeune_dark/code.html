@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "tertiary": "#571ac0",
+                  "tertiary-container": "#6f3dd9",
+                  "tertiary-fixed": "#e9ddff",
+                  "on-secondary-container": "#00714d",
+                  "surface-container-low": "#f0f3ff",
+                  "on-background": "#151c27",
+                  "primary-fixed-dim": "#c3c0ff",
+                  "surface-tint": "#4d44e3",
+                  "secondary": "#006c49",
+                  "on-tertiary-container": "#e3d5ff",
+                  "surface-container": "#e7eefe",
+                  "outline": "#777587",
+                  "on-tertiary-fixed-variant": "#5516be",
+                  "tertiary-fixed-dim": "#d0bcff",
+                  "on-primary-fixed": "#0f0069",
+                  "on-error-container": "#93000a",
+                  "on-secondary": "#ffffff",
+                  "surface": "#151c27", /* Overridden for dark detail */
+                  "surface-bright": "#f9f9ff",
+                  "surface-variant": "#dce2f3",
+                  "on-tertiary-fixed": "#23005c",
+                  "surface-container-lowest": "#ffffff",
+                  "surface-container-high": "#e2e8f8",
+                  "on-surface": "#151c27",
+                  "inverse-primary": "#c3c0ff",
+                  "secondary-fixed": "#6ffbbe",
+                  "on-secondary-fixed-variant": "#005236",
+                  "error": "#ba1a1a",
+                  "on-primary": "#ffffff",
+                  "on-secondary-fixed": "#002113",
+                  "on-primary-container": "#dad7ff",
+                  "inverse-surface": "#2a313d",
+                  "primary": "#3525cd",
+                  "outline-variant": "#c7c4d8",
+                  "on-surface-variant": "#464555",
+                  "background": "#f9f9ff",
+                  "on-error": "#ffffff",
+                  "primary-fixed": "#e2dfff",
+                  "surface-container-highest": "#dce2f3",
+                  "secondary-container": "#6cf8bb",
+                  "secondary-fixed-dim": "#4edea3",
+                  "primary-container": "#4f46e5",
+                  "on-tertiary": "#ffffff",
+                  "error-container": "#ffdad6",
+                  "surface-dim": "#0a0f16",
+                  "inverse-on-surface": "#ebf1ff",
+                  "on-primary-fixed-variant": "#3323cc"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "xl": "32px",
+                  "lg": "24px",
+                  "base": "4px",
+                  "margin-tablet": "32px",
+                  "md": "16px",
+                  "sm": "8px",
+                  "gutter": "16px",
+                  "xs": "4px",
+                  "margin-mobile": "16px"
+          },
+          "fontFamily": {
+                  "headline-md": ["Inter"],
+                  "label-sm": ["Inter"],
+                  "display": ["Inter"],
+                  "label-md": ["Inter"],
+                  "body-lg": ["Inter"],
+                  "headline-lg": ["Inter"],
+                  "body-md": ["Inter"]
+          },
+          "fontSize": {
+                  "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                  "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "500"}],
+                  "display": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                  "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                  "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                  "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body { background-color: #0a0f16; color: #f9f9ff; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+    .status-dot-present { width: 8px; height: 8px; background-color: #10b981; border-radius: 50%; }
+    .status-dot-absent { width: 8px; height: 8px; background-color: #ef4444; border-radius: 50%; }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky z-40 bg-surface-dim shadow-sm flex items-center justify-between px-margin-mobile py-sm">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-outline-variant active:scale-95 transition-transform" onclick="history.back()">arrow_back</button>
+<h1 class="font-headline-md text-headline-md text-primary-fixed-dim">Profil Adolescent</h1>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-outline-variant">notifications</span>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center overflow-hidden">
+<img alt="Admin Profile" class="w-full h-full object-cover" data-alt="Close up professional portrait of a male community administrator in a modern dark office setting. Soft cinematic blue and violet lighting enhances the facial features. The style is high-end corporate photography with a shallow depth of field and a focus on reliability and warmth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9j_ocWG9k2dnYEe0AXBSeCq_gJNICVL4QDjWXKKHUa0bFFplyJePNdcn-Z-2A-iNnXeKfyxOtwN_BHqS9Miqy2_aZrtAUOPrMRasBRGu-IxIDhqiRv97vsMPO2oV0KSLzjS-JAn04ba96wKebKnxuSLNSxrZTpjyG76E_7tS4XnG2yieR_42VDkXXbKuCk3ZgVRMqBZNmucocYD9ibp0qEYYvr3eAKLGGMkFNiMVHZ-zYHjL0kQSPuxxKs3wIJ99cTYiDsIBSlBI"/>
+</div>
+</div>
+</header>
+<main class="px-margin-mobile pt-lg space-y-lg">
+<!-- Hero Profile Section -->
+<section class="relative">
+<div class="glass-card rounded-xl p-lg flex flex-col items-center text-center">
+<div class="relative mb-md">
+<div class="w-24 h-24 rounded-full border-4 border-primary-container p-1 overflow-hidden">
+<img alt="Adolescent Profile" class="w-full h-full object-cover rounded-full" data-alt="High resolution portrait of a young male teenager with a friendly smile, set against a blurred urban evening background with soft indigo and amber streetlights. The aesthetic is modern and youth-focused, with high contrast lighting typical of a high-end social networking profile. The colors are deep blues and muted charcoal tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUwh2IxuDuYUKev1s5ruuhGAzqlp4bqeZPM6k5VUhuvyHSs4nuMxMHjc8ND3LEm--bqe30WfssrvZqaqNvMoWdprDkOOm2ijrsW05lBfW0BBATeZliHKDCWapO-V8swGl1dkuvctnhMLPo8qMtsIp_ECR1nNTgYGvts9PuIfmGbfkRZpJijAJhddfxXdBLshffjyF7mdSZKEWmuR6DCvTOwIDF1ZSUcsfL57FueEzgz9zCYuGcAdKG4c5x3rVbtawSDYZlHzoNamY"/>
+</div>
+<div class="absolute bottom-0 right-0 bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full font-label-sm text-label-sm">ACTIF</div>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-primary-fixed-dim">Théo Durand</h2>
+<p class="font-body-md text-body-md text-outline-variant">Groupe des Explorateurs • 16 ans</p>
+<div class="flex gap-md mt-lg w-full">
+<button class="flex-1 bg-primary-container text-white py-3 rounded-xl font-body-md flex items-center justify-center gap-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+            Modifier
+          </button>
+<button class="flex-1 bg-surface-container-highest/20 text-primary-fixed-dim border border-outline-variant/30 py-3 rounded-xl font-body-md flex items-center justify-center gap-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+            Contacter
+          </button>
+</div>
+</div>
+</section>
+<!-- Stats Grid (Bento Style) -->
+<section class="grid grid-cols-2 gap-md">
+<div class="glass-card rounded-xl p-md flex flex-col justify-between h-32">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-secondary-fixed-dim">calendar_today</span>
+<span class="text-secondary-fixed-dim font-label-md text-label-md">+5%</span>
+</div>
+<div>
+<p class="text-display text-primary-fixed-dim">92%</p>
+<p class="font-label-md text-label-md text-outline-variant">Présence Annuelle</p>
+</div>
+</div>
+<div class="glass-card rounded-xl p-md flex flex-col justify-between h-32">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-tertiary-fixed-dim">volunteer_activism</span>
+</div>
+<div>
+<p class="text-display text-primary-fixed-dim">14</p>
+<p class="font-label-md text-label-md text-outline-variant">Engagements</p>
+</div>
+</div>
+</section>
+<!-- Information List -->
+<section class="glass-card rounded-xl overflow-hidden">
+<div class="px-md py-sm border-b border-outline-variant/10">
+<h3 class="font-label-md text-label-md text-outline-variant uppercase tracking-wider">Informations Personnelles</h3>
+</div>
+<div class="divide-y divide-outline-variant/10">
+<div class="flex items-center p-md gap-md">
+<span class="material-symbols-outlined text-outline">cake</span>
+<div>
+<p class="font-label-sm text-label-sm text-outline-variant">Date de Naissance</p>
+<p class="font-body-md text-body-md">14 Mai 2007</p>
+</div>
+</div>
+<div class="flex items-center p-md gap-md">
+<span class="material-symbols-outlined text-outline">phone</span>
+<div>
+<p class="font-label-sm text-label-sm text-outline-variant">Téléphone Parent</p>
+<p class="font-body-md text-body-md">06 45 89 21 00</p>
+</div>
+</div>
+<div class="flex items-center p-md gap-md">
+<span class="material-symbols-outlined text-outline">home</span>
+<div>
+<p class="font-label-sm text-label-sm text-outline-variant">Adresse</p>
+<p class="font-body-md text-body-md">12 Rue de la Paix, Lyon</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent History (Asymmetric Timeline) -->
+<section class="space-y-md">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-primary-fixed-dim">Historique récent</h3>
+<button class="text-label-md text-primary-fixed-dim font-label-md">Voir tout</button>
+</div>
+<div class="space-y-sm">
+<!-- History Item 1 -->
+<div class="glass-card rounded-xl p-md flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-emerald-500">check_circle</span>
+</div>
+<div>
+<p class="font-body-md text-body-md">Réunion du Samedi</p>
+<p class="font-label-sm text-label-sm text-outline-variant">12 Octobre • Présent</p>
+</div>
+</div>
+<span class="status-dot-present"></span>
+</div>
+<!-- History Item 2 -->
+<div class="glass-card rounded-xl p-md flex items-center justify-between opacity-80">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-red-500">cancel</span>
+</div>
+<div>
+<p class="font-body-md text-body-md">Atelier Musique</p>
+<p class="font-label-sm text-label-sm text-outline-variant">05 Octobre • Absent</p>
+</div>
+</div>
+<span class="status-dot-absent"></span>
+</div>
+<!-- History Item 3 -->
+<div class="glass-card rounded-xl p-md flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-emerald-500">check_circle</span>
+</div>
+<div>
+<p class="font-body-md text-body-md">Sortie Communautaire</p>
+<p class="font-label-sm text-label-sm text-outline-variant">28 Septembre • Présent</p>
+</div>
+</div>
+<span class="status-dot-present"></span>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Nav Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-dim border-t border-outline/20">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high transition-colors px-4 py-1">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Accueil</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-transform active:scale-90">
+<span class="material-symbols-outlined" data-icon="group" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-md text-label-md">Jeunes</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high transition-colors px-4 py-1">
+<span class="material-symbols-outlined" data-icon="how_to_reg">how_to_reg</span>
+<span class="font-label-md text-label-md">Appel</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high transition-colors px-4 py-1">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span class="font-label-md text-label-md">Groupes</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high transition-colors px-4 py-1">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Paramètres</span>
+</button>
+</nav>
+<script>
+    // Micro-interaction for the profile image scale on scroll
+    window.addEventListener('scroll', () => {
+      const scrollPos = window.scrollY;
+      const profileImage = document.querySelector('img[data-alt*="teenager"]');
+      if (profileImage) {
+        const scale = Math.max(0.8, 1 - scrollPos / 1000);
+        profileImage.style.transform = `scale(${scale})`;
+      }
+    });
+  </script>
+</body></html>

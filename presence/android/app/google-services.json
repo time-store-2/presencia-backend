@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "62289221521",
+    "project_id": "presencia-71b6a",
+    "storage_bucket": "presencia-71b6a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:62289221521:android:54f1d38d995b03533f6c30",
+        "android_client_info": {
+          "package_name": "com.example.presence"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4fkjpyAaqYA0MQLyN7-WPem37Ta6ItL0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,44 @@
+name: presencia
+description: "Presencia - Suivi des présences pour organisations et leurs groupes."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  animated_bottom_navigation_bar: ^1.4.1
+  sqflite: ^2.4.1
+  path: ^1.9.1
+  provider: ^6.1.2
+  intl: ^0.20.2
+  url_launcher: ^6.3.1
+  google_fonts: ^6.2.1
+  shared_preferences: ^2.3.5
+  share_plus: ^10.1.4
+  path_provider: ^2.1.5
+  image_picker: ^1.1.2
+  http: ^1.2.0
+  flutter_secure_storage: ^9.2.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/app_icon.png"
+  min_sdk_android: 21
+
+flutter:
+  uses-material-design: true
+  generate: true

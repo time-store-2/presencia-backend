@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Mes églises - Kindred Path</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#ffdad2",
+                    "on-surface": "#191d0e",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#ffb4a2",
+                    "inverse-primary": "#95d4b3",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#ffdcc2",
+                    "surface-container-low": "#f2f6dd",
+                    "on-secondary-fixed-variant": "#83260e",
+                    "tertiary-fixed-dim": "#f4bb8e",
+                    "primary-container": "#2d6a4f",
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#a8e7c5",
+                    "surface-variant": "#e0e5cc",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#404943",
+                    "surface-tint": "#2c694e",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#bfc9c1",
+                    "outline": "#707973",
+                    "secondary": "#a33d23",
+                    "on-tertiary-fixed-variant": "#653e1b",
+                    "surface": "#f7fce3",
+                    "on-secondary-container": "#731a04",
+                    "inverse-on-surface": "#eff3da",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#95d4b3",
+                    "surface-bright": "#f7fce3",
+                    "primary-fixed": "#b1f0ce",
+                    "secondary-container": "#ff8162",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#191d0e",
+                    "on-tertiary-container": "#ffd0ad",
+                    "tertiary": "#653e1b",
+                    "background": "#f7fce3",
+                    "on-primary-fixed-variant": "#0e5138",
+                    "on-secondary-fixed": "#3c0700",
+                    "surface-container": "#ecf0d8",
+                    "on-tertiary-fixed": "#2e1500",
+                    "surface-dim": "#d8dcc4",
+                    "surface-container-highest": "#e0e5cc",
+                    "tertiary-container": "#805530",
+                    "surface-container-high": "#e6ebd2",
+                    "inverse-surface": "#2e3222",
+                    "error-container": "#ffdad6",
+                    "primary": "#0f5238",
+                    "on-primary-fixed": "#002114"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "48px",
+                    "gutter": "24px",
+                    "xs": "4px",
+                    "margin-desktop": "40px",
+                    "sm": "12px",
+                    "base": "8px",
+                    "xl": "80px",
+                    "margin-mobile": "16px",
+                    "md": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-sm": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "display-lg-mobile": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-sm": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "60px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #FAFAF8;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .sanctuary-shadow {
+            box-shadow: 0px 4px 20px rgba(45, 106, 79, 0.05);
+        }
+        .active-scale:active {
+            transform: scale(0.95);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface">
+<!-- Top App Bar -->
+<header class="bg-background w-full top-0 sticky z-40">
+<div class="flex items-center justify-between px-margin-mobile py-4 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container border border-outline-variant">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a smiling West African man in his 30s with a clean-cut look, wearing a soft cream-colored linen shirt. The background is a soft-focus, brightly lit modern community space with warm wooden accents and lush green indoor plants, reflecting a light-mode, serene, and welcoming sanctuary aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD10RF9I0arNazC-KAQGwQs97htkFu9UZ7qGUap4iDZP0S9G8lq536A-wGHnTJftPLaXmfOY8hGbstuEr7O7oTpHZ_2b9-PYTCN49zehAEaUbI0k_WVC7kM9KpmwIblyp8atjB3Pc1r7fcerKRBOyQuZVngMipdSTixjl0Q9T1c8pPVFPAL1508_2gPymL-9jT51h10BLLlP_obnK2Ct5cLQ-nokgL5eclteUBCzWCRm_D_vra_KNL9rxnpojl6xnBhdEZ5CfE"/>
+</div>
+<div class="flex flex-col">
+<h1 class="font-headline-sm text-headline-sm-mobile text-primary">Mes églises</h1>
+<span class="font-label-sm text-on-surface-variant">2 communautés</span>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-full font-label-md active-scale transition-transform">
+                Rejoindre
+            </button>
+</div>
+</header>
+<main class="px-margin-mobile pt-4 pb-32 space-y-8">
+<!-- Section Active -->
+<section class="space-y-4">
+<h2 class="font-label-md text-on-surface-variant flex items-center gap-2 px-1">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                COMMUNAUTÉ ACTIVE
+            </h2>
+<div class="bg-primary-container text-on-primary-container p-5 rounded-[20px] sanctuary-shadow relative overflow-hidden group">
+<!-- Decorative background elements -->
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-on-primary-container/10 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-700"></div>
+<div class="flex items-start justify-between mb-6">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center sanctuary-shadow overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A minimalist and modern church logo featuring a stylized stylized geometric cross integrated with ocean wave patterns. The icon is rendered in forest green and soft cream tones, set against a clean white background. The aesthetic is clean, professional, and spiritual, embodying the identity of a coastal community church." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDd52DGDijuv402zbMxZxA6ElY1jWZrUepWJvTlR9M27xiOTNwAOfMNLggaeQqqw00swqYdlRfYXX1SDqIVHAv4hYaayT-xcdM95unfxP4CshdggeSDZFPS3-WDxlizWjljCC5XuiDPWYHkGUD0s30_N_eY_5nKzJwJC1mm8kuo9TgIYwpaVUGTSg_ZXDRb-i3TVWxZgYzZJR9knPfnTzz4hPJn0Pihd-x0OO2NISz6ExIQX-AOVVG0fLwrZvi3173dCY4MDVIB"/>
+</div>
+<div>
+<h3 class="font-headline-sm">Église du Golfe</h3>
+<div class="flex items-center gap-1 opacity-80 font-body-sm">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+                                Lomé, Togo
+                            </div>
+</div>
+</div>
+<span class="bg-on-primary-container/20 text-on-primary-container px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">
+                        ADMIN
+                    </span>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-3 gap-3 mb-6">
+<div class="bg-black/10 backdrop-blur-sm p-3 rounded-xl">
+<span class="block font-label-sm opacity-70">Jeunes</span>
+<span class="text-headline-sm font-bold">124</span>
+</div>
+<div class="bg-black/10 backdrop-blur-sm p-3 rounded-xl">
+<span class="block font-label-sm opacity-70">Sessions</span>
+<span class="text-headline-sm font-bold">12</span>
+</div>
+<div class="bg-black/10 backdrop-blur-sm p-3 rounded-xl">
+<span class="block font-label-sm opacity-70">Présence</span>
+<span class="text-headline-sm font-bold">88%</span>
+</div>
+</div>
+<button class="w-full bg-white text-primary font-label-md py-3 rounded-xl active-scale transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">settings</span>
+                    Gérer cette église
+                </button>
+</div>
+</section>
+<!-- Section Autres communautés -->
+<section class="space-y-4">
+<h2 class="font-label-md text-on-surface-variant px-1">AUTRES COMMUNAUTÉS</h2>
+<div class="space-y-3">
+<!-- Community Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-4 rounded-[20px] sanctuary-shadow flex items-center justify-between hover:border-primary/30 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-high rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">church</span>
+</div>
+<div>
+<h4 class="font-label-md">Paroisse Saint-Paul</h4>
+<p class="font-body-sm text-on-surface-variant">Kpalimé, Togo</p>
+</div>
+</div>
+<button class="text-primary font-label-md px-4 py-2 rounded-lg bg-primary-fixed/30 hover:bg-primary-fixed/50 transition-colors active-scale">
+                        Activer
+                    </button>
+</div>
+<!-- Community Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-4 rounded-[20px] sanctuary-shadow flex items-center justify-between hover:border-primary/30 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-high rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">groups_3</span>
+</div>
+<div>
+<h4 class="font-label-md">Vie Nouvelle</h4>
+<p class="font-body-sm text-on-surface-variant">Cotonou, Bénin</p>
+</div>
+</div>
+<button class="text-primary font-label-md px-4 py-2 rounded-lg bg-primary-fixed/30 hover:bg-primary-fixed/50 transition-colors active-scale">
+                        Activer
+                    </button>
+</div>
+</div>
+</section>
+<!-- Quick Actions Footer Buttons -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-white p-4 rounded-2xl sanctuary-shadow border border-outline-variant flex flex-col gap-3 active-scale transition-transform cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">qr_code_scanner</span>
+</div>
+<span class="font-label-md leading-tight">Rejoindre une église</span>
+</div>
+<div class="bg-surface-container-low p-4 rounded-2xl sanctuary-shadow border border-primary/10 flex flex-col gap-3 active-scale transition-transform cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container">add</span>
+</div>
+<span class="font-label-md leading-tight">Créer une église</span>
+</div>
+</div>
+</main>
+<!-- Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 pb-safe px-2 bg-surface dark:bg-surface-dim z-50 rounded-t-xl shadow-[0px_-4px_20px_rgba(45,106,79,0.05)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors active-scale duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors active-scale duration-200" href="#">
+<span class="material-symbols-outlined">child_care</span>
+<span class="font-label-sm text-label-sm">Youth</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors active-scale duration-200" href="#">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+<span class="font-label-sm text-label-sm">Appel/QR</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:bg-surface-container-high transition-colors active-scale duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-sm text-label-sm">Groups</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active-scale duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for activation
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (this.innerText.includes('Activer')) {
+                    const originalText = this.innerText;
+                    this.innerText = 'Chargement...';
+                    this.classList.add('opacity-50');
+                    setTimeout(() => {
+                        this.innerText = originalText;
+                        this.classList.remove('opacity-50');
+                    }, 1000);
+                }
+            });
+        });
+
+        // Pull to refresh simulation
+        let touchStart = 0;
+        window.addEventListener('touchstart', e => { touchStart = e.touches[0].pageY; });
+        window.addEventListener('touchmove', e => {
+            const touchDiff = e.touches[0].pageY - touchStart;
+            if (window.scrollY === 0 && touchDiff > 0) {
+                // Potential pull-to-refresh UI logic here
+            }
+        });
+    </script>
+</body></html>
