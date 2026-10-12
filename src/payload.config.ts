@@ -1,4 +1,4 @@
-import { sqliteAdapter } from '@payloadcms/db-sqlite'
+import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
@@ -30,10 +30,14 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-  db: sqliteAdapter({
-    client: {
-      url: process.env.DATABASE_URL || 'file:./presencia.db',
+  db: postgresAdapter({
+    pool: {
+      connectionString: process.env.DATABASE_URL || '',
     },
+    // Schéma géré uniquement par les migrations (dossier src/migrations).
+    // En local : `pnpm payload migrate`. Sur Vercel : le script `build`
+    // exécute `payload migrate` avant `next build`.
+    push: false,
   }),
   endpoints: [orgStats, memberStats, periodStats, publicGroups, register],
   localization: {

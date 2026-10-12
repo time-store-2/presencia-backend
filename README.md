@@ -1,92 +1,105 @@
-# Presencia Backend — Payload CMS + SQLite
+# Presencia — Backend (Payload CMS + Postgres)
 
-Backend multi-organisations (églises, écoles, entreprises) : API, dashboard
-admin, formulaire public d'inscription, notifications d'absence WhatsApp.
-Base de données : fichier SQLite local (`presencia.db`), rien à installer.
+Suivi des présences pour un enseignant : groupes, appel, statistiques,
+inscription des élèves par lien, message WhatsApp aux absents (via l'app).
 
-## 1. Démarrer l'API
+- **Stack** : Payload CMS 3.90 + Next.js 15 + Postgres (Neon en production)
+- **Dashboard admin** : `/admin`
+- **API** : `/api/<collection>` + endpoints personnalisés (voir ci-dessous)
+
+## Démarrage local
+
+Prérequis : Node 24+, pnpm 9/10/11, une base Postgres
+(le plus simple : utiliser directement la base Neon de production).
 
 ```bash
 cd presencia-backend
-pnpm install   # une seule fois
-pnpm dev       # démarre sur http://localhost:3002
+pnpm install
+cp .env.example .env   # puis renseigne DATABASE_URL, PAYLOAD_SECRET
+pnpm payload migrate    # crée les tables (une seule fois par base)
+pnpm dev                # http://localhost:3002
 ```
 
-- API : `http://localhost:3002/api`
-- Dashboard : `http://localhost:3002/admin`
-- Arrêter : `Ctrl + C`
+## Variables d'environnement
 
-## 2. Créer le premier compte
+| Variable | Exemple |
+|----------|---------|
+| `DATABASE_URL` | `postgresql://user:password@host/presencia?sslmode=require` (Neon) |
+| `PAYLOAD_SECRET` | chaîne aléatoire longue (`openssl rand -base64 32`) |
+| `NEXT_PUBLIC_SERVER_URL` | `http://localhost:3002` en local, `https://ton-projet.vercel.app` en prod |
 
-Sur une base vide, crée l'organisation + le super admin en une commande :
+## Build / production
 
 ```bash
-pnpm seed
+pnpm build    # = payload migrate && next build
+pnpm start
 ```
 
-Personnaliser (optionnel) :
+Le script `build` applique les migrations avant de compiler :
+sur Vercel, chaque déploiement met donc la base à jour automatiquement.
+
+Après chaque modification des collections/globals :
 
 ```bash
-SEED_ORG_NAME="Mon Église" SEED_ORG_TYPE=eglise SEED_ORG_CODE=ORG-ABJ-001 \
-SEED_EMAIL="pasteur@moneglise.ci" SEED_PASSWORD="MotDePasseSolide!" \
-pnpm seed
+pnpm payload migrate:create   # génère src/migrations/XXXX.ts (à committer)
 ```
 
-Puis connecte-toi sur `http://localhost:3002/admin` et change le mot de passe
-(Users → ton compte → nouveau mot de passe).
+## Premier compte et prise en main
 
-## 3. Créer les comptes dans le dashboard
+1. Ouvre `/admin` : si aucun utilisateur n'existe, Payload propose
+   **« créer le premier utilisateur »** (rôle `admin`).
+2. **Groupes** → crée un groupe par classe (ex : `CE2 B`).
+   Le **slug** est généré automatiquement (`ce2-b`) ; il sert aux liens.
+3. **Réglages** → personnalise le modèle de message d'absence WhatsApp
+   (variables `{prenom}`, `{nom}`, `{groupe}`, `{date}`).
+4. Partage le lien d'inscription (bouton dans l'app, ou manuellement) :
+   `https://ton-domaine/inscription?groupe=<slug>`
+   Sans paramètre, l'élève choisit ses groupes lui-même.
+5. **Utilisateurs** → crée un compte `assistant` si besoin
+   (ne voit que ses groupes assignés, peut faire l'appel).
 
-Connecté en **super admin** ou **admin d'organisation** :
+Rôles : `admin` (tout voir, tout modifier) et `assistant`
+(groupes assignés uniquement : appel + membres de ces groupes).
 
-1. **Organizations** → vérifie ton organisation (nom, type, code unique).
-   Le code sert pour le lien d'inscription (ex : `ORG-ABJ-001`).
-2. **Groups** → `Create New` pour chaque groupe (JAD, 6ème A, Équipe Compta…),
-   rattaché à ton organisation.
-3. **Users** → `Create New` pour chaque responsable :
-   - email + mot de passe (à lui transmettre),
-   - **Role** = `Responsable de groupe`,
-   - **Organisation** = la tienne,
-   - **Groupe assigné** = son groupe.
-4. Le responsable se connecte avec cet email/mot de passe dans **l'app mobile**
-   ou dans le dashboard : il ne voit que son groupe.
+## Page d'inscription publique
 
-Rôles :
+- `/inscription?groupe=<slug>` : formulaire déjà lié au groupe
+- `/inscription` : l'élève coche ses groupes
+- `?lang=en` : version anglaise
+- Les inscriptions passent par `POST /api/register` :
+  téléphone normalisé (chiffres), anti-doublon par téléphone
+  (un réinscrit est ajouté aux nouveaux groupes), honeypot anti-robot.
 
-| Rôle | Voit |
-|------|------|
-| Super Admin | Toutes les organisations |
-| Admin d'organisation | Tous les groupes et membres de son organisation |
-| Responsable de groupe | Uniquement son groupe |
+## Endpoints personnalisés
 
-## 4. Lien d'inscription des membres
+| Endpoint | Accès | Rôle |
+|----------|-------|------|
+| `GET /api/public-groups` | public | `{name, slug}` des groupes |
+| `POST /api/register` | public | inscription (voir ci-dessus) |
+| `GET /api/org-stats` | connecté | stats globales / périmètre assistant |
+| `GET /api/member-stats?memberId=` | connecté | compteurs + historique d'un membre |
+| `GET /api/period-stats?groupId=&start=&end=` | connecté | compteurs par membre sur période |
 
-```
-http://localhost:3002/inscription?org=TON-CODE-ORG
-```
+## Déploiement Vercel (résumé)
 
-Envoie ce lien (WhatsApp, affiche, QR code) : la personne remplit le
-formulaire et apparaît directement dans les membres de son groupe.
+1. Base Neon créée (région proche, ex `eu-west-3` Paris) → copier la
+   chaîne `postgresql://...?sslmode=require`.
+2. Vercel → nouveau projet → importe le dépôt → **Root Directory :
+   `presencia-backend`**.
+3. Variables d'environnement (Production) : `DATABASE_URL`, `PAYLOAD_SECRET`,
+   `NEXT_PUBLIC_SERVER_URL=https://<ton-projet>.vercel.app`.
+4. Deploy : le build applique les migrations tout seul.
+5. Ouvre `https://<ton-projet>.vercel.app/admin` → crée le premier compte.
 
-## 5. WhatsApp (optionnel)
+Détail pas-à-pas : `../GUIDE_DEMARRAGE.md`.
 
-Sans configuration, les messages d'absence sont journalisés dans la console.
-Pour envoyer vraiment, ajoute dans `.env` :
+## App mobile (Flutter, dossier `presence/`)
 
-```
-WHATSAPP_WEBHOOK_URL=https://ton-evolution-api/message/sendText/ton-instance
-WHATSAPP_API_KEY=ta-cle-api
-```
-
-Le texte envoyé est le modèle **absenceMessage** de chaque organisation
-(modifiable dans Organizations). L'app mobile déclenche l'envoi via
-`POST /api/notify-absence` après chaque appel.
-
-## Production
+L'app se connecte au backend via l'URL compilée :
 
 ```bash
-pnpm build && pnpm start
+# Dev (émulateur Android)
+flutter run --dart-define=PAYLOAD_URL=http://10.0.2.2:3002
+# Release (APK avec l'URL de production)
+flutter build apk --release --dart-define=PAYLOAD_URL=https://<ton-projet>.vercel.app
 ```
-
-Pense à changer `PAYLOAD_SECRET`, utiliser une base Postgres pour du
-multi-serveur, et servir derrière HTTPS.
