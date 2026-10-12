@@ -4,12 +4,12 @@ import 'package:provider/provider.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:presencia/l10n/app_localizations.dart';
-import '../../core/providers/adolescent_provider.dart';
+import '../../core/providers/member_provider.dart';
 import '../../core/providers/attendance_provider.dart';
 import '../../core/providers/group_provider.dart';
 import '../../core/themes/app_themes.dart';
 import '../widgets/app_background.dart';
-import 'add_adolescent_screen.dart';
+import 'add_member_screen.dart';
 import 'attendance_sessions_screen.dart';
 import 'stats_screen.dart';
 import 'take_attendance_screen.dart';
@@ -30,7 +30,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     super.initState();
     _loadCoverImage();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<AdolescentProvider>().loadAdolescents();
+      context.read<MemberProvider>().loadMembers();
       context.read<GroupProvider>().loadGroups();
       context.read<AttendanceProvider>().loadSessions();
     });
@@ -57,12 +57,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final adolescentProvider = context.watch<AdolescentProvider>();
+    final memberProvider = context.watch<MemberProvider>();
     final sessionProvider = context.watch<AttendanceProvider>();
     final theme = Theme.of(context);
     final stats = sessionProvider.globalStats;
 
-    int totalYouth = adolescentProvider.adolescents.length;
+    int totalMembers = memberProvider.members.length;
     int presentToday = 0;
     int absentToday = 0;
     double presenceRateToday = 0.0;
@@ -88,7 +88,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         useSafeArea: true,
         child: RefreshIndicator(
           onRefresh: () async {
-            await context.read<AdolescentProvider>().loadAdolescents();
+            await context.read<MemberProvider>().loadMembers();
             await context.read<AttendanceProvider>().loadSessions();
           },
           child: SingleChildScrollView(
@@ -103,7 +103,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 const SizedBox(height: 32),
                 _buildQuickActions(context, l10n, theme),
                 const SizedBox(height: 32),
-                _buildStatsGrid(context, totalYouth, presentToday, absentToday, presenceRateToday, l10n),
+                _buildStatsGrid(context, totalMembers, presentToday, absentToday, presenceRateToday, l10n),
                 
                 if (sessionProvider.inactivityAlerts.isNotEmpty) ...[
                   const SizedBox(height: 32),
@@ -288,10 +288,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
         const SizedBox(width: 16),
         Expanded(
           child: _ActionCard(
-            label: l10n.addYouth,
+            label: l10n.addMember,
             icon: Icons.person_add_rounded,
             color: theme.colorScheme.primary,
-            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AddAdolescentScreen())),
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AddMemberScreen())),
             filled: false,
           ),
         ),

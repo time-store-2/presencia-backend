@@ -4,9 +4,9 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:presencia/l10n/app_localizations.dart';
 import '../../models/attendance.dart';
 import '../../models/attendance_session.dart';
-import '../../models/adolescent.dart';
+import '../../models/member.dart';
 import '../../core/providers/attendance_provider.dart';
-import '../../core/providers/adolescent_provider.dart';
+import '../../core/providers/member_provider.dart';
 import '../../core/providers/group_provider.dart';
 import '../../core/themes/app_themes.dart';
 import '../widgets/app_background.dart';
@@ -22,7 +22,7 @@ class SessionDetailScreen extends StatefulWidget {
 
 class _SessionDetailScreenState extends State<SessionDetailScreen> {
   List<Attendance> _attendances = [];
-  List<Adolescent> _youths = [];
+  List<Member> _members = [];
   bool _isLoading = true;
   int _selectedFilterIndex = 0; // 0: All, 1: Present, 2: Absent
 
@@ -34,15 +34,15 @@ class _SessionDetailScreenState extends State<SessionDetailScreen> {
 
   Future<void> _loadData() async {
     final atp = context.read<AttendanceProvider>();
-    final adp = context.read<AdolescentProvider>();
+    final adp = context.read<MemberProvider>();
     
-    await adp.loadAdolescentsByGroup(widget.session.groupId!);
+    await adp.loadMembersByGroup(widget.session.groupId!);
     final atts = await atp.getAttendanceForSession(widget.session.id!);
     
     if (mounted) {
       setState(() {
         _attendances = atts;
-        _youths = adp.filteredAdolescents;
+        _members = adp.filteredMembers;
         _isLoading = false;
       });
     }
@@ -51,8 +51,8 @@ class _SessionDetailScreenState extends State<SessionDetailScreen> {
   String _digits(String? phone) =>
       phone?.replaceAll(RegExp(r'[^0-9]'), '') ?? '';
 
-  bool _isMinor(Adolescent youth) {
-    final birth = youth.birthDate;
+  bool _isMinor(Member member) {
+    final birth = member.birthDate;
     if (birth == null) return false;
     final now = DateTime.now();
     var age = now.year - birth.year;
@@ -63,11 +63,11 @@ class _SessionDetailScreenState extends State<SessionDetailScreen> {
     return age < 18;
   }
 
-  String _renderTemplate(String template, Adolescent youth, String groupName) {
+  String _renderTemplate(String template, Member member, String groupName) {
     final d = widget.session.date;
     return template
-        .replaceAll('{prenom}', youth.firstName)
-        .replaceAll('{nom}', youth.lastName)
+        .replaceAll('{prenom}', member.firstName)
+        .replaceAll('{nom}', member.lastName)
         .replaceAll('{groupe}', groupName)
         .replaceAll('{date}', '${d.day}/${d.month}/${d.year}');
   }
@@ -87,24 +87,24 @@ class _SessionDetailScreenState extends State<SessionDetailScreen> {
   /// Ouvre WhatsApp avec le message d'absence pré-rempli.
   /// Si le membre est mineur et qu'un parent a un téléphone,
   /// propose de choisir le destinataire.
-  Future<void> _sendWhatsApp(Adolescent youth) async {
+  Future<void> _sendWhatsApp(Member member) async {
     final l10n = AppLocalizations.of(context)!;
     final atp = context.read<AttendanceProvider>();
-    final adp = context.read<AdolescentProvider>();
+    final adp = context.read<MemberProvider>();
     final gp = context.read<GroupProvider>();
 
     final results = await Future.wait([
       atp.getAbsenceTemplate(),
       gp.getGroupName(widget.session.groupId!),
     ]);
-    final message = _renderTemplate(results[0], youth, results[1]);
+    final message = _renderTemplate(results[0], member, results[1]);
 
-    final memberPhone = _digits(youth.phone);
+    final memberPhone = _digits(member.phone);
     var parentPhone = '';
     var parentName = '';
-    if (_isMinor(youth)) {
+    if (_isMinor(member)) {
       try {
-        final parents = await adp.getParents(youth.id!);
+        final parents = await adp.getParents(member.id!);
         for (final p in parents) {
           final phone = _digits(
             (p.whatsapp?.isNotEmpty ?? false) ? p.whatsapp : p.phone,
@@ -137,7 +137,7 @@ class _SessionDetailScreenState extends State<SessionDetailScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               ListTile(
-                title: Text(youth.fullName),
+                title: Text(member.fullName),
                 onTap: () => Navigator.pop(context, 'member'),
               ),
               ListTile(
@@ -169,17 +169,17 @@ class _SessionDetailScreenState extends State<SessionDetailScreen> {
     int excusedCount = _attendances.where((a) => a.status == AttendanceStatus.excused).length;
     // Les membres sans enregistrement sont affichés comme absents :
     // on les compte pour rester cohérent avec la liste.
-    final recordedIds = _attendances.map((a) => a.adolescentId).toSet();
-    final unmarkedCount = _youths.where((y) => !recordedIds.contains(y.id)).length;
+    final recordedIds = _attendances.map((a) => a.memberId).toSet();
+    final unmarkedCount = _members.where((m) => !recordedIds.contains(m.id)).length;
     int absentCount = recordedAbsent + unmarkedCount;
     final markedTotal = presentCount + absentCount + excusedCount;
     final sessionRate = markedTotal > 0 ? presentCount / markedTotal : 0.0;
 
-    List<Adolescent> filteredYouths = _youths.where((youth) {
+    List<Member> filteredMembers = _members.where((member) {
       final att = _attendances.firstWhere(
-        (a) => a.adolescentId == youth.id,
+        (a) => a.memberId == member.id,
         orElse: () => Attendance(
-          adolescentId: youth.id!,
+          memberId: member.id!,
           sessionId: widget.session.id!,
           status: AttendanceStatus.absent,
           timestamp: DateTime.now(),
@@ -219,7 +219,7 @@ class _SessionDetailScreenState extends State<SessionDetailScreen> {
                   const SizedBox(height: 24),
                   _buildFilterBar(theme, l10n, presentCount, absentCount),
                   const SizedBox(height: 16),
-                  if (filteredYouths.isEmpty)
+                  if (filteredMembers.isEmpty)
                     Center(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 40),
@@ -230,11 +230,11 @@ class _SessionDetailScreenState extends State<SessionDetailScreen> {
                       ),
                     )
                   else
-                    ...filteredYouths.map((youth) {
+                    ...filteredMembers.map((member) {
                       final att = _attendances.firstWhere(
-                        (a) => a.adolescentId == youth.id,
+                        (a) => a.memberId == member.id,
                         orElse: () => Attendance(
-                          adolescentId: youth.id!,
+                          memberId: member.id!,
                           sessionId: widget.session.id!,
                           status: AttendanceStatus.absent,
                           timestamp: DateTime.now(),
@@ -242,11 +242,11 @@ class _SessionDetailScreenState extends State<SessionDetailScreen> {
                       );
                       final isAbsent = att.status == AttendanceStatus.absent;
                       return _ParticipantTile(
-                        youth: youth,
+                        member: member,
                         attendance: att,
                         statusColors: statusColors,
                         l10n: l10n,
-                        onWhatsApp: isAbsent ? () => _sendWhatsApp(youth) : null,
+                        onWhatsApp: isAbsent ? () => _sendWhatsApp(member) : null,
                       );
                     }),
                 ],
@@ -260,7 +260,7 @@ class _SessionDetailScreenState extends State<SessionDetailScreen> {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          _filterChip(0, l10n.allWithCount(_youths.length), theme),
+          _filterChip(0, l10n.allWithCount(_members.length), theme),
           const SizedBox(width: 8),
           _filterChip(1, "${l10n.present} ($present)", theme),
           const SizedBox(width: 8),
@@ -340,14 +340,14 @@ class _StatItem extends StatelessWidget {
 }
 
 class _ParticipantTile extends StatelessWidget {
-  final Adolescent youth;
+  final Member member;
   final Attendance attendance;
   final StatusColors statusColors;
   final AppLocalizations l10n;
   final VoidCallback? onWhatsApp;
 
   const _ParticipantTile({
-    required this.youth,
+    required this.member,
     required this.attendance,
     required this.statusColors,
     required this.l10n,
@@ -392,7 +392,7 @@ class _ParticipantTile extends StatelessWidget {
       ),
       child: ListTile(
         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-        title: Text(youth.fullName, style: const TextStyle(fontWeight: FontWeight.bold)),
+        title: Text(member.fullName, style: const TextStyle(fontWeight: FontWeight.bold)),
         subtitle: attendance.comment != null && attendance.comment!.isNotEmpty
             ? Text(attendance.comment!, style: const TextStyle(fontSize: 12, fontStyle: FontStyle.italic))
             : null,

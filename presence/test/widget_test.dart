@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:presencia/main.dart';
 import 'package:presencia/core/providers/settings_provider.dart';
 import 'package:presencia/core/providers/group_provider.dart';
-import 'package:presencia/core/providers/adolescent_provider.dart';
+import 'package:presencia/core/providers/member_provider.dart';
 import 'package:presencia/core/providers/attendance_provider.dart';
 import 'package:presencia/core/providers/auth_provider.dart';
 
@@ -16,7 +16,7 @@ void main() {
         providers: [
           ChangeNotifierProvider(create: (_) => SettingsProvider()),
           ChangeNotifierProvider(create: (_) => GroupProvider()),
-          ChangeNotifierProvider(create: (_) => AdolescentProvider()),
+          ChangeNotifierProvider(create: (_) => MemberProvider()),
           ChangeNotifierProvider(create: (_) => AttendanceProvider()),
           ChangeNotifierProvider(create: (_) => AuthProvider()),
         ],

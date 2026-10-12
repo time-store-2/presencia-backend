@@ -4,12 +4,12 @@ import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:presencia/l10n/app_localizations.dart';
 import '../../models/group.dart';
-import '../../core/providers/adolescent_provider.dart';
+import '../../core/providers/member_provider.dart';
 import '../../core/providers/group_provider.dart';
 import '../../core/services/api_service.dart';
 import '../../core/themes/app_themes.dart';
 import '../widgets/app_background.dart';
-import 'youth_detail_screen.dart';
+import 'member_detail_screen.dart';
 
 class GroupDetailScreen extends StatefulWidget {
   final Group group;
@@ -34,11 +34,11 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
 
   Future<void> _messageGroup() async {
     final provider = context.read<GroupProvider>();
-    final adp = context.read<AdolescentProvider>();
+    final adp = context.read<MemberProvider>();
     List<String> numbers = [];
     
-    for (var youth in provider.currentGroupMembers) {
-      final parents = await adp.getParents(youth.id!);
+    for (var member in provider.currentGroupMembers) {
+      final parents = await adp.getParents(member.id!);
       for (var p in parents) {
         if (p.phone != null && p.phone!.isNotEmpty) {
           numbers.add(p.phone!);
@@ -120,10 +120,10 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
   }
 
   void _showAddMembersDialog() async {
-    final adp = context.read<AdolescentProvider>();
+    final adp = context.read<MemberProvider>();
     final gp = context.read<GroupProvider>();
     final l10n = AppLocalizations.of(context)!;
-    await adp.loadAdolescents();
+    await adp.loadMembers();
     
     if (!mounted) return;
 
@@ -133,7 +133,7 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
       context: context,
       builder: (context) => StatefulBuilder(
         builder: (context, setState) {
-          final availableYouth = adp.adolescents;
+          final availableMembers = adp.members;
           
           return AlertDialog(
             title: Text(l10n.manageMembers, style: const TextStyle(fontWeight: FontWeight.bold)),
@@ -141,22 +141,22 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
               width: double.maxFinite,
               child: ListView.builder(
                 shrinkWrap: true,
-                itemCount: availableYouth.length,
+                itemCount: availableMembers.length,
                 itemBuilder: (context, index) {
-                  final youth = availableYouth[index];
-                  final isMember = existingMemberIds.contains(youth.id);
+                  final member = availableMembers[index];
+                  final isMember = existingMemberIds.contains(member.id);
                   
                   return CheckboxListTile(
-                    title: Text(youth.fullName),
-                    subtitle: Text(youth.phone ?? l10n.noPhoneNumber),
+                    title: Text(member.fullName),
+                    subtitle: Text(member.phone ?? l10n.noPhoneNumber),
                     value: isMember,
                     onChanged: (bool? value) async {
                       if (value == true) {
-                        await gp.addAdolescentToGroup(youth.id!, widget.group.id!);
-                        setState(() => existingMemberIds.add(youth.id));
+                        await gp.addMemberToGroup(member.id!, widget.group.id!);
+                        setState(() => existingMemberIds.add(member.id));
                       } else {
-                        await gp.removeAdolescentFromGroup(youth.id!, widget.group.id!);
-                        setState(() => existingMemberIds.remove(youth.id));
+                        await gp.removeMemberFromGroup(member.id!, widget.group.id!);
+                        setState(() => existingMemberIds.remove(member.id));
                       }
                     },
                   );
@@ -273,7 +273,7 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
                             children: [
                               Icon(Icons.people_outline_rounded, size: 48, color: theme.colorScheme.onSurface.withOpacity(0.1)),
                               const SizedBox(height: 16),
-                              Text(l10n.noYouthInGroup),
+                              Text(l10n.noMemberInGroup),
                             ],
                           ),
                         )
@@ -281,7 +281,7 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
                           padding: const EdgeInsets.symmetric(horizontal: 16),
                           itemCount: provider.currentGroupMembers.length,
                           itemBuilder: (context, index) {
-                            final youth = provider.currentGroupMembers[index];
+                            final member = provider.currentGroupMembers[index];
                             return Container(
                               margin: const EdgeInsets.only(bottom: 12),
                               decoration: BoxDecoration(
@@ -300,17 +300,17 @@ class _GroupDetailScreenState extends State<GroupDetailScreen> {
                                 leading: CircleAvatar(
                                   backgroundColor: theme.colorScheme.primaryContainer,
                                   child: Text(
-                                    youth.firstName[0],
+                                    member.firstName[0],
                                     style: TextStyle(color: theme.colorScheme.onPrimaryContainer, fontWeight: FontWeight.bold),
                                   ),
                                 ),
-                                title: Text(youth.fullName, style: const TextStyle(fontWeight: FontWeight.bold)),
-                                subtitle: Text(youth.phone ?? l10n.noPhoneNumber),
+                                title: Text(member.fullName, style: const TextStyle(fontWeight: FontWeight.bold)),
+                                subtitle: Text(member.phone ?? l10n.noPhoneNumber),
                                 trailing: const Icon(Icons.chevron_right_rounded, size: 20),
                                 onTap: () => Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (_) => YouthDetailScreen(youth: youth),
+                                    builder: (_) => MemberDetailScreen(member: member),
                                   ),
                                 ).then((_) => _refreshMembers()),
                               ),

@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:presencia/models/adolescent.dart';
+import 'package:presencia/models/member.dart';
 import 'package:presencia/models/group.dart';
 
 void main() {
   group('Model Tests', () {
-    test('Adolescent model should correctly convert to and from map', () {
-      final adolescent = Adolescent(
+    test('Member model should correctly convert to and from map', () {
+      final member = Member(
         id: 1,
         firstName: 'John',
         lastName: 'Doe',
@@ -15,11 +15,11 @@ void main() {
         isActive: true,
       );
 
-      final map = adolescent.toMap();
+      final map = member.toMap();
       expect(map['first_name'], 'John');
       expect(map['active'], 1);
 
-      final fromMap = Adolescent.fromMap(map);
+      final fromMap = Member.fromMap(map);
       expect(fromMap.firstName, 'John');
       expect(fromMap.isActive, true);
       expect(fromMap.birthDate, DateTime(2005, 5, 20));

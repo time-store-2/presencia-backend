@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import '../../l10n/app_localizations.dart';
-import '../../core/providers/adolescent_provider.dart';
+import '../../core/providers/member_provider.dart';
 import '../../core/providers/attendance_provider.dart';
 import '../../core/providers/group_provider.dart';
 import '../../core/themes/app_themes.dart';
-import '../../models/adolescent.dart';
+import '../../models/member.dart';
 import '../widgets/app_background.dart';
 import '../widgets/glass_card.dart';
 
@@ -73,12 +73,12 @@ class _AttendanceReportScreenState extends State<AttendanceReportScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final groupProvider = context.watch<GroupProvider>();
-    final adProvider = context.watch<AdolescentProvider>();
+    final adProvider = context.watch<MemberProvider>();
     final statusColors = theme.extension<StatusColors>()!;
 
-    // Filter youths by group
-    final youths = adProvider.adolescents.where((y) {
-      return groupProvider.isYouthInGroup(y.id!, _selectedGroupId ?? -1);
+    // Filter members by group
+    final members = adProvider.members.where((m) {
+      return groupProvider.isMemberInGroup(m.id!, _selectedGroupId ?? -1);
     }).toList();
 
     final l10n = AppLocalizations.of(context)!;
@@ -141,14 +141,14 @@ class _AttendanceReportScreenState extends State<AttendanceReportScreen> {
             Expanded(
               child: _isLoading
                   ? const Center(child: CircularProgressIndicator())
-                  : youths.isEmpty
-                      ? Center(child: Text(l10n.noYouthInGroup))
+                  : members.isEmpty
+                      ? Center(child: Text(l10n.noMemberInGroup))
                       : ListView.builder(
                           padding: const EdgeInsets.symmetric(horizontal: 16),
-                          itemCount: youths.length,
+                          itemCount: members.length,
                           itemBuilder: (context, index) {
-                            final youth = youths[index];
-                            final stats = _reportData[youth.id] ?? {'present': 0, 'absent': 0, 'late': 0, 'excused': 0};
+                            final member = members[index];
+                            final stats = _reportData[member.id] ?? {'present': 0, 'absent': 0, 'late': 0, 'excused': 0};
                             
                             final p = stats['present'] ?? 0;
                             final a = stats['absent'] ?? 0;
@@ -166,13 +166,13 @@ class _AttendanceReportScreenState extends State<AttendanceReportScreen> {
                                     children: [
                                       CircleAvatar(
                                         radius: 18,
-                                        backgroundImage: youth.photoPath != null ? FileImage(File(youth.photoPath!)) : null,
-                                        child: youth.photoPath == null ? Text(youth.firstName[0]) : null,
+                                        backgroundImage: member.photoPath != null ? FileImage(File(member.photoPath!)) : null,
+                                        child: member.photoPath == null ? Text(member.firstName[0]) : null,
                                       ),
                                       const SizedBox(width: 12),
                                       Expanded(
                                         child: Text(
-                                          youth.fullName,
+                                          member.fullName,
                                           style: const TextStyle(fontWeight: FontWeight.bold),
                                         ),
                                       ),

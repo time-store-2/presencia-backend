@@ -2,7 +2,7 @@ enum AttendanceStatus { present, absent, late, excused }
 
 class Attendance {
   final int? id;
-  final int adolescentId;
+  final int memberId;
   final int sessionId;
   final AttendanceStatus status;
   final DateTime timestamp;
@@ -13,7 +13,7 @@ class Attendance {
 
   Attendance({
     this.id,
-    required this.adolescentId,
+    required this.memberId,
     required this.sessionId,
     required this.status,
     required this.timestamp,
@@ -26,7 +26,7 @@ class Attendance {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'adolescent_id': adolescentId,
+      'member_id': memberId,
       'session_id': sessionId,
       'status': status.name,
       'timestamp': timestamp.toIso8601String(),
@@ -40,7 +40,7 @@ class Attendance {
   factory Attendance.fromMap(Map<String, dynamic> map) {
     return Attendance(
       id: map['id'],
-      adolescentId: map['adolescent_id'],
+      memberId: map['member_id'],
       sessionId: map['session_id'],
       status: AttendanceStatus.values.firstWhere(
         (e) => e.name == map['status'],
@@ -56,7 +56,7 @@ class Attendance {
 
   Attendance copyWith({
     int? id,
-    int? adolescentId,
+    int? memberId,
     int? sessionId,
     AttendanceStatus? status,
     DateTime? timestamp,
@@ -67,7 +67,7 @@ class Attendance {
   }) {
     return Attendance(
       id: id ?? this.id,
-      adolescentId: adolescentId ?? this.adolescentId,
+      memberId: memberId ?? this.memberId,
       sessionId: sessionId ?? this.sessionId,
       status: status ?? this.status,
       timestamp: timestamp ?? this.timestamp,

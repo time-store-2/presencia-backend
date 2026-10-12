@@ -4,23 +4,23 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:presencia/l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
-import '../../core/providers/adolescent_provider.dart';
+import '../../core/providers/member_provider.dart';
 import '../../core/providers/group_provider.dart';
 import '../../core/services/already_exists_exception.dart';
-import '../../models/adolescent.dart';
+import '../../models/member.dart';
 import '../../models/parent.dart';
 import '../../core/themes/app_themes.dart';
 import '../widgets/app_background.dart';
 
-class AddAdolescentScreen extends StatefulWidget {
-  final Adolescent? adolescent;
-  const AddAdolescentScreen({super.key, this.adolescent});
+class AddMemberScreen extends StatefulWidget {
+  final Member? member;
+  const AddMemberScreen({super.key, this.member});
 
   @override
-  State<AddAdolescentScreen> createState() => _AddAdolescentScreenState();
+  State<AddMemberScreen> createState() => _AddMemberScreenState();
 }
 
-class _AddAdolescentScreenState extends State<AddAdolescentScreen> {
+class _AddMemberScreenState extends State<AddMemberScreen> {
   final _formKey = GlobalKey<FormState>();
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
@@ -54,15 +54,15 @@ class _AddAdolescentScreenState extends State<AddAdolescentScreen> {
   @override
   void initState() {
     super.initState();
-    _isEditing = widget.adolescent != null;
+    _isEditing = widget.member != null;
     if (_isEditing) {
-      _firstNameController.text = widget.adolescent!.firstName;
-      _lastNameController.text = widget.adolescent!.lastName;
-      _parsePhone(widget.adolescent!.phone, _phonePrefixController, _phoneController);
-      _addressController.text = widget.adolescent!.address ?? '';
-      _selectedGender = widget.adolescent!.gender ?? 'M';
-      _selectedBirthDate = widget.adolescent!.birthDate;
-      _photoPath = widget.adolescent!.photoPath;
+      _firstNameController.text = widget.member!.firstName;
+      _lastNameController.text = widget.member!.lastName;
+      _parsePhone(widget.member!.phone, _phonePrefixController, _phoneController);
+      _addressController.text = widget.member!.address ?? '';
+      _selectedGender = widget.member!.gender ?? 'M';
+      _selectedBirthDate = widget.member!.birthDate;
+      _photoPath = widget.member!.photoPath;
       _loadParents();
       _loadInitialGroups();
     }
@@ -89,7 +89,7 @@ class _AddAdolescentScreenState extends State<AddAdolescentScreen> {
 
   Future<void> _loadInitialGroups() async {
     final gp = context.read<GroupProvider>();
-    final groupIds = await gp.getAdolescentGroupIds(widget.adolescent!.id!);
+    final groupIds = await gp.getMemberGroupIds(widget.member!.id!);
     if (mounted) {
       setState(() {
         _selectedGroupIds.addAll(groupIds);
@@ -98,7 +98,7 @@ class _AddAdolescentScreenState extends State<AddAdolescentScreen> {
   }
 
   Future<void> _loadParents() async {
-    final parents = await context.read<AdolescentProvider>().getParents(widget.adolescent!.id!);
+    final parents = await context.read<MemberProvider>().getParents(widget.member!.id!);
     if (parents.isNotEmpty) {
       final p1 = parents[0];
       if (mounted) {
@@ -179,7 +179,7 @@ class _AddAdolescentScreenState extends State<AddAdolescentScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(_isEditing ? l10n.editProfile : l10n.addYouth),
+        title: Text(_isEditing ? l10n.editProfile : l10n.addMember),
         centerTitle: true,
       ),
       body: AppBackground(
@@ -641,8 +641,8 @@ class _AddAdolescentScreenState extends State<AddAdolescentScreen> {
       return "$pre $p";
     }
 
-    final adolescent = Adolescent(
-      id: widget.adolescent?.id,
+    final member = Member(
+      id: widget.member?.id,
       firstName: _firstNameController.text,
       lastName: _lastNameController.text,
       gender: _selectedGender,
@@ -660,7 +660,7 @@ class _AddAdolescentScreenState extends State<AddAdolescentScreen> {
         phone: formatPhone(_p1PhonePrefixController, _p1PhoneController),
         whatsapp: formatPhone(_p1WhatsappPrefixController, _p1WhatsappController),
         relation: _p1Relation,
-        adolescentId: widget.adolescent?.id ?? 0,
+        memberId: widget.member?.id ?? 0,
       ));
     }
     
@@ -671,27 +671,27 @@ class _AddAdolescentScreenState extends State<AddAdolescentScreen> {
         phone: formatPhone(_p2PhonePrefixController, _p2PhoneController),
         whatsapp: formatPhone(_p2WhatsappPrefixController, _p2WhatsappController),
         relation: _p2Relation,
-        adolescentId: widget.adolescent?.id ?? 0,
+        memberId: widget.member?.id ?? 0,
       ));
     }
 
-    final ap = context.read<AdolescentProvider>();
+    final ap = context.read<MemberProvider>();
     final gp = context.read<GroupProvider>();
 
     try {
       if (_isEditing) {
-        await ap.updateAdolescent(adolescent, parents);
-        await gp.syncAdolescentGroups(adolescent.id!, _selectedGroupIds);
+        await ap.updateMember(member, parents);
+        await gp.syncMemberGroups(member.id!, _selectedGroupIds);
       } else {
-        final newId = await ap.insertRaw(adolescent, parents);
+        final newId = await ap.insertRaw(member, parents);
         for (var gId in _selectedGroupIds) {
-          await gp.addAdolescentToGroup(newId, gId);
+          await gp.addMemberToGroup(newId, gId);
         }
       }
     } on AlreadyExistsException catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(AppLocalizations.of(context)!.youthNameExists(e.value))),
+          SnackBar(content: Text(AppLocalizations.of(context)!.memberNameExists(e.value))),
         );
       }
       return;

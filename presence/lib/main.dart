@@ -5,10 +5,10 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'l10n/app_localizations.dart';
 import 'core/providers/settings_provider.dart';
 import 'core/providers/group_provider.dart';
-import 'core/providers/adolescent_provider.dart';
+import 'core/providers/member_provider.dart';
 import 'core/providers/attendance_provider.dart';
 import 'ui/screens/dashboard_screen.dart';
-import 'ui/screens/youth_list_screen.dart';
+import 'ui/screens/member_list_screen.dart';
 import 'ui/screens/attendance_sessions_screen.dart';
 import 'ui/screens/groups_screen.dart';
 import 'ui/screens/settings_screen.dart';
@@ -24,7 +24,7 @@ void main() async {
   // est automatiquement réutilisé par tous les providers.
   final apiService = ApiService();
   final groupProvider = GroupProvider(apiService: apiService);
-  final adolescentProvider = AdolescentProvider(apiService: apiService);
+  final memberProvider = MemberProvider(apiService: apiService);
   final attendanceProvider = AttendanceProvider(apiService: apiService);
   final authProvider = AuthProvider(apiService: apiService);
 
@@ -34,7 +34,7 @@ void main() async {
         ChangeNotifierProvider.value(value: settingsProvider),
         ChangeNotifierProvider.value(value: authProvider),
         ChangeNotifierProvider.value(value: groupProvider),
-        ChangeNotifierProvider.value(value: adolescentProvider),
+        ChangeNotifierProvider.value(value: memberProvider),
         ChangeNotifierProvider.value(value: attendanceProvider),
       ],
       child: const PresenciaApp(),
@@ -86,7 +86,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     
     final List<Widget> screens = [
       const DashboardScreen(),
-      const YouthListScreen(),
+      const MemberListScreen(),
       const AttendanceSessionsScreen(),
       const GroupsScreen(),
       const SettingsScreen(),
@@ -138,7 +138,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       Icons.hub_outlined,
       Icons.settings_outlined,
     ];
-    final labels = [l10n.dashboard, l10n.youth, l10n.attendance, l10n.groups, l10n.settings];
+    final labels = [l10n.dashboard, l10n.members, l10n.attendance, l10n.groups, l10n.settings];
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,

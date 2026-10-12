@@ -110,11 +110,11 @@ abstract class AppLocalizations {
   /// **'Home'**
   String get dashboard;
 
-  /// No description provided for @youth.
+  /// No description provided for @members.
   ///
   /// In en, this message translates to:
   /// **'Members'**
-  String get youth;
+  String get members;
 
   /// No description provided for @attendance.
   ///
@@ -206,11 +206,11 @@ abstract class AppLocalizations {
   /// **'Groups'**
   String get groups;
 
-  /// No description provided for @addYouth.
+  /// No description provided for @addMember.
   ///
   /// In en, this message translates to:
   /// **'Add Member'**
-  String get addYouth;
+  String get addMember;
 
   /// No description provided for @noRecentSessions.
   ///
@@ -236,11 +236,11 @@ abstract class AppLocalizations {
   /// **'Search...'**
   String get search;
 
-  /// No description provided for @noYouthFound.
+  /// No description provided for @noMemberFound.
   ///
   /// In en, this message translates to:
   /// **'No member found'**
-  String get noYouthFound;
+  String get noMemberFound;
 
   /// No description provided for @personalInfo.
   ///
@@ -344,11 +344,11 @@ abstract class AppLocalizations {
   /// **'Delete Profile?'**
   String get deleteProfile;
 
-  /// No description provided for @confirmDeleteYouth.
+  /// No description provided for @confirmDeleteMember.
   ///
   /// In en, this message translates to:
   /// **'Do you really want to delete {name}\'s profile? This action is irreversible.'**
-  String confirmDeleteYouth(Object name);
+  String confirmDeleteMember(Object name);
 
   /// No description provided for @cancel.
   ///
@@ -475,12 +475,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Today'**
   String get today;
-
-  /// No description provided for @members.
-  ///
-  /// In en, this message translates to:
-  /// **'Members'**
-  String get members;
 
   /// No description provided for @toRelanch.
   ///
@@ -722,11 +716,11 @@ abstract class AppLocalizations {
   /// **'Period Report'**
   String get periodReport;
 
-  /// No description provided for @noYouthInGroup.
+  /// No description provided for @noMemberInGroup.
   ///
   /// In en, this message translates to:
   /// **'No member in this group'**
-  String get noYouthInGroup;
+  String get noMemberInGroup;
 
   /// No description provided for @presentShort.
   ///
@@ -1094,11 +1088,11 @@ abstract class AppLocalizations {
   /// **'A group named \"{name}\" already exists. Please choose another name.'**
   String groupNameExists(Object name);
 
-  /// No description provided for @youthNameExists.
+  /// No description provided for @memberNameExists.
   ///
   /// In en, this message translates to:
   /// **'A member named \"{name}\" already exists. Please choose another name.'**
-  String youthNameExists(Object name);
+  String memberNameExists(Object name);
 
   /// No description provided for @sessionTitleExists.
   ///

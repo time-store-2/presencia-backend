@@ -4,26 +4,26 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:presencia/l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
-import '../../models/adolescent.dart';
+import '../../models/member.dart';
 import '../../models/parent.dart';
-import '../../core/providers/adolescent_provider.dart';
+import '../../core/providers/member_provider.dart';
 import '../../core/providers/attendance_provider.dart';
 import '../../core/providers/auth_provider.dart';
 import '../../core/providers/group_provider.dart';
 import '../../core/themes/app_themes.dart';
 import '../widgets/glass_card.dart';
-import 'add_adolescent_screen.dart';
+import 'add_member_screen.dart';
 
-class YouthDetailScreen extends StatefulWidget {
-  final Adolescent youth;
-  const YouthDetailScreen({super.key, required this.youth});
+class MemberDetailScreen extends StatefulWidget {
+  final Member member;
+  const MemberDetailScreen({super.key, required this.member});
 
   @override
-  State<YouthDetailScreen> createState() => _YouthDetailScreenState();
+  State<MemberDetailScreen> createState() => _MemberDetailScreenState();
 }
 
-class _YouthDetailScreenState extends State<YouthDetailScreen> {
-  late Adolescent _currentYouth;
+class _MemberDetailScreenState extends State<MemberDetailScreen> {
+  late Member _currentMember;
   List<Parent> _parents = [];
   Map<String, int> _stats = {};
   List<Map<String, dynamic>> _history = [];
@@ -33,18 +33,18 @@ class _YouthDetailScreenState extends State<YouthDetailScreen> {
   @override
   void initState() {
     super.initState();
-    _currentYouth = widget.youth;
+    _currentMember = widget.member;
     _loadData();
   }
 
   Future<void> _loadData() async {
-    final ap = context.read<AdolescentProvider>();
+    final ap = context.read<MemberProvider>();
     final atp = context.read<AttendanceProvider>();
 
-    final parents = await ap.getParents(_currentYouth.id!);
-    final stats = await atp.getAdolescentStats(_currentYouth.id!);
-    final history = await atp.getHistoryForAdolescent(_currentYouth.id!);
-    final badges = await atp.getAdolescentBadges(_currentYouth.id!);
+    final parents = await ap.getParents(_currentMember.id!);
+    final stats = await atp.getMemberStats(_currentMember.id!);
+    final history = await atp.getHistoryForMember(_currentMember.id!);
+    final badges = await atp.getMemberBadges(_currentMember.id!);
     
     if (mounted) {
       setState(() {
@@ -63,7 +63,7 @@ class _YouthDetailScreenState extends State<YouthDetailScreen> {
     final gp = context.read<GroupProvider>();
     await gp.loadGroups();
     final current = Set<int>.from(
-      await gp.getAdolescentGroupIds(_currentYouth.id!),
+      await gp.getMemberGroupIds(_currentMember.id!),
     );
     if (!mounted) return;
     final selected = Set<int>.from(current);
@@ -93,8 +93,8 @@ class _YouthDetailScreenState extends State<YouthDetailScreen> {
                           } else {
                             selected.remove(group.id);
                           }
-                          await gp.syncAdolescentGroups(
-                            _currentYouth.id!,
+                          await gp.syncMemberGroups(
+                            _currentMember.id!,
                             selected,
                           );
                           setState(() {});
@@ -120,12 +120,12 @@ class _YouthDetailScreenState extends State<YouthDetailScreen> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text(l10n.deleteProfile),
-        content: Text(l10n.confirmDeleteYouth(_currentYouth.fullName)),
+        content: Text(l10n.confirmDeleteMember(_currentMember.fullName)),
         actions: [
           TextButton(onPressed: () => Navigator.pop(context), child: Text(l10n.cancel)),
           TextButton(
             onPressed: () async {
-              await context.read<AdolescentProvider>().deleteAdolescent(_currentYouth.id!);
+              await context.read<MemberProvider>().deleteMember(_currentMember.id!);
               if (mounted) {
                 Navigator.pop(context); // Close dialog
                 Navigator.pop(context); // Go back to list
@@ -147,7 +147,7 @@ class _YouthDetailScreenState extends State<YouthDetailScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(_currentYouth.fullName),
+        title: Text(_currentMember.fullName),
         elevation: 0,
         backgroundColor: Colors.transparent,
         actions: [
@@ -162,13 +162,13 @@ class _YouthDetailScreenState extends State<YouthDetailScreen> {
             onPressed: () => Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (_) => AddAdolescentScreen(adolescent: _currentYouth),
+                builder: (_) => AddMemberScreen(member: _currentMember),
               ),
             ).then((_) {
-              context.read<AdolescentProvider>().loadAdolescents().then((_) {
-                final updated = context.read<AdolescentProvider>().adolescents.firstWhere((a) => a.id == _currentYouth.id);
+              context.read<MemberProvider>().loadMembers().then((_) {
+                final updated = context.read<MemberProvider>().members.firstWhere((a) => a.id == _currentMember.id);
                 setState(() {
-                  _currentYouth = updated;
+                  _currentMember = updated;
                 });
                 _loadData();
               });
@@ -232,31 +232,31 @@ class _YouthDetailScreenState extends State<YouthDetailScreen> {
         CircleAvatar(
           radius: 60,
           backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-          backgroundImage: _currentYouth.photoPath != null ? FileImage(File(_currentYouth.photoPath!)) : null,
-          child: _currentYouth.photoPath == null 
+          backgroundImage: _currentMember.photoPath != null ? FileImage(File(_currentMember.photoPath!)) : null,
+          child: _currentMember.photoPath == null 
             ? Text(
-                _currentYouth.firstName[0], 
+                _currentMember.firstName[0], 
                 style: TextStyle(fontSize: 48, color: Theme.of(context).colorScheme.onPrimaryContainer),
               )
             : null,
         ),
         SizedBox(height: design.spacingUnit * 2),
         Text(
-          _currentYouth.fullName, 
+          _currentMember.fullName, 
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
-        if (_currentYouth.birthDate != null)
+        if (_currentMember.birthDate != null)
            Text(
-             l10n.bornOn(DateFormat.yMMMd(Localizations.localeOf(context).languageCode).format(_currentYouth.birthDate!)),
+             l10n.bornOn(DateFormat.yMMMd(Localizations.localeOf(context).languageCode).format(_currentMember.birthDate!)),
              style: Theme.of(context).textTheme.bodyMedium,
            ),
-        if (_currentYouth.phone != null && _currentYouth.phone!.isNotEmpty) ...[
+        if (_currentMember.phone != null && _currentMember.phone!.isNotEmpty) ...[
           const SizedBox(height: 8),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                _currentYouth.phone!, 
+                _currentMember.phone!, 
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
                 ),
@@ -265,12 +265,12 @@ class _YouthDetailScreenState extends State<YouthDetailScreen> {
               IconButton(
                 visualDensity: VisualDensity.compact,
                 icon: Icon(Icons.phone_forwarded_rounded, size: 20, color: Theme.of(context).colorScheme.primary),
-                onPressed: () => _launchPhone(_currentYouth.phone),
+                onPressed: () => _launchPhone(_currentMember.phone),
               ),
               IconButton(
                 visualDensity: VisualDensity.compact,
                 icon: const Icon(Icons.message_rounded, size: 20, color: Color(0xFF25D366)),
-                onPressed: () => _launchWhatsapp(_currentYouth.phone),
+                onPressed: () => _launchWhatsapp(_currentMember.phone),
               ),
             ],
           ),

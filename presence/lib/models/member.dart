@@ -1,4 +1,4 @@
-class Adolescent {
+class Member {
   final int? id;
   final String firstName;
   final String lastName;
@@ -12,7 +12,7 @@ class Adolescent {
   final DateTime? lastUpdated;
   final bool isDeleted;
 
-  Adolescent({
+  Member({
     this.id,
     required this.firstName,
     required this.lastName,
@@ -45,8 +45,8 @@ class Adolescent {
     return map;
   }
 
-  factory Adolescent.fromMap(Map<String, dynamic> map) {
-    return Adolescent(
+  factory Member.fromMap(Map<String, dynamic> map) {
+    return Member(
       id: map['id'],
       firstName: map['first_name'] ?? '',
       lastName: map['last_name'] ?? '',
@@ -62,7 +62,7 @@ class Adolescent {
     );
   }
 
-  Adolescent copyWith({
+  Member copyWith({
     int? id,
     String? firstName,
     String? lastName,
@@ -76,7 +76,7 @@ class Adolescent {
     DateTime? lastUpdated,
     bool? isDeleted,
   }) {
-    return Adolescent(
+    return Member(
       id: id ?? this.id,
       firstName: firstName ?? this.firstName,
       lastName: lastName ?? this.lastName,

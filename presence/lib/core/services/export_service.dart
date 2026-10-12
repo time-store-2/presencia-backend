@@ -5,7 +5,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:intl/intl.dart';
 import 'api_service.dart';
 import 'payload_mappers.dart';
-import '../../models/adolescent.dart';
+import '../../models/member.dart';
 import '../../models/attendance_session.dart';
 import '../../models/group.dart';
 
@@ -36,8 +36,8 @@ class ExportService {
 
     // Get all members
     final membersRes = await _api.getMany('members', limit: 5000);
-    final youths = (membersRes['docs'] as List)
-        .map((d) => memberToAdolescent(d as Map<String, dynamic>))
+    final members = (membersRes['docs'] as List)
+        .map((d) => memberFromPayload(d as Map<String, dynamic>))
         .toList();
 
     // Get groups mapping (member -> group name via API group field)
@@ -79,19 +79,19 @@ class ExportService {
     csvContent.write(header.map(escapeCsv).join(';'));
     csvContent.write('\r\n');
 
-    for (Adolescent youth in youths) {
+    for (Member member in members) {
       final groupIds = memberGroupIds(
-        memberDocs[youth.id] ?? const <String, dynamic>{},
+        memberDocs[member.id] ?? const <String, dynamic>{},
       );
       final groupName = groupIds
           .map((id) => groupMap[id] ?? '')
           .where((name) => name.isNotEmpty)
           .join(', ');
 
-      List<String> row = [youth.lastName, youth.firstName, groupName];
+      List<String> row = [member.lastName, member.firstName, groupName];
 
       for (AttendanceSession session in yearSessions) {
-        final status = recordBySessionMember['${session.id}:${youth.id}'];
+        final status = recordBySessionMember['${session.id}:${member.id}'];
         String statusLabel = '';
         if (status != null && status.isNotEmpty) {
           switch (status) {

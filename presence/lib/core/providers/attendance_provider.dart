@@ -97,10 +97,10 @@ class AttendanceProvider with ChangeNotifier {
     if (attendances.isEmpty) return;
     final sessionId = attendances.first.sessionId;
     final existing = await getAttendanceForSession(sessionId);
-    final existingByMember = {for (final a in existing) a.adolescentId: a.id};
+    final existingByMember = {for (final a in existing) a.memberId: a.id};
 
     for (final a in attendances) {
-      final recordId = existingByMember[a.adolescentId];
+      final recordId = existingByMember[a.memberId];
       if (recordId != null) {
         await _api.update(
           'attendance-records',
@@ -125,10 +125,10 @@ class AttendanceProvider with ChangeNotifier {
         .toList();
   }
 
-  Future<Map<String, int>> getAdolescentStats(int adolescentId) async {
+  Future<Map<String, int>> getMemberStats(int memberId) async {
     final data = await _api.getRaw(
       'member-stats',
-      {'memberId': '$adolescentId'},
+      {'memberId': '$memberId'},
     );
     final stats = (data['stats'] as Map?) ?? {};
     return {
@@ -139,12 +139,12 @@ class AttendanceProvider with ChangeNotifier {
     };
   }
 
-  Future<List<Map<String, dynamic>>> getHistoryForAdolescent(
-    int adolescentId,
+  Future<List<Map<String, dynamic>>> getHistoryForMember(
+    int memberId,
   ) async {
     final data = await _api.getRaw(
       'member-stats',
-      {'memberId': '$adolescentId'},
+      {'memberId': '$memberId'},
     );
     return List<Map<String, dynamic>>.from(data['history'] ?? const []);
   }
@@ -190,8 +190,8 @@ class AttendanceProvider with ChangeNotifier {
     return fallback;
   }
 
-  Future<List<String>> getAdolescentBadges(int adolescentId) async {
-    final history = await getHistoryForAdolescent(adolescentId);
+  Future<List<String>> getMemberBadges(int memberId) async {
+    final history = await getHistoryForMember(memberId);
     List<String> badges = [];
 
     if (history.isEmpty) return badges;

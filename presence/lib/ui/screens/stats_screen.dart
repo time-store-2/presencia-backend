@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../l10n/app_localizations.dart';
 import '../../core/providers/attendance_provider.dart';
-import '../../core/providers/adolescent_provider.dart';
+import '../../core/providers/member_provider.dart';
 import '../../core/themes/app_themes.dart';
 import '../widgets/glass_card.dart';
 import '../widgets/app_background.dart';
@@ -20,7 +20,7 @@ class _StatsScreenState extends State<StatsScreen> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<AttendanceProvider>().loadSessions();
-      context.read<AdolescentProvider>().loadAdolescents();
+      context.read<MemberProvider>().loadMembers();
     });
   }
 
@@ -28,7 +28,7 @@ class _StatsScreenState extends State<StatsScreen> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final design = Theme.of(context).extension<AppDesignSystem>()!;
-    final adolescentProvider = context.watch<AdolescentProvider>();
+    final memberProvider = context.watch<MemberProvider>();
     final attendanceProvider = context.watch<AttendanceProvider>();
     final stats = attendanceProvider.globalStats;
 
@@ -44,7 +44,7 @@ class _StatsScreenState extends State<StatsScreen> {
           child: ListView(
             padding: kPagePadding,
             children: [
-              _buildGlobalStats(context, adolescentProvider, attendanceProvider, l10n, design),
+              _buildGlobalStats(context, memberProvider, attendanceProvider, l10n, design),
               SizedBox(height: design.spacingUnit * 3),
               Text(
                 l10n.attendanceBreakdown,
@@ -75,7 +75,7 @@ class _StatsScreenState extends State<StatsScreen> {
 
   Widget _buildGlobalStats(
     BuildContext context,
-    AdolescentProvider adolescentProvider,
+    MemberProvider memberProvider,
     AttendanceProvider attendanceProvider,
     AppLocalizations l10n,
     AppDesignSystem design,
@@ -87,8 +87,8 @@ class _StatsScreenState extends State<StatsScreen> {
           children: [
             Expanded(
               child: _StatTile(
-                label: l10n.youth,
-                value: adolescentProvider.adolescents.length.toString(),
+                label: l10n.members,
+                value: memberProvider.members.length.toString(),
                 icon: Icons.people_outline,
                 color: Theme.of(context).colorScheme.primary,
               ),

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:presencia/l10n/app_localizations.dart';
 import '../../models/attendance.dart';
-import '../../models/adolescent.dart';
-import '../../core/providers/adolescent_provider.dart';
+import '../../models/member.dart';
+import '../../core/providers/member_provider.dart';
 import '../../core/providers/attendance_provider.dart';
 import '../../core/themes/app_themes.dart';
 import '../widgets/app_background.dart';
@@ -25,7 +25,7 @@ class TakeAttendanceScreen extends StatefulWidget {
 class _TakeAttendanceScreenState extends State<TakeAttendanceScreen> {
   final Map<int, AttendanceStatus> _attendanceMap = {};
   final Map<int, TextEditingController> _commentControllers = {};
-  List<Adolescent> _youths = [];
+  List<Member> _members = [];
   bool _isLoading = true;
 
   @override
@@ -43,23 +43,23 @@ class _TakeAttendanceScreenState extends State<TakeAttendanceScreen> {
   }
 
   Future<void> _loadData() async {
-    final ap = context.read<AdolescentProvider>();
+    final ap = context.read<MemberProvider>();
     final atp = context.read<AttendanceProvider>();
 
-    await ap.loadAdolescentsByGroup(widget.groupId);
+    await ap.loadMembersByGroup(widget.groupId);
     final existingAttendance = await atp.getAttendanceForSession(widget.sessionId);
     
     if (mounted) {
       setState(() {
-        _youths = ap.filteredAdolescents;
-        for (var y in _youths) {
-          _attendanceMap[y.id!] = AttendanceStatus.present;
-          _commentControllers[y.id!] = TextEditingController();
+        _members = ap.filteredMembers;
+        for (var m in _members) {
+          _attendanceMap[m.id!] = AttendanceStatus.present;
+          _commentControllers[m.id!] = TextEditingController();
         }
         // Écrase avec les données existantes si on modifie un appel déjà fait
         for (var a in existingAttendance) {
-          _attendanceMap[a.adolescentId] = a.status;
-          _commentControllers[a.adolescentId]?.text = a.comment ?? "";
+          _attendanceMap[a.memberId] = a.status;
+          _commentControllers[a.memberId]?.text = a.comment ?? "";
         }
         _isLoading = false;
       });
@@ -89,10 +89,10 @@ class _TakeAttendanceScreenState extends State<TakeAttendanceScreen> {
             ? const Center(child: CircularProgressIndicator())
             : ListView.builder(
                 padding: const EdgeInsets.fromLTRB(16, 16, 16, 116),
-                itemCount: _youths.length,
+                itemCount: _members.length,
                 itemBuilder: (context, index) {
-                  final youth = _youths[index];
-                  final status = _attendanceMap[youth.id]!;
+                  final member = _members[index];
+                  final status = _attendanceMap[member.id]!;
                   
                   return Container(
                     margin: const EdgeInsets.only(bottom: 16),
@@ -113,17 +113,17 @@ class _TakeAttendanceScreenState extends State<TakeAttendanceScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            youth.fullName,
+                            member.fullName,
                             style: theme.textTheme.titleMedium?.copyWith(
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
                             ),
                           ),
                           const SizedBox(height: 12),
-                          _buildStatusSelector(youth.id!, status, l10n),
+                          _buildStatusSelector(member.id!, status, l10n),
                           const SizedBox(height: 12),
                           TextField(
-                            controller: _commentControllers[youth.id],
+                            controller: _commentControllers[member.id],
                             style: const TextStyle(fontSize: 14),
                             decoration: InputDecoration(
                               hintText: l10n.addNote,
@@ -166,7 +166,7 @@ class _TakeAttendanceScreenState extends State<TakeAttendanceScreen> {
     );
   }
 
-  Widget _buildStatusSelector(int youthId, AttendanceStatus currentStatus, AppLocalizations l10n) {
+  Widget _buildStatusSelector(int memberId, AttendanceStatus currentStatus, AppLocalizations l10n) {
     return Row(
       children: AttendanceStatus.values.map((status) {
         final isSelected = currentStatus == status;
@@ -184,7 +184,7 @@ class _TakeAttendanceScreenState extends State<TakeAttendanceScreen> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4.0),
             child: InkWell(
-              onTap: () => setState(() => _attendanceMap[youthId] = status),
+              onTap: () => setState(() => _attendanceMap[memberId] = status),
               borderRadius: BorderRadius.circular(12),
               child: Container(
                 padding: const EdgeInsets.symmetric(vertical: 12),
@@ -216,7 +216,7 @@ class _TakeAttendanceScreenState extends State<TakeAttendanceScreen> {
   void _save() async {
     final attendances = _attendanceMap.entries.map((e) {
       return Attendance(
-        adolescentId: e.key,
+        memberId: e.key,
         sessionId: widget.sessionId,
         status: e.value,
         timestamp: DateTime.now(),

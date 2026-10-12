@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../models/adolescent.dart';
+import '../../models/member.dart';
 import '../../models/attendance.dart';
 import '../../models/attendance_session.dart';
 import '../../models/group.dart';
@@ -48,10 +48,10 @@ int colorFromHex(dynamic hex) {
   return 0xFF2196F3;
 }
 
-// --- Membres <-> Adolescent ---
+// --- Membres <-> Member ---
 
-Adolescent memberToAdolescent(Map<String, dynamic> json) {
-  return Adolescent(
+Member memberFromPayload(Map<String, dynamic> json) {
+  return Member(
     id: toIntId(json['id']),
     firstName: json['firstName']?.toString() ?? '',
     lastName: json['lastName']?.toString() ?? '',
@@ -80,8 +80,8 @@ Map<String, dynamic>? _parentToApi(Parent p) {
   };
 }
 
-Map<String, dynamic> adolescentToMember(
-  Adolescent a, {
+Map<String, dynamic> memberToPayload(
+  Member a, {
   Set<int>? groupIds,
   List<Parent>? parents,
 }) {
@@ -114,7 +114,7 @@ Set<int> memberGroupIds(Map<String, dynamic> memberJson) {
 
 /// Reconstitue les parents (jusqu'à 2) depuis le membre.
 List<Parent> parentsFromMember(
-    Map<String, dynamic> memberJson, int adolescentId) {
+    Map<String, dynamic> memberJson, int memberId) {
   final result = <Parent>[];
   for (final key in ['parent1', 'parent2']) {
     final p = memberJson[key];
@@ -131,7 +131,7 @@ List<Parent> parentsFromMember(
       phone: phone,
       whatsapp: phone,
       relation: p['relation'] as String?,
-      adolescentId: adolescentId,
+      memberId: memberId,
     ));
   }
   return result;
@@ -210,7 +210,7 @@ Attendance recordToAttendance(Map<String, dynamic> json) {
   }
   return Attendance(
     id: toIntId(json['id']),
-    adolescentId: toIntId(json['member']),
+    memberId: toIntId(json['member']),
     sessionId: toIntId(json['session']),
     status: status,
     timestamp: timestamp,
@@ -220,7 +220,7 @@ Attendance recordToAttendance(Map<String, dynamic> json) {
 
 Map<String, dynamic> attendanceToRecord(Attendance a) {
   return {
-    'member': a.adolescentId,
+    'member': a.memberId,
     'session': a.sessionId,
     'status': a.status.name,
     if (a.comment != null) 'note': a.comment,

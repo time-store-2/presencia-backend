@@ -15,7 +15,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get dashboard => 'Home';
 
   @override
-  String get youth => 'Membres';
+  String get members => 'Membres';
 
   @override
   String get attendance => 'Appel';
@@ -63,7 +63,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get groups => 'Groupes';
 
   @override
-  String get addYouth => 'Ajouter un membre';
+  String get addMember => 'Ajouter un membre';
 
   @override
   String get noRecentSessions => 'Aucune séance récente';
@@ -78,7 +78,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get search => 'Rechercher...';
 
   @override
-  String get noYouthFound => 'Aucun membre trouvé';
+  String get noMemberFound => 'Aucun membre trouvé';
 
   @override
   String get personalInfo => 'Informations personnelles';
@@ -132,7 +132,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get deleteProfile => 'Supprimer le profil ?';
 
   @override
-  String confirmDeleteYouth(Object name) {
+  String confirmDeleteMember(Object name) {
     return 'Voulez-vous vraiment supprimer le profil de $name ? Cette action est irréversible.';
   }
 
@@ -213,9 +213,6 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get today => 'Aujourd\'hui';
-
-  @override
-  String get members => 'Membres';
 
   @override
   String get toRelanch => 'À relancer';
@@ -340,7 +337,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get periodReport => 'Bilan par période';
 
   @override
-  String get noYouthInGroup => 'Aucun membre dans ce groupe';
+  String get noMemberInGroup => 'Aucun membre dans ce groupe';
 
   @override
   String get presentShort => 'P';
@@ -552,7 +549,7 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String youthNameExists(Object name) {
+  String memberNameExists(Object name) {
     return 'Un membre nommé « $name » existe déjà. Veuillez choisir un autre nom.';
   }
 

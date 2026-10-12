@@ -2,22 +2,22 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:presencia/l10n/app_localizations.dart';
-import '../../core/providers/adolescent_provider.dart';
+import '../../core/providers/member_provider.dart';
 import '../../core/providers/group_provider.dart';
 import '../../core/providers/attendance_provider.dart';
 import '../../core/themes/app_themes.dart';
 import '../widgets/app_background.dart';
-import 'add_adolescent_screen.dart';
-import 'youth_detail_screen.dart';
+import 'add_member_screen.dart';
+import 'member_detail_screen.dart';
 
-class YouthListScreen extends StatefulWidget {
-  const YouthListScreen({super.key});
+class MemberListScreen extends StatefulWidget {
+  const MemberListScreen({super.key});
 
   @override
-  State<YouthListScreen> createState() => _YouthListScreenState();
+  State<MemberListScreen> createState() => _MemberListScreenState();
 }
 
-class _YouthListScreenState extends State<YouthListScreen> {
+class _MemberListScreenState extends State<MemberListScreen> {
   final TextEditingController _searchController = TextEditingController();
   String _searchQuery = '';
   int? _selectedGroupId; // null means "All"
@@ -26,14 +26,14 @@ class _YouthListScreenState extends State<YouthListScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<AdolescentProvider>().loadAdolescents();
+      context.read<MemberProvider>().loadMembers();
       context.read<GroupProvider>().loadGroups();
       context.read<AttendanceProvider>().loadSessions();
     });
   }
 
   Future<void> _refreshData() async {
-    await context.read<AdolescentProvider>().loadAdolescents();
+    await context.read<MemberProvider>().loadMembers();
     await context.read<GroupProvider>().loadGroups();
     await context.read<AttendanceProvider>().loadSessions();
   }
@@ -41,25 +41,25 @@ class _YouthListScreenState extends State<YouthListScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final provider = context.watch<AdolescentProvider>();
+    final provider = context.watch<MemberProvider>();
     final groupProvider = context.watch<GroupProvider>();
     final attendanceProvider = context.watch<AttendanceProvider>();
     final theme = Theme.of(context);
 
     // Filter logic
-    var filteredYouth = provider.adolescents.where((y) {
-      final fullName = y.fullName.toLowerCase();
+    var filteredMembers = provider.members.where((m) {
+      final fullName = m.fullName.toLowerCase();
       final matchesSearch = fullName.contains(_searchQuery.toLowerCase());
       
       if (_selectedGroupId == null) return matchesSearch;
       
-      // If a group is selected, we need to check if the youth is in that group
-      return matchesSearch && groupProvider.isYouthInGroup(y.id!, _selectedGroupId!);
+      // If a group is selected, we need to check if the member is in that group
+      return matchesSearch && groupProvider.isMemberInGroup(m.id!, _selectedGroupId!);
     }).toList();
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(l10n.youth),
+        title: Text(l10n.members),
         centerTitle: false,
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(130),
@@ -90,7 +90,7 @@ class _YouthListScreenState extends State<YouthListScreen> {
             ? const Center(child: CircularProgressIndicator())
             : RefreshIndicator(
                 onRefresh: _refreshData,
-                child: filteredYouth.isEmpty
+                child: filteredMembers.isEmpty
                     ? Center(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -98,7 +98,7 @@ class _YouthListScreenState extends State<YouthListScreen> {
                             Icon(Icons.person_search_rounded, size: 64, color: theme.colorScheme.onSurface.withOpacity(0.1)),
                             const SizedBox(height: 16),
                             Text(
-                              _searchQuery.isEmpty ? l10n.noYouthFound : l10n.noResultsFor(_searchQuery),
+                              _searchQuery.isEmpty ? l10n.noMemberFound : l10n.noResultsFor(_searchQuery),
                               style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.4), fontWeight: FontWeight.w600),
                             ),
                           ],
@@ -106,13 +106,13 @@ class _YouthListScreenState extends State<YouthListScreen> {
                       )
                     : ListView.builder(
                         padding: kPagePadding,
-                        itemCount: filteredYouth.length,
+                        itemCount: filteredMembers.length,
                         itemBuilder: (context, index) {
-                          final youth = filteredYouth[index];
+                          final member = filteredMembers[index];
                           
                           // Check for inactivity alerts
                           final alert = attendanceProvider.inactivityAlerts.firstWhere(
-                            (a) => a['id'] == youth.id,
+                            (a) => a['id'] == member.id,
                             orElse: () => {},
                           );
                           final missingCount = alert['missing_count'] as int? ?? 0;
@@ -137,9 +137,9 @@ class _YouthListScreenState extends State<YouthListScreen> {
                                   CircleAvatar(
                                     radius: 24,
                                     backgroundColor: theme.colorScheme.primaryContainer,
-                                    backgroundImage: youth.photoPath != null ? FileImage(File(youth.photoPath!)) : null,
-                                    child: youth.photoPath == null 
-                                      ? Text(youth.firstName[0], 
+                                    backgroundImage: member.photoPath != null ? FileImage(File(member.photoPath!)) : null,
+                                    child: member.photoPath == null 
+                                      ? Text(member.firstName[0], 
                                           style: TextStyle(color: theme.colorScheme.onPrimaryContainer, fontWeight: FontWeight.bold))
                                       : null,
                                   ),
@@ -169,7 +169,7 @@ class _YouthListScreenState extends State<YouthListScreen> {
                               title: Row(
                                 children: [
                                   Expanded(
-                                    child: Text(youth.fullName, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                                    child: Text(member.fullName, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
                                   ),
                                   if (missingCount >= 2)
                                     Container(
@@ -189,14 +189,14 @@ class _YouthListScreenState extends State<YouthListScreen> {
                                     ),
                                 ],
                               ),
-                              subtitle: Text(youth.phone ?? l10n.noPhone, style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.5))),
+                              subtitle: Text(member.phone ?? l10n.noPhone, style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.5))),
                               trailing: Icon(Icons.chevron_right_rounded, color: theme.colorScheme.primary.withOpacity(0.3)),
                               onTap: () => Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (_) => YouthDetailScreen(youth: youth),
+                                  builder: (_) => MemberDetailScreen(member: member),
                                 ),
-                              ).then((_) => context.read<AdolescentProvider>().loadAdolescents()),
+                              ).then((_) => context.read<MemberProvider>().loadMembers()),
                             ),
                           );
                         },
@@ -204,11 +204,11 @@ class _YouthListScreenState extends State<YouthListScreen> {
               ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        heroTag: 'youth_fab', // Unique tag to avoid Hero exception
+        heroTag: 'member_fab', // Unique tag to avoid Hero exception
         onPressed: () => Navigator.push(
           context,
-          MaterialPageRoute(builder: (_) => const AddAdolescentScreen()),
-        ).then((_) => context.read<AdolescentProvider>().loadAdolescents()),
+          MaterialPageRoute(builder: (_) => const AddMemberScreen()),
+        ).then((_) => context.read<MemberProvider>().loadMembers()),
         icon: const Icon(Icons.add),
         label: Text(l10n.add),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),

@@ -4,7 +4,7 @@ class Parent {
   final String? lastName;
   final String? phone;
   final String? whatsapp;
-  final int adolescentId;
+  final int memberId;
   final String? relation; // Père, Mère, Tuteur, etc.
   final String? serverId;
   final DateTime? lastUpdated;
@@ -16,7 +16,7 @@ class Parent {
     this.lastName,
     this.phone,
     this.whatsapp,
-    required this.adolescentId,
+    required this.memberId,
     this.relation,
     this.serverId,
     this.lastUpdated,
@@ -30,7 +30,7 @@ class Parent {
       'last_name': lastName,
       'phone': phone,
       'whatsapp': whatsapp,
-      'adolescent_id': adolescentId,
+      'member_id': memberId,
       'relation': relation,
       'server_id': serverId,
       'last_updated': lastUpdated?.toIso8601String(),
@@ -45,7 +45,7 @@ class Parent {
       lastName: map['last_name'],
       phone: map['phone'],
       whatsapp: map['whatsapp'],
-      adolescentId: map['adolescent_id'],
+      memberId: map['member_id'],
       relation: map['relation'],
       serverId: map['server_id'],
       lastUpdated: map['last_updated'] != null ? DateTime.parse(map['last_updated']) : null,
@@ -59,7 +59,7 @@ class Parent {
     String? lastName,
     String? phone,
     String? whatsapp,
-    int? adolescentId,
+    int? memberId,
     String? relation,
     String? serverId,
     DateTime? lastUpdated,
@@ -71,7 +71,7 @@ class Parent {
       lastName: lastName ?? this.lastName,
       phone: phone ?? this.phone,
       whatsapp: whatsapp ?? this.whatsapp,
-      adolescentId: adolescentId ?? this.adolescentId,
+      memberId: memberId ?? this.memberId,
       relation: relation ?? this.relation,
       serverId: serverId ?? this.serverId,
       lastUpdated: lastUpdated ?? this.lastUpdated,
