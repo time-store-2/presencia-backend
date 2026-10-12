@@ -1135,6 +1135,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Edit member groups'**
   String get editMemberGroups;
+
+  /// No description provided for @sendViaWhatsApp.
+  ///
+  /// In en, this message translates to:
+  /// **'Send via WhatsApp'**
+  String get sendViaWhatsApp;
+
+  /// No description provided for @chooseRecipient.
+  ///
+  /// In en, this message translates to:
+  /// **'Send the message to:'**
+  String get chooseRecipient;
 }
 
 class _AppLocalizationsDelegate

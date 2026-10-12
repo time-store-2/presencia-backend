@@ -242,19 +242,6 @@ class ApiService {
     return jsonDecode(res.body) as Map<String, dynamic>;
   }
 
-  /// Notifie les absents d'une séance (message WhatsApp personnalisé).
-  /// Retourne le nombre de membres notifiés.
-  Future<int> notifyAbsences(dynamic sessionId) async {
-    final res = await http.post(
-      Uri.parse('${ApiConfig.apiUrl}/notify-absence'),
-      headers: _headers,
-      body: jsonEncode({'sessionId': sessionId}),
-    );
-    if (res.statusCode != 200) throw Exception(_errorMessage(res.body));
-    final data = jsonDecode(res.body) as Map<String, dynamic>;
-    return (data['notified'] as num?)?.toInt() ?? 0;
-  }
-
   String _errorMessage(String body) {
     try {
       final data = jsonDecode(body) as Map<String, dynamic>;

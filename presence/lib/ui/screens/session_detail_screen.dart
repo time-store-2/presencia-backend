@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:presencia/l10n/app_localizations.dart';
 import '../../models/attendance.dart';
 import '../../models/attendance_session.dart';
 import '../../models/adolescent.dart';
 import '../../core/providers/attendance_provider.dart';
 import '../../core/providers/adolescent_provider.dart';
+import '../../core/providers/group_provider.dart';
 import '../../core/themes/app_themes.dart';
 import '../widgets/app_background.dart';
 import 'take_attendance_screen.dart';
@@ -44,6 +46,115 @@ class _SessionDetailScreenState extends State<SessionDetailScreen> {
         _isLoading = false;
       });
     }
+  }
+
+  String _digits(String? phone) =>
+      phone?.replaceAll(RegExp(r'[^0-9]'), '') ?? '';
+
+  bool _isMinor(Adolescent youth) {
+    final birth = youth.birthDate;
+    if (birth == null) return false;
+    final now = DateTime.now();
+    var age = now.year - birth.year;
+    if (now.month < birth.month ||
+        (now.month == birth.month && now.day < birth.day)) {
+      age--;
+    }
+    return age < 18;
+  }
+
+  String _renderTemplate(String template, Adolescent youth, String groupName) {
+    final d = widget.session.date;
+    return template
+        .replaceAll('{prenom}', youth.firstName)
+        .replaceAll('{nom}', youth.lastName)
+        .replaceAll('{groupe}', groupName)
+        .replaceAll('{date}', '${d.day}/${d.month}/${d.year}');
+  }
+
+  Future<void> _launchWaMe(String phone, String message) async {
+    final url =
+        Uri.parse('https://wa.me/$phone?text=${Uri.encodeComponent(message)}');
+    try {
+      if (await canLaunchUrl(url)) {
+        await launchUrl(url, mode: LaunchMode.externalApplication);
+      }
+    } catch (e) {
+      debugPrint('Could not launch WhatsApp: $e');
+    }
+  }
+
+  /// Ouvre WhatsApp avec le message d'absence pré-rempli.
+  /// Si le membre est mineur et qu'un parent a un téléphone,
+  /// propose de choisir le destinataire.
+  Future<void> _sendWhatsApp(Adolescent youth) async {
+    final l10n = AppLocalizations.of(context)!;
+    final atp = context.read<AttendanceProvider>();
+    final adp = context.read<AdolescentProvider>();
+    final gp = context.read<GroupProvider>();
+
+    final results = await Future.wait([
+      atp.getAbsenceTemplate(),
+      gp.getGroupName(widget.session.groupId!),
+    ]);
+    final message = _renderTemplate(results[0], youth, results[1]);
+
+    final memberPhone = _digits(youth.phone);
+    var parentPhone = '';
+    var parentName = '';
+    if (_isMinor(youth)) {
+      try {
+        final parents = await adp.getParents(youth.id!);
+        for (final p in parents) {
+          final phone = _digits(
+            (p.whatsapp?.isNotEmpty ?? false) ? p.whatsapp : p.phone,
+          );
+          if (phone.isNotEmpty) {
+            parentPhone = phone;
+            parentName = p.fullName;
+            break;
+          }
+        }
+      } catch (_) {
+        // Pas de parents : on envoie au membre.
+      }
+    }
+
+    if (!mounted) return;
+    if (memberPhone.isEmpty && parentPhone.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(l10n.noPhoneNumber)),
+      );
+      return;
+    }
+    if (memberPhone.isNotEmpty && parentPhone.isNotEmpty) {
+      final choice = await showDialog<String>(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(l10n.chooseRecipient,
+              style: const TextStyle(fontWeight: FontWeight.bold)),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                title: Text(youth.fullName),
+                onTap: () => Navigator.pop(context, 'member'),
+              ),
+              ListTile(
+                title: Text(parentName),
+                onTap: () => Navigator.pop(context, 'parent'),
+              ),
+            ],
+          ),
+        ),
+      );
+      if (choice == null || !mounted) return;
+      await _launchWaMe(
+          choice == 'parent' ? parentPhone : memberPhone, message);
+      return;
+    }
+    await _launchWaMe(
+        memberPhone.isNotEmpty ? memberPhone : parentPhone, message);
   }
 
   @override
@@ -129,7 +240,14 @@ class _SessionDetailScreenState extends State<SessionDetailScreen> {
                           timestamp: DateTime.now(),
                         ),
                       );
-                      return _ParticipantTile(youth: youth, attendance: att, statusColors: statusColors, l10n: l10n);
+                      final isAbsent = att.status == AttendanceStatus.absent;
+                      return _ParticipantTile(
+                        youth: youth,
+                        attendance: att,
+                        statusColors: statusColors,
+                        l10n: l10n,
+                        onWhatsApp: isAbsent ? () => _sendWhatsApp(youth) : null,
+                      );
                     }),
                 ],
               ),
@@ -226,12 +344,14 @@ class _ParticipantTile extends StatelessWidget {
   final Attendance attendance;
   final StatusColors statusColors;
   final AppLocalizations l10n;
+  final VoidCallback? onWhatsApp;
 
   const _ParticipantTile({
     required this.youth,
     required this.attendance,
     required this.statusColors,
     required this.l10n,
+    this.onWhatsApp,
   });
 
   @override
@@ -276,16 +396,30 @@ class _ParticipantTile extends StatelessWidget {
         subtitle: attendance.comment != null && attendance.comment!.isNotEmpty
             ? Text(attendance.comment!, style: const TextStyle(fontSize: 12, fontStyle: FontStyle.italic))
             : null,
-        trailing: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-          decoration: BoxDecoration(
-            color: color.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Text(
-            label,
-            style: TextStyle(color: color, fontWeight: FontWeight.w800, fontSize: 11),
-          ),
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              decoration: BoxDecoration(
+                color: color.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Text(
+                label,
+                style: TextStyle(color: color, fontWeight: FontWeight.w800, fontSize: 11),
+              ),
+            ),
+            if (onWhatsApp != null) ...[
+              const SizedBox(width: 4),
+              IconButton(
+                visualDensity: VisualDensity.compact,
+                icon: const Icon(Icons.message_rounded, size: 22, color: Color(0xFF25D366)),
+                tooltip: l10n.sendViaWhatsApp,
+                onPressed: onWhatsApp,
+              ),
+            ],
+          ],
         ),
       ),
     );

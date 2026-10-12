@@ -171,5 +171,7 @@
   "shareInviteLink": "Share registration link",
   "inviteLinkCopied": "Registration link copied",
   "noInviteLink": "No link available for this group",
-  "editMemberGroups": "Edit member groups"
+  "editMemberGroups": "Edit member groups",
+  "sendViaWhatsApp": "Send via WhatsApp",
+  "chooseRecipient": "Send the message to:"
 }

@@ -10,7 +10,6 @@ import { Members } from './collections/Members'
 import { AttendanceSessions } from './collections/AttendanceSessions'
 import { AttendanceRecords } from './collections/AttendanceRecords'
 import { Settings } from './globals/Settings'
-import { notifyAbsence } from './endpoints/notifyAbsence'
 import { memberStats, orgStats, periodStats } from './endpoints/stats'
 import { publicGroups, register } from './endpoints/public'
 
@@ -36,7 +35,7 @@ export default buildConfig({
       url: process.env.DATABASE_URL || 'file:./presencia.db',
     },
   }),
-  endpoints: [notifyAbsence, orgStats, memberStats, periodStats, publicGroups, register],
+  endpoints: [orgStats, memberStats, periodStats, publicGroups, register],
   localization: {
     locales: ['en'],
     fallback: true,

@@ -171,5 +171,7 @@
   "shareInviteLink": "Partager le lien d'inscription",
   "inviteLinkCopied": "Lien d'inscription copié",
   "noInviteLink": "Lien indisponible pour ce groupe",
-  "editMemberGroups": "Modifier les groupes du membre"
+  "editMemberGroups": "Modifier les groupes du membre",
+  "sendViaWhatsApp": "Envoyer sur WhatsApp",
+  "chooseRecipient": "Envoyer le message à :"
 }

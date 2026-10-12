@@ -67,6 +67,19 @@ class GroupProvider with ChangeNotifier {
     await loadGroups();
   }
 
+  /// Nom d'un groupe (liste chargée, sinon requête directe).
+  Future<String> getGroupName(int groupId) async {
+    for (final g in _groups) {
+      if (g.id == groupId) return g.name;
+    }
+    try {
+      final doc = await _api.getById('groups', groupId);
+      return doc['name']?.toString() ?? '';
+    } catch (_) {
+      return '';
+    }
+  }
+
   Future<void> loadGroupMembers(int groupId) async {
     _isLoading = true;
     notifyListeners();

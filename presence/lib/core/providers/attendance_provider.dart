@@ -111,12 +111,6 @@ class AttendanceProvider with ChangeNotifier {
         await _api.create('attendance-records', attendanceToRecord(a));
       }
     }
-    // Message WhatsApp automatique aux absents (ne bloque pas la sauvegarde).
-    try {
-      await _api.notifyAbsences(sessionId);
-    } catch (_) {
-      // Le SMS/WhatsApp peut échouer sans invalider l'appel enregistré.
-    }
     await loadSessions(); // Refresh stats and ranking
   }
 
@@ -179,6 +173,21 @@ class AttendanceProvider with ChangeNotifier {
       };
     });
     return result;
+  }
+
+  /// Modèle du message d'absence (Réglages du backend).
+  /// Repli local si le serveur est injoignable.
+  Future<String> getAbsenceTemplate() async {
+    const fallback =
+        'Bonjour {prenom}, tu as manqué la séance de {groupe} du {date}.';
+    try {
+      final data = await _api.getRaw('globals/settings');
+      final template = (data['absenceMessage'] as String?)?.trim();
+      if (template != null && template.isNotEmpty) return template;
+    } catch (_) {
+      // Repli local.
+    }
+    return fallback;
   }
 
   Future<List<String>> getAdolescentBadges(int adolescentId) async {

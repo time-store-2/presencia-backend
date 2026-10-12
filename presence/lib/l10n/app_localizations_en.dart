@@ -575,4 +575,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get editMemberGroups => 'Edit member groups';
+
+  @override
+  String get sendViaWhatsApp => 'Send via WhatsApp';
+
+  @override
+  String get chooseRecipient => 'Send the message to:';
 }
