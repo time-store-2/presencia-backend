@@ -1,24 +1,21 @@
 import type { CollectionConfig } from 'payload'
-import { canCreateUser, canEditRole, filterByOrganization, isOrgAdmin } from '../access/roles'
+import { canEditRole, isAdmin } from '../access/roles'
 
 export const Users: CollectionConfig = {
   slug: 'users',
   admin: {
-    useAsTitle: 'email',
+    useAsTitle: 'displayName',
   },
+  // email + password sont fournis par l'authentification Payload.
+  // Le tout premier compte se crée via l'écran natif /admin
+  // (Payload propose "créer le premier utilisateur" si aucun n'existe).
   auth: true,
   fields: [
     {
-      name: 'firstName',
+      name: 'displayName',
       type: 'text',
       required: true,
-      label: 'Prénom',
-    },
-    {
-      name: 'lastName',
-      type: 'text',
-      required: true,
-      label: 'Nom',
+      label: 'Nom affiché',
     },
     {
       name: 'phone',
@@ -29,40 +26,33 @@ export const Users: CollectionConfig = {
       name: 'role',
       type: 'select',
       required: true,
-      defaultValue: 'group_leader',
+      defaultValue: 'admin',
       label: 'Rôle',
       access: {
         update: canEditRole,
       },
       options: [
-        { label: 'Super Admin (SaaS)', value: 'super_admin' },
-        { label: "Admin d'organisation", value: 'org_admin' },
-        { label: 'Responsable de groupe', value: 'group_leader' },
+        { label: 'Admin (tout voir, tout modifier)', value: 'admin' },
+        { label: 'Assistant (ses groupes uniquement)', value: 'assistant' },
       ],
     },
     {
-      name: 'organization',
-      type: 'relationship',
-      relationTo: 'organizations',
-      required: true,
-      label: 'Organisation',
-    },
-    {
-      name: 'group',
+      name: 'assignedGroups',
       type: 'relationship',
       relationTo: 'groups',
-      label: 'Groupe assigné (responsables)',
+      hasMany: true,
+      label: 'Groupes assignés (assistants)',
       admin: {
-        description: 'Obligatoire si le rôle est Responsable de groupe.',
-        condition: (data) => data?.role === 'group_leader',
+        description: 'Utilisé uniquement si le rôle est Assistant.',
+        condition: (data) => data?.role === 'assistant',
       },
     },
   ],
   access: {
-    read: filterByOrganization,
-    create: canCreateUser,
-    update: isOrgAdmin,
-    delete: isOrgAdmin,
+    read: isAdmin,
+    create: isAdmin,
+    update: isAdmin,
+    delete: isAdmin,
   },
   versions: false,
 }

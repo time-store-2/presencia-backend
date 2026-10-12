@@ -32,15 +32,14 @@ export async function sendWhatsApp(to: string, message: string): Promise<{ sent:
   return { sent: true, mode: 'webhook' }
 }
 
-/** Remplace les variables {prenom} {nom} {groupe} {responsable} {date}. */
+/** Remplace les variables {prenom} {nom} {groupe} {date}. */
 export function renderTemplate(
   template: string,
-  vars: { prenom: string; nom: string; groupe: string; responsable: string; date: string },
+  vars: { prenom: string; nom: string; groupe: string; date: string },
 ): string {
   return template
     .replaceAll('{prenom}', vars.prenom)
     .replaceAll('{nom}', vars.nom)
     .replaceAll('{groupe}', vars.groupe)
-    .replaceAll('{responsable}', vars.responsable)
     .replaceAll('{date}', vars.date)
 }

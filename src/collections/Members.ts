@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { filterMembers, isOrgAdmin } from '../access/roles'
+import { filterMembers, isAdmin } from '../access/roles'
 
 export const Members: CollectionConfig = {
   slug: 'members',
@@ -111,13 +111,6 @@ export const Members: CollectionConfig = {
       label: 'Groupes',
     },
     {
-      name: 'organization',
-      type: 'relationship',
-      relationTo: 'organizations',
-      required: true,
-      label: 'Organisation',
-    },
-    {
       name: 'registrationDate',
       type: 'date',
       label: "Date d'inscription",
@@ -139,13 +132,13 @@ export const Members: CollectionConfig = {
     },
   ],
   access: {
-    // Lecture : org_admin → toute l'org, group_leader → son groupe.
+    // Lecture : admin → tous, assistant → membres de ses groupes.
     // Création publique : nécessaire pour le formulaire d'inscription
-    // (sera verrouillée par code org côté endpoint / formulaire).
+    // (sera remplacée par l'endpoint /api/register à l'étape suivante).
     read: filterMembers,
     create: () => true,
-    update: isOrgAdmin,
-    delete: isOrgAdmin,
+    update: isAdmin,
+    delete: isAdmin,
   },
   hooks: {
     // Supprimer un membre supprime aussi ses présences (sinon FK NOT NULL).
