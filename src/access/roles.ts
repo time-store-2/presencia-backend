@@ -1,8 +1,9 @@
-import type { Access, FieldAccess } from 'payload'
+import type { Access, FieldAccess, PayloadRequest } from 'payload'
 
 export type Role = 'admin' | 'assistant'
 
-export const getRole = (req: any): Role | undefined => req?.user?.role as Role | undefined
+export const getRole = (req: PayloadRequest): Role | undefined =>
+  (req?.user as { role?: Role } | null | undefined)?.role as Role | undefined
 
 /** Extrait l'id d'un champ relation (peuplé ou non). */
 export const toId = (value: unknown): string | number | undefined => {
@@ -12,8 +13,8 @@ export const toId = (value: unknown): string | number | undefined => {
 }
 
 /** Ids des groupes assignés à l'utilisateur (rôle assistant). */
-export const getAssignedGroupIds = (req: any): Array<string | number> => {
-  const groups = req?.user?.assignedGroups
+export const getAssignedGroupIds = (req: PayloadRequest): Array<string | number> => {
+  const groups = (req?.user as { assignedGroups?: unknown } | null | undefined)?.assignedGroups
   if (!Array.isArray(groups)) return []
   const ids: Array<string | number> = []
   for (const g of groups) {

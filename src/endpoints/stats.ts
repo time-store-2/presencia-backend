@@ -1,7 +1,12 @@
-import type { Endpoint } from 'payload'
+import type { Endpoint, PayloadRequest, Where } from 'payload'
 import { getAssignedGroupIds } from '../access/roles'
 
 type Id = string | number
+
+// Documents retournés par payload.find (depth: 0) — types locaux minimaux.
+type SessionDoc = { id: Id; date: string | Date; group?: unknown; notes?: string }
+type RecordDoc = { id: Id; status: string; member?: unknown; session?: unknown }
+type MemberDoc = { id: Id; firstName?: string; lastName?: string; groups?: unknown[] }
 
 const toId = (value: unknown): Id | undefined => {
   if (value === undefined || value === null) return undefined
@@ -18,10 +23,11 @@ const emptyCounts = () => ({ present: 0, absent: 0, late: 0, excused: 0 })
  */
 type Scope = { groupIds?: Id[]; role?: string }
 
-async function getScope(req: any): Promise<Scope | null> {
-  if (!req.user) return null
-  if (req.user.role === 'admin') return { role: 'admin' }
-  return { groupIds: getAssignedGroupIds(req) as Id[], role: req.user.role as string }
+async function getScope(req: PayloadRequest): Promise<Scope | null> {
+  const user = req.user as { role?: string } | null | undefined
+  if (!user) return null
+  if (user.role === 'admin') return { role: 'admin' }
+  return { groupIds: getAssignedGroupIds(req) as Id[], role: user.role as string }
 }
 
 function groupAllowed(scope: Scope, groupId: Id): boolean {
@@ -29,8 +35,12 @@ function groupAllowed(scope: Scope, groupId: Id): boolean {
   return scope.groupIds.some((id) => String(id) === String(groupId))
 }
 
-async function getScopedSessions(req: any, scope: Scope, extraWhere: object = {}) {
-  const where: Record<string, unknown> = { ...extraWhere }
+async function getScopedSessions(
+  req: PayloadRequest,
+  scope: Scope,
+  extraWhere: object = {},
+): Promise<SessionDoc[]> {
+  const where: Where = { ...extraWhere } as Where
   // Un assistant ne voit que les séances de ses groupes.
   if (scope.groupIds !== undefined) {
     where.group = { in: scope.groupIds }
@@ -42,10 +52,10 @@ async function getScopedSessions(req: any, scope: Scope, extraWhere: object = {}
     limit: 1000,
     depth: 0,
   })
-  return res.docs as any[]
+  return res.docs as unknown as SessionDoc[]
 }
 
-async function getRecordsForSessions(req: any, sessionIds: Id[]) {
+async function getRecordsForSessions(req: PayloadRequest, sessionIds: Id[]): Promise<RecordDoc[]> {
   if (sessionIds.length === 0) return []
   const res = await req.payload.find({
     collection: 'attendance-records',
@@ -53,11 +63,11 @@ async function getRecordsForSessions(req: any, sessionIds: Id[]) {
     limit: 5000,
     depth: 0,
   })
-  return res.docs as any[]
+  return res.docs as unknown as RecordDoc[]
 }
 
-async function getScopedMembers(req: any, scope: Scope) {
-  const where: Record<string, unknown> = {}
+async function getScopedMembers(req: PayloadRequest, scope: Scope): Promise<MemberDoc[]> {
+  const where: Where = {}
   if (scope.groupIds !== undefined) {
     where.groups = { in: scope.groupIds }
   }
@@ -67,7 +77,7 @@ async function getScopedMembers(req: any, scope: Scope) {
     limit: 2000,
     depth: 0,
   })
-  return res.docs as any[]
+  return res.docs as unknown as MemberDoc[]
 }
 
 /**
@@ -89,7 +99,7 @@ export const orgStats: Endpoint = {
     const sessionIds = sessions.map((s) => s.id as Id)
     const records = await getRecordsForSessions(req, sessionIds)
     const members = await getScopedMembers(req, scope)
-    const memberById = new Map<Id, any>(members.map((m) => [m.id as Id, m]))
+    const memberById = new Map<Id, MemberDoc>(members.map((m) => [m.id as Id, m]))
 
     const globalCounts = emptyCounts()
     for (const r of records) {
@@ -181,7 +191,7 @@ export const memberStats: Endpoint = {
           id: isNaN(Number(memberId)) ? memberId : Number(memberId),
           depth: 0,
         })
-        const memberGroups = ((member as any)?.groups as unknown[] | undefined) ?? []
+        const memberGroups = ((member as MemberDoc | null)?.groups as unknown[] | undefined) ?? []
         const allowed = memberGroups.some((g) =>
           scope.groupIds!.some((id) => String(id) === String(toId(g))),
         )
@@ -205,7 +215,7 @@ export const memberStats: Endpoint = {
 
     const stats = emptyCounts()
     const history: Array<Record<string, unknown>> = []
-    for (const r of res.docs as any[]) {
+    for (const r of res.docs as unknown as RecordDoc[]) {
       if (r.status in stats) stats[r.status as keyof typeof stats] += 1
       const session = sessionById.get(String(toId(r.session)))
       history.push({
