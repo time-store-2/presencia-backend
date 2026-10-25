@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 export const AttendanceRecords: CollectionConfig = {
   slug: 'attendance-records',
+  labels: { singular: 'Présence', plural: 'Présences' },
   fields: [
     {
       name: 'session',

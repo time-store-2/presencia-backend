@@ -3,6 +3,7 @@ import { filterSessions, isAdmin } from '../access/roles'
 
 export const AttendanceSessions: CollectionConfig = {
   slug: 'attendance-sessions',
+  labels: { singular: 'Séance', plural: 'Séances' },
   admin: {
     useAsTitle: 'date',
   },

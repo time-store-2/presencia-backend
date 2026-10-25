@@ -15,6 +15,7 @@ export function slugify(name: string): string {
 
 export const Groups: CollectionConfig = {
   slug: 'groups',
+  labels: { singular: 'Groupe', plural: 'Groupes' },
   admin: {
     useAsTitle: 'name',
   },

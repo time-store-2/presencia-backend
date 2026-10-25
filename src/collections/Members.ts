@@ -4,6 +4,7 @@ import { normalizePhone } from '../lib/phone'
 
 export const Members: CollectionConfig = {
   slug: 'members',
+  labels: { singular: 'Membre', plural: 'Membres' },
   admin: {
     useAsTitle: 'lastName',
   },

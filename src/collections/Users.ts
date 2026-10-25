@@ -3,6 +3,7 @@ import { canEditRole, isAdmin } from '../access/roles'
 
 export const Users: CollectionConfig = {
   slug: 'users',
+  labels: { singular: 'Utilisateur', plural: 'Utilisateurs' },
   admin: {
     useAsTitle: 'displayName',
   },
