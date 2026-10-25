@@ -83,6 +83,9 @@ export default async function InscriptionPage({ searchParams }: Props) {
   const params = await searchParams
   const lang: Lang = params.lang === 'en' ? 'en' : 'fr'
   const t = STRINGS[lang]
+  // Le formulaire est un Client Component : seules des chaînes peuvent lui
+  // être passées (notFound est une fonction → erreur 500 en production).
+  const { title: _title, intro: _intro, groupLabel: _groupLabel, invalid: _invalid, notFound: _notFound, ...formStrings } = t
   const slug = (params.groupe ?? '').trim()
 
   const payloadConfig = await config
@@ -120,7 +123,7 @@ export default async function InscriptionPage({ searchParams }: Props) {
         <RegistrationForm
           groups={[{ name: group.name ?? slug, slug }]}
           presetSlug={slug}
-          t={t}
+          t={formStrings}
         />
         <p><a href={langHref}>{otherLang === 'fr' ? 'Français' : 'English'}</a></p>
       </main>
@@ -154,7 +157,7 @@ export default async function InscriptionPage({ searchParams }: Props) {
     <main style={styles.main}>
       <h1>{t.title}</h1>
       <p>{t.intro}</p>
-      <RegistrationForm groups={groups} t={t} />
+      <RegistrationForm groups={groups} t={formStrings} />
       <p><a href={langHref}>{otherLang === 'fr' ? 'Français' : 'English'}</a></p>
     </main>
   )
