@@ -9,7 +9,11 @@ export const Users: CollectionConfig = {
   // email + password sont fournis par l'authentification Payload.
   // Le tout premier compte se crée via l'écran natif /admin
   // (Payload propose "créer le premier utilisateur" si aucun n'existe).
-  auth: true,
+  // Session longue (1 an), prolongée par l'app à chaque ouverture :
+  // on reste connecté tant qu'on ne se déconnecte pas soi-même.
+  auth: {
+    tokenExpiration: 60 * 60 * 24 * 365,
+  },
   fields: [
     {
       name: 'displayName',

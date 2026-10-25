@@ -2,6 +2,7 @@ import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
+import { fr } from '@payloadcms/translations/languages/fr'
 import { fileURLToPath } from 'url'
 
 import { Users } from './collections/Users'
@@ -25,6 +26,11 @@ export default buildConfig({
   },
   collections: [Users, Groups, Members, AttendanceSessions, AttendanceRecords],
   globals: [Settings],
+  // Interface admin en français uniquement.
+  i18n: {
+    supportedLanguages: { fr },
+    fallbackLanguage: 'fr',
+  },
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
