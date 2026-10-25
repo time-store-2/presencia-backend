@@ -191,6 +191,7 @@ export interface Member {
   gender?: ('male' | 'female') | null;
   birthDate?: string | null;
   address?: string | null;
+  photo?: string | null;
   parent1?: {
     firstName?: string | null;
     lastName?: string | null;
@@ -375,6 +376,7 @@ export interface MembersSelect<T extends boolean = true> {
   gender?: T;
   birthDate?: T;
   address?: T;
+  photo?: T;
   parent1?:
     | T
     | {

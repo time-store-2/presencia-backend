@@ -51,6 +51,14 @@ export const Members: CollectionConfig = {
       type: 'text',
       label: 'Adresse',
     },
+    // Miniature (data URI JPEG ~256 px) envoyée par l'app. Solution provisoire
+    // avant un vrai stockage de fichiers (Vercel Blob).
+    {
+      name: 'photo',
+      type: 'textarea',
+      label: 'Photo',
+      admin: { hidden: true },
+    },
     // Contacts parents/tuteurs (jusqu'à 2, ex : mineurs à l'église ou à l'école)
     {
       name: 'parent1',
