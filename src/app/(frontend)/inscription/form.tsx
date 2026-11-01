@@ -29,6 +29,7 @@ export type RegisterStrings = {
   submit: string
   sending: string
   done: string
+  registerAnother?: string
 }
 
 type Group = { name: string; slug: string }
@@ -51,6 +52,7 @@ export default function RegistrationForm({ groups, presetSlug, t }: Props) {
     const form = new FormData(e.currentTarget)
     const flat = Object.fromEntries(form.entries())
     const slugs = presetSlug ? [presetSlug] : form.getAll('groups').map(String)
+
     const pick = (prefix: string) => {
       const obj: Record<string, string> = {}
       for (const [k, v] of Object.entries(flat)) {
@@ -60,10 +62,12 @@ export default function RegistrationForm({ groups, presetSlug, t }: Props) {
       }
       return Object.keys(obj).length > 0 ? obj : undefined
     }
+
     const pickStr = (key: string) => {
       const v = flat[key]
       return typeof v === 'string' && v.trim() !== '' ? v : undefined
     }
+
     const data: Record<string, unknown> = {
       firstName: pickStr('firstName'),
       lastName: pickStr('lastName'),
@@ -71,18 +75,22 @@ export default function RegistrationForm({ groups, presetSlug, t }: Props) {
       groupSlugs: slugs,
       website: pickStr('website'), // honeypot anti-robot
     }
+
     const email = pickStr('email')
     const birthDate = pickStr('birthDate')
     const gender = pickStr('gender')
     const address = pickStr('address')
+
     if (email) data.email = email
     if (birthDate) data.birthDate = birthDate
     if (gender) data.gender = gender
     if (address) data.address = address
+
     const parent1 = pick('parent1')
     const parent2 = pick('parent2')
     if (parent1) data.parent1 = parent1
     if (parent2) data.parent2 = parent2
+
     try {
       const res = await fetch('/api/register', {
         method: 'POST',
@@ -91,147 +99,258 @@ export default function RegistrationForm({ groups, presetSlug, t }: Props) {
       })
       if (!res.ok) {
         const body = await res.json().catch(() => null)
-        throw new Error(body?.errors?.[0]?.message || 'Error.')
+        throw new Error(body?.errors?.[0]?.message || 'Une erreur est survenue lors de l’inscription.')
       }
       setStatus('done')
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Error.')
+      setError(err instanceof Error ? err.message : 'Une erreur inattendue est survenue.')
       setStatus('error')
     }
   }
 
   if (status === 'done') {
-    return <p>{t.done}</p>
+    return (
+      <div className="success-card">
+        <div className="success-icon-badge">✓</div>
+        <h2 className="success-title">Inscription validée !</h2>
+        <p className="success-message">{t.done}</p>
+        <button
+          type="button"
+          className="btn-secondary"
+          onClick={() => {
+            setStatus('idle')
+            setError('')
+          }}
+        >
+          {t.registerAnother ?? 'Inscrire une autre personne'}
+        </button>
+      </div>
+    )
   }
 
   return (
-    <form onSubmit={onSubmit} style={styles.form}>
-      <label style={styles.label}>
-        {t.firstName}
-        <input name="firstName" required maxLength={60} autoComplete="given-name" style={styles.input} />
-      </label>
-      <label style={styles.label}>
-        {t.lastName}
-        <input name="lastName" required maxLength={60} autoComplete="family-name" style={styles.input} />
-      </label>
-      <label style={styles.label}>
-        {t.phone}
-        <input name="phone" required maxLength={25} inputMode="tel" autoComplete="tel" placeholder={t.phonePlaceholder} style={styles.input} />
-      </label>
-      <label style={styles.label}>
-        {t.email}
-        <input name="email" type="email" maxLength={120} autoComplete="email" style={styles.input} />
-      </label>
-      <label style={styles.label}>
-        {t.gender}
-        <select name="gender" style={styles.input} defaultValue="">
-          <option value="">{t.genderUnspecified}</option>
-          <option value="male">{t.genderMale}</option>
-          <option value="female">{t.genderFemale}</option>
-        </select>
-      </label>
-      <label style={styles.label}>
-        {t.birthDate}
-        <input name="birthDate" type="date" style={styles.input} />
-      </label>
-      <label style={styles.label}>
-        {t.address}
-        <input name="address" maxLength={200} style={styles.input} />
-      </label>
-      {presetSlug ? (
-        <p>{t.groups} <strong>{groups[0]?.name}</strong></p>
-      ) : (
-        <fieldset style={styles.fieldset}>
-          <legend>{t.groups}</legend>
-          {groups.map((g) => (
-            <label key={g.slug} style={styles.check}>
-              <input type="checkbox" name="groups" value={g.slug} />
-              {g.name}
-            </label>
-          ))}
-        </fieldset>
+    <form onSubmit={onSubmit} className="reg-form">
+      {/* Informations personnelles */}
+      <div className="form-grid-2">
+        <div className="form-field">
+          <label className="form-label">
+            {t.firstName} <span className="form-label-required">*</span>
+          </label>
+          <input
+            className="form-input"
+            name="firstName"
+            required
+            maxLength={60}
+            autoComplete="given-name"
+            placeholder="Ex : Samuel"
+          />
+        </div>
+        <div className="form-field">
+          <label className="form-label">
+            {t.lastName} <span className="form-label-required">*</span>
+          </label>
+          <input
+            className="form-input"
+            name="lastName"
+            required
+            maxLength={60}
+            autoComplete="family-name"
+            placeholder="Ex : Kouassi"
+          />
+        </div>
+      </div>
+
+      <div className="form-grid-2">
+        <div className="form-field">
+          <label className="form-label">
+            {t.phone} <span className="form-label-required">*</span>
+          </label>
+          <input
+            className="form-input"
+            name="phone"
+            required
+            maxLength={25}
+            inputMode="tel"
+            autoComplete="tel"
+            placeholder={t.phonePlaceholder}
+          />
+        </div>
+        <div className="form-field">
+          <label className="form-label">{t.email}</label>
+          <input
+            className="form-input"
+            name="email"
+            type="email"
+            maxLength={120}
+            autoComplete="email"
+            placeholder="email@exemple.com"
+          />
+        </div>
+      </div>
+
+      <div className="form-grid-2">
+        <div className="form-field">
+          <label className="form-label">{t.gender}</label>
+          <select className="form-select" name="gender" defaultValue="">
+            <option value="">{t.genderUnspecified}</option>
+            <option value="male">{t.genderMale}</option>
+            <option value="female">{t.genderFemale}</option>
+          </select>
+        </div>
+        <div className="form-field">
+          <label className="form-label">{t.birthDate}</label>
+          <input className="form-input" name="birthDate" type="date" />
+        </div>
+      </div>
+
+      <div className="form-field">
+        <label className="form-label">{t.address}</label>
+        <input
+          className="form-input"
+          name="address"
+          maxLength={200}
+          placeholder="Quartier, commune ou adresse"
+        />
+      </div>
+
+      {/* Si pas de groupe prédéfini, sélection multiple */}
+      {!presetSlug && (
+        <div className="form-section-card">
+          <div className="form-section-header">
+            <span>🏷️</span>
+            <span>{t.groups}</span>
+          </div>
+          <div className="group-checkbox-list">
+            {groups.map((g) => (
+              <label key={g.slug} className="group-checkbox-label">
+                <input type="checkbox" name="groups" value={g.slug} />
+                <span>{g.name}</span>
+              </label>
+            ))}
+          </div>
+        </div>
       )}
-      <fieldset style={styles.fieldset}>
-        <legend>{t.parent1}</legend>
-        <label style={styles.label}>
-          {t.parentFirstName}
-          <input name="parent1.firstName" maxLength={60} style={styles.input} />
-        </label>
-        <label style={styles.label}>
-          {t.parentLastName}
-          <input name="parent1.lastName" maxLength={60} style={styles.input} />
-        </label>
-        <label style={styles.label}>
-          {t.parentPhone}
-          <input name="parent1.phone" maxLength={25} inputMode="tel" style={styles.input} />
-        </label>
-        <label style={styles.label}>
-          {t.parentRelation}
-          <select name="parent1.relation" style={styles.input} defaultValue="">
-            <option value="">{t.relationUnspecified}</option>
-            <option value="father">{t.relationFather}</option>
-            <option value="mother">{t.relationMother}</option>
-            <option value="guardian">{t.relationGuardian}</option>
-            <option value="other">{t.relationOther}</option>
-          </select>
-        </label>
-      </fieldset>
-      <fieldset style={styles.fieldset}>
-        <legend>{t.parent2}</legend>
-        <label style={styles.label}>
-          {t.parentFirstName}
-          <input name="parent2.firstName" maxLength={60} style={styles.input} />
-        </label>
-        <label style={styles.label}>
-          {t.parentLastName}
-          <input name="parent2.lastName" maxLength={60} style={styles.input} />
-        </label>
-        <label style={styles.label}>
-          {t.parentPhone}
-          <input name="parent2.phone" maxLength={25} inputMode="tel" style={styles.input} />
-        </label>
-        <label style={styles.label}>
-          {t.parentRelation}
-          <select name="parent2.relation" style={styles.input} defaultValue="">
-            <option value="">{t.relationUnspecified}</option>
-            <option value="father">{t.relationFather}</option>
-            <option value="mother">{t.relationMother}</option>
-            <option value="guardian">{t.relationGuardian}</option>
-            <option value="other">{t.relationOther}</option>
-          </select>
-        </label>
-      </fieldset>
-      {/* Honeypot anti-robot : invisible pour les humains. */}
+
+      {/* Section Parent 1 */}
+      <div className="form-section-card">
+        <div className="form-section-header">
+          <span>👨‍👩‍👦</span>
+          <span>{t.parent1}</span>
+        </div>
+
+        <div className="form-grid-2">
+          <div className="form-field">
+            <label className="form-label">{t.parentFirstName}</label>
+            <input className="form-input" name="parent1.firstName" maxLength={60} />
+          </div>
+          <div className="form-field">
+            <label className="form-label">{t.parentLastName}</label>
+            <input className="form-input" name="parent1.lastName" maxLength={60} />
+          </div>
+        </div>
+
+        <div className="form-grid-2">
+          <div className="form-field">
+            <label className="form-label">{t.parentPhone}</label>
+            <input
+              className="form-input"
+              name="parent1.phone"
+              maxLength={25}
+              inputMode="tel"
+              placeholder="+225..."
+            />
+          </div>
+          <div className="form-field">
+            <label className="form-label">{t.parentRelation}</label>
+            <select className="form-select" name="parent1.relation" defaultValue="">
+              <option value="">{t.relationUnspecified}</option>
+              <option value="father">{t.relationFather}</option>
+              <option value="mother">{t.relationMother}</option>
+              <option value="guardian">{t.relationGuardian}</option>
+              <option value="other">{t.relationOther}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      {/* Section Parent 2 */}
+      <div className="form-section-card">
+        <div className="form-section-header">
+          <span>👨‍👩‍👦</span>
+          <span>{t.parent2}</span>
+          <span className="form-section-badge">Optionnel</span>
+        </div>
+
+        <div className="form-grid-2">
+          <div className="form-field">
+            <label className="form-label">{t.parentFirstName}</label>
+            <input className="form-input" name="parent2.firstName" maxLength={60} />
+          </div>
+          <div className="form-field">
+            <label className="form-label">{t.parentLastName}</label>
+            <input className="form-input" name="parent2.lastName" maxLength={60} />
+          </div>
+        </div>
+
+        <div className="form-grid-2">
+          <div className="form-field">
+            <label className="form-label">{t.parentPhone}</label>
+            <input
+              className="form-input"
+              name="parent2.phone"
+              maxLength={25}
+              inputMode="tel"
+              placeholder="+225..."
+            />
+          </div>
+          <div className="form-field">
+            <label className="form-label">{t.parentRelation}</label>
+            <select className="form-select" name="parent2.relation" defaultValue="">
+              <option value="">{t.relationUnspecified}</option>
+              <option value="father">{t.relationFather}</option>
+              <option value="mother">{t.relationMother}</option>
+              <option value="guardian">{t.relationGuardian}</option>
+              <option value="other">{t.relationOther}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      {/* Honeypot anti-robot */}
       <input
         name="website"
         tabIndex={-1}
         autoComplete="off"
-        style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0 }}
+        style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0, width: 0 }}
         aria-hidden="true"
       />
-      {status === 'error' && <p style={styles.error}>{error}</p>}
-      <button type="submit" disabled={status === 'sending'} style={styles.button}>
-        {status === 'sending' ? t.sending : t.submit}
+
+      {status === 'error' && (
+        <div className="error-banner">
+          ⚠️ {error}
+        </div>
+      )}
+
+      <button type="submit" disabled={status === 'sending'} className="btn-submit">
+        {status === 'sending' ? (
+          <>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              className="spinner-icon"
+            >
+              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+            </svg>
+            <span>{t.sending}</span>
+          </>
+        ) : (
+          <span>{t.submit}</span>
+        )}
       </button>
     </form>
   )
-}
-
-const styles: Record<string, React.CSSProperties> = {
-  form: { display: 'flex', flexDirection: 'column', gap: 12, marginTop: 16 },
-  fieldset: { display: 'flex', flexDirection: 'column', gap: 8, border: '1px solid #ccc', borderRadius: 8, padding: 12 },
-  check: { display: 'flex', gap: 8, alignItems: 'center', fontSize: 15 },
-  label: { display: 'flex', flexDirection: 'column', gap: 4, fontSize: 14 },
-  input: { padding: '10px 12px', fontSize: 16, borderRadius: 8, border: '1px solid #ccc' },
-  button: {
-    padding: '12px',
-    fontSize: 16,
-    fontWeight: 700,
-    borderRadius: 8,
-    border: 'none',
-    background: '#16a34a',
-    color: '#fff',
-    cursor: 'pointer',
-  },
-  error: { color: '#dc2626' },
 }

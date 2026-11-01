@@ -10,81 +10,114 @@ type Props = {
 
 type Lang = 'fr' | 'en'
 
-const STRINGS: Record<Lang, RegisterStrings & { title: string; intro: string; groupLabel: string; invalid: string; notFound: (slug: string) => string }> = {
+const STRINGS: Record<
+  Lang,
+  RegisterStrings & {
+    title: string
+    intro: string
+    groupLabel: string
+    invalid: string
+    notFound: (slug: string) => string
+    appBrand: string
+  }
+> = {
   fr: {
-    title: 'Inscription',
-    intro: 'Remplis ce formulaire : ton nom apparaîtra chez ton enseignant.',
-    groupLabel: 'Tu t’inscris au groupe :',
-    invalid: 'Lien d’inscription invalide.',
-    notFound: (slug) => `Groupe introuvable : « ${slug} ». Demande le bon lien à ton enseignant.`,
-    firstName: 'Prénom *',
-    lastName: 'Nom *',
-    phone: 'Téléphone (WhatsApp, avec indicatif) *',
-    phonePlaceholder: '+225...',
-    email: 'Email',
+    appBrand: 'PRESENCIA',
+    title: 'Fiche d’inscription',
+    intro: 'Remplis ce formulaire : ton nom apparaîtra directement sur la liste de présence de ton enseignant.',
+    groupLabel: 'Tu t’inscris au groupe',
+    invalid: 'Lien d’inscription invalide ou aucun groupe disponible.',
+    notFound: (slug) => `Groupe introuvable : « ${slug} ». Demande le lien à jour à ton responsable ou pasteur.`,
+    firstName: 'Prénom',
+    lastName: 'Nom',
+    phone: 'Téléphone (WhatsApp)',
+    phonePlaceholder: '+225 07 00 00 00 00',
+    email: 'Adresse email',
     gender: 'Sexe',
-    genderUnspecified: '—',
+    genderUnspecified: 'Sélectionner...',
     genderMale: 'Homme',
     genderFemale: 'Femme',
     birthDate: 'Date de naissance',
-    address: 'Adresse',
-    groups: 'Groupe(s) *',
-    parent1: 'Parent / tuteur 1 (si mineur)',
-    parent2: 'Parent / tuteur 2 (optionnel)',
-    parentFirstName: 'Prénom',
-    parentLastName: 'Nom',
-    parentPhone: 'Téléphone',
-    parentRelation: 'Lien',
-    relationUnspecified: '—',
+    address: 'Adresse de résidence',
+    groups: 'Groupe(s) concerné(s)',
+    parent1: 'Parent / Tuteur 1 (si mineur)',
+    parent2: 'Parent / Tuteur 2 (optionnel)',
+    parentFirstName: 'Prénom du parent',
+    parentLastName: 'Nom du parent',
+    parentPhone: 'Téléphone du parent',
+    parentRelation: 'Lien de parenté',
+    relationUnspecified: 'Sélectionner...',
     relationFather: 'Père',
     relationMother: 'Mère',
-    relationGuardian: 'Tuteur',
+    relationGuardian: 'Tuteur légal',
     relationOther: 'Autre',
-    submit: "S'inscrire",
-    sending: 'Envoi…',
-    done: '✅ Inscription réussie ! Ton enseignant a bien reçu tes informations.',
+    submit: 'Valider mon inscription',
+    sending: 'Enregistrement en cours…',
+    done: '✅ Inscription réussie ! Ton responsable a bien reçu tes informations.',
+    registerAnother: 'Inscrire une autre personne',
   },
   en: {
-    title: 'Registration',
-    intro: 'Fill in this form: your name will appear on your teacher’s list.',
-    groupLabel: 'You are registering for:',
-    invalid: 'Invalid registration link.',
-    notFound: (slug) => `Group not found: "${slug}". Ask your teacher for the correct link.`,
-    firstName: 'First name *',
-    lastName: 'Last name *',
-    phone: 'Phone (WhatsApp, with country code) *',
-    phonePlaceholder: '+225...',
-    email: 'Email',
+    appBrand: 'PRESENCIA',
+    title: 'Registration Form',
+    intro: 'Fill in this form: your name will directly appear on your teacher’s attendance list.',
+    groupLabel: 'You are registering for',
+    invalid: 'Invalid registration link or no groups currently available.',
+    notFound: (slug) => `Group not found: "${slug}". Please ask your leader or pastor for the correct link.`,
+    firstName: 'First name',
+    lastName: 'Last name',
+    phone: 'Phone (WhatsApp)',
+    phonePlaceholder: '+1 (555) 000-0000',
+    email: 'Email address',
     gender: 'Gender',
-    genderUnspecified: '—',
+    genderUnspecified: 'Select...',
     genderMale: 'Male',
     genderFemale: 'Female',
     birthDate: 'Birth date',
-    address: 'Address',
-    groups: 'Group(s) *',
-    parent1: 'Parent / guardian 1 (if minor)',
-    parent2: 'Parent / guardian 2 (optional)',
-    parentFirstName: 'First name',
-    parentLastName: 'Last name',
-    parentPhone: 'Phone',
-    parentRelation: 'Relation',
-    relationUnspecified: '—',
+    address: 'Home address',
+    groups: 'Concerned Group(s)',
+    parent1: 'Parent / Guardian 1 (if minor)',
+    parent2: 'Parent / Guardian 2 (optional)',
+    parentFirstName: 'Parent first name',
+    parentLastName: 'Parent last name',
+    parentPhone: 'Parent phone',
+    parentRelation: 'Relationship',
+    relationUnspecified: 'Select...',
     relationFather: 'Father',
     relationMother: 'Mother',
-    relationGuardian: 'Guardian',
+    relationGuardian: 'Legal guardian',
     relationOther: 'Other',
-    submit: 'Register',
-    sending: 'Sending…',
-    done: '✅ Registration successful! Your teacher has received your information.',
+    submit: 'Submit Registration',
+    sending: 'Submitting…',
+    done: '✅ Registration successful! Your leader has received your information.',
+    registerAnother: 'Register another person',
   },
+}
+
+function PresenciaLogo() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M12 2L3 7V17L12 22L21 17V7L12 2Z"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12 6V18M7 9L17 15M17 9L7 15"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
 }
 
 export default async function InscriptionPage({ searchParams }: Props) {
   const params = await searchParams
   const lang: Lang = params.lang === 'en' ? 'en' : 'fr'
   const t = STRINGS[lang]
-  // Le formulaire est un Client Component : seules des chaînes peuvent lui
-  // être passées (notFound est une fonction → erreur 500 en production).
   const { title: _title, intro: _intro, groupLabel: _groupLabel, invalid: _invalid, notFound: _notFound, ...formStrings } = t
   const slug = (params.groupe ?? '').trim()
 
@@ -96,7 +129,7 @@ export default async function InscriptionPage({ searchParams }: Props) {
     ? `/inscription?groupe=${encodeURIComponent(slug)}&lang=${otherLang}`
     : `/inscription?lang=${otherLang}`
 
-  // Cas 1 : lien direct vers un groupe → formulaire déjà lié.
+  // Cas 1 : lien direct vers un groupe → formulaire pré-rempli pour ce groupe
   if (slug) {
     const res = await payload.find({
       collection: 'groups',
@@ -106,31 +139,69 @@ export default async function InscriptionPage({ searchParams }: Props) {
       overrideAccess: true,
     })
     const group = res.docs[0] as unknown as { name?: string; slug?: string } | undefined
+
     if (!group) {
       return (
-        <main style={styles.main}>
-          <h1>{t.title}</h1>
-          <p>{t.notFound(slug)}</p>
-          <p><a href={langHref}>{otherLang === 'fr' ? 'Français' : 'English'}</a></p>
+        <main className="presencia-page">
+          <div className="presencia-container">
+            <div className="presencia-card">
+              <div className="presencia-top-bar">
+                <div className="presencia-badge">
+                  <PresenciaLogo />
+                  <span>{t.appBrand}</span>
+                </div>
+                <a href={langHref} className="lang-switch">
+                  🌐 {otherLang === 'fr' ? 'Français' : 'English'}
+                </a>
+              </div>
+              <h1 className="presencia-title">{t.title}</h1>
+              <div className="error-banner" style={{ marginTop: 16, marginBottom: 20 }}>
+                {t.notFound(slug)}
+              </div>
+            </div>
+          </div>
         </main>
       )
     }
+
     return (
-      <main style={styles.main}>
-        <h1>{t.title}</h1>
-        <p>{t.groupLabel} <strong>{group.name}</strong></p>
-        <p>{t.intro}</p>
-        <RegistrationForm
-          groups={[{ name: group.name ?? slug, slug }]}
-          presetSlug={slug}
-          t={formStrings}
-        />
-        <p><a href={langHref}>{otherLang === 'fr' ? 'Français' : 'English'}</a></p>
+      <main className="presencia-page">
+        <div className="presencia-container">
+          <div className="presencia-card">
+            <div className="presencia-top-bar">
+              <div className="presencia-badge">
+                <PresenciaLogo />
+                <span>{t.appBrand}</span>
+              </div>
+              <a href={langHref} className="lang-switch">
+                🌐 {otherLang.toUpperCase()}
+              </a>
+            </div>
+
+            <h1 className="presencia-title">{t.title}</h1>
+
+            <div className="group-callout">
+              <div className="group-callout-icon">👥</div>
+              <div>
+                <div className="group-callout-label">{t.groupLabel}</div>
+                <div className="group-callout-name">{group.name}</div>
+              </div>
+            </div>
+
+            <p className="presencia-intro">{t.intro}</p>
+
+            <RegistrationForm
+              groups={[{ name: group.name ?? slug, slug }]}
+              presetSlug={slug}
+              t={formStrings}
+            />
+          </div>
+        </div>
       </main>
     )
   }
 
-  // Cas 2 : sans paramètre → l'élève coche ses groupes.
+  // Cas 2 : sans paramètre → liste des groupes disponibles
   const res = await payload.find({
     collection: 'groups',
     limit: 100,
@@ -138,36 +209,57 @@ export default async function InscriptionPage({ searchParams }: Props) {
     depth: 0,
     overrideAccess: true,
   })
-  const groups = res.docs.map((g) => {
-    const doc = g as unknown as { name?: string; slug?: string }
-    return { name: doc.name ?? '', slug: doc.slug ?? '' }
-  }).filter((g) => g.name !== '' && g.slug !== '')
+  const groups = res.docs
+    .map((g) => {
+      const doc = g as unknown as { name?: string; slug?: string }
+      return { name: doc.name ?? '', slug: doc.slug ?? '' }
+    })
+    .filter((g) => g.name !== '' && g.slug !== '')
 
   if (groups.length === 0) {
     return (
-      <main style={styles.main}>
-        <h1>{t.title}</h1>
-        <p>{t.invalid}</p>
-        <p><a href={langHref}>{otherLang === 'fr' ? 'Français' : 'English'}</a></p>
+      <main className="presencia-page">
+        <div className="presencia-container">
+          <div className="presencia-card">
+            <div className="presencia-top-bar">
+              <div className="presencia-badge">
+                <PresenciaLogo />
+                <span>{t.appBrand}</span>
+              </div>
+              <a href={langHref} className="lang-switch">
+                🌐 {otherLang === 'fr' ? 'Français' : 'English'}
+              </a>
+            </div>
+            <h1 className="presencia-title">{t.title}</h1>
+            <div className="error-banner" style={{ marginTop: 16 }}>
+              {t.invalid}
+            </div>
+          </div>
+        </div>
       </main>
     )
   }
 
   return (
-    <main style={styles.main}>
-      <h1>{t.title}</h1>
-      <p>{t.intro}</p>
-      <RegistrationForm groups={groups} t={formStrings} />
-      <p><a href={langHref}>{otherLang === 'fr' ? 'Français' : 'English'}</a></p>
+    <main className="presencia-page">
+      <div className="presencia-container">
+        <div className="presencia-card">
+          <div className="presencia-top-bar">
+            <div className="presencia-badge">
+              <PresenciaLogo />
+              <span>{t.appBrand}</span>
+            </div>
+            <a href={langHref} className="lang-switch">
+              🌐 {otherLang.toUpperCase()}
+            </a>
+          </div>
+
+          <h1 className="presencia-title">{t.title}</h1>
+          <p className="presencia-intro">{t.intro}</p>
+
+          <RegistrationForm groups={groups} t={formStrings} />
+        </div>
+      </div>
     </main>
   )
-}
-
-const styles: Record<string, React.CSSProperties> = {
-  main: {
-    maxWidth: 520,
-    margin: '0 auto',
-    padding: '32px 16px',
-    fontFamily: 'system-ui, sans-serif',
-  },
 }
