@@ -1,5 +1,6 @@
 import { getPayload } from 'payload'
 import React from 'react'
+import type { Metadata } from 'next'
 
 import config from '@/payload.config'
 import RegistrationForm, { type RegisterStrings } from './form'
@@ -9,6 +10,58 @@ type Props = {
 }
 
 type Lang = 'fr' | 'en'
+
+export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
+  const params = await searchParams
+  const slug = (params.groupe ?? '').trim()
+  let groupName = ''
+  if (slug) {
+    try {
+      const payloadConfig = await config
+      const payload = await getPayload({ config: payloadConfig })
+      const res = await payload.find({
+        collection: 'groups',
+        where: { slug: { equals: slug } },
+        limit: 1,
+        depth: 0,
+        overrideAccess: true,
+      })
+      if (res.docs[0]) {
+        groupName = (res.docs[0] as unknown as { name?: string }).name || ''
+      }
+    } catch (_) {}
+  }
+
+  const title = groupName
+    ? `Inscription · ${groupName} — Presencia`
+    : 'Inscription — Presencia'
+  const description = groupName
+    ? `Rejoignez le groupe ${groupName} sur Presencia.`
+    : 'Portail d’inscription et suivi de présences pour votre communauté.'
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      images: [
+        {
+          url: '/splash_logo.png',
+          width: 1200,
+          height: 630,
+          alt: 'Presencia',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
+  }
+}
 
 const STRINGS: Record<
   Lang,
@@ -24,7 +77,7 @@ const STRINGS: Record<
   fr: {
     appBrand: 'PRESENCIA',
     title: 'Fiche d’inscription',
-    intro: 'Remplis ce formulaire : ton nom apparaîtra directement sur la liste de présence de ton enseignant.',
+    intro: 'Remplis ce formulaire : ton nom apparaîtra directement sur la liste de présence de ton responsable.',
     groupLabel: 'Tu t’inscris au groupe',
     invalid: 'Lien d’inscription invalide ou aucun groupe disponible.',
     notFound: (slug) => `Groupe introuvable : « ${slug} ». Demande le lien à jour à ton responsable ou pasteur.`,
@@ -53,13 +106,13 @@ const STRINGS: Record<
     relationOther: 'Autre',
     submit: 'Valider mon inscription',
     sending: 'Enregistrement en cours…',
-    done: '✅ Inscription réussie ! Ton responsable a bien reçu tes informations.',
+    done: 'Inscription validée ! Ton responsable a bien reçu tes informations.',
     registerAnother: 'Inscrire une autre personne',
   },
   en: {
     appBrand: 'PRESENCIA',
     title: 'Registration Form',
-    intro: 'Fill in this form: your name will directly appear on your teacher’s attendance list.',
+    intro: 'Fill in this form: your name will directly appear on your leader’s attendance list.',
     groupLabel: 'You are registering for',
     invalid: 'Invalid registration link or no groups currently available.',
     notFound: (slug) => `Group not found: "${slug}". Please ask your leader or pastor for the correct link.`,
@@ -88,7 +141,7 @@ const STRINGS: Record<
     relationOther: 'Other',
     submit: 'Submit Registration',
     sending: 'Submitting…',
-    done: '✅ Registration successful! Your leader has received your information.',
+    done: 'Registration successful! Your leader has received your information.',
     registerAnother: 'Register another person',
   },
 }

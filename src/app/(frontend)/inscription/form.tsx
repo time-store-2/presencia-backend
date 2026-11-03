@@ -198,8 +198,10 @@ export default function RegistrationForm({ groups, presetSlug, t }: Props) {
           </select>
         </div>
         <div className="form-field">
-          <label className="form-label">{t.birthDate}</label>
-          <input className="form-input" name="birthDate" type="date" />
+          <label className="form-label">
+            {t.birthDate} <span className="form-label-required">*</span>
+          </label>
+          <input className="form-input" name="birthDate" type="date" required />
         </div>
       </div>
 
@@ -351,6 +353,10 @@ export default function RegistrationForm({ groups, presetSlug, t }: Props) {
           <span>{t.submit}</span>
         )}
       </button>
+
+      <p className="consent-notice">
+        En soumettant ce formulaire, vous consentez à l’utilisation de ces informations pour la gestion et le suivi des présences de la communauté.
+      </p>
     </form>
   )
 }
