@@ -48,7 +48,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
       type: 'website',
       images: [
         {
-          url: '/splash_logo.png',
+          url: '/og-image.png',
           width: 1200,
           height: 630,
           alt: 'Presencia',
