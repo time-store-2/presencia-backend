@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { filterMembers, isAdmin } from '../access/roles'
+import { canCreateMember, filterMembers } from '../access/roles'
 import { normalizePhone } from '../lib/phone'
 
 export const Members: CollectionConfig = {
@@ -121,6 +121,13 @@ export const Members: CollectionConfig = {
       },
     },
     {
+      name: 'createdBy',
+      type: 'relationship',
+      relationTo: 'users',
+      label: 'Ajouté par',
+      admin: { readOnly: true, position: 'sidebar' },
+    },
+    {
       name: 'status',
       type: 'select',
       defaultValue: 'active',
@@ -132,20 +139,34 @@ export const Members: CollectionConfig = {
     },
   ],
   access: {
-    // Lecture : admin → tous, assistant → membres de ses groupes.
+    // Lecture/modification : admin → tous, pasteur → membres de ses groupes
+    // (ou ajoutés par lui).
     // Création : utilisateurs connectés + inscriptions via l'endpoint
     // public /api/register (droits serveur). Jamais anonyme en direct.
     read: filterMembers,
-    create: ({ req }) => Boolean(req?.user),
-    update: isAdmin,
-    delete: isAdmin,
+    create: canCreateMember,
+    update: filterMembers,
+    delete: filterMembers,
   },
   hooks: {
-    // Stocke le téléphone normalisé (chiffres uniquement, avec indicatif).
+    // Stocke les téléphones au format E.164 (+228…), membre et parents.
     beforeValidate: [
       ({ data }) => {
-        if (data?.phone) {
-          return { ...data, phone: normalizePhone(data.phone) }
+        if (!data) return data
+        const next = { ...data }
+        if (next.phone) next.phone = normalizePhone(next.phone)
+        for (const key of ['parent1', 'parent2'] as const) {
+          const parent = next[key] as { phone?: string } | undefined
+          if (parent?.phone) next[key] = { ...parent, phone: normalizePhone(parent.phone) }
+        }
+        return next
+      },
+    ],
+    // Mémorise qui a ajouté le membre (visibilité du pasteur).
+    beforeChange: [
+      ({ req, data, operation }) => {
+        if (operation === 'create' && data && !data.createdBy && req.user) {
+          return { ...data, createdBy: req.user.id }
         }
         return data
       },

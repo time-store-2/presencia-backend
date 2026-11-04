@@ -10,6 +10,7 @@ import { Groups } from './collections/Groups'
 import { Members } from './collections/Members'
 import { AttendanceSessions } from './collections/AttendanceSessions'
 import { AttendanceRecords } from './collections/AttendanceRecords'
+import { RegistrationAttempts } from './collections/RegistrationAttempts'
 import { Settings } from './globals/Settings'
 import { memberStats, orgStats, periodStats } from './endpoints/stats'
 import { publicGroups, register } from './endpoints/public'
@@ -17,14 +18,37 @@ import { publicGroups, register } from './endpoints/public'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+const allowedOrigins = [
+  ...new Set(
+    [
+      process.env.NEXT_PUBLIC_SERVER_URL,
+      'https://presencia-backend-wine.vercel.app',
+      'http://localhost:3002',
+    ]
+      .filter((u): u is string => Boolean(u))
+      .map((u) => u.replace(/\/+$/, '')),
+  ),
+]
+
 export default buildConfig({
   admin: {
     user: Users.slug,
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    // Image de marque : logo, icône, favicon et titre « Presencia Admin ».
+    meta: {
+      titleSuffix: ' — Presencia Admin',
+      icons: [{ rel: 'icon', type: 'image/png', url: '/favicon.png' }],
+    },
+    components: {
+      graphics: {
+        Logo: '/components/admin/Logo',
+        Icon: '/components/admin/Icon',
+      },
+    },
   },
-  collections: [Users, Groups, Members, AttendanceSessions, AttendanceRecords],
+  collections: [Users, Groups, Members, AttendanceSessions, AttendanceRecords, RegistrationAttempts],
   globals: [Settings],
   // Interface admin en français uniquement.
   i18n: {
@@ -33,6 +57,10 @@ export default buildConfig({
   },
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
+  // Navigateur : seul le site lui-même peut appeler l'API avec des cookies
+  // (l'app mobile, elle, n'est pas concernée par CORS).
+  cors: allowedOrigins,
+  csrf: allowedOrigins,
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },

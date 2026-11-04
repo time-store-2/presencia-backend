@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload'
-import { filterGroups, isAdmin } from '../access/roles'
+import { randomBytes } from 'node:crypto'
+import { filterGroups, isLoggedIn } from '../access/roles'
 
 /** "6ème A" → "6eme-a". Généré depuis le nom si le slug est vide. */
 export function slugify(name: string): string {
@@ -11,6 +12,16 @@ export function slugify(name: string): string {
     .replace(/^-+|-+$/g, '')
     .slice(0, 60)
   return slug || 'groupe'
+}
+
+const TOKEN_ALPHABET = 'abcdefghijkmnpqrstuvwxyz23456789'
+
+/** Jeton d'invitation aléatoire de 12 caractères (non devinable). */
+export function newInviteToken(): string {
+  const bytes = randomBytes(12)
+  let out = ''
+  for (const b of bytes) out += TOKEN_ALPHABET[b % TOKEN_ALPHABET.length]
+  return out
 }
 
 export const Groups: CollectionConfig = {
@@ -32,9 +43,32 @@ export const Groups: CollectionConfig = {
       unique: true,
       label: 'Slug (lien inscription)',
       admin: {
-        description:
-          'Généré automatiquement depuis le nom. Utilisé dans le lien : /inscription?groupe=<slug>',
+        description: 'Généré automatiquement depuis le nom (identifiant interne).',
       },
+    },
+    {
+      name: 'inviteToken',
+      type: 'text',
+      unique: true,
+      index: true,
+      label: 'Jeton du lien d’inscription',
+      admin: {
+        description:
+          'Lien : /inscription?groupe=<jeton>. Videz ce champ et enregistrez pour générer un nouveau lien (l’ancien ne marchera plus).',
+      },
+    },
+    {
+      name: 'inviteEnabled',
+      type: 'checkbox',
+      defaultValue: true,
+      label: 'Lien d’inscription actif',
+    },
+    {
+      name: 'owner',
+      type: 'relationship',
+      relationTo: 'users',
+      label: 'Créé par',
+      admin: { readOnly: true, position: 'sidebar' },
     },
     {
       name: 'description',
@@ -45,7 +79,7 @@ export const Groups: CollectionConfig = {
       name: 'color',
       type: 'text',
       label: 'Couleur (hex)',
-      defaultValue: '#2196F3',
+      defaultValue: '#A13A15',
     },
     {
       name: 'meetingDay',
@@ -59,10 +93,11 @@ export const Groups: CollectionConfig = {
     },
   ],
   access: {
+    // Admin : tout. Pasteur : crée ses groupes et ne voit/modifie que les siens.
     read: filterGroups,
-    create: isAdmin,
-    update: isAdmin,
-    delete: isAdmin,
+    create: isLoggedIn,
+    update: filterGroups,
+    delete: filterGroups,
   },
   hooks: {
     // Génère le slug depuis le nom s'il est vide (modifiable ensuite),
@@ -90,6 +125,22 @@ export const Groups: CollectionConfig = {
           n += 1
         }
         return { ...data, slug: candidate }
+      },
+    ],
+    // Jeton d'invitation : généré s'il est vide (création ou régénération).
+    // Propriétaire : l'utilisateur qui crée le groupe.
+    beforeChange: [
+      ({ req, data, operation }) => {
+        if (!data) return data
+        const next = { ...data }
+        const token = typeof next.inviteToken === 'string' ? next.inviteToken.trim() : ''
+        if (operation === 'create' || 'inviteToken' in data) {
+          if (!token) next.inviteToken = newInviteToken()
+        }
+        if (operation === 'create' && !next.owner && req.user) {
+          next.owner = req.user.id
+        }
+        return next
       },
     ],
     // Supprimer un groupe supprime ses séances (et leurs présences
@@ -132,7 +183,7 @@ export const Groups: CollectionConfig = {
             overrideAccess: true,
           })
         }
-        // Assistants : retirer le groupe supprimé de leurs groupes assignés.
+        // Pasteurs : retirer le groupe supprimé de leurs groupes assignés.
         const linkedUsers = await req.payload.find({
           collection: 'users',
           where: { assignedGroups: { in: [id] } },

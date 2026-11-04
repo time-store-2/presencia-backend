@@ -4,31 +4,22 @@ import type { Metadata } from 'next'
 
 import config from '@/payload.config'
 import RegistrationForm, { type RegisterStrings } from './form'
+import { findGroupByToken } from '@/endpoints/public'
 
 type Props = {
-  searchParams: Promise<{ groupe?: string; lang?: string }>
+  searchParams: Promise<{ groupe?: string }>
 }
 
 type Lang = 'fr' | 'en'
 
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
   const params = await searchParams
-  const slug = (params.groupe ?? '').trim()
+  const token = (params.groupe ?? '').trim()
   let groupName = ''
-  if (slug) {
+  if (token) {
     try {
-      const payloadConfig = await config
-      const payload = await getPayload({ config: payloadConfig })
-      const res = await payload.find({
-        collection: 'groups',
-        where: { slug: { equals: slug } },
-        limit: 1,
-        depth: 0,
-        overrideAccess: true,
-      })
-      if (res.docs[0]) {
-        groupName = (res.docs[0] as unknown as { name?: string }).name || ''
-      }
+      const payload = await getPayload({ config: await config })
+      groupName = (await findGroupByToken({ payload }, token))?.name ?? ''
     } catch (_) {}
   }
 
@@ -70,7 +61,7 @@ const STRINGS: Record<
     intro: string
     groupLabel: string
     invalid: string
-    notFound: (slug: string) => string
+    notFound: string
     appBrand: string
   }
 > = {
@@ -79,12 +70,12 @@ const STRINGS: Record<
     title: 'Fiche d’inscription',
     intro: 'Remplis ce formulaire : ton nom apparaîtra directement sur la liste de présence de ton responsable.',
     groupLabel: 'Tu t’inscris au groupe',
-    invalid: 'Lien d’inscription invalide ou aucun groupe disponible.',
-    notFound: (slug) => `Groupe introuvable : « ${slug} ». Demande le lien à jour à ton responsable ou pasteur.`,
+    invalid: 'Lien d’inscription incomplet. Demande le lien de ton groupe à ton responsable ou à ton pasteur.',
+    notFound: 'Ce lien d’inscription n’est plus valide. Demande le nouveau lien à ton responsable ou à ton pasteur.',
     firstName: 'Prénom',
     lastName: 'Nom',
     phone: 'Téléphone (WhatsApp)',
-    phonePlaceholder: '+225 07 00 00 00 00',
+    phonePlaceholder: '+228 90 00 00 00',
     email: 'Adresse email',
     gender: 'Sexe',
     genderUnspecified: 'Sélectionner...',
@@ -106,8 +97,10 @@ const STRINGS: Record<
     relationOther: 'Autre',
     submit: 'Valider mon inscription',
     sending: 'Enregistrement en cours…',
-    done: 'Inscription validée ! Ton responsable a bien reçu tes informations.',
+    done: 'Ton responsable a bien reçu tes informations.',
     registerAnother: 'Inscrire une autre personne',
+    successTitle: 'Inscription validée !',
+    alreadyRegistered: 'Déjà inscrit : tu es maintenant aussi dans ce groupe.',
   },
   en: {
     appBrand: 'PRESENCIA',
@@ -115,7 +108,7 @@ const STRINGS: Record<
     intro: 'Fill in this form: your name will directly appear on your leader’s attendance list.',
     groupLabel: 'You are registering for',
     invalid: 'Invalid registration link or no groups currently available.',
-    notFound: (slug) => `Group not found: "${slug}". Please ask your leader or pastor for the correct link.`,
+    notFound: 'This registration link is no longer valid. Please ask your leader or pastor for the new link.',
     firstName: 'First name',
     lastName: 'Last name',
     phone: 'Phone (WhatsApp)',
@@ -169,123 +162,34 @@ function PresenciaLogo() {
 
 export default async function InscriptionPage({ searchParams }: Props) {
   const params = await searchParams
-  const lang: Lang = params.lang === 'en' ? 'en' : 'fr'
-  const t = STRINGS[lang]
+  // Français uniquement : les messages du serveur ne sont pas traduits, donc
+  // pas de bouton « EN » tant que la traduction n'est pas complète.
+  const t = STRINGS.fr
   const { title: _title, intro: _intro, groupLabel: _groupLabel, invalid: _invalid, notFound: _notFound, ...formStrings } = t
-  const slug = (params.groupe ?? '').trim()
+  const token = (params.groupe ?? '').trim()
 
-  const payloadConfig = await config
-  const payload = await getPayload({ config: payloadConfig })
+  const payload = await getPayload({ config: await config })
+  const group = token ? await findGroupByToken({ payload }, token) : undefined
 
-  const otherLang = lang === 'fr' ? 'en' : 'fr'
-  const langHref = slug
-    ? `/inscription?groupe=${encodeURIComponent(slug)}&lang=${otherLang}`
-    : `/inscription?lang=${otherLang}`
+  const header = (
+    <div className="presencia-top-bar">
+      <div className="presencia-badge">
+        <PresenciaLogo />
+        <span>{t.appBrand}</span>
+      </div>
+    </div>
+  )
 
-  // Cas 1 : lien direct vers un groupe → formulaire pré-rempli pour ce groupe
-  if (slug) {
-    const res = await payload.find({
-      collection: 'groups',
-      where: { slug: { equals: slug } },
-      limit: 1,
-      depth: 0,
-      overrideAccess: true,
-    })
-    const group = res.docs[0] as unknown as { name?: string; slug?: string } | undefined
-
-    if (!group) {
-      return (
-        <main className="presencia-page">
-          <div className="presencia-container">
-            <div className="presencia-card">
-              <div className="presencia-top-bar">
-                <div className="presencia-badge">
-                  <PresenciaLogo />
-                  <span>{t.appBrand}</span>
-                </div>
-                <a href={langHref} className="lang-switch">
-                  🌐 {otherLang === 'fr' ? 'Français' : 'English'}
-                </a>
-              </div>
-              <h1 className="presencia-title">{t.title}</h1>
-              <div className="error-banner" style={{ marginTop: 16, marginBottom: 20 }}>
-                {t.notFound(slug)}
-              </div>
-            </div>
-          </div>
-        </main>
-      )
-    }
-
+  // Lien absent, ancien (slug devinable), régénéré ou désactivé.
+  if (!group) {
     return (
       <main className="presencia-page">
         <div className="presencia-container">
           <div className="presencia-card">
-            <div className="presencia-top-bar">
-              <div className="presencia-badge">
-                <PresenciaLogo />
-                <span>{t.appBrand}</span>
-              </div>
-              <a href={langHref} className="lang-switch">
-                🌐 {otherLang.toUpperCase()}
-              </a>
-            </div>
-
+            {header}
             <h1 className="presencia-title">{t.title}</h1>
-
-            <div className="group-callout">
-              <div className="group-callout-icon">👥</div>
-              <div>
-                <div className="group-callout-label">{t.groupLabel}</div>
-                <div className="group-callout-name">{group.name}</div>
-              </div>
-            </div>
-
-            <p className="presencia-intro">{t.intro}</p>
-
-            <RegistrationForm
-              groups={[{ name: group.name ?? slug, slug }]}
-              presetSlug={slug}
-              t={formStrings}
-            />
-          </div>
-        </div>
-      </main>
-    )
-  }
-
-  // Cas 2 : sans paramètre → liste des groupes disponibles
-  const res = await payload.find({
-    collection: 'groups',
-    limit: 100,
-    sort: 'name',
-    depth: 0,
-    overrideAccess: true,
-  })
-  const groups = res.docs
-    .map((g) => {
-      const doc = g as unknown as { name?: string; slug?: string }
-      return { name: doc.name ?? '', slug: doc.slug ?? '' }
-    })
-    .filter((g) => g.name !== '' && g.slug !== '')
-
-  if (groups.length === 0) {
-    return (
-      <main className="presencia-page">
-        <div className="presencia-container">
-          <div className="presencia-card">
-            <div className="presencia-top-bar">
-              <div className="presencia-badge">
-                <PresenciaLogo />
-                <span>{t.appBrand}</span>
-              </div>
-              <a href={langHref} className="lang-switch">
-                🌐 {otherLang === 'fr' ? 'Français' : 'English'}
-              </a>
-            </div>
-            <h1 className="presencia-title">{t.title}</h1>
-            <div className="error-banner" style={{ marginTop: 16 }}>
-              {t.invalid}
+            <div className="error-banner" style={{ marginTop: 16, marginBottom: 20 }}>
+              {token ? t.notFound : t.invalid}
             </div>
           </div>
         </div>
@@ -297,20 +201,20 @@ export default async function InscriptionPage({ searchParams }: Props) {
     <main className="presencia-page">
       <div className="presencia-container">
         <div className="presencia-card">
-          <div className="presencia-top-bar">
-            <div className="presencia-badge">
-              <PresenciaLogo />
-              <span>{t.appBrand}</span>
+          {header}
+          <h1 className="presencia-title">{t.title}</h1>
+
+          <div className="group-callout">
+            <div className="group-callout-icon">👥</div>
+            <div>
+              <div className="group-callout-label">{t.groupLabel}</div>
+              <div className="group-callout-name">{group.name}</div>
             </div>
-            <a href={langHref} className="lang-switch">
-              🌐 {otherLang.toUpperCase()}
-            </a>
           </div>
 
-          <h1 className="presencia-title">{t.title}</h1>
           <p className="presencia-intro">{t.intro}</p>
 
-          <RegistrationForm groups={groups} t={formStrings} />
+          <RegistrationForm groupToken={token} t={formStrings} />
         </div>
       </div>
     </main>

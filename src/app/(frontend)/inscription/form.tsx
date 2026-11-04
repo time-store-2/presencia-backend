@@ -30,19 +30,20 @@ export type RegisterStrings = {
   sending: string
   done: string
   registerAnother?: string
+  successTitle?: string
+  alreadyRegistered?: string
+  consent?: string
 }
 
-type Group = { name: string; slug: string }
-
 type Props = {
-  groups: Group[]
-  /** Si défini : formulaire déjà lié à ce groupe (case pré-cochée et verrouillée). */
-  presetSlug?: string
+  /** Jeton du lien d'inscription du groupe (paramètre ?groupe=). */
+  groupToken: string
   t: RegisterStrings
 }
 
-export default function RegistrationForm({ groups, presetSlug, t }: Props) {
+export default function RegistrationForm({ groupToken, t }: Props) {
   const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle')
+  const [already, setAlready] = useState(false)
   const [error, setError] = useState('')
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -51,7 +52,6 @@ export default function RegistrationForm({ groups, presetSlug, t }: Props) {
     setError('')
     const form = new FormData(e.currentTarget)
     const flat = Object.fromEntries(form.entries())
-    const slugs = presetSlug ? [presetSlug] : form.getAll('groups').map(String)
 
     const pick = (prefix: string) => {
       const obj: Record<string, string> = {}
@@ -72,7 +72,7 @@ export default function RegistrationForm({ groups, presetSlug, t }: Props) {
       firstName: pickStr('firstName'),
       lastName: pickStr('lastName'),
       phone: pickStr('phone'),
-      groupSlugs: slugs,
+      groupToken,
       website: pickStr('website'), // honeypot anti-robot
     }
 
@@ -101,6 +101,8 @@ export default function RegistrationForm({ groups, presetSlug, t }: Props) {
         const body = await res.json().catch(() => null)
         throw new Error(body?.errors?.[0]?.message || 'Une erreur est survenue lors de l’inscription.')
       }
+      const ok = await res.json().catch(() => null)
+      setAlready(Boolean(ok?.alreadyRegistered))
       setStatus('done')
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Une erreur inattendue est survenue.')
@@ -112,8 +114,8 @@ export default function RegistrationForm({ groups, presetSlug, t }: Props) {
     return (
       <div className="success-card">
         <div className="success-icon-badge">✓</div>
-        <h2 className="success-title">Inscription validée !</h2>
-        <p className="success-message">{t.done}</p>
+        <h2 className="success-title">{t.successTitle ?? 'Inscription validée !'}</h2>
+        <p className="success-message">{already ? (t.alreadyRegistered ?? t.done) : t.done}</p>
         <button
           type="button"
           className="btn-secondary"
@@ -215,24 +217,6 @@ export default function RegistrationForm({ groups, presetSlug, t }: Props) {
         />
       </div>
 
-      {/* Si pas de groupe prédéfini, sélection multiple */}
-      {!presetSlug && (
-        <div className="form-section-card">
-          <div className="form-section-header">
-            <span>🏷️</span>
-            <span>{t.groups}</span>
-          </div>
-          <div className="group-checkbox-list">
-            {groups.map((g) => (
-              <label key={g.slug} className="group-checkbox-label">
-                <input type="checkbox" name="groups" value={g.slug} />
-                <span>{g.name}</span>
-              </label>
-            ))}
-          </div>
-        </div>
-      )}
-
       {/* Section Parent 1 */}
       <div className="form-section-card">
         <div className="form-section-header">
@@ -259,7 +243,7 @@ export default function RegistrationForm({ groups, presetSlug, t }: Props) {
               name="parent1.phone"
               maxLength={25}
               inputMode="tel"
-              placeholder="+225..."
+              placeholder="+228 90 00 00 00"
             />
           </div>
           <div className="form-field">
@@ -302,7 +286,7 @@ export default function RegistrationForm({ groups, presetSlug, t }: Props) {
               name="parent2.phone"
               maxLength={25}
               inputMode="tel"
-              placeholder="+225..."
+              placeholder="+228 90 00 00 00"
             />
           </div>
           <div className="form-field">
@@ -355,7 +339,8 @@ export default function RegistrationForm({ groups, presetSlug, t }: Props) {
       </button>
 
       <p className="consent-notice">
-        En soumettant ce formulaire, vous consentez à l’utilisation de ces informations pour la gestion et le suivi des présences de la communauté.
+        {t.consent ??
+          'En envoyant ce formulaire, tu acceptes que ces informations servent uniquement au suivi des présences de ta communauté. Pour un mineur, c’est le parent ou le tuteur qui donne son accord.'}
       </p>
     </form>
   )

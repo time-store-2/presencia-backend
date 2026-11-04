@@ -1,5 +1,5 @@
 import type { Endpoint, PayloadRequest, Where } from 'payload'
-import { getAssignedGroupIds } from '../access/roles'
+import { getVisibleGroupIds } from '../access/roles'
 
 type Id = string | number
 
@@ -19,7 +19,7 @@ const emptyCounts = () => ({ present: 0, absent: 0, late: 0, excused: 0 })
 /**
  * Portée de l'utilisateur connecté :
  * - admin → tout (groupIds undefined)
- * - assistant → uniquement ses groupes assignés
+ * - pasteur → uniquement ses groupes (créés ou assignés)
  */
 type Scope = { groupIds?: Id[]; role?: string }
 
@@ -27,7 +27,7 @@ async function getScope(req: PayloadRequest): Promise<Scope | null> {
   const user = req.user as { role?: string } | null | undefined
   if (!user) return null
   if (user.role === 'admin') return { role: 'admin' }
-  return { groupIds: getAssignedGroupIds(req) as Id[], role: user.role as string }
+  return { groupIds: (await getVisibleGroupIds(req)) as Id[], role: user.role as string }
 }
 
 function groupAllowed(scope: Scope, groupId: Id): boolean {
@@ -41,7 +41,7 @@ async function getScopedSessions(
   extraWhere: object = {},
 ): Promise<SessionDoc[]> {
   const where: Where = { ...extraWhere } as Where
-  // Un assistant ne voit que les séances de ses groupes.
+  // Un pasteur ne voit que les séances de ses groupes.
   if (scope.groupIds !== undefined) {
     where.group = { in: scope.groupIds }
   }
@@ -82,7 +82,7 @@ async function getScopedMembers(req: PayloadRequest, scope: Scope): Promise<Memb
 
 /**
  * GET /api/org-stats
- * Statistiques globales (ou du périmètre de l'assistant).
+ * Statistiques globales (ou du périmètre du pasteur).
  * Formes : todayCounts, globalCounts, totalSessions,
  * topPresent, topAbsent, inactivityAlerts.
  */
@@ -183,7 +183,7 @@ export const memberStats: Endpoint = {
       return Response.json({ errors: [{ message: 'memberId requis.' }] }, { status: 400 })
     }
 
-    // Un assistant ne peut consulter que les membres de ses groupes.
+    // Un pasteur ne peut consulter que les membres de ses groupes.
     if (scope.groupIds !== undefined) {
       try {
         const member = await req.payload.findByID({

@@ -1,4 +1,5 @@
-import type { Endpoint } from 'payload'
+import { createHash } from 'node:crypto'
+import type { Endpoint, PayloadRequest } from 'payload'
 import { isValidPhone, normalizePhone } from '../lib/phone'
 
 const MAX = {
@@ -56,36 +57,83 @@ function parentInput(value: unknown): ParentInput | undefined {
   }
 }
 
+/** Groupe actif correspondant à un jeton d'invitation, ou undefined. */
+export async function findGroupByToken(
+  req: Pick<PayloadRequest, 'payload'>,
+  token: string,
+): Promise<{ id: number; name: string } | undefined> {
+  const t = token.trim()
+  if (!/^[a-z0-9]{12}$/.test(t)) return undefined
+  const res = await req.payload.find({
+    collection: 'groups',
+    where: { and: [{ inviteToken: { equals: t } }, { inviteEnabled: { not_equals: false } }] },
+    limit: 1,
+    depth: 0,
+    overrideAccess: true,
+  })
+  const g = res.docs[0] as unknown as { id: number; name?: string } | undefined
+  return g ? { id: g.id, name: g.name ?? '' } : undefined
+}
+
 /**
- * GET /api/public-groups
- * Public : renvoie uniquement { name, slug } des groupes
- * (pour le formulaire d'inscription).
+ * GET /api/public-groups?token=<jeton>
+ * Public : renvoie uniquement le nom du groupe lié à un lien d'inscription
+ * actif. Plus de liste publique des groupes.
  */
 export const publicGroups: Endpoint = {
   path: '/public-groups',
   method: 'get',
   handler: async (req) => {
-    const res = await req.payload.find({
-      collection: 'groups',
-      limit: 100,
-      sort: 'name',
-      depth: 0,
-      overrideAccess: true,
-    })
-    return Response.json({
-      groups: res.docs.map((g) => ({
-        name: (g as unknown as { name: string }).name,
-        slug: (g as unknown as { slug?: string }).slug,
-      })),
-    })
+    const token = String(req.searchParams?.get('token') ?? '')
+    const group = await findGroupByToken(req, token)
+    if (!group) {
+      return Response.json({ errors: [{ message: 'Lien d’inscription invalide.' }] }, { status: 404 })
+    }
+    return Response.json({ group: { name: group.name } })
   },
+}
+
+/** Limite : 5 inscriptions par adresse IP et par quart d'heure. */
+const RATE_LIMIT = { max: 5, windowMs: 15 * 60 * 1000 }
+
+function clientIpHash(req: PayloadRequest): string {
+  const fwd = req.headers.get('x-forwarded-for') ?? ''
+  const ip = fwd.split(',')[0]?.trim() || req.headers.get('x-real-ip') || 'inconnu'
+  return createHash('sha256')
+    .update(`${process.env.PAYLOAD_SECRET ?? ''}:${ip}`)
+    .digest('hex')
+}
+
+/** true si l'IP a dépassé la limite ; sinon enregistre la tentative. */
+async function rateLimited(req: PayloadRequest): Promise<boolean> {
+  const ipHash = clientIpHash(req)
+  const since = new Date(Date.now() - RATE_LIMIT.windowMs).toISOString()
+  const recent = await req.payload.count({
+    collection: 'registration-attempts',
+    where: { and: [{ ipHash: { equals: ipHash } }, { createdAt: { greater_than: since } }] },
+    overrideAccess: true,
+  })
+  if (recent.totalDocs >= RATE_LIMIT.max) return true
+  await req.payload.create({
+    collection: 'registration-attempts',
+    data: { ipHash },
+    overrideAccess: true,
+  })
+  // Ménage : tentatives de plus d'un jour.
+  const old = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString()
+  await req.payload.delete({
+    collection: 'registration-attempts',
+    where: { createdAt: { less_than: old } },
+    overrideAccess: true,
+  })
+  return false
 }
 
 type RegisterBody = {
   firstName?: unknown
   lastName?: unknown
   phone?: unknown
-  groupSlugs?: unknown
+  groupToken?: unknown
   email?: unknown
   birthDate?: unknown
   gender?: unknown
@@ -121,6 +169,13 @@ export const register: Endpoint = {
       return Response.json({ errors: [{ message: "Inscription refusée." }] }, { status: 400 })
     }
 
+    if (await rateLimited(req)) {
+      return Response.json(
+        { errors: [{ message: 'Trop d’inscriptions depuis cette connexion. Réessaie dans un quart d’heure.' }] },
+        { status: 429 },
+      )
+    }
+
     let data: {
       firstName: string
       lastName: string
@@ -139,42 +194,16 @@ export const register: Endpoint = {
       const phone = normalizePhone(reqStr(body.phone, MAX.phone, 'téléphone'))
       if (!isValidPhone(phone)) throw new Error('Téléphone invalide.')
 
-      const rawSlugs = Array.isArray(body.groupSlugs) ? body.groupSlugs : []
-      if (rawSlugs.length === 0) throw new Error('Choisis au moins un groupe.')
-      if (rawSlugs.length > 10) throw new Error('Trop de groupes.')
-      const slugs = rawSlugs.map((s) => {
-        const slug = str(s, 60, 'groupe')
-        if (!slug) throw new Error('Groupe invalide.')
-        return slug
-      })
-
-      // Résout les slugs → ids (erreur si un slug est inconnu).
-      const groupsRes = await req.payload.find({
-        collection: 'groups',
-        where: { slug: { in: slugs } },
-        limit: slugs.length,
-        depth: 0,
-        overrideAccess: true,
-      })
-      const found = new Map(
-        groupsRes.docs.map((g) => [
-          (g as unknown as { slug?: string }).slug,
-          g.id as number,
-        ]),
-      )
-      const groupIds: number[] = []
-      for (const slug of slugs) {
-        const id = found.get(slug)
-        if (id === undefined) throw new Error(`Groupe inconnu : ${slug}.`)
-        if (!groupIds.includes(id)) groupIds.push(id)
-      }
+      const group = await findGroupByToken(req, String(body.groupToken ?? ''))
+      if (!group) throw new Error('Lien d’inscription invalide ou désactivé. Demande le nouveau lien à ton responsable.')
+      const groupIds = [group.id]
 
       const email = str(body.email, MAX.email, 'email')
       if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         throw new Error('Email invalide.')
       }
-      const birthDate = str(body.birthDate, 10, 'date de naissance')
-      if (birthDate && isNaN(Date.parse(birthDate))) throw new Error('Date de naissance invalide.')
+      const birthDate = reqStr(body.birthDate, 10, 'date de naissance')
+      if (isNaN(Date.parse(birthDate))) throw new Error('Date de naissance invalide.')
       const gender = str(body.gender, 10, 'sexe')
       if (gender && gender !== 'male' && gender !== 'female') {
         throw new Error('Sexe invalide.')
@@ -189,7 +218,7 @@ export const register: Endpoint = {
         phone,
         groupIds,
         ...(email ? { email } : {}),
-        ...(birthDate ? { birthDate } : {}),
+        birthDate,
         ...(gender ? { gender: gender as 'male' | 'female' } : {}),
         ...(address ? { address } : {}),
         ...(parent1 ? { parent1 } : {}),
@@ -227,7 +256,7 @@ export const register: Endpoint = {
         data: { groups: current },
         overrideAccess: true,
       })
-      return Response.json({ ok: true, created: false, memberId: updated.id })
+      return Response.json({ ok: true, created: false, alreadyRegistered: true, memberId: updated.id })
     }
 
     const created = await req.payload.create({

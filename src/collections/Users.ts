@@ -38,7 +38,7 @@ export const Users: CollectionConfig = {
       },
       options: [
         { label: 'Admin (tout voir, tout modifier)', value: 'admin' },
-        { label: 'Assistant (ses groupes uniquement)', value: 'assistant' },
+        { label: 'Pasteur (ses groupes, membres et séances uniquement)', value: 'pasteur' },
       ],
     },
     {
@@ -46,10 +46,11 @@ export const Users: CollectionConfig = {
       type: 'relationship',
       relationTo: 'groups',
       hasMany: true,
-      label: 'Groupes assignés (assistants)',
+      label: 'Groupes assignés (pasteur)',
       admin: {
-        description: 'Utilisé uniquement si le rôle est Assistant.',
-        condition: (data) => data?.role === 'assistant',
+        description:
+          'Groupes confiés à ce pasteur, en plus de ceux qu’il crée lui-même dans l’app.',
+        condition: (data) => data?.role === 'pasteur',
       },
     },
   ],

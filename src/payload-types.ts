@@ -72,6 +72,7 @@ export interface Config {
     members: Member;
     'attendance-sessions': AttendanceSession;
     'attendance-records': AttendanceRecord;
+    'registration-attempts': RegistrationAttempt;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -84,6 +85,7 @@ export interface Config {
     members: MembersSelect<false> | MembersSelect<true>;
     'attendance-sessions': AttendanceSessionsSelect<false> | AttendanceSessionsSelect<true>;
     'attendance-records': AttendanceRecordsSelect<false> | AttendanceRecordsSelect<true>;
+    'registration-attempts': RegistrationAttemptsSelect<false> | RegistrationAttemptsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -135,9 +137,9 @@ export interface User {
   id: number;
   displayName: string;
   phone?: string | null;
-  role: 'admin' | 'assistant';
+  role: 'admin' | 'pasteur';
   /**
-   * Utilisé uniquement si le rôle est Assistant.
+   * Groupes confiés à ce pasteur, en plus de ceux qu’il crée lui-même dans l’app.
    */
   assignedGroups?: (number | Group)[] | null;
   updatedAt: string;
@@ -168,9 +170,15 @@ export interface Group {
   id: number;
   name: string;
   /**
-   * Généré automatiquement depuis le nom. Utilisé dans le lien : /inscription?groupe=<slug>
+   * Généré automatiquement depuis le nom (identifiant interne).
    */
   slug?: string | null;
+  /**
+   * Lien : /inscription?groupe=<jeton>. Videz ce champ et enregistrez pour générer un nouveau lien (l’ancien ne marchera plus).
+   */
+  inviteToken?: string | null;
+  inviteEnabled?: boolean | null;
+  owner?: (number | null) | User;
   description?: string | null;
   color?: string | null;
   meetingDay?: string | null;
@@ -206,6 +214,7 @@ export interface Member {
   };
   groups?: (number | Group)[] | null;
   registrationDate?: string | null;
+  createdBy?: (number | null) | User;
   status?: ('active' | 'inactive') | null;
   updatedAt: string;
   createdAt: string;
@@ -234,6 +243,16 @@ export interface AttendanceRecord {
   member: number | Member;
   status: 'present' | 'absent' | 'late' | 'excused';
   note?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "registration-attempts".
+ */
+export interface RegistrationAttempt {
+  id: number;
+  ipHash: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -280,6 +299,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'attendance-records';
         value: number | AttendanceRecord;
+      } | null)
+    | ({
+        relationTo: 'registration-attempts';
+        value: number | RegistrationAttempt;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -357,6 +380,9 @@ export interface UsersSelect<T extends boolean = true> {
 export interface GroupsSelect<T extends boolean = true> {
   name?: T;
   slug?: T;
+  inviteToken?: T;
+  inviteEnabled?: T;
+  owner?: T;
   description?: T;
   color?: T;
   meetingDay?: T;
@@ -395,6 +421,7 @@ export interface MembersSelect<T extends boolean = true> {
       };
   groups?: T;
   registrationDate?: T;
+  createdBy?: T;
   status?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -421,6 +448,15 @@ export interface AttendanceRecordsSelect<T extends boolean = true> {
   member?: T;
   status?: T;
   note?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "registration-attempts_select".
+ */
+export interface RegistrationAttemptsSelect<T extends boolean = true> {
+  ipHash?: T;
   updatedAt?: T;
   createdAt?: T;
 }

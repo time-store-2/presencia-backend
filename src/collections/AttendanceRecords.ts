@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { canCreateRecord, filterRecords } from '../access/roles'
 
 export const AttendanceRecords: CollectionConfig = {
   slug: 'attendance-records',
@@ -38,13 +39,11 @@ export const AttendanceRecords: CollectionConfig = {
     },
   ],
   access: {
-    // Lecture réservée aux utilisateurs connectés
-    // (le filtrage par groupe se fait côté API via la séance).
-    read: ({ req }) => Boolean(req?.user),
-    // Seul un utilisateur connecté peut enregistrer des présences
-    create: ({ req }) => Boolean(req?.user),
-    update: ({ req }) => Boolean(req?.user),
-    delete: ({ req }) => (req?.user as { role?: string } | null | undefined)?.role === 'admin',
+    // Admin : toutes les présences. Pasteur : celles des séances de ses groupes.
+    read: filterRecords,
+    create: canCreateRecord,
+    update: filterRecords,
+    delete: filterRecords,
   },
   versions: false,
 }
