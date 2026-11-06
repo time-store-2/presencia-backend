@@ -21,6 +21,15 @@ type ParentInput = {
 
 const RELATIONS = ['father', 'mother', 'guardian', 'other'] as const
 
+/** Nom normalisé pour comparaison : minuscules, sans accents ni espaces en trop. */
+const normName = (s: string): string =>
+  s
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .replace(/\s+/g, ' ')
+    .trim()
+
 /** Chaîne rognée limitée en longueur, ou erreur si trop longue. */
 function str(value: unknown, max: number, field: string): string | undefined {
   if (value === undefined || value === null) return undefined
@@ -231,20 +240,33 @@ export const register: Endpoint = {
       )
     }
 
-    // Anti-doublon : même téléphone → on complète les groupes existants.
+    // Anti-doublon : même téléphone ET même nom → la même personne se
+    // réinscrit : on complète ses groupes et on la réactive. Un numéro
+    // partagé (ado inscrit avec le téléphone d'un parent) crée bien un
+    // nouveau membre.
     const existing = await req.payload.find({
       collection: 'members',
       where: { phone: { equals: data.phone } },
-      limit: 1,
+      limit: 20,
       depth: 0,
       overrideAccess: true,
     })
-    if (existing.docs.length > 0) {
-      const doc = existing.docs[0] as unknown as {
-        id: number
-        groups?: Array<number | { id: number }>
-      }
-      const current: number[] = (doc.groups ?? []).map((g) =>
+    type ExistingMember = {
+      id: number
+      firstName?: string
+      lastName?: string
+      groups?: Array<number | { id: number }>
+    }
+    const fn = normName(data.firstName)
+    const ln = normName(data.lastName)
+    const samePerson = (existing.docs as unknown as ExistingMember[]).find((doc) => {
+      const f = normName(doc.firstName ?? '')
+      const l = normName(doc.lastName ?? '')
+      // Accepte aussi prénom/nom intervertis.
+      return (f === fn && l === ln) || (f === ln && l === fn)
+    })
+    if (samePerson) {
+      const current: number[] = (samePerson.groups ?? []).map((g) =>
         typeof g === 'object' && g !== null ? g.id : g,
       )
       for (const id of data.groupIds) {
@@ -252,8 +274,8 @@ export const register: Endpoint = {
       }
       const updated = await req.payload.update({
         collection: 'members',
-        id: doc.id,
-        data: { groups: current },
+        id: samePerson.id,
+        data: { groups: current, status: 'active' },
         overrideAccess: true,
       })
       return Response.json({ ok: true, created: false, alreadyRegistered: true, memberId: updated.id })
