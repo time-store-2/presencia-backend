@@ -103,3 +103,4 @@ flutter run --dart-define=PAYLOAD_URL=http://10.0.2.2:3002
 # Release (APK avec l'URL de production)
 flutter build apk --release --dart-define=PAYLOAD_URL=https://<ton-projet>.vercel.app
 ```
+
